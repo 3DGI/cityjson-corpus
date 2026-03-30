@@ -3,6 +3,8 @@
 /dist/
 /target/
 /tools/cjfake-profile-gen/target/
+/drivers/rust/target/
+/drivers/wasm/target/
 /tmp/
 /results/
 /data/generated/

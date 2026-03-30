@@ -41,6 +41,28 @@ class CaseConfig:
     source_path: str | None = None
     profile_path: str | None = None
     seed: int | None = None
+    warmup_iterations: int | None = None
+    probe_iterations: int | None = None
+    summary_iterations: int | None = None
+    roundtrip_iterations: int | None = None
+
+    def warmup_for(self, defaults: OperationDefaults) -> int:
+        return defaults.warmup_iterations if self.warmup_iterations is None else self.warmup_iterations
+
+    def iterations_for(self, operation: OperationName, defaults: OperationDefaults) -> int:
+        match operation:
+            case "probe":
+                return defaults.probe_iterations if self.probe_iterations is None else self.probe_iterations
+            case "summary":
+                return defaults.summary_iterations if self.summary_iterations is None else self.summary_iterations
+            case "roundtrip":
+                return (
+                    defaults.roundtrip_iterations
+                    if self.roundtrip_iterations is None
+                    else self.roundtrip_iterations
+                )
+            case _:
+                raise ValueError(f"unsupported operation: {operation}")
 
 
 @dataclass(frozen=True)
@@ -66,6 +88,10 @@ class Manifest:
                 source_path=item.get("source_path"),
                 profile_path=item.get("profile_path"),
                 seed=item.get("seed"),
+                warmup_iterations=item.get("warmup_iterations"),
+                probe_iterations=item.get("probe_iterations"),
+                summary_iterations=item.get("summary_iterations"),
+                roundtrip_iterations=item.get("roundtrip_iterations"),
             )
             for item in payload["cases"]
         )

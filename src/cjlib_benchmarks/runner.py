@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import shutil
 import statistics
 import subprocess
 from cjlib_benchmarks.model import CaseConfig, Manifest, OperationName, TargetConfig
@@ -117,6 +118,7 @@ def run_suite(selection: RunSelection) -> Path:
     build_targets(selection)
 
     results_root = REPO_ROOT / "results" / "latest"
+    shutil.rmtree(results_root, ignore_errors=True)
     raw_dir = results_root / "raw"
     outputs_dir = results_root / "outputs"
     ensure_directory(raw_dir)
@@ -140,17 +142,14 @@ def run_suite(selection: RunSelection) -> Path:
                     "--input",
                     str(input_path),
                     "--iterations",
-                    str(manifest.defaults.iterations_for(operation)),
+                    str(case.iterations_for(operation, manifest.defaults)),
                     "--warmup",
-                    str(manifest.defaults.warmup_iterations),
+                    str(case.warmup_for(manifest.defaults)),
                     "--output",
                     str(output_path),
                     "--result-json",
                     str(result_json),
                 ]
-                if operation == "roundtrip":
-                    command.append("--pretty-output")
-
                 run_checked(command, cwd=REPO_ROOT)
                 payload = json.loads(result_json.read_text(encoding="utf-8"))
                 payload["case_id"] = case.identifier

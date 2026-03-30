@@ -2,9 +2,9 @@
   "version": 1,
   "defaults": {
     "warmup_iterations": 1,
-    "probe_iterations": 25,
-    "summary_iterations": 5,
-    "roundtrip_iterations": 3
+    "probe_iterations": 10,
+    "summary_iterations": 3,
+    "roundtrip_iterations": 2
   },
   "targets": [
     {
@@ -35,7 +35,11 @@
       "id": "3d_basisvoorziening",
       "kind": "real",
       "description": "3D Basisvoorziening large real-world dataset dominated by geometry flattening",
-      "source_path": "/home/balazs/Development/serde_cityjson/tests/data/downloaded/30gz1_04.city.json"
+      "source_path": "/home/balazs/Development/serde_cityjson/tests/data/downloaded/30gz1_04.city.json",
+      "warmup_iterations": 0,
+      "probe_iterations": 1,
+      "summary_iterations": 1,
+      "roundtrip_iterations": 1
     },
     {
       "id": "geometry_flattening_best_case",
@@ -49,7 +53,11 @@
       "kind": "synthetic",
       "description": "Large vertex pool that isolates transform and vertex import cost",
       "seed": 19,
-      "profile_path": "profiles/vertex_transform_stress.json"
+      "profile_path": "profiles/vertex_transform_stress.json",
+      "warmup_iterations": 0,
+      "probe_iterations": 5,
+      "summary_iterations": 2,
+      "roundtrip_iterations": 1
     },
     {
       "id": "attribute_tree_worst_case",
