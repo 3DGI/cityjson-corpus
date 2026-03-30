@@ -3,6 +3,10 @@
 These figures come from `results/latest/summary.md` after running the full
 benchmark manifest on 2026-03-30.
 
+The same run also emits `results/latest/summary.csv`, which is the preferred
+input for plotting tools and spreadsheet analysis, including the per-run peak
+RSS fields.
+
 ## High-level Findings
 
 - The Rust baseline stays fastest across every case.

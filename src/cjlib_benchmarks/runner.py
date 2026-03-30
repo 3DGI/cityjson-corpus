@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import csv
 import json
 import re
 from pathlib import Path
@@ -189,9 +190,11 @@ def run_suite(selection: RunSelection) -> Path:
 
     summary_json = results_root / "summary.json"
     summary_md = results_root / "summary.md"
+    summary_csv = results_root / "summary.csv"
     summary_payload = build_summary(aggregated)
     summary_json.write_text(json.dumps(summary_payload, indent=2, sort_keys=True), encoding="utf-8")
     summary_md.write_text(render_summary_markdown(summary_payload), encoding="utf-8")
+    write_summary_csv(summary_csv, summary_payload)
     return results_root
 
 
@@ -245,3 +248,74 @@ def render_summary_markdown(summary: dict[str, Any]) -> str:
         )
     lines.append("")
     return "\n".join(lines)
+
+
+def write_summary_csv(path: Path, summary: dict[str, Any]) -> None:
+    fieldnames = (
+        "case_id",
+        "case_description",
+        "target",
+        "operation",
+        "input_path",
+        "input_bytes",
+        "output_bytes",
+        "iterations",
+        "warmup",
+        "sample_count",
+        "median_ms",
+        "peak_rss_kib",
+        "peak_rss_mib",
+        "rust_baseline_ms",
+        "overhead_ratio_vs_rust",
+        "overhead_percent_vs_rust",
+        "validation_ok",
+        "validation_tool",
+        "validation_output_path",
+    )
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        for item in summary["results"]:
+            validation = item.get("validation", {})
+            validation_ok = validation.get("ok")
+            if validation_ok is True:
+                validation_ok_text = "true"
+            elif validation_ok is False:
+                validation_ok_text = "false"
+            else:
+                validation_ok_text = ""
+            writer.writerow(
+                {
+                    "case_id": item["case_id"],
+                    "case_description": item["case_description"],
+                    "target": item["target"],
+                    "operation": item["operation"],
+                    "input_path": item["input_path"],
+                    "input_bytes": item.get("input_bytes", ""),
+                    "output_bytes": item.get("output_bytes", ""),
+                    "iterations": item.get("iterations", ""),
+                    "warmup": item.get("warmup", ""),
+                    "sample_count": len(item.get("samples_ns", ())),
+                    "median_ms": f"{item['median_ms']:.6f}",
+                    "peak_rss_kib": item.get("peak_rss_kib", ""),
+                    "peak_rss_mib": (
+                        f"{item['peak_rss_mib']:.6f}" if item.get("peak_rss_mib") is not None else ""
+                    ),
+                    "rust_baseline_ms": (
+                        f"{item['rust_baseline_ms']:.6f}" if item["rust_baseline_ms"] is not None else ""
+                    ),
+                    "overhead_ratio_vs_rust": (
+                        f"{item['overhead_ratio_vs_rust']:.6f}"
+                        if item["overhead_ratio_vs_rust"] is not None
+                        else ""
+                    ),
+                    "overhead_percent_vs_rust": (
+                        f"{item['overhead_percent_vs_rust']:.6f}"
+                        if item["overhead_percent_vs_rust"] is not None
+                        else ""
+                    ),
+                    "validation_ok": validation_ok_text,
+                    "validation_tool": validation.get("tool", ""),
+                    "validation_output_path": validation.get("output_path", ""),
+                }
+            )

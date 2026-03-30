@@ -17,6 +17,7 @@ The benchmark contract is:
 - same operations for every target
 - same JSON result schema from every driver
 - roundtrip outputs must validate with `cjval`
+- each benchmark run also emits `results/latest/summary.csv` for plotting
 
 See [`docs/implementation-plan.md`](docs/implementation-plan.md).
 
@@ -43,5 +44,16 @@ Each driver must accept:
 
 The benchmark orchestrator assumes those paths and arguments.
 
+## Output Artifacts
+
+Each run writes a self-contained result bundle under `results/latest/`:
+
+- `summary.json`
+- `summary.md`
+- `summary.csv`
+- `raw/*.json`
+- `outputs/**/*.city.json`
+
 The orchestrator also records peak resident set size for each target run and
-threads that metric through the raw result JSON and Markdown summary.
+threads that metric through the raw result JSON, Markdown summary, and CSV
+export.
