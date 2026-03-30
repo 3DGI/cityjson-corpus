@@ -417,11 +417,10 @@ int main(int argc, char** argv) {
       if (args.operation == Operation::kSummary) {
         static_cast<void>(model.summary());
       } else {
-        const auto serialized = model.serialize_document(cjlib::WriteOptions{
+        output_payload = model.serialize_document_bytes(cjlib::WriteOptions{
             .pretty = args.pretty_output,
             .validate_default_themes = true,
         });
-        output_payload.assign(serialized.begin(), serialized.end());
       }
     }
 
@@ -433,11 +432,10 @@ int main(int argc, char** argv) {
         auto model = cjlib::Model::parse_document(payload);
         summary_result = make_summary(model.summary());
         if (args.operation == Operation::kRoundtrip) {
-          const auto serialized = model.serialize_document(cjlib::WriteOptions{
+          output_payload = model.serialize_document_bytes(cjlib::WriteOptions{
               .pretty = args.pretty_output,
               .validate_default_themes = true,
           });
-          output_payload.assign(serialized.begin(), serialized.end());
         }
       }
       const auto sample_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(

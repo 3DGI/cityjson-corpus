@@ -148,9 +148,9 @@ def run_benchmark(args: BenchmarkArgs) -> BenchmarkResult:
             if args.operation == "summary":
                 _summary_payload(model)
             else:
-                serialized = model.serialize_document(
+                serialized = model.serialize_document_bytes(
                     WriteOptions(pretty=args.pretty_output, validate_default_themes=True)
-                ).encode("utf-8")
+                )
                 output_bytes = len(serialized)
                 last_output = serialized
         finally:
@@ -165,9 +165,9 @@ def run_benchmark(args: BenchmarkArgs) -> BenchmarkResult:
             try:
                 summary_result = _summary_payload(model)
                 if args.operation == "roundtrip":
-                    serialized = model.serialize_document(
+                    serialized = model.serialize_document_bytes(
                         WriteOptions(pretty=args.pretty_output, validate_default_themes=True)
-                    ).encode("utf-8")
+                    )
                     output_bytes = len(serialized)
                     last_output = serialized
             finally:

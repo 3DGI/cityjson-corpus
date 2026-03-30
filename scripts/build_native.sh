@@ -11,11 +11,23 @@ mkdir -p "${bin_root}"
 
 python3 -m py_compile "${repo_root}/drivers/python/benchmark.py"
 
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  cjlib_ffi_core_shared_lib="${cjlib_root}/target/release/libcjlib_ffi_core.dylib"
+elif [[ "$(uname -s)" == "Linux" ]]; then
+  cjlib_ffi_core_shared_lib="${cjlib_root}/target/release/libcjlib_ffi_core.so"
+else
+  cjlib_ffi_core_shared_lib="${cjlib_root}/target/release/cjlib_ffi_core.dll"
+fi
+
+cargo build --release --manifest-path "${cjlib_root}/ffi/core/Cargo.toml"
+
 cmake \
   -S "${repo_root}/drivers/cpp" \
   -B "${build_root}/cpp" \
-  -DCJLIB_ROOT="${cjlib_root}"
-cmake --build "${build_root}/cpp"
+  -DCJLIB_ROOT="${cjlib_root}" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCJLIB_FFI_CORE_SHARED_LIB="${cjlib_ffi_core_shared_lib}"
+cmake --build "${build_root}/cpp" --config Release
 
 cat >"${bin_root}/cjbench-python" <<EOF
 #!/usr/bin/env bash
@@ -25,6 +37,7 @@ script_dir="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
 repo_root="\$(cd "\${script_dir}/../.." && pwd)"
 cjlib_root="\${CJLIB_ROOT:-${cjlib_root}}"
 export CJLIB_ROOT="\${cjlib_root}"
+export CJLIB_FFI_CORE_LIB="${cjlib_ffi_core_shared_lib}"
 export PYTHONPATH="\${cjlib_root}/ffi/python/src\${PYTHONPATH:+:\${PYTHONPATH}}"
 exec python3 "\${repo_root}/drivers/python/benchmark.py" "\$@"
 EOF

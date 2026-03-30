@@ -11,11 +11,11 @@ set(CJLIB_FFI_INCLUDE_DIR "${CJLIB_ROOT}/ffi/cpp/include" CACHE PATH "Path to cj
 set(CJLIB_FFI_CORE_INCLUDE_DIR "${CJLIB_ROOT}/ffi/core/include" CACHE PATH "Path to generated cjlib C ABI headers")
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/debug/libcjlib_ffi_core.dylib" CACHE FILEPATH "Built cjlib ffi shared library")
+  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/release/libcjlib_ffi_core.dylib" CACHE FILEPATH "Built cjlib ffi shared library")
 elseif(WIN32)
-  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/debug/cjlib_ffi_core.dll" CACHE FILEPATH "Built cjlib ffi shared library")
+  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/release/cjlib_ffi_core.dll" CACHE FILEPATH "Built cjlib ffi shared library")
 else()
-  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/debug/libcjlib_ffi_core.so" CACHE FILEPATH "Built cjlib ffi shared library")
+  set(CJLIB_FFI_CORE_SHARED_LIB "${CJLIB_ROOT}/target/release/libcjlib_ffi_core.so" CACHE FILEPATH "Built cjlib ffi shared library")
 endif()
 
 if(NOT EXISTS "${CJLIB_FFI_INCLUDE_DIR}/cjlib/cjlib.hpp")

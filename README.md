@@ -23,6 +23,10 @@ The benchmark contract is:
 - roundtrip outputs must validate with `cjval`
 - each benchmark run also emits `results/latest/summary.csv` for plotting
 
+The native binding harness builds and loads `cjlib-ffi-core` from
+`target/release` so the Python and C++ results reflect optimized FFI artifacts
+rather than debug leftovers.
+
 See [`docs/implementation-plan.md`](docs/implementation-plan.md).
 
 ## Prerequisites

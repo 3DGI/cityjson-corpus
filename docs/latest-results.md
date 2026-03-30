@@ -10,48 +10,49 @@ RSS fields.
 ## High-level Findings
 
 - The Rust baseline stays fastest across every case.
-- The Python binding is consistently the most expensive wrapper:
-  - roughly `7.42x` to `18.64x` slower than Rust for `summary`
-  - roughly `11.85x` to `30.52x` slower than Rust for `roundtrip`
-- The C++ binding is materially cheaper than Python but still clearly above the
-  Rust baseline:
-  - roughly `7.51x` to `18.47x` slower than Rust for `summary`
-  - roughly `7.36x` to `18.42x` slower than Rust for `roundtrip`
+- The native benchmark harness now builds and loads the `release`
+  `cjlib-ffi-core` shared library for both Python and C++, instead of relying
+  on debug leftovers.
+- With that fix in place, the native FFI overhead is small on this machine:
+  - Python is roughly `0.93x` to `1.15x` of Rust for `summary`
+  - Python is roughly `1.02x` to `1.14x` of Rust for `roundtrip`
+  - C++ is roughly `0.95x` to `1.17x` of Rust for `summary`
+  - C++ is roughly `0.99x` to `1.09x` of Rust for `roundtrip`
 - The wasm benchmark is now a real `wasm32-unknown-unknown` module executed
   through Node.js, not a native fallback:
-  - roughly `1.56x` to `3.47x` slower than Rust for `summary`
-  - roughly `2.33x` to `4.26x` slower than Rust for `roundtrip`
+  - roughly `1.42x` to `3.13x` slower than Rust for `summary`
+  - roughly `2.02x` to `4.17x` slower than Rust for `roundtrip`
 
 ## Memory Findings
 
 - Peak RSS is recorded for every case, target, and operation tuple, so timing
   and memory regressions can be inspected together.
 - The largest single memory spike in the run is the real wasm32 path on
-  `3d_basisvoorziening` `roundtrip`: `4111.60 MiB`.
+  `3d_basisvoorziening` `roundtrip`: `4110.94 MiB`.
 - Average peak RSS for `roundtrip` across the full manifest:
-  - C++: `244.78 MiB`
-  - Rust: `261.14 MiB`
-  - Python: `262.68 MiB`
-  - Wasm: `567.08 MiB`
+  - C++: `245.69 MiB`
+  - Rust: `261.71 MiB`
+  - Python: `256.49 MiB`
+  - Wasm: `567.78 MiB`
 - The memory story is dominated by the largest dataset:
   - `3dbag` `roundtrip` peak RSS:
-    Rust `62.18 MiB`, C++ `70.22 MiB`, Python `89.20 MiB`, Wasm `160.51 MiB`
+    Rust `60.46 MiB`, C++ `68.14 MiB`, Python `82.87 MiB`, Wasm `160.30 MiB`
   - `3d_basisvoorziening` `roundtrip` peak RSS:
-    Rust `1994.93 MiB`, C++ `1818.12 MiB`, Python `1837.09 MiB`,
-    Wasm `4111.60 MiB`
+    Rust `1995.10 MiB`, C++ `1816.97 MiB`, Python `1828.14 MiB`,
+    Wasm `4110.94 MiB`
 
 ## Real Dataset Highlights
 
 - `3dbag`
-  - Rust `roundtrip`: `58.381 ms`, `62.18 MiB`
-  - Python `roundtrip`: `966.772 ms` (`16.56x`), `89.20 MiB`
-  - C++ `roundtrip`: `602.961 ms` (`10.33x`), `70.22 MiB`
-  - Wasm `roundtrip`: `162.534 ms` (`2.78x`), `160.51 MiB`
+  - Rust `roundtrip`: `59.690 ms`, `60.46 MiB`
+  - Python `roundtrip`: `63.180 ms` (`1.06x`), `82.87 MiB`
+  - C++ `roundtrip`: `61.834 ms` (`1.04x`), `68.14 MiB`
+  - Wasm `roundtrip`: `151.420 ms` (`2.54x`), `160.30 MiB`
 - `3d_basisvoorziening`
-  - Rust `roundtrip`: `1636.035 ms`, `1994.93 MiB`
-  - Python `roundtrip`: `49939.446 ms` (`30.52x`), `1837.09 MiB`
-  - C++ `roundtrip`: `30130.733 ms` (`18.42x`), `1818.12 MiB`
-  - Wasm `roundtrip`: `6966.936 ms` (`4.26x`), `4111.60 MiB`
+  - Rust `roundtrip`: `1690.771 ms`, `1995.10 MiB`
+  - Python `roundtrip`: `1871.080 ms` (`1.11x`), `1828.14 MiB`
+  - C++ `roundtrip`: `1758.243 ms` (`1.04x`), `1816.97 MiB`
+  - Wasm `roundtrip`: `6506.655 ms` (`3.85x`), `4110.94 MiB`
 
 ## Validation Notes
 

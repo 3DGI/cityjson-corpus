@@ -6,8 +6,6 @@ FFI.
 ## Assumptions
 
 - The sibling `cjlib` repository lives at `/home/balazs/Development/cjlib`
-- The `cjlib` ffi core shared library already exists at
-  `/home/balazs/Development/cjlib/target/debug/libcjlib_ffi_core.so`
 - The shared C ABI header already exists at
   `/home/balazs/Development/cjlib/ffi/core/include/cjlib/cjlib.h`
 - `cjval` is available on `PATH`
@@ -26,7 +24,11 @@ Run the native build wrapper from the benchmark repo root:
 The script:
 
 - checks the Python benchmark script with `py_compile`
+- builds `cjlib-ffi-core` in `release`
 - configures and builds the C++ benchmark with CMake
+- links the C++ driver against the `release` `cjlib_ffi_core` shared library
+- exports `CJLIB_FFI_CORE_LIB` so the Python benchmark loads the same `release`
+  shared library
 - creates `build/bin/cjbench-python`
 - creates `build/bin/cjbench-cpp`
 - prints the built C++ executable path and wrapper paths
