@@ -9,6 +9,7 @@ The benchmark repo is intentionally separate from `cjlib` so it can:
 - build host-language drivers with their own toolchains
 - validate roundtrip outputs with `cjval`
 - report wrapper overhead relative to the Rust baseline
+- capture per-run peak RSS so timing and memory regressions can be compared
 
 The benchmark contract is:
 
@@ -41,3 +42,6 @@ Each driver must accept:
 ```
 
 The benchmark orchestrator assumes those paths and arguments.
+
+The orchestrator also records peak resident set size for each target run and
+threads that metric through the raw result JSON and Markdown summary.

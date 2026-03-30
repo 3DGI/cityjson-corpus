@@ -2,15 +2,19 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import re
 from pathlib import Path
 import shutil
 import statistics
 import subprocess
+from typing import Any
 from cjlib_benchmarks.model import CaseConfig, Manifest, OperationName, TargetConfig
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OPERATIONS: tuple[OperationName, ...] = ("probe", "summary", "roundtrip")
+MAX_RSS_RE = re.compile(r"Maximum resident set size \(kbytes\):\s+(?P<kib>\d+)")
+TIME_COMMAND = Path("/usr/bin/time")
 
 
 @dataclass(frozen=True)
@@ -31,6 +35,15 @@ def run_checked(command: list[str], *, cwd: Path | None = None) -> subprocess.Co
         text=True,
         capture_output=True,
     )
+
+
+def run_timed(command: list[str], *, cwd: Path | None = None) -> tuple[subprocess.CompletedProcess[str], int]:
+    timed_command = [str(TIME_COMMAND), "-v", *command]
+    completed = run_checked(timed_command, cwd=cwd)
+    match = MAX_RSS_RE.search(completed.stderr)
+    if match is None:
+        raise ValueError(f"unable to parse peak RSS from time output for command: {command[0]}")
+    return completed, int(match.group("kib"))
 
 
 def ensure_directory(path: Path) -> None:
@@ -113,6 +126,10 @@ def result_median_ms(payload: dict[str, Any]) -> float:
     return statistics.median(payload["samples_ns"]) / 1_000_000.0
 
 
+def peak_rss_mib(peak_rss_kib: int) -> float:
+    return peak_rss_kib / 1024.0
+
+
 def run_suite(selection: RunSelection) -> Path:
     manifest = load_manifest()
     build_targets(selection)
@@ -150,7 +167,7 @@ def run_suite(selection: RunSelection) -> Path:
                     "--result-json",
                     str(result_json),
                 ]
-                run_checked(command, cwd=REPO_ROOT)
+                _, peak_rss_kib = run_timed(command, cwd=REPO_ROOT)
                 payload = json.loads(result_json.read_text(encoding="utf-8"))
                 payload["case_id"] = case.identifier
                 payload["case_description"] = case.description
@@ -158,6 +175,8 @@ def run_suite(selection: RunSelection) -> Path:
                 payload["operation"] = operation
                 payload["input_path"] = str(input_path)
                 payload["median_ms"] = result_median_ms(payload)
+                payload["peak_rss_kib"] = peak_rss_kib
+                payload["peak_rss_mib"] = peak_rss_mib(peak_rss_kib)
                 if operation == "roundtrip":
                     validate_cityjson(output_path)
                     payload["validation"] = {
@@ -212,8 +231,8 @@ def render_summary_markdown(summary: dict[str, Any]) -> str:
     lines = [
         "# Benchmark Summary",
         "",
-        "| Case | Operation | Target | Median ms | Ratio vs Rust | Valid |",
-        "| --- | --- | --- | ---: | ---: | --- |",
+        "| Case | Operation | Target | Median ms | Peak RSS MiB | Ratio vs Rust | Valid |",
+        "| --- | --- | --- | ---: | ---: | ---: | --- |",
     ]
     for item in summary["results"]:
         ratio = item["overhead_ratio_vs_rust"]
@@ -222,7 +241,7 @@ def render_summary_markdown(summary: dict[str, Any]) -> str:
         valid_text = "yes" if valid is True else ""
         lines.append(
             f"| {item['case_id']} | {item['operation']} | {item['target']} | "
-            f"{item['median_ms']:.3f} | {ratio_text} | {valid_text} |"
+            f"{item['median_ms']:.3f} | {item['peak_rss_mib']:.2f} | {ratio_text} | {valid_text} |"
         )
     lines.append("")
     return "\n".join(lines)

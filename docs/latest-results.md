@@ -18,6 +18,8 @@ benchmark manifest on 2026-03-30.
   Even with that limitation, the narrower adapter stayed much closer to Rust:
   - roughly `1.4x` to `3.0x` slower than Rust for `summary`
   - roughly `2.2x` to `3.4x` slower than Rust for `roundtrip`
+- Peak RSS is now recorded for every case, target, and operation tuple, so the
+  summary table can surface memory regressions alongside the timing ratios.
 
 ## Real Dataset Highlights
 

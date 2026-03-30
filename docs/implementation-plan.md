@@ -66,6 +66,6 @@ Ownership:
 The benchmark run must emit:
 
 - machine-readable results
-- a Markdown summary with per-target overhead ratios
+- a Markdown summary with per-target overhead ratios and peak RSS
 - roundtrip output files for inspection
 - validation status per target and dataset
