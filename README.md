@@ -18,3 +18,26 @@ The benchmark contract is:
 - roundtrip outputs must validate with `cjval`
 
 See [`docs/implementation-plan.md`](docs/implementation-plan.md).
+
+## Driver Contract
+
+Every target driver must be exposed through one of these stable entry points:
+
+- `build/bin/cjbench-rust`
+- `build/bin/cjbench-python`
+- `build/bin/cjbench-cpp`
+- `build/bin/cjbench-wasm`
+
+Each driver must accept:
+
+```text
+--operation {probe,summary,roundtrip}
+--input PATH
+--iterations N
+--warmup N
+--output PATH
+--pretty-output
+--result-json PATH
+```
+
+The benchmark orchestrator assumes those paths and arguments.

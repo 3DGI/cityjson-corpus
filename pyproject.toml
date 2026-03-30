@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cjlib-benchmarks"
+version = "0.1.0"
+description = "Standalone benchmark harness for cjlib and its bindings"
+requires-python = ">=3.12"
+
+[project.scripts]
+cjlib-bench = "cjlib_benchmarks.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
