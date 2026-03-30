@@ -1,7 +1,7 @@
 # Rust And Wasm Drivers
 
-This worktree owns the Rust baseline driver and the wasm-oriented adapter
-driver.
+This worktree owns the Rust baseline driver and the real `wasm32` benchmark
+path.
 
 ## Rust Baseline
 
@@ -22,38 +22,36 @@ CLI contract:
 
 For `roundtrip`, the driver writes exactly one CityJSON artifact to `--output`.
 
-## Wasm Adapter
+## Wasm32 Driver
 
-The current `cjlib` wasm layer is benchmarked through a native Rust CLI in
-`drivers/wasm`. This is a deliberate fallback, not a claim that the repo
-currently produces a browser or Node-loadable `.wasm` artifact.
+The wasm benchmark path now uses a real `wasm32-unknown-unknown` module:
 
-The reason is upstream and concrete:
+1. `drivers/wasm/src/lib.rs` exposes a thin `wasm-bindgen` wrapper over
+   `cjlib-wasm`
+2. `scripts/build_rust_wasm.sh` compiles that crate for
+   `wasm32-unknown-unknown`
+3. `wasm-bindgen --target nodejs` emits the JS glue and `.wasm` artifact under
+   `build/wasm`
+4. `drivers/wasm/run_wasm_benchmark.cjs` satisfies the benchmark CLI contract
+   and executes the generated module through Node.js
 
-- `cityjson-rs` hard-fails compilation on non-64-bit targets
-- `wasm32-*` therefore cannot build today
-- the benchmark still exercises the narrower `cjlib-wasm` adapter surface so we
-  can measure wrapper cost and catch semantic regressions
+That means `build/bin/cjbench-wasm` now benchmarks the actual JS<->Wasm
+boundary instead of a native Rust fallback.
 
-## Blocker Evidence
+## Portability Notes
 
-The blocker is reproducible with the current sources:
+This repo only became buildable for `wasm32` after two upstream portability
+fixes:
 
-1. `/home/balazs/Development/cityjson-rs/src/backend/default/vertex.rs` contains:
-   `#[cfg(not(target_pointer_width = "64"))] compile_error!("This crate only supports 64-bit platforms");`
-2. Attempting the original `wasm32-unknown-unknown` packaging path failed with:
-   `error: This crate only supports 64-bit platforms`
-3. That failure was hit while building the benchmark-side wasm wrapper, so the
-   Node and browser packaging path is not currently viable without upstream
-   portability work in `cityjson-rs`
+1. `cityjson-rs` no longer hard-rejects non-64-bit targets at compile time
+2. `cjlib-wasm` is built with explicit `getrandom` wasm configuration:
+   - `ffi/wasm/Cargo.toml` enables `getrandom`'s `wasm_js` feature for
+     `target_family = "wasm", target_os = "unknown"`
+   - `scripts/build_rust_wasm.sh` passes
+     `--cfg getrandom_backend="wasm_js"` through Cargo target config
 
-The adapter driver implements:
-
-- `probe`
-- `summary`
-- `roundtrip`
-
-`roundtrip` writes exactly one CityJSON artifact to `--output`.
+The resulting benchmark is still Node-specific, not a browser benchmark, but it
+is a real `wasm32-unknown-unknown` execution path.
 
 ## Build
 
@@ -65,9 +63,10 @@ Run:
 
 The script will:
 
-1. build the Rust driver
-2. build the wasm-adapter driver
-3. generate launcher entry points at `build/bin/cjbench-rust` and
+1. build the native Rust baseline driver
+2. build the wasm wrapper crate for `wasm32-unknown-unknown`
+3. package the wasm artifact with `wasm-bindgen`
+4. generate launcher entry points at `build/bin/cjbench-rust` and
    `build/bin/cjbench-wasm`
 
 ## Output Schema
@@ -82,5 +81,15 @@ Both drivers emit JSON result files with:
 - optional output byte size
 - probe metrics when `operation=probe`
 - summary metrics when `operation=summary` or `roundtrip`
-- a portability note on the wasm-adapter result to make the `wasm32` blocker
-  explicit in reports
+- a portability note that records the benchmark context
+
+## Current Signal
+
+The current full-manifest run shows that the wasm path is materially closer to
+Rust on wall time than Python or C++, but it pays a noticeable memory cost on
+the largest dataset:
+
+- `summary`: roughly `1.56x` to `3.47x` slower than Rust
+- `roundtrip`: roughly `2.33x` to `4.26x` slower than Rust
+- worst observed peak RSS:
+  `3d_basisvoorziening` `roundtrip` at `4111.60 MiB`

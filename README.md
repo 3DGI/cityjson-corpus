@@ -11,6 +11,10 @@ The benchmark repo is intentionally separate from `cjlib` so it can:
 - report wrapper overhead relative to the Rust baseline
 - capture per-run peak RSS so timing and memory regressions can be compared
 
+The wasm benchmark target is a real `wasm32-unknown-unknown` module packaged
+with `wasm-bindgen` and executed through Node.js. The benchmark therefore
+measures an actual JS<->Wasm boundary, not a native Rust fallback.
+
 The benchmark contract is:
 
 - same datasets for every target
@@ -20,6 +24,13 @@ The benchmark contract is:
 - each benchmark run also emits `results/latest/summary.csv` for plotting
 
 See [`docs/implementation-plan.md`](docs/implementation-plan.md).
+
+## Prerequisites
+
+- `cargo`
+- `node`
+- `wasm-bindgen`
+- `cjval`
 
 ## Driver Contract
 
