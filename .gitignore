@@ -1,0 +1,10 @@
+/.venv/
+/build/
+/dist/
+/target/
+/tmp/
+/results/
+/data/generated/
+/node_modules/
+*.pyc
+__pycache__/
