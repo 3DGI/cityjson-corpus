@@ -2,6 +2,7 @@
 /build/
 /dist/
 /target/
+/tools/cjfake-profile-gen/target/
 /tmp/
 /results/
 /data/generated/
