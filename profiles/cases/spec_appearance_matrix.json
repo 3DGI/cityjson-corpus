@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "purpose": "Synthetic appearance-heavy fixture that keeps geometry simple.",
+  "cases": [
+    {
+      "id": "spec_appearance_matrix",
+      "description": "Exercise materials and textures with a shallow geometry shape.",
+      "seed": 1002,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 4,
+      "max_cityobjects": 4,
+      "allowed_types_geometry": ["MultiSurface", "Solid"],
+      "allowed_lods": ["2", "3"],
+      "min_members_multisurface": 2,
+      "max_members_multisurface": 4,
+      "min_members_solid": 1,
+      "max_members_solid": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": true,
+      "min_materials": 2,
+      "max_materials": 3,
+      "nr_themes_materials": 3,
+      "generate_ambient_intensity": true,
+      "generate_diffuse_color": true,
+      "generate_emissive_color": false,
+      "generate_specular_color": true,
+      "generate_shininess": false,
+      "generate_transparency": true,
+      "textures_enabled": true,
+      "min_textures": 2,
+      "max_textures": 3,
+      "nr_themes_textures": 3,
+      "max_vertices_texture": 12,
+      "texture_allow_none": true,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

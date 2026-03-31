@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "purpose": "Synthetic geometry matrix fixture for schema and roundtrip coverage.",
+  "cases": [
+    {
+      "id": "spec_geometry_matrix",
+      "description": "Exercise the full geometry type matrix with controlled city object counts and semantics.",
+      "seed": 1001,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 8,
+      "max_cityobjects": 8,
+      "allowed_types_geometry": [
+        "MultiPoint",
+        "MultiLineString",
+        "MultiSurface",
+        "Solid",
+        "MultiSolid",
+        "CompositeSurface",
+        "CompositeSolid"
+      ],
+      "allowed_lods": ["0", "1", "2", "3"],
+      "min_members_multipoint": 4,
+      "max_members_multipoint": 8,
+      "min_members_multilinestring": 2,
+      "max_members_multilinestring": 4,
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 4,
+      "min_members_solid": 1,
+      "max_members_solid": 2,
+      "min_members_multisolid": 1,
+      "max_members_multisolid": 2,
+      "min_members_compositesurface": 1,
+      "max_members_compositesurface": 2,
+      "min_members_compositesolid": 1,
+      "max_members_compositesolid": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 2,
+      "min_coordinate": -250.0,
+      "max_coordinate": 250.0,
+      "min_vertices": 8,
+      "max_vertices": 16,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": true,
+      "allowed_types_semantic": [
+        "RoofSurface",
+        "GroundSurface",
+        "WallSurface",
+        "ClosureSurface"
+      ]
+    }
+  ]
+}

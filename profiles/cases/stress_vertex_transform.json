@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for vertex import, transform application, and reindexing.",
+  "cases": [
+    {
+      "id": "stress_vertex_transform",
+      "description": "Keep geometry shallow but vertex-heavy so transform logic dominates.",
+      "seed": 2002,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 32,
+      "max_cityobjects": 32,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["2"],
+      "min_members_multisurface": 2,
+      "max_members_multisurface": 4,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "min_coordinate": 0.0,
+      "max_coordinate": 100000.0,
+      "min_vertices": 256,
+      "max_vertices": 256,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

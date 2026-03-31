@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for composite attribute and geometry values.",
+  "cases": [
+    {
+      "id": "stress_composite_value",
+      "description": "Mix nested attributes with a compact but varied geometry set.",
+      "seed": 2006,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 24,
+      "max_cityobjects": 24,
+      "allowed_types_geometry": ["MultiSurface", "Solid"],
+      "allowed_lods": ["0", "1", "2", "3"],
+      "min_members_multisurface": 2,
+      "max_members_multisurface": 4,
+      "min_members_solid": 1,
+      "max_members_solid": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 2,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": true,
+      "min_attributes": 8,
+      "max_attributes": 16,
+      "attributes_max_depth": 4,
+      "attributes_random_keys": true,
+      "attributes_random_values": true,
+      "semantics_enabled": false
+    }
+  ]
+}

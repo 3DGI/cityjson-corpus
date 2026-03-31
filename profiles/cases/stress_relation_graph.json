@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for dense CityObject relationship graphs.",
+  "cases": [
+    {
+      "id": "stress_relation_graph",
+      "description": "Exercise parent-child relationships with many linked CityObjects.",
+      "seed": 2004,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 64,
+      "max_cityobjects": 64,
+      "cityobject_hierarchy": true,
+      "min_children": 2,
+      "max_children": 4,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["2"],
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

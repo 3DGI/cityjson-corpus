@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "purpose": "Geometry-heavy stress fixture for flattening and normalization costs.",
+  "cases": [
+    {
+      "id": "stress_geometry_flattening",
+      "description": "Stress geometry normalization with many shells and repeated surfaces.",
+      "seed": 2001,
+      "allowed_types_cityobject": ["Building", "Bridge"],
+      "min_cityobjects": 64,
+      "max_cityobjects": 64,
+      "allowed_types_geometry": [
+        "MultiSurface",
+        "Solid",
+        "MultiSolid",
+        "CompositeSurface",
+        "CompositeSolid"
+      ],
+      "allowed_lods": ["2", "3"],
+      "min_members_multisurface": 4,
+      "max_members_multisurface": 8,
+      "min_members_solid": 3,
+      "max_members_solid": 6,
+      "min_members_multisolid": 2,
+      "max_members_multisolid": 4,
+      "min_members_compositesurface": 2,
+      "max_members_compositesurface": 4,
+      "min_members_compositesolid": 2,
+      "max_members_compositesolid": 4,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 2,
+      "min_coordinate": 0.0,
+      "max_coordinate": 10000.0,
+      "min_vertices": 16,
+      "max_vertices": 32,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

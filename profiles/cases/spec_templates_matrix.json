@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "purpose": "Synthetic template and instance fixture for repeated geometry behavior.",
+  "cases": [
+    {
+      "id": "spec_templates_matrix",
+      "description": "Exercise geometry templates with many instances and minimal variance.",
+      "seed": 1003,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 16,
+      "max_cityobjects": 16,
+      "allowed_types_geometry": ["MultiSurface", "Solid"],
+      "allowed_lods": ["2", "3"],
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 2,
+      "min_members_solid": 1,
+      "max_members_solid": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "use_templates": true,
+      "min_templates": 4,
+      "max_templates": 4,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

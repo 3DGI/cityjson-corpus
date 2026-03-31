@@ -18,6 +18,8 @@ serve any CityJSON implementation that wants common benchmark inputs.
   Corpus-defined profiles and manifests plus the machine-readable
   `cjfake-manifest.schema.json`, first consumed by `cjfake` to generate
   benchmark data.
+- `profiles/cases/`
+  Concrete manifest fixtures that correspond to catalog entries.
 - `pipelines/`
   Build steps that run generation, acquisition, packaging, and publication.
 - `invariants/`
@@ -39,6 +41,9 @@ serve any CityJSON implementation that wants common benchmark inputs.
 The benchmark contract belongs to this repository. Generator and consumer
 projects should conform to it without imposing implementation-specific
 assumptions on the catalog.
+
+Use [`scripts/validate_profiles.sh`](../scripts/validate_profiles.sh) to check
+that the repository profiles still validate and still match the catalog.
 
 ## Design Notes
 

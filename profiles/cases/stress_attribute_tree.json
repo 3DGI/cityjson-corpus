@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for deep attribute trees and allocation pressure.",
+  "cases": [
+    {
+      "id": "stress_attribute_tree",
+      "description": "Use many deeply nested attributes on a controlled geometry base.",
+      "seed": 2003,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 16,
+      "max_cityobjects": 16,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["2"],
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": true,
+      "min_attributes": 32,
+      "max_attributes": 64,
+      "attributes_max_depth": 5,
+      "attributes_random_keys": true,
+      "attributes_random_values": true,
+      "semantics_enabled": false
+    }
+  ]
+}

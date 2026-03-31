@@ -13,6 +13,7 @@
       "scale": "tiny",
       "operations": ["parse", "geometry_validation", "roundtrip"],
       "assertions": ["geometry_types_preserved", "boundary_normalization_stable"],
+      "profile": "profiles/cases/spec_geometry_matrix.json",
       "documentation": "catalog/cases/spec_geometry_matrix.md"
     },
     {
@@ -26,6 +27,7 @@
       "scale": "tiny",
       "operations": ["parse", "serialize", "roundtrip"],
       "assertions": ["appearance_preserved", "theme_dispatch_stable"],
+      "profile": "profiles/cases/spec_appearance_matrix.json",
       "documentation": "catalog/cases/spec_appearance_matrix.md"
     },
     {
@@ -39,6 +41,7 @@
       "scale": "tiny",
       "operations": ["parse", "roundtrip", "template_instance_resolution"],
       "assertions": ["instance_count_stable", "template_reuse_preserved"],
+      "profile": "profiles/cases/spec_templates_matrix.json",
       "documentation": "catalog/cases/spec_templates_matrix.md"
     },
     {
@@ -52,6 +55,7 @@
       "scale": "tiny",
       "operations": ["parse", "serialize", "stream_iteration"],
       "assertions": ["extensions_preserved", "feature_boundaries_preserved"],
+      "profile": "profiles/cases/spec_extensions_feature_stream.json",
       "documentation": "catalog/cases/spec_extensions_feature_stream.md"
     },
     {
@@ -65,6 +69,7 @@
       "scale": "small",
       "operations": ["parse", "validate", "roundtrip"],
       "assertions": ["full_surface_roundtrip", "no_schema_regressions"],
+      "profile": "profiles/cases/spec_complete_omnibus.json",
       "documentation": "catalog/cases/spec_complete_omnibus.md"
     },
     {
@@ -156,6 +161,7 @@
       "scale": "large",
       "operations": ["normalize_geometry", "parse", "roundtrip"],
       "assertions": ["geometry_normalization_stable", "no_loss_on_flattening"],
+      "profile": "profiles/cases/stress_geometry_flattening.json",
       "documentation": "catalog/cases/stress_geometry_flattening.md"
     },
     {
@@ -169,6 +175,7 @@
       "scale": "large",
       "operations": ["vertex_import", "transform", "reindex"],
       "assertions": ["vertex_count_preserved", "transform_applied_correctly"],
+      "profile": "profiles/cases/stress_vertex_transform.json",
       "documentation": "catalog/cases/stress_vertex_transform.md"
     },
     {
@@ -182,6 +189,7 @@
       "scale": "large",
       "operations": ["attribute_decode", "serialize", "roundtrip"],
       "assertions": ["nested_attributes_preserved", "allocation_shape_visible"],
+      "profile": "profiles/cases/stress_attribute_tree.json",
       "documentation": "catalog/cases/stress_attribute_tree.md"
     },
     {
@@ -195,6 +203,7 @@
       "scale": "large",
       "operations": ["relation_resolution", "traversal", "roundtrip"],
       "assertions": ["relationship_graph_preserved", "lookup_complete"],
+      "profile": "profiles/cases/stress_relation_graph.json",
       "documentation": "catalog/cases/stress_relation_graph.md"
     },
     {
@@ -208,6 +217,7 @@
       "scale": "large",
       "operations": ["boundary_parse", "normalize_geometry", "roundtrip"],
       "assertions": ["deep_boundaries_preserved", "stack_or_heap_pressure_visible"],
+      "profile": "profiles/cases/stress_deep_boundary.json",
       "documentation": "catalog/cases/stress_deep_boundary.md"
     },
     {
@@ -221,6 +231,7 @@
       "scale": "large",
       "operations": ["mixed_path", "serialize", "roundtrip"],
       "assertions": ["composite_values_preserved", "mixed_cost_paths_visible"],
+      "profile": "profiles/cases/stress_composite_value.json",
       "documentation": "catalog/cases/stress_composite_value.md"
     },
     {
@@ -234,6 +245,7 @@
       "scale": "large",
       "operations": ["serialize", "validate", "roundtrip"],
       "assertions": ["appearance_validation_preserved", "write_path_regressions_visible"],
+      "profile": "profiles/cases/stress_appearance_and_validation.json",
       "documentation": "catalog/cases/stress_appearance_and_validation.md"
     }
   ]

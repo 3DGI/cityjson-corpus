@@ -11,6 +11,9 @@ The machine-readable contract for `cjfake` manifests is
 [cjfake-manifest.schema.json](cjfake-manifest.schema.json). Any manifest in
 this directory should validate against it.
 
+Concrete case fixtures live in [cases/](cases/). Each file there should map to
+exactly one corpus case in `catalog/corpus.json`.
+
 Use profiles when a case is generated rather than checked in as a
 ready-made artifact.
 

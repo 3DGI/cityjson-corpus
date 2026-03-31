@@ -175,6 +175,9 @@ The benchmark contract still belongs to `cityjson-benchmarks`. The catalog and
 profiles should describe CityJSON benchmark cases in repository terms, not in
 terms of `cjfake` internals or any `cityjson-rs` implementation detail.
 
+Concrete profile fixtures should live under `profiles/cases/` and be checked
+by the repository-side profile validation script before release.
+
 ## Catalog Model
 
 Each benchmark case should declare enough metadata to stay diagnostic and
