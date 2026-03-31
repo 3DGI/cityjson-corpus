@@ -5,6 +5,9 @@ This directory holds the canonical benchmark case catalog.
 Put case definitions here when a case needs to be named, classified, and
 versioned independently from the tool that generates it.
 
+The initial machine-readable catalog is [corpus.json](corpus.json). The
+per-case narrative documents live in [cases/](cases/README.md).
+
 The catalog is where each case should declare:
 
 - source kind: `synthetic-controlled`, `real-geometry`, or
@@ -16,5 +19,7 @@ The catalog is where each case should declare:
 - supported operations and correctness assertions
 
 The intent is to make the benchmark corpus explicit and reusable across
-`cjfake`, `cjindex`, `serde_cityjson`, and other consumers.
-
+independent CityJSON implementations. Generator projects such as `cjfake` and
+downstream consumers such as `cjindex`, `serde_cityjson`, `cjlib`,
+`cityarrow`, and `cityjson-rs` should conform to this catalog rather than
+define their own incompatible benchmark model.

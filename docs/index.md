@@ -1,20 +1,24 @@
 # cityjson-benchmarks
 
-`cityjson-benchmarks` is the shared benchmark corpus repository for CityJSON
-tooling.
+`cityjson-benchmarks` is the ecosystem-independent benchmark corpus repository
+for CityJSON tooling.
 
-It owns the benchmark catalog, corpus design notes, derived corpus
-definitions, correctness invariants, and released benchmark artifacts. It does
+It owns the benchmark catalog, corpus design notes, corpus manifests,
+correctness invariants, and released benchmark artifacts. It does
 not replace tool-specific benchmark harnesses. Those tools consume this corpus.
+The repository is not part of the `cityjson-rs` ecosystem; it is intended to
+serve any CityJSON implementation that wants common benchmark inputs.
 
 ## Repository Structure
 
 - `catalog/`
-  Canonical benchmark case definitions and manifest-level metadata.
+  Canonical benchmark case definitions and the machine-readable catalog in
+  `catalog/corpus.json`.
 - `profiles/`
-  Synthetic and derived-data profiles that feed corpus generation.
+  Corpus-defined profiles and manifests, first consumed by `cjfake` to
+  generate benchmark data.
 - `pipelines/`
-  Build steps that generate or derive benchmark corpora.
+  Build steps that run generation, acquisition, packaging, and publication.
 - `invariants/`
   Correctness expectations used by roundtrip and operation checks.
 - `artifacts/`
@@ -25,14 +29,16 @@ not replace tool-specific benchmark harnesses. Those tools consume this corpus.
 ## Responsibility Split
 
 - `cjfake`
-  Synthetic generator and manifest ingestion for synthetic-controlled cases.
-- `cjindex`
-  Real-data reshaping and layout derivation for benchmark preparation.
+  First generator implementation for repository-defined manifests.
 - `cityjson-benchmarks`
-  Canonical corpus catalog, derived-case definitions, invariants, and released
-  artifacts.
+  Canonical corpus catalog, manifests, invariants, and released artifacts.
+- `cjindex`, `serde_cityjson`, `cjlib`, `cityarrow`, `cityjson-rs`
+  Consumers of the published benchmark data.
+
+The benchmark contract belongs to this repository. Generator and consumer
+projects should conform to it without imposing implementation-specific
+assumptions on the catalog.
 
 ## Design Notes
 
 - [ADR 0009: CityJSON Benchmark Corpus Design](adr/0009-cityjson-benchmark-corpus-design.md)
-
