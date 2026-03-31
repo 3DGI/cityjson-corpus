@@ -15,8 +15,9 @@ serve any CityJSON implementation that wants common benchmark inputs.
   Canonical benchmark case definitions and the machine-readable catalog in
   `catalog/corpus.json`.
 - `profiles/`
-  Corpus-defined profiles and manifests, first consumed by `cjfake` to
-  generate benchmark data.
+  Corpus-defined profiles and manifests plus the machine-readable
+  `cjfake-manifest.schema.json`, first consumed by `cjfake` to generate
+  benchmark data.
 - `pipelines/`
   Build steps that run generation, acquisition, packaging, and publication.
 - `invariants/`

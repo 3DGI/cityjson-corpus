@@ -167,7 +167,9 @@ Repository boundaries should stay strict:
   Consume the published benchmark data and should not own corpus generation.
 
 `cjfake` should ingest manifests directly for both library and CLI use and
-produce the benchmark data described by those manifests.
+produce the benchmark data described by those manifests. The repository keeps
+that contract explicit in
+[profiles/cjfake-manifest.schema.json](../../profiles/cjfake-manifest.schema.json).
 
 The benchmark contract still belongs to `cityjson-benchmarks`. The catalog and
 profiles should describe CityJSON benchmark cases in repository terms, not in

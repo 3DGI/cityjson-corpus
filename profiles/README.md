@@ -7,6 +7,10 @@ The profile model belongs to this repository. `cjfake` is the first generator
 expected to consume these profiles, but the profiles should stay benchmark- and
 CityJSON-oriented rather than encode `cjfake`-internal assumptions.
 
+The machine-readable contract for `cjfake` manifests is
+[cjfake-manifest.schema.json](cjfake-manifest.schema.json). Any manifest in
+this directory should validate against it.
+
 Use profiles when a case is generated rather than checked in as a
 ready-made artifact.
 
