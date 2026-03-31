@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "texture_complete.city.json"
+  },
+  "assertions": [
+    "texture_payload_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "texture complete conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "texture_complete",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "serialize",
+    "roundtrip"
+  ],
+  "primary_cost": "serialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "deserialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

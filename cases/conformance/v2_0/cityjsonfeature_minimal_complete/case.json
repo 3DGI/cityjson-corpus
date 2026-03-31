@@ -1,0 +1,29 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cityjsonfeature_minimal_complete.city.jsonl"
+  },
+  "assertions": [
+    "feature_boundaries_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "cityjsonfeature_minimal_complete",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "stream_iteration",
+    "serialize"
+  ],
+  "primary_cost": "io",
+  "representation": "cityjsonfeature",
+  "scale": "tiny",
+  "secondary_costs": [
+    "deserialize",
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

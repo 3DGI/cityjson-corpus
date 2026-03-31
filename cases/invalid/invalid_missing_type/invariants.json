@@ -1,0 +1,13 @@
+{
+  "checks": [
+    {
+      "description": "A CityJSON document without the top-level type marker is rejected.",
+      "id": "rejects_missing_top_level_type"
+    }
+  ],
+  "expected_result": "reject",
+  "fixture": "invalid_missing_type.json",
+  "id": "invalid_missing_type",
+  "kind": "negative",
+  "version": 1
+}

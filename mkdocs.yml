@@ -8,6 +8,7 @@ nav:
       - Repository Overview: repository/index.md
   - Workflow:
       - Data Generation: data-generation.md
+      - Shared Corpus Migration Plan: shared-corpus-migration-plan.md
   - Corpus:
       - Catalog Overview: catalog/index.md
       - Case Catalog:
@@ -35,6 +36,10 @@ nav:
               - Deep Boundary: catalog/cases/stress_deep_boundary.md
               - Composite Value: catalog/cases/stress_composite_value.md
               - Appearance and Validation: catalog/cases/stress_appearance_and_validation.md
+          - Invalid Tranche:
+              - Invalid Missing Type: catalog/cases/invalid_missing_type.md
+              - Invalid Out Of Range Vertex Index: catalog/cases/invalid_out_of_range_vertex_index.md
+      - Case Layout: cases/index.md
   - Profiles:
       - Profiles Overview: profiles/index.md
       - Case Fixtures: profiles/cases/index.md
@@ -43,6 +48,8 @@ nav:
       - Audit Corpus Script: pipelines/audit-corpus.md
   - Invariants:
       - Invariants Overview: invariants/index.md
+      - Corpus Invariants: invariants/corpus.md
+      - Invalid Fixtures: invalid/index.md
   - Artifacts:
       - Artifacts Overview: artifacts/index.md
   - Reference Data:

@@ -1,0 +1,26 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "invalid_out_of_range_vertex_index.json"
+  },
+  "assertions": [
+    "rejects_out_of_range_vertex_index"
+  ],
+  "cityjson_version": "2.0",
+  "family": "invalid",
+  "geometry_validity": "dummy",
+  "id": "invalid_out_of_range_vertex_index",
+  "layer": "invalid",
+  "operations": [
+    "parse",
+    "validate"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "validate"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

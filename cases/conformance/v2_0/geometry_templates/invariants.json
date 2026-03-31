@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "Geometry stays stable across parse and roundtrip.",
+      "id": "geometry_surface_preserved"
+    }
+  ],
+  "id": "geometry_templates",
+  "kind": "positive",
+  "version": 1
+}

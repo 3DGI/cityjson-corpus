@@ -1,0 +1,26 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "invalid_missing_type.json"
+  },
+  "assertions": [
+    "rejects_missing_top_level_type"
+  ],
+  "cityjson_version": "2.0",
+  "family": "invalid",
+  "geometry_validity": "dummy",
+  "id": "invalid_missing_type",
+  "layer": "invalid",
+  "operations": [
+    "parse",
+    "validate"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "validate"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

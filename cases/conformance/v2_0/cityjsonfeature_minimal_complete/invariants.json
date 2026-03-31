@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "Feature boundaries remain stable during streaming.",
+      "id": "feature_boundaries_preserved"
+    }
+  ],
+  "id": "cityjsonfeature_minimal_complete",
+  "kind": "positive",
+  "version": 1
+}

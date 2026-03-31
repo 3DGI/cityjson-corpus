@@ -42,8 +42,12 @@ def main() -> None:
         {
             "docs/index.md": "../index.md",
             "docs/data-generation.md": "../data-generation.md",
+            "docs/shared-corpus-migration-plan.md": "../shared-corpus-migration-plan.md",
             "catalog/corpus.json": "../reference/corpus.md",
             "profiles/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
+            "invariants/corpus.json": "../invariants/corpus.md",
+            "cases/README.md": "../cases/index.md",
+            "invalid/index.md": "../invalid/index.md",
             "docs/adr/0009-cityjson-benchmark-corpus-design.md": "../adr/0009-cityjson-benchmark-corpus-design.md",
         },
     )
@@ -91,7 +95,21 @@ def main() -> None:
         "Shell implementation of the first executable corpus pipeline.",
         language="sh",
     )
-    write_markdown(ROOT / "invariants/README.md", "invariants/index.md")
+    write_markdown(
+        ROOT / "invariants/README.md",
+        "invariants/index.md",
+        {
+            "[corpus.json](corpus.json)": "[corpus invariants](corpus.md)",
+        },
+    )
+    write_reference_page(
+        ROOT / "invariants/corpus.json",
+        "invariants/corpus.md",
+        "Corpus Invariants Reference",
+        "Machine-readable correctness invariants for the shared benchmark corpus.",
+    )
+    write_markdown(ROOT / "cases/README.md", "cases/index.md")
+    write_markdown(ROOT / "invalid/README.md", "invalid/index.md")
     write_markdown(ROOT / "artifacts/README.md", "artifacts/index.md")
 
     write_reference_page(

@@ -1,0 +1,13 @@
+{
+  "checks": [
+    {
+      "description": "A boundary that references a missing vertex index is rejected.",
+      "id": "rejects_out_of_range_vertex_index"
+    }
+  ],
+  "expected_result": "reject",
+  "fixture": "invalid_out_of_range_vertex_index.json",
+  "id": "invalid_out_of_range_vertex_index",
+  "kind": "negative",
+  "version": 1
+}

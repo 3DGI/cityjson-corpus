@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "geometry_texture_multisolid.city.json"
+  },
+  "assertions": [
+    "geometry_surface_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "geometry texture multisolid conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "geometry_texture_multisolid",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "geometry_validation",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

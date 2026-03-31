@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "transform.city.json"
+  },
+  "assertions": [
+    "transform_applied_correctly"
+  ],
+  "cityjson_version": "2.0",
+  "description": "transform conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "transform",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "roundtrip",
+    "vertex_transform"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

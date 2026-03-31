@@ -247,6 +247,32 @@
       "assertions": ["appearance_validation_preserved", "write_path_regressions_visible"],
       "profile": "profiles/cases/stress_appearance_and_validation.json",
       "documentation": "catalog/cases/stress_appearance_and_validation.md"
+    },
+    {
+      "id": "invalid_missing_type",
+      "family": "invalid",
+      "source_kind": "synthetic-controlled",
+      "primary_cost": "deserialize",
+      "secondary_costs": ["validate"],
+      "geometry_validity": "dummy",
+      "representation": "cityjson",
+      "scale": "tiny",
+      "operations": ["parse", "validate"],
+      "assertions": ["rejects_missing_top_level_type"],
+      "documentation": "catalog/cases/invalid_missing_type.md"
+    },
+    {
+      "id": "invalid_out_of_range_vertex_index",
+      "family": "invalid",
+      "source_kind": "synthetic-controlled",
+      "primary_cost": "deserialize",
+      "secondary_costs": ["validate"],
+      "geometry_validity": "dummy",
+      "representation": "cityjson",
+      "scale": "tiny",
+      "operations": ["parse", "validate"],
+      "assertions": ["rejects_out_of_range_vertex_index"],
+      "documentation": "catalog/cases/invalid_out_of_range_vertex_index.md"
     }
   ]
 }

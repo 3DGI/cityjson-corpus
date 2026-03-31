@@ -66,6 +66,12 @@ jq -S \
       cargo_manifest: $cjfake_cargo,
       manifest_schema: $schema_path
     },
+    invariants: {
+      path: "invariants/corpus.json",
+      case_count: (.cases | length),
+      positive_case_count: ([.cases[] | select(.profile != null)] | length),
+      negative_case_count: ([.cases[] | select(.profile == null)] | length)
+    },
     output_dir: $output_dir,
     synthetic_cases: [
       .cases[]

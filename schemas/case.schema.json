@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cityjson-benchmarks.org/schemas/case.schema.json",
+  "title": "Shared Corpus Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "id",
+    "layer",
+    "family",
+    "source_kind",
+    "cityjson_version",
+    "representation",
+    "artifact_mode",
+    "artifact_paths",
+    "primary_cost",
+    "secondary_costs",
+    "geometry_validity",
+    "scale",
+    "operations",
+    "assertions"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Case metadata format version."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable case identifier."
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "conformance",
+        "operation",
+        "workload",
+        "invalid"
+      ],
+      "description": "Corpus layer for the case."
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Case family or taxonomy bucket."
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": [
+        "synthetic-controlled",
+        "real-geometry",
+        "real-geometry-enriched"
+      ],
+      "description": "Origin of the underlying case data."
+    },
+    "cityjson_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Target CityJSON version for the case."
+    },
+    "representation": {
+      "type": "string",
+      "enum": [
+        "cityjson",
+        "cityjsonfeature",
+        "jsonl",
+        "feature-files"
+      ],
+      "description": "Primary storage layout for the case."
+    },
+    "artifact_mode": {
+      "type": "string",
+      "enum": [
+        "checked-in",
+        "generated",
+        "acquired"
+      ],
+      "description": "How the source artifact is materialized."
+    },
+    "artifact_paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative path to the checked-in source artifact."
+        },
+        "generated": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative path to the generated benchmark artifact."
+        },
+        "profile": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative path to the generator profile."
+        },
+        "acquisition": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative path to the acquisition recipe."
+        },
+        "manifest": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Repo-relative path to the acquisition manifest."
+        }
+      },
+      "description": "Artifact pointers associated with the case."
+    },
+    "primary_cost": {
+      "type": "string",
+      "enum": [
+        "io",
+        "allocation",
+        "memory",
+        "deserialize",
+        "serialize",
+        "validate"
+      ],
+      "description": "Dominant cost center for the case."
+    },
+    "secondary_costs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+          "enum": [
+            "io",
+            "allocation",
+            "memory",
+            "deserialize",
+            "serialize",
+            "validate"
+          ]
+      },
+      "description": "Supporting cost centers."
+    },
+    "geometry_validity": {
+      "type": "string",
+      "enum": [
+        "dummy",
+        "real-preserved"
+      ],
+      "description": "Whether geometry is synthetic or preserved from real data."
+    },
+    "scale": {
+      "type": "string",
+      "enum": [
+        "tiny",
+        "small",
+        "medium",
+        "large"
+      ],
+      "description": "Approximate working-set scale."
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Supported operations for the case."
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Correctness expectations associated with the case."
+    },
+    "documentation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional repo-relative documentation path."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional prose summary for the case."
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional generator profile path."
+    },
+    "acquisition": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Optional acquisition metadata for real-data cases."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "artifact_mode": {
+            "const": "generated"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifact_paths": {
+            "required": ["generated"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "artifact_mode": {
+            "const": "acquired"
+          }
+        }
+      },
+      "then": {
+        "required": ["acquisition"]
+      }
+    }
+  ]
+}

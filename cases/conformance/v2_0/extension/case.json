@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "extension.city.json"
+  },
+  "assertions": [
+    "extension_payload_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "extension conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "extension",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "extension_validation",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

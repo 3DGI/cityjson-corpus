@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cityjson-benchmarks.org/schemas/invariants.schema.json",
+  "title": "Shared Corpus Case Invariants",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "id",
+    "kind",
+    "checks"
+  ],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Invariant metadata format version."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable case identifier."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "positive",
+        "negative"
+      ],
+      "description": "Whether the case should be accepted or rejected."
+    },
+    "fixture": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repo-relative fixture path for negative cases."
+    },
+    "expected_result": {
+      "type": "string",
+      "enum": [
+        "accept",
+        "reject"
+      ],
+      "description": "Expected outcome for the fixture."
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/check"
+      },
+      "description": "Machine-readable checks for the case."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "negative"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fixture",
+          "expected_result"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stable identifier for the invariant check."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable description of the invariant."
+        }
+      }
+    }
+  }
+}

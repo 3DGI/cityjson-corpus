@@ -8,3 +8,5 @@ behavior.
 
 Keep them separate from the case catalog so correctness rules can evolve
 without changing case identity.
+
+The machine-readable contract lives in [corpus.json](corpus.json).

@@ -1,0 +1,22 @@
+{
+	"type": "MultiSolid",
+	"lod": "2",
+	"boundaries": [[
+		[ [[0, 1, 2]], [[3, 4, 5]], [[6, 7, 8]] ],
+		[ [[9, 10, 11]] ]
+	]],
+	"semantics": {
+		"surfaces": [
+			{
+				"type": "WallSurface"
+			}, {
+				"type": "RoofSurface",
+				"slope": 66.6
+			}
+		],
+		"values": [[
+			[0, 1, null],
+			[null]
+		]]
+	}
+}

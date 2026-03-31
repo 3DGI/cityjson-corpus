@@ -11,4 +11,9 @@ The generated synthetic cases are materialized by `just generate-data`; the
 real-geometry cases stay as catalog entries until their acquisition pipeline is
 wired in.
 
-Case narratives live in [cases/](cases/README.md).
+The shared corpus contract also expects explicit invariants and an invalid
+tranche, both of which now live in the repository alongside the positive
+cases.
+
+Case narratives live in [cases/](cases/README.md), while the migrated fixture
+layout begins in [case layout](../cases/index.md).

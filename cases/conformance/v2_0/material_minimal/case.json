@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "material_minimal.city.json"
+  },
+  "assertions": [
+    "material_payload_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "material minimal conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "material_minimal",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "serialize",
+    "roundtrip"
+  ],
+  "primary_cost": "serialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "deserialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

@@ -7,6 +7,9 @@ invariants, and derived artifacts that other CityJSON projects can consume.
 It keeps the corpus contract in one place so generators and benchmark harnesses
 do not each invent their own model.
 
+The migration plan for the shared corpus lives in
+[docs/shared-corpus-migration-plan.md](docs/shared-corpus-migration-plan.md).
+
 ## Repository Layout
 
 - `catalog/` - canonical case definitions and the machine-readable corpus
@@ -14,8 +17,12 @@ do not each invent their own model.
 - `profiles/` - manifest schema plus the concrete profile fixtures referenced
   by the catalog.
 - `pipelines/` - corpus build and publication scripts.
-- `invariants/` - correctness checks that belong to the corpus, not to a
-  specific implementation.
+- `invalid/` - syntactically valid negative fixtures used to test rejection
+  paths.
+- `cases/` - migrated shared case layout, starting with the conformance
+  fixtures from `serde_cityjson`.
+- `invariants/` - machine-readable correctness checks that belong to the
+  corpus, not to a specific implementation.
 - `artifacts/` - derived benchmark outputs and release metadata.
 - `docs/` - repository documentation and the design ADRs.
 
@@ -23,6 +30,8 @@ do not each invent their own model.
 
 - `just validate-profiles` checks that the catalog and profile fixtures still
   match.
+- `just bootstrap-cases` refreshes the migrated shared case layout under
+  `cases/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
 - `just audit-corpus` runs validation and writes a corpus summary to
@@ -43,12 +52,17 @@ do not each invent their own model.
 - [Documentation home](docs/index.md)
 - [Corpus catalog](catalog/corpus.json)
 - [Profile schema](profiles/cjfake-manifest.schema.json)
+- [Corpus invariants](invariants/corpus.json)
+- [Invalid fixtures](invalid/index.md)
+- [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)
+- [Shared corpus migration plan](docs/shared-corpus-migration-plan.md)
 - [Corpus design ADR](docs/adr/0009-cityjson-benchmark-corpus-design.md)
 
 ## Benchmark Consumers
 
 This corpus is meant to be consumed by tools such as `serde_cityjson`,
 `cjlib`, and `cjindex`. The integration plan is to have those crates read the
-generated benchmark index and reuse the same synthetic fixtures instead of
-defining separate benchmark models.
+shared corpus index and reuse the same synthetic fixtures instead of defining
+separate benchmark models. Real-data preparation should reuse the existing
+`cjindex` 3DBAG flow until the corpus repo publishes its own pinned artifacts.

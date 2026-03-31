@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "metadata_empty.city.json"
+  },
+  "assertions": [
+    "metadata_payload_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "metadata empty conformance fixture migrated from serde_cityjson.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "metadata_empty",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "validate",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

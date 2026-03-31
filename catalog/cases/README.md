@@ -8,6 +8,9 @@ The synthetic case pages map directly to the manifests in `profiles/cases/`.
 The real-geometry pages describe the intended 3DBAG slices that are still
 external to this repository.
 
+Negative cases are part of the shared corpus contract and live as a separate
+invalid family.
+
 ## Families
 
 ### Spec Atoms
@@ -42,3 +45,8 @@ external to this repository.
 - [stress_deep_boundary](stress_deep_boundary.md)
 - [stress_composite_value](stress_composite_value.md)
 - [stress_appearance_and_validation](stress_appearance_and_validation.md)
+
+### Invalid Tranche
+
+- [invalid_missing_type](invalid_missing_type.md)
+- [invalid_out_of_range_vertex_index](invalid_out_of_range_vertex_index.md)
