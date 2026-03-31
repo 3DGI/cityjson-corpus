@@ -1,27 +1,15 @@
 # spec_geometry_matrix
 
-## Intent
+Controlled synthetic geometry matrix that exercises the core CityJSON geometry
+variants without extra attribute or hierarchy noise.
 
-Small synthetic case that covers the core CityJSON geometry variants in one
-controlled data shape.
+## Signals
 
-## Why This Shape
+- geometry parser branching
+- boundary array handling
+- geometry-type dispatch
+- nested-geometry allocation
 
-The geometry set is intentionally broad, but each object is tiny. That keeps
-the case focused on geometry decoding and boundary normalization instead of on
-attribute size, hierarchy depth, or layout overhead.
+## Use
 
-## Performance Signal
-
-This case surfaces:
-
-- geometry parser branching,
-- boundary array handling,
-- geometry-type dispatch cost,
-- allocation behavior for nested geometry containers.
-
-## Recommended Use
-
-Use this as a spec atom for geometry correctness and as a baseline for parser
-behavior across geometry families.
-
+Baseline spec atom for geometry correctness and parser behavior.

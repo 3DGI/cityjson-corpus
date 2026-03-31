@@ -1,26 +1,15 @@
 # spec_templates_matrix
 
-## Intent
+Synthetic repeated-instance case built around geometry templates and shared
+definitions.
 
-Small synthetic case with geometry templates and repeated instances.
+## Signals
 
-## Why This Shape
+- template lookup
+- instance indirection or expansion
+- reuse versus duplication
+- serializer behavior for shared geometry sources
 
-Templates compress repeated geometry into a small shared definition plus many
-instances. That shape is useful because it separates repeated-shape handling
-from raw geometry size.
+## Use
 
-## Performance Signal
-
-This case surfaces:
-
-- template lookup cost,
-- instance expansion or indirection cost,
-- memory reuse versus duplication,
-- serializer behavior when many objects share one geometry source.
-
-## Recommended Use
-
-Use this as a spec atom for template support and for repeated-instance memory
-behavior.
-
+Spec atom for template support and repeated-instance memory behavior.

@@ -1,0 +1,12 @@
+[project]
+name = "cityjson-benchmarks"
+version = "0.1.0"
+description = "Shared benchmark corpus, profiles, and documentation for CityJSON tooling"
+requires-python = ">=3.11"
+dependencies = [
+  "mkdocs>=1.6,<2",
+  "mkdocs-material>=9,<10",
+]
+
+[tool.uv]
+package = false

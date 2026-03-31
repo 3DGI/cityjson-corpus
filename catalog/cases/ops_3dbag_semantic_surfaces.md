@@ -1,28 +1,16 @@
 # ops_3dbag_semantic_surfaces
 
-## Intent
-
 Real-geometry case with stable semantic surfaces such as roof, wall, and
 ground.
 
-## Why This Shape
+## Signals
 
-Semantic surfaces are one of the common operations that should remain
-correctness-sensitive without turning the case into a full omnibus. The data
-shape needs enough structure to support semantic queries while still keeping
-geometry real.
+- semantic-surface traversal
+- boundary-to-semantics mapping
+- object-to-surface lookup
+- serializer behavior when semantics are preserved
 
-## Performance Signal
+## Use
 
-This case surfaces:
-
-- semantic-surface traversal cost,
-- boundary-to-semantics mapping cost,
-- object-to-surface lookup cost,
-- serializer behavior when semantics are preserved explicitly.
-
-## Recommended Use
-
-Use this for semantic queries, surface-preservation checks, and geometry plus
-semantics roundtrips.
-
+Semantic queries, surface-preservation checks, and geometry-plus-semantics
+roundtrips.

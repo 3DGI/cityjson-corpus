@@ -1,26 +1,15 @@
 # stress_geometry_flattening
 
-## Intent
-
-Synthetic stress case with many geometry objects that require flattening or
+Synthetic stress case with many nested geometry objects that need flattening or
 normalization.
 
-## Why This Shape
+## Signals
 
-Flattening cost becomes visible when there is enough repeated nested geometry
-to make recursion, container growth, and normalization work dominate. The case
-should stay geometry-heavy and attribute-light.
+- recursive geometry traversal
+- temporary allocation churn
+- vector growth and copy cost
+- geometry normalization overhead
 
-## Performance Signal
+## Use
 
-This case surfaces:
-
-- recursive geometry traversal cost,
-- temporary allocation churn,
-- vector growth and copy cost,
-- geometry normalization overhead.
-
-## Recommended Use
-
-Use this to stress geometry flattening and related parser or serializer paths.
-
+Stress geometry flattening and related parser or serializer paths.

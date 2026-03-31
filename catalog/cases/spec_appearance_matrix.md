@@ -1,27 +1,15 @@
 # spec_appearance_matrix
 
-## Intent
+Small synthetic appearance case that keeps geometry quiet while exercising
+materials, textures, and theme dispatch.
 
-Small synthetic case that exercises materials, textures, and multiple themes
-without adding much geometry complexity.
+## Signals
 
-## Why This Shape
+- optional-field handling
+- appearance metadata allocation
+- serializer branching
+- object-model growth from non-geometric payloads
 
-Appearance data is easier to measure when the geometry is quiet. The case keeps
-the city object graph small so serializer and deserializer overhead around
-appearance metadata stays visible.
+## Use
 
-## Performance Signal
-
-This case surfaces:
-
-- optional-field handling,
-- appearance metadata allocation,
-- serializer branching,
-- object-model size growth from non-geometric payloads.
-
-## Recommended Use
-
-Use this as a spec atom for appearance preservation and for write-path
-branching behavior.
-
+Baseline spec atom for appearance preservation and write-path branching.
