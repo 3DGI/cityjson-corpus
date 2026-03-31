@@ -1,0 +1,16 @@
+site_name: cityjson-benchmarks
+site_description: Shared benchmark corpus documentation for CityJSON tooling
+docs_dir: docs
+strict: true
+nav:
+  - Overview:
+      - Home: index.md
+  - Architecture Decisions:
+      - CityJSON Benchmark Corpus Design: adr/0009-cityjson-benchmark-corpus-design.md
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+plugins:
+  - search
