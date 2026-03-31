@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "spec_geometry_matrix",
-      "description": "Exercise the full geometry type matrix with controlled city object counts and semantics.",
+      "description": "Deterministic geometry matrix fixture with 8 Building/Bridge objects, all core geometry types, LoDs 0-3, semantics enabled, and no materials, textures, or attributes.",
       "seed": 1001,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 8,

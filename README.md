@@ -23,6 +23,8 @@ do not each invent their own model.
 
 - `just validate-profiles` checks that the catalog and profile fixtures still
   match.
+- `just generate-data` materializes the synthetic cases into
+  `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
 - `just audit-corpus` runs validation and writes a corpus summary to
   `artifacts/corpus-audit.json`.
 - `just docs-build` builds the MkDocs site through `uv`.
@@ -41,10 +43,12 @@ do not each invent their own model.
 - [Documentation home](docs/index.md)
 - [Corpus catalog](catalog/corpus.json)
 - [Profile schema](profiles/cjfake-manifest.schema.json)
+- [Data generation](docs/data-generation.md)
 - [Corpus design ADR](docs/adr/0009-cityjson-benchmark-corpus-design.md)
 
 ## Benchmark Consumers
 
 This corpus is meant to be consumed by tools such as `serde_cityjson`,
-`cjlib`, and `cjindex`. Each consumer should adapt to the corpus contract
-instead of defining a separate benchmark model.
+`cjlib`, and `cjindex`. The integration plan is to have those crates read the
+generated benchmark index and reuse the same synthetic fixtures instead of
+defining separate benchmark models.

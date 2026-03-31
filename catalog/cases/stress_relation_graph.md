@@ -1,6 +1,9 @@
 # stress_relation_graph
 
-Synthetic stress case with dense parent/child and object-reference relations.
+Deterministic synthetic hierarchy stress case (`seed 2004`) with 64
+`Building`/`Bridge` city objects, `MultiSurface` geometry at LoD 2, and a
+parent-child fanout of 2-4 children per parent. Materials, textures,
+attributes, semantics, and templates are disabled.
 
 ## Signals
 

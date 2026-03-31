@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "spec_complete_omnibus",
-      "description": "Cover the full CityJSON surface as far as cjfake can produce it.",
+      "description": "Deterministic omnibus fixture with 6 Building/Bridge objects, all core geometry types, hierarchy, templates, appearance, attributes, and semantics enabled.",
       "seed": 1005,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 6,

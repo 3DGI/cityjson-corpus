@@ -1,8 +1,12 @@
 # Case Catalog
 
 One narrative page per benchmark case.
-These pages explain why each case exists, what it is meant to surface, and how
-it fits the corpus taxonomy.
+These pages describe the exact shape, scale, and cost center of each case so
+the corpus stays diagnostic instead of generic.
+
+The synthetic case pages map directly to the manifests in `profiles/cases/`.
+The real-geometry pages describe the intended 3DBAG slices that are still
+external to this repository.
 
 ## Families
 

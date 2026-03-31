@@ -1,6 +1,8 @@
 # io_3dbag_jsonl
 
-Large real-geometry scan case in a line-oriented feature stream.
+The same real-geometry 3DBAG slice packaged as JSONL. This is a stream-oriented
+layout case for record-by-record parsing, framing overhead, and streaming
+memory behavior.
 
 ## Signals
 

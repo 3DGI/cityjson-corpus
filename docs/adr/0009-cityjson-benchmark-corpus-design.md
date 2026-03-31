@@ -142,6 +142,24 @@ that contract explicit in `profiles/cjfake-manifest.schema.json`.
 Concrete profile fixtures should live under `profiles/cases/` and be checked by
 the repository-side validation script before release.
 
+## Integration Plan
+
+The corpus repository does not own downstream benchmark harnesses, but it does
+own the shared data package those harnesses should consume.
+
+- `cityjson-benchmarks` should publish a generated benchmark index and the
+  materialized synthetic outputs from `just generate-data`.
+- `serde_cityjson` should stop curating its own benchmark taxonomy and instead
+  point its fixtures and benches at the shared corpus index.
+- `cjlib` should consume the same generated synthetic cases for parse,
+  serialize, and roundtrip benchmarks.
+- `cjindex` should consume the shared synthetic cases first and keep its
+  separate 3DBAG-specific acquisition path for real-geometry data until this
+  repository can publish those inputs too.
+
+This keeps the benchmark contract centralized without turning the corpus repo
+into a code dependency of the consumer crates.
+
 ## Catalog Model
 
 Each benchmark case should declare enough metadata to stay diagnostic and

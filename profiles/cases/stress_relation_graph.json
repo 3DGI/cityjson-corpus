@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "stress_relation_graph",
-      "description": "Exercise parent-child relationships with many linked CityObjects.",
+      "description": "Hierarchy-heavy stress fixture with 64 Building/Bridge objects and a 2-to-4 child fanout per parent.",
       "seed": 2004,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 64,

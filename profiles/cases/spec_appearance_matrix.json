@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "spec_appearance_matrix",
-      "description": "Exercise materials and textures with a shallow geometry shape.",
+      "description": "Deterministic appearance fixture with 4 Building/Bridge objects, MultiSurface and Solid geometries, LoDs 2-3, and materials and textures enabled while attributes and semantics stay off.",
       "seed": 1002,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 4,

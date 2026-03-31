@@ -1,6 +1,8 @@
 # io_3dbag_cityjson
 
-Baseline whole-file real-geometry I/O case in monolithic CityJSON.
+Monolithic real-geometry 3DBAG case stored as a whole CityJSON file. This is
+not generated from `cjfake`; it is the baseline for sequential I/O, parser
+throughput, and whole-document memory behavior on a large external slice.
 
 ## Signals
 

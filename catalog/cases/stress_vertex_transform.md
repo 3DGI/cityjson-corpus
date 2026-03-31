@@ -1,7 +1,9 @@
 # stress_vertex_transform
 
-Synthetic stress case with a large vertex set that exercises transform and
-vertex import behavior.
+Deterministic synthetic stress case (`seed 2002`) with 32 `Building`/`Bridge`
+city objects, `MultiSurface` geometry at LoD 2, and exactly 256 vertices per
+geometry in the `[0, 100000]` coordinate range. Materials, textures,
+attributes, semantics, and templates are disabled.
 
 ## Signals
 
@@ -12,4 +14,4 @@ vertex import behavior.
 
 ## Use
 
-Measure vertex-heavy parse and import paths.
+Measure vertex-heavy parse, import, and transform paths.

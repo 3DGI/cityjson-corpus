@@ -7,3 +7,5 @@ build/
 *.pyc
 __pycache__/
 .idea
+artifacts/generated/
+artifacts/benchmark-index.json

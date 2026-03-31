@@ -1,7 +1,8 @@
 # ops_3dbag_semantic_surfaces
 
-Real-geometry case with stable semantic surfaces such as roof, wall, and
-ground.
+Real-geometry 3DBAG case with stable semantic surfaces such as roof, wall, and
+ground. It is intended for surface traversal, boundary-to-semantics mapping,
+and semantic-aware roundtrips.
 
 ## Signals
 

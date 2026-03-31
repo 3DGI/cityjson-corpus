@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "stress_composite_value",
-      "description": "Mix nested attributes with a compact but varied geometry set.",
+      "description": "Mixed-shape stress fixture with 24 Building/Bridge objects, nested attributes, and a compact geometry mix.",
       "seed": 2006,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 24,

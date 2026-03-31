@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "spec_extensions_feature_stream",
-      "description": "Keep the data small and regular so downstream stream and extension packaging can be isolated.",
+      "description": "Small feature-stream fixture with 4 Building/Bridge objects, MultiSurface geometry at LoD 2, and attributes plus semantics enabled to exercise extension-aware packaging.",
       "seed": 1004,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 4,

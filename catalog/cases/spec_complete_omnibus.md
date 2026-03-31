@@ -1,7 +1,10 @@
 # spec_complete_omnibus
 
-Deterministic synthetic omnibus that covers the broad CityJSON surface as far
-as the generator and post-processing pipeline allow.
+Deterministic synthetic omnibus case (`seed 1005`) with 6 `Building`/`Bridge`
+city objects, the full geometry matrix, LoDs 0-3, 8-16 vertices in
+`[-500, 500]`, geometry hierarchies with 1-2 children, materials and textures
+enabled, geometry templates enabled, attributes enabled with nesting depth 3,
+and semantics enabled for the full surface set.
 
 ## Signals
 

@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "stress_attribute_tree",
-      "description": "Use many deeply nested attributes on a controlled geometry base.",
+      "description": "Attribute-heavy stress fixture with 16 Building objects, deep nested attributes, and a simple geometry base.",
       "seed": 2003,
       "allowed_types_cityobject": ["Building"],
       "min_cityobjects": 16,

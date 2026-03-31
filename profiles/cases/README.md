@@ -4,6 +4,9 @@ One concrete manifest fixture per `cjfake`-generated catalog case.
 Each file must validate against `../cjfake-manifest.schema.json` and be
 referenced from the matching entry in `catalog/corpus.json`.
 
+`just generate-data` consumes these fixtures and writes the materialized
+synthetic CityJSON outputs to `artifacts/generated/`.
+
 Fixtures present:
 
 - `spec_geometry_matrix.json`

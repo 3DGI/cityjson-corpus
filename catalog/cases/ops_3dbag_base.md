@@ -1,6 +1,8 @@
 # ops_3dbag_base
 
-Baseline medium-sized real-geometry case for common object-model operations.
+Medium-sized real-geometry 3DBAG case for common object-model operations. It
+is the baseline for bounding boxes, filtering, hierarchy navigation, and
+geometry access on an externally sourced slice.
 
 ## Signals
 

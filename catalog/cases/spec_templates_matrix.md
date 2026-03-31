@@ -1,7 +1,9 @@
 # spec_templates_matrix
 
-Synthetic repeated-instance case built around geometry templates and shared
-definitions.
+Deterministic synthetic template case (`seed 1003`) with 16 `Building` city
+objects, `MultiSurface` and `Solid` geometries, LoDs 2-3, and geometry
+templates enabled. Materials, textures, attributes, and semantics are all
+disabled so template reuse stays isolated.
 
 ## Signals
 
@@ -12,4 +14,5 @@ definitions.
 
 ## Use
 
-Spec atom for template support and repeated-instance memory behavior.
+Spec atom for template support, instance indirection, and repeated-instance
+memory behavior.

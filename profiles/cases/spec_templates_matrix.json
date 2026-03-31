@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "spec_templates_matrix",
-      "description": "Exercise geometry templates with many instances and minimal variance.",
+      "description": "Deterministic template fixture with 16 Building objects, MultiSurface and Solid geometries, LoDs 2-3, and geometry templates enabled without other payload noise.",
       "seed": 1003,
       "allowed_types_cityobject": ["Building"],
       "min_cityobjects": 16,

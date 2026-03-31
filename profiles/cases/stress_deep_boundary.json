@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "stress_deep_boundary",
-      "description": "Use nested shells and solids to drive boundary parsing depth.",
+      "description": "Boundary-depth stress fixture with 32 Building objects and Solid, MultiSolid, and CompositeSolid geometries.",
       "seed": 2005,
       "allowed_types_cityobject": ["Building"],
       "min_cityobjects": 32,

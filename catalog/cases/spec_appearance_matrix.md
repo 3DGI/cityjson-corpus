@@ -1,7 +1,9 @@
 # spec_appearance_matrix
 
-Small synthetic appearance case that keeps geometry quiet while exercising
-materials, textures, and theme dispatch.
+Deterministic synthetic appearance case (`seed 1002`) with 4 `Building`/
+`Bridge` city objects, `MultiSurface` and `Solid` geometries, LoDs 2-3,
+materials enabled with 2-3 materials across 3 themes, and textures enabled
+with 2-3 textures across 3 themes. Attributes and semantics are disabled.
 
 ## Signals
 
@@ -12,4 +14,5 @@ materials, textures, and theme dispatch.
 
 ## Use
 
-Baseline spec atom for appearance preservation and write-path branching.
+Baseline spec atom for appearance preservation and appearance-specific write
+branching.

@@ -4,7 +4,7 @@
   "cases": [
     {
       "id": "stress_appearance_and_validation",
-      "description": "Keep the geometry shallow while making appearance and schema checks expensive.",
+      "description": "Appearance-heavy stress fixture with 32 Building/Bridge objects, strong write-time validation pressure, and no attribute or template noise.",
       "seed": 2007,
       "allowed_types_cityobject": ["Building", "Bridge"],
       "min_cityobjects": 32,

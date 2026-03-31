@@ -9,6 +9,9 @@ help:
 validate-profiles:
     ./scripts/validate_profiles.sh
 
+generate-data:
+    ./scripts/generate_data.sh
+
 audit-corpus:
     ./pipelines/audit_corpus.sh
 

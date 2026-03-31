@@ -1,6 +1,9 @@
 # stress_attribute_tree
 
-Synthetic stress case with deep and heterogeneous nested attributes.
+Deterministic synthetic stress case (`seed 2003`) with 16 `Building` city
+objects, `MultiSurface` geometry at LoD 2, and deep nested attributes enabled.
+Materials, textures, templates, and semantics are disabled so attribute shape
+is the main variable.
 
 ## Signals
 

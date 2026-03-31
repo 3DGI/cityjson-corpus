@@ -1,6 +1,8 @@
 # ops_3dbag_enriched
 
-Real 3DBAG geometry enriched with synthetic non-geometric data.
+Real 3DBAG geometry enriched with synthetic non-geometric data so object-graph
+traversal, attribute lookup, and roundtrip stability can be measured on a mixed
+payload.
 
 ## Signals
 

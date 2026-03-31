@@ -1,7 +1,9 @@
 # spec_extensions_feature_stream
 
-Small synthetic case that combines extension metadata with feature-stream
-packaging.
+Deterministic synthetic feature-stream case (`seed 1004`) with 4 `Building`/
+`Bridge` city objects, `MultiSurface` geometry at LoD 2, attributes enabled,
+and semantics enabled. Materials, textures, and templates are disabled so the
+extension-aware packaging path stays focused.
 
 ## Signals
 

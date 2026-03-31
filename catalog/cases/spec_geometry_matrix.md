@@ -1,7 +1,11 @@
 # spec_geometry_matrix
 
-Controlled synthetic geometry matrix that exercises the core CityJSON geometry
-variants without extra attribute or hierarchy noise.
+Deterministic synthetic geometry case (`seed 1001`) with 8 `Building`/`Bridge`
+city objects, `MultiPoint`/`MultiLineString`/`MultiSurface`/`Solid`/
+`MultiSolid`/`CompositeSurface`/`CompositeSolid` geometries, LoDs 0-3,
+semantics enabled for `RoofSurface`/`GroundSurface`/`WallSurface`/
+`ClosureSurface`, and vertex coordinates constrained to `[-250, 250]`.
+Materials, textures, and attributes are disabled.
 
 ## Signals
 
@@ -12,4 +16,5 @@ variants without extra attribute or hierarchy noise.
 
 ## Use
 
-Baseline spec atom for geometry correctness and parser behavior.
+Baseline spec atom for geometry dispatch, boundary handling, and semantics
+preservation.

@@ -1,6 +1,9 @@
 # stress_deep_boundary
 
-Synthetic stress case with deeply nested geometry boundary arrays.
+Deterministic synthetic stress case (`seed 2005`) with 32 `Building` city
+objects and `Solid`, `MultiSolid`, and `CompositeSolid` geometries at LoDs
+2-3. Materials, textures, attributes, semantics, and templates are disabled so
+deep boundary nesting is the only major cost center.
 
 ## Signals
 
