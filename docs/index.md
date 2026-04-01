@@ -1,9 +1,8 @@
 # cityjson-benchmarks
 
 `cityjson-benchmarks` is the shared benchmark corpus for CityJSON tooling.
-The repository defines the corpus contract and keeps benchmark inputs,
-validation rules, and release artifacts separate from generator and consumer
-implementations.
+The repository defines the corpus contract. Benchmark inputs, validation rules,
+and release artifacts are separate from generator and consumer implementations.
 
 ## Documentation Map
 

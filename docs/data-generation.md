@@ -1,15 +1,15 @@
 # Data Generation
 
-`cityjson-benchmarks` keeps the benchmark catalog in `catalog/corpus.json`,
+`cityjson-benchmarks` contains the benchmark catalog in `catalog/corpus.json`,
 the migrated shared case layout under `cases/`, and the synthetic generation
 fixtures in `profiles/cases/`. Generated benchmark data is not checked in.
-Instead, `just generate-data` materializes the current synthetic cases into
+The `just generate-data` command materializes current synthetic cases into
 `artifacts/generated/` and writes a machine-readable index at
 `artifacts/benchmark-index.json`.
 
-Real-data corpus members are handled separately. Their acquisition metadata
-should point at the reusable `cjindex` 3DBAG preparation flow until the corpus
-repo can publish its own pinned release artifacts.
+Real-data corpus members are kept separate. Their acquisition metadata
+references the `cjindex` 3DBAG preparation flow until this repository
+publishes its own pinned release artifacts.
 
 The corpus also carries machine-readable invariants in
 [`invariants/corpus.md`](invariants/corpus.md), a negative fixture tranche
@@ -21,18 +21,18 @@ under [`cases/`](cases/index.md).
 - `just`
 - `jq`
 - `cargo`
-- a local sibling checkout of `../cjfake`, or an override via
+- A local sibling checkout of `../cjfake`, or an override via
   `CJFAKE_CARGO_MANIFEST`
 
 ## Generate The Data
 
-1. Validate the manifest fixtures with `just validate-profiles`.
-2. Generate the benchmark data with `just generate-data`.
+1. Validate the manifest fixtures: `just validate-profiles`.
+2. Generate the benchmark data: `just generate-data`.
 3. Inspect `artifacts/benchmark-index.json` for the generated case list and
    `artifacts/generated/` for the CityJSON outputs.
 
-The generation step is deterministic because each synthetic fixture carries a
-seed and a fixed manifest.
+Generation is deterministic: each synthetic fixture carries a seed and a fixed
+manifest.
 
 ## What Is Generated
 
@@ -46,13 +46,13 @@ seed and a fixed manifest.
 
 The generated index is the handoff point to downstream CityJSON crates.
 
-- `serde_cityjson` should consume the generated synthetic cases for its
-  benchmark fixtures instead of maintaining its own benchmark taxonomy.
-- `cjlib` should use the same generated index for parse, serialize, and
-  roundtrip benches so it measures the same corpus as `serde_cityjson`.
-- `cjindex` should consume the synthetic cases from the shared index first and
-  reuse the shared real-data acquisition contract for 3DBAG-derived cases
-  rather than maintaining a separate corpus model.
+- `serde_cityjson` consumes the generated synthetic cases for benchmark
+  fixtures instead of maintaining its own benchmark taxonomy.
+- `cjlib` uses the same generated index for parse, serialize, and roundtrip
+  benchmarks to measure the same corpus as `serde_cityjson`.
+- `cjindex` consumes the synthetic cases from the shared index and reuses the
+  shared real-data acquisition contract for 3DBAG-derived cases instead of
+  maintaining a separate corpus model.
 
-The intent is to share one corpus contract, not to make the benchmark
-repository a Cargo dependency of those crates.
+One corpus contract is shared across these tools. The benchmark repository
+is not a Cargo dependency of those crates.

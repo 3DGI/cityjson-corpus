@@ -1,8 +1,8 @@
 # Shared Corpus Migration Plan
 
-`cityjson-benchmarks` is the canonical shared corpus repo for CityJSON
-tooling. This page describes how the current benchmark catalog should be
-treated as a shared contract rather than as a repo-local benchmark stash.
+`cityjson-benchmarks` is the canonical shared corpus repository for CityJSON
+tooling. This document describes how the current benchmark catalog functions as
+a shared contract rather than as a repo-local benchmark collection.
 
 ## What This Repository Owns
 
@@ -20,42 +20,40 @@ or downstream harness logic.
 
 ## Current State
 
-The repository already has the right shape for the shared contract:
+The repository has the correct structure for the shared contract:
 
 - `catalog/corpus.json` is the canonical case catalog
-- `catalog/cases/` contains the human-readable case narratives
-- `invalid/` contains the negative fixtures used for rejection paths
-- `invariants/corpus.json` contains the machine-readable correctness checks
-- `profiles/cases/` contains the synthetic manifests
+- `catalog/cases/` contains human-readable case narratives
+- `invalid/` contains negative fixtures for rejection-path testing
+- `invariants/corpus.json` contains machine-readable correctness checks
+- `profiles/cases/` contains synthetic manifests
 - `docs/adr/0009-cityjson-benchmark-corpus-design.md` defines the corpus
   architecture
 
-The gaps are now mostly operational:
+Remaining gaps are operational:
 
-- the release/index layer is still only partially specified
-- real-data provenance is described, but not yet published as release
-  artifacts
-- downstream consumers still carry local benchmark wording that predates the
-  shared-corpus split
+- The release/index layer is partially specified.
+- Real-data provenance is documented but not yet published as release
+  artifacts.
+- Downstream consumers carry local benchmark documentation that precedes the
+  shared-corpus split.
 
 ## Reuse Paths
 
-Two existing projects already provide the hard parts of the pipeline.
+Two existing projects provide pipeline components.
 
 ### `cjfake`
 
-Use `cjfake` as the synthetic generator behind the profile fixtures in this
+`cjfake` serves as the synthetic generator for the profile fixtures in this
 repository.
 
 ### `cjindex`
 
-Use the existing 3DBAG prep flow in `cjindex` as the first real-data
-acquisition path, or extract it into a shared helper if that turns out to be
-cleaner.
+The existing 3DBAG preparation flow in `cjindex` provides the first real-data
+acquisition path. It may be extracted into a shared helper if appropriate.
 
-The important boundary is that this repository owns the acquisition contract
-and the published release artifacts, not a second competing prep
-implementation.
+This repository owns the acquisition contract and published release artifacts,
+not a competing implementation.
 
 ## Migration Phases
 
@@ -86,15 +84,15 @@ implementation.
 
 ## Consumer Boundary
 
-Downstream crates should consume the shared corpus, not recreate it.
+Downstream crates consume the shared corpus; they do not recreate it.
 
-- `serde_cityjson` should use the shared corpus for correctness fixtures and
-  benchmark inputs
-- `cjlib` should use the same case ids for facade-level tests and benchmarks
-- `cjindex` should reuse the shared real-data acquisition path for corpus
-  preparation
-- future `arrow` and `parquet` crates should use the same ids and invariants
-  for import/export coverage
+- `serde_cityjson` uses the shared corpus for correctness fixtures and
+  benchmark inputs.
+- `cjlib` uses the same case identifiers for facade-level tests and benchmarks.
+- `cjindex` reuses the shared real-data acquisition path for corpus
+  preparation.
+- Future `arrow` and `parquet` crates use the same identifiers and invariants
+  for import/export coverage.
 
 ## Immediate Next Steps
 

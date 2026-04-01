@@ -1,14 +1,12 @@
 # Case Catalog
 
-One narrative page per benchmark case.
-These pages describe the exact shape, scale, and cost center of each case so
-the corpus stays diagnostic instead of generic.
+One narrative page per benchmark case. These pages describe the shape, scale,
+and cost center of each case to keep the corpus diagnostic rather than generic.
 
-The synthetic case pages map directly to the manifests in `profiles/cases/`.
-The real-geometry pages describe the intended 3DBAG slices that are still
-external to this repository.
+Synthetic case pages map directly to manifests in `profiles/cases/`. Real-geometry
+pages describe the intended 3DBAG slices that remain external to this repository.
 
-Negative cases are part of the shared corpus contract and live as a separate
+Negative cases are part of the shared corpus contract. They form a separate
 invalid family.
 
 ## Families

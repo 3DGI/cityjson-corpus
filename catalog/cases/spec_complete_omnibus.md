@@ -16,5 +16,5 @@ and semantics enabled for the full surface set.
 ## Use
 
 Repository-wide correctness fixture for parse, validation, and roundtrip
-gating. The existing `serde_cityjson` test data `cityjson_fake_complete` is a
-good starting point.
+gating. The existing `serde_cityjson` test data `cityjson_fake_complete` serves
+as a starting point.

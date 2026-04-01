@@ -14,19 +14,19 @@ This repository defines a shared CityJSON benchmark corpus with three goals:
 3. expose the system costs that matter in CityJSON tooling: I/O, allocation,
    memory use, and de/serialization.
 
-Existing projects already provide the main building blocks:
+Existing projects provide the necessary building blocks:
 
-- `cjfake` can generate deterministic synthetic CityJSON from manifests.
-- `serde_cityjson` already uses a manifest-driven synthetic benchmark setup.
-- `3DBAG` is a strong real-geometry source for geometry-sensitive workloads.
+- `cjfake` generates deterministic synthetic CityJSON from manifests.
+- `serde_cityjson` uses a manifest-driven synthetic benchmark setup.
+- `3DBAG` provides real-geometry data for geometry-sensitive workloads.
 
-The missing piece is a corpus with a clear systems taxonomy and a strict
-ownership boundary between the generator, the shared benchmark catalog, and
-downstream consumers. The corpus should stay ecosystem-independent.
+A corpus with clear systems taxonomy and strict ownership boundaries between
+the generator, shared benchmark catalog, and downstream consumers is needed.
+The corpus must remain independent of any ecosystem.
 
 ## Decision
 
-The corpus lives in its own shared repository. This repository owns:
+The corpus resides in its own shared repository. This repository owns:
 
 - the canonical benchmark catalog,
 - corpus design notes,
@@ -34,8 +34,8 @@ The corpus lives in its own shared repository. This repository owns:
 - correctness invariants, and
 - released benchmark artifacts.
 
-Generator logic belongs elsewhere, and the public contract stays independent
-from any single implementation's internal model.
+Generator logic belongs elsewhere. The public contract is independent of any
+single implementation's internal model.
 
 ## Source Kinds
 
@@ -80,10 +80,10 @@ work.
 
 ### 2. Spec complete omnibus
 
-A single deterministic fake dataset should cover the full CityJSON surface as
-far as the generator and post-processing pipeline allow. It is a correctness
+A single deterministic fake dataset covers the full CityJSON surface to the
+extent the generator and post-processing pipeline allow. It is a correctness
 fixture, not a primary performance benchmark. The existing `serde_cityjson`
-test data `cityjson_fake_complete` is a good starting point.
+test data `cityjson_fake_complete` serves as a starting point.
 
 ### 3. Operation kernels
 
@@ -102,7 +102,7 @@ while remaining controlled enough to attribute cost and correctness failures.
 
 ### 4. Stress workloads
 
-Large cases are used for throughput and memory pressure:
+Large cases exercise throughput and memory pressure:
 
 - large `3DBAG` scans,
 - `feature-files` and other layout variants,
@@ -112,7 +112,7 @@ Large cases are used for throughput and memory pressure:
 
 ## Systems Programming Principles
 
-The corpus should surface the costs that matter when implementing CityJSON
+The corpus surfaces the costs that matter when implementing CityJSON
 software:
 
 - I/O behavior and storage-layout sensitivity,
@@ -121,51 +121,51 @@ software:
 - parse and write throughput, and
 - roundtrip stability under realistic object graphs.
 
-The catalog should make the intended cost center explicit for every case.
+The catalog makes the intended cost center explicit for each case.
 
 ## Role Split
 
-Repository boundaries should stay strict:
+Repository boundaries remain strict:
 
-- `cjfake` is the first generator implementation and owns manifest ingestion
-  plus corpus generation work.
+- `cjfake` is the first generator implementation. It owns manifest ingestion
+  and corpus generation.
 - `cityjson-benchmarks` owns the canonical catalog, source manifests,
   correctness invariants, and released artifacts.
-- benchmark consumers such as `cjindex`, `serde_cityjson`, `cjlib`,
-  `cityarrow`, and `cityjson-rs` consume the published benchmark data and
-  should not own corpus generation.
+- Benchmark consumers such as `cjindex`, `serde_cityjson`, `cjlib`,
+  `cityarrow`, and `cityjson-rs` consume published benchmark data. They do not
+  own corpus generation.
 
-`cjfake` should ingest manifests directly for both library and CLI use and
-produce the benchmark data described by those manifests. The repository keeps
-that contract explicit in `profiles/cjfake-manifest.schema.json`.
+`cjfake` ingests manifests directly for both library and CLI use and produces
+the benchmark data described by those manifests. The repository specifies this
+contract explicitly in `profiles/cjfake-manifest.schema.json`.
 
-Concrete profile fixtures should live under `profiles/cases/` and be checked by
+Concrete profile fixtures reside under `profiles/cases/` and are checked by
 the repository-side validation script before release.
 
 ## Integration Plan
 
-The corpus repository does not own downstream benchmark harnesses, but it does
-own the shared data package those harnesses should consume.
+The corpus repository does not own downstream benchmark harnesses. It owns the
+shared data package those harnesses consume.
 
-- `cityjson-benchmarks` should publish a generated benchmark index and the
+- `cityjson-benchmarks` publishes a generated benchmark index and the
   materialized synthetic outputs from `just generate-data`.
-- `serde_cityjson` should stop curating its own benchmark taxonomy and instead
-  point its fixtures and benches at the shared corpus index.
-- `cjlib` should consume the same generated synthetic cases for parse,
-  serialize, and roundtrip benchmarks.
-- `cjindex` should consume the shared synthetic cases first and keep its
-  separate 3DBAG-specific acquisition path for real-geometry data until this
-  repository can publish those inputs too.
+- `serde_cityjson` stops curating its own benchmark taxonomy and instead points
+  its fixtures and benchmarks at the shared corpus index.
+- `cjlib` consumes the same generated synthetic cases for parse, serialize, and
+  roundtrip benchmarks.
+- `cjindex` consumes the shared synthetic cases and maintains its separate
+  3DBAG-specific acquisition path for real-geometry data until this repository
+  publishes those inputs.
 
-This keeps the benchmark contract centralized without turning the corpus repo
-into a code dependency of the consumer crates.
+The benchmark contract is centralized without making the corpus repository a
+code dependency of the consumer crates.
 
 ## Catalog Model
 
-Each benchmark case should declare enough metadata to stay diagnostic and
+Each benchmark case declares sufficient metadata to remain diagnostic and
 reusable across tools.
 
-The minimum catalog model is:
+The minimum catalog model includes:
 
 - source kind: `synthetic-controlled`, `real-geometry`, or
   `real-geometry-enriched`
@@ -184,10 +184,10 @@ Positive:
 
 - the benchmark corpus has a clear engineering purpose,
 - the benchmark corpus remains usable outside the `cityjson-rs` ecosystem,
-- correctness and performance concerns stay separated,
+- correctness and performance concerns remain separated,
 - real geometry remains available where it matters,
-- synthetic generation remains useful for controlled isolation and stress, and
-- multiple tools can consume the same pinned corpus versions.
+- synthetic generation enables controlled isolation and stress testing, and
+- multiple tools consume the same pinned corpus versions.
 
 Tradeoffs:
 

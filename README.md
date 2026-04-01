@@ -3,11 +3,11 @@
 Shared benchmark corpus for CityJSON tooling.
 
 This repository defines benchmark cases, profile fixtures, correctness
-invariants, and derived artifacts that other CityJSON projects can consume.
-It keeps the corpus contract in one place so generators and benchmark harnesses
-do not each invent their own model.
+invariants, and derived artifacts for other CityJSON projects to consume.
+The corpus contract is kept in one place so generators and benchmark harnesses
+share a single model instead of each defining their own.
 
-The migration plan for the shared corpus lives in
+The migration plan for the shared corpus is at
 [docs/shared-corpus-migration-plan.md](docs/shared-corpus-migration-plan.md).
 
 ## Repository Layout
@@ -17,7 +17,7 @@ The migration plan for the shared corpus lives in
 - `profiles/` - manifest schema plus the concrete profile fixtures referenced
   by the catalog.
 - `pipelines/` - corpus build and publication scripts.
-- `invalid/` - syntactically valid negative fixtures used to test rejection
+- `invalid/` - syntactically valid negative fixtures for testing rejection
   paths.
 - `cases/` - migrated shared case layout, starting with the conformance
   fixtures from `serde_cityjson`.
@@ -61,8 +61,7 @@ The migration plan for the shared corpus lives in
 
 ## Benchmark Consumers
 
-This corpus is meant to be consumed by tools such as `serde_cityjson`,
-`cjlib`, and `cjindex`. The integration plan is to have those crates read the
-shared corpus index and reuse the same synthetic fixtures instead of defining
-separate benchmark models. Real-data preparation should reuse the existing
-`cjindex` 3DBAG flow until the corpus repo publishes its own pinned artifacts.
+Tools such as `serde_cityjson`, `cjlib`, and `cjindex` consume this corpus.
+These crates read the shared corpus index and reuse the same synthetic fixtures
+instead of defining separate benchmark models. Real-data preparation reuses the
+`cjindex` 3DBAG flow until this repository publishes its own pinned artifacts.
