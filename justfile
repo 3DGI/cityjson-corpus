@@ -14,6 +14,7 @@ validate-cases:
 
 sync-catalog:
     uv run python ./scripts/render_case_catalog.py
+    uv run python ./scripts/render_correctness_index.py
 
 generate-data:
     ./scripts/generate_data.sh
@@ -27,6 +28,7 @@ audit-corpus:
 bootstrap-cases:
     uv run python ./scripts/bootstrap_case_layout.py
     uv run python ./scripts/render_case_catalog.py
+    uv run python ./scripts/render_correctness_index.py
 
 docs-serve:
     uv run mkdocs serve

@@ -28,7 +28,10 @@ and release artifacts are separate from generator and consumer implementations.
 
 ## Local Workflow
 
-- `just validate-cases` validates the case tree and the derived catalog.
+- `just validate-cases` validates the case tree and the derived catalog and
+  correctness index.
+- `just sync-catalog` refreshes `catalog/cases.json` and
+  `artifacts/correctness-index.json`.
 - `just validate-profiles` checks that catalog entries and profile fixtures
   still match.
 - `just generate-data` materializes the synthetic cases into

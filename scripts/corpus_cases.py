@@ -10,10 +10,12 @@ JsonObject = dict[str, object]
 ROOT = Path(__file__).resolve().parents[1]
 CASE_ROOT = ROOT / "cases"
 CATALOG_PATH = ROOT / "catalog" / "cases.json"
+CORRECTNESS_INDEX_PATH = ROOT / "artifacts" / "correctness-index.json"
 CASE_SCHEMA_PATH = ROOT / "schemas" / "case.schema.json"
 INVARIANTS_SCHEMA_PATH = ROOT / "schemas" / "invariants.schema.json"
 ACQUISITION_SCHEMA_PATH = ROOT / "schemas" / "acquisition.schema.json"
 PROFILE_SCHEMA_PATH = ROOT / "profiles" / "cjfake-manifest.schema.json"
+CORRECTNESS_LAYERS = frozenset({"conformance", "invalid", "operations"})
 
 
 @dataclass(frozen=True)
@@ -107,4 +109,30 @@ def build_catalog_document(records: list[CaseRecord]) -> JsonObject:
 
 def render_catalog_text(records: list[CaseRecord]) -> str:
     document = build_catalog_document(records)
+    return json.dumps(document, indent=2, sort_keys=True) + "\n"
+
+
+def is_correctness_case(record: CaseRecord) -> bool:
+    layer = record.case_data.get("layer")
+    return isinstance(layer, str) and layer in CORRECTNESS_LAYERS
+
+
+def build_correctness_index_document(records: list[CaseRecord]) -> JsonObject:
+    correctness_records = [record for record in records if is_correctness_case(record)]
+    cases = [
+        build_catalog_case(record)
+        for record in sorted(correctness_records, key=lambda item: item.case_id)
+    ]
+    return {
+        "version": 1,
+        "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures.",
+        "catalog": repo_relative(CATALOG_PATH),
+        "catalog_case_count": len(records),
+        "case_count": len(cases),
+        "cases": cases,
+    }
+
+
+def render_correctness_index_text(records: list[CaseRecord]) -> str:
+    document = build_correctness_index_document(records)
     return json.dumps(document, indent=2, sort_keys=True) + "\n"

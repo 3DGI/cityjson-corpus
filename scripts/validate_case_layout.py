@@ -8,12 +8,14 @@ from corpus_cases import (
     ACQUISITION_SCHEMA_PATH,
     CATALOG_PATH,
     CASE_SCHEMA_PATH,
+    CORRECTNESS_INDEX_PATH,
     INVARIANTS_SCHEMA_PATH,
     PROFILE_SCHEMA_PATH,
     ROOT,
     load_case_records,
     load_json_object,
     render_catalog_text,
+    render_correctness_index_text,
 )
 
 
@@ -126,6 +128,17 @@ def validate_tree() -> None:
     if current_catalog != expected_catalog:
         raise SystemExit(
             "catalog/cases.json is out of date; run `uv run python ./scripts/render_case_catalog.py`"
+        )
+
+    expected_correctness_index = render_correctness_index_text(records)
+    if not CORRECTNESS_INDEX_PATH.exists():
+        raise SystemExit(f"missing correctness index file: {CORRECTNESS_INDEX_PATH}")
+
+    current_correctness_index = CORRECTNESS_INDEX_PATH.read_text(encoding="utf-8")
+    if current_correctness_index != expected_correctness_index:
+        raise SystemExit(
+            "artifacts/correctness-index.json is out of date; run "
+            "`uv run python ./scripts/render_correctness_index.py`"
         )
 
 
