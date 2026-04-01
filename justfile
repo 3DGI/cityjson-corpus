@@ -18,6 +18,9 @@ sync-catalog:
 generate-data:
     ./scripts/generate_data.sh
 
+acquire-3dbag:
+    ./scripts/acquire_3dbag.sh
+
 audit-corpus:
     ./pipelines/audit_corpus.sh
 

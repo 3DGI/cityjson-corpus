@@ -55,7 +55,8 @@ ecosystem.
 
 ### `cjindex`
 
-`cjindex` already has the strongest reusable 3DBAG preparation pipeline.
+`cjindex` already has the strongest reusable 3DBAG layout-preparation
+pipeline.
 
 It currently provides:
 
@@ -66,22 +67,15 @@ It currently provides:
 - per-output checksums and counts recorded in a manifest
 - optional `cjval` validation
 
-This is very close to the real-data provenance contract the shared corpus
-needs.
+This is very close to the real-data layout contract the shared corpus needs.
 
-The corpus repo should therefore prefer one of these approaches:
-
-- extract the reusable prep logic into a small shared library or CLI, then let
-  both `cjindex` and `cityjson-benchmarks` consume it
-- or call the `cjindex` prep pipeline as the initial implementation while the
-  corpus contract is still stabilizing
-
-What the corpus repo should own is the acquisition contract and published
-artifacts, not a second competing implementation of the same 3DBAG prep flow.
+The corpus repo should own the acquisition contract and published artifacts.
+`cjindex` should keep the layout transformation logic, not the upstream
+download contract.
 
 ### `serde_cityjson`
 
-`serde_cityjson` already has a narrower benchmark download path for:
+`serde_cityjson` already has a narrower benchmark bootstrap path for:
 
 - one 3DBAG tile download
 - one 3D Basisvoorziening download
@@ -102,7 +96,8 @@ The practical role for `serde_cityjson` is therefore:
 
 - source of the current benchmark fixtures and historical labels
 - temporary consumer of shared real-data artifacts
-- fallback bootstrap path until the corpus repo publishes pinned releases
+- fallback bootstrap path until the shared corpus repo publishes pinned
+  releases
 
 ## Corpus Layers
 

@@ -5,12 +5,12 @@ renders a derived machine-readable index at `catalog/cases.json`. Synthetic
 `profile.json` fixtures live inside their owning case directories. Generated
 benchmark data is not checked in. The `just generate-data` command
 materializes current synthetic cases into `artifacts/generated/` and writes a
-machine-readable index at
-`artifacts/benchmark-index.json`.
+machine-readable index at `artifacts/benchmark-index.json`.
 
-Real-data corpus members are kept separate. Their acquisition metadata
-references the `cjindex` 3DBAG preparation flow until this repository
-publishes its own pinned release artifacts.
+Real-data corpus members are kept separate. Their acquisition metadata points
+at the shared 3DBAG raw-slice acquisition, and `just acquire-3dbag` materializes
+that slice under `artifacts/acquired/3dbag/v20231008/` without checking the
+CityJSON files into git.
 
 The corpus also carries per-case invariants and invalid fixtures under
 [`cases/`](cases/index.md).
@@ -22,13 +22,15 @@ The corpus also carries per-case invariants and invalid fixtures under
 - `cargo`
 - A local sibling checkout of `../cjfake`, or an override via
   `CJFAKE_CARGO_MANIFEST`
+- `curl`, `gunzip`, and `sha256sum` for the published 3DBAG acquisition
 
 ## Generate The Data
 
-1. Validate the manifest fixtures: `just validate-profiles`.
-2. Generate the benchmark data: `just generate-data`.
-3. Inspect `artifacts/benchmark-index.json` for the generated case list and
-   `artifacts/generated/` for the CityJSON outputs.
+1. Acquire the raw 3DBAG slice: `just acquire-3dbag`.
+2. Validate the manifest fixtures: `just validate-profiles`.
+3. Generate the benchmark data: `just generate-data`.
+4. Inspect `artifacts/benchmark-index.json` for the case list and the
+   generated/acquired output paths.
 
 Generation is deterministic: each synthetic fixture carries a seed and a fixed
 manifest.
@@ -37,21 +39,21 @@ manifest.
 
 - Synthetic cases with a `profile.json` entry in `cases/` are emitted as one
   CityJSON file per case.
-- Real-geometry and invalid cases are listed in the benchmark index but remain
-  external for now. They need a separate acquisition or rejection-fixture
-  pipeline.
+- Published real-data cases point at the raw acquired CityJSON file under
+  `artifacts/acquired/3dbag/v20231008/`.
+- Cases without a published acquisition remain metadata-only until their
+  consumer-owned pipeline publishes concrete artifacts.
 
 ## Integration Plan
 
 The generated index is the handoff point to downstream CityJSON crates.
 
-- `serde_cityjson` consumes the generated synthetic cases for benchmark
-  fixtures instead of maintaining its own benchmark taxonomy.
-- `cjlib` uses the same generated index for parse, serialize, and roundtrip
-  benchmarks to measure the same corpus as `serde_cityjson`.
-- `cjindex` consumes the synthetic cases from the shared index and reuses the
-  shared real-data acquisition contract for 3DBAG-derived cases instead of
-  maintaining a separate corpus model.
+- `serde_cityjson` consumes the shared benchmark index directly and reads the
+  published synthetic and raw 3DBAG artifact paths from this repository.
+- `cjlib` can reuse the same shared index for parse, serialize, and roundtrip
+  benchmarks.
+- `cjindex` keeps its own layout-building prep pipeline and can reuse the raw
+  3DBAG acquisition output as its source data.
 
 One corpus contract is shared across these tools. The benchmark repository
 is not a Cargo dependency of those crates.

@@ -36,6 +36,38 @@ uv run python "${repo_dir}/scripts/render_case_catalog.py" --check
 rm -rf "${output_dir}"
 mkdir -p "${output_dir}"
 
+acquired_map_json='{}'
+while IFS=$'\t' read -r case_id acquisition_path; do
+  [[ -n "${case_id}" ]] || continue
+  [[ -n "${acquisition_path}" ]] || continue
+
+  case_acquisition_path="${repo_dir}/${acquisition_path}"
+  if [[ ! -f "${case_acquisition_path}" ]]; then
+    continue
+  fi
+
+  acquired_output_path="$(
+    jq -r '
+      .outputs[]
+      | select(.published == true and .path != null and .representation == "cityjson")
+      | .path
+    ' "${case_acquisition_path}" | head -n1
+  )"
+
+  if [[ -z "${acquired_output_path}" || "${acquired_output_path}" == "null" ]]; then
+    continue
+  fi
+
+  if [[ "${acquired_output_path}" != /* ]]; then
+    acquired_output_path="${repo_dir}/${acquired_output_path}"
+  fi
+
+  acquired_map_json="$(
+    jq -c --arg case_id "${case_id}" --arg output_path "${acquired_output_path}" \
+      '. + {($case_id): $output_path}' <<<"${acquired_map_json}"
+  )"
+done < <(jq -r '.cases[] | select(.artifact_mode == "acquired" and .artifact_paths.acquisition != null) | [.id, .artifact_paths.acquisition] | @tsv' "${corpus_path}")
+
 while IFS=$'\t' read -r case_id profile_path; do
   [[ -n "${case_id}" ]] || continue
   [[ -n "${profile_path}" ]] || continue
@@ -57,6 +89,7 @@ jq -S \
   --arg corpus_path "catalog/cases.json" \
   --arg schema_path "profiles/cjfake-manifest.schema.json" \
   --arg cjfake_cargo "${cjfake_cargo}" \
+  --argjson acquired_map "${acquired_map_json}" \
   '
   {
     version: .version,
@@ -92,6 +125,7 @@ jq -S \
     other_cases: [
       .cases[]
       | select(.artifact_paths.profile == null)
+      | select(.artifact_mode != "acquired" or ($acquired_map[.id] != null))
       | {
           id,
           layer,
@@ -104,7 +138,8 @@ jq -S \
           operations,
           assertions,
           artifact_paths,
-          documentation
+          documentation,
+          output: ($acquired_map[.id] // null)
         }
     ]
   }

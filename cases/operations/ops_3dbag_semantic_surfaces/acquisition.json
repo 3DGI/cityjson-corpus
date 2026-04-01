@@ -2,26 +2,25 @@
   "dataset": "3DBAG",
   "id": "ops_3dbag_semantic_surfaces",
   "license": "Use the upstream 3DBAG license terms until the corpus release metadata is published.",
-  "notes": "Real-geometry 3DBAG case with stable semantic surfaces such as roof, wall, and ground. It is intended for surface traversal, boundary-to-semantics mapping, and semantic-aware roundtrips.",
+  "notes": "Real-geometry 3DBAG case with stable semantic surfaces such as roof, wall, and ground. It reuses the published raw 3DBAG CityJSON slice acquired by the shared corpus repo.",
   "outputs": [
     {
       "byte_size": null,
       "checksum": null,
-      "path": null,
-      "published": false,
+      "path": "artifacts/acquired/3dbag/v20231008/10-356-724.city.json",
+      "published": true,
       "representation": "cityjson"
     }
   ],
   "owner": "cjindex",
   "preprocessing": [
-    "Select a reproducible 3DBAG slice through cjindex.",
-    "Materialize the layout required by this case.",
-    "Record checksums, byte sizes, and object counts in a future published release."
+    "Run the shared 3DBAG acquisition script in cityjson-benchmarks.",
+    "Reuse the published raw CityJSON file for object-model benchmarking."
   ],
-  "reference": "Reuse the cjindex 3DBAG preparation flow until this repository publishes pinned real-data artifacts.",
-  "selector": "Pinned tile selection and release metadata have not been published yet.",
-  "status": "planned",
-  "upstream_url": null,
-  "upstream_version": null,
+  "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw slice.",
+  "selector": "Pinned 3DBAG release metadata is captured by the shared acquisition script.",
+  "status": "published",
+  "upstream_url": "https://data.3dbag.nl/v20231008/",
+  "upstream_version": "v20231008",
   "version": 1
 }

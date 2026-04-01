@@ -19,7 +19,8 @@ The migration plan for the shared corpus is at
 - `catalog/` - derived machine-readable case index rendered from `cases/`.
 - `profiles/` - manifest schema for synthetic profile fixtures.
 - `pipelines/` - corpus build and publication scripts.
-- `artifacts/` - derived benchmark outputs and release metadata.
+- `artifacts/` - derived benchmark outputs, raw acquired slices, and release
+  metadata.
 - `schemas/` - JSON Schemas for case, invariants, and acquisition metadata.
 - `docs/` - repository documentation and the design ADRs.
 
@@ -33,6 +34,8 @@ The migration plan for the shared corpus is at
   conformance fixtures under `cases/conformance/v2_0/` and rewrites the
   derived catalog.
 - `just sync-catalog` rewrites `catalog/cases.json` from `cases/`.
+- `just acquire-3dbag` materializes the published raw 3DBAG slice under
+  `artifacts/acquired/3dbag/v20231008/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
 - `just audit-corpus` runs validation and writes a corpus summary to
@@ -62,5 +65,6 @@ The migration plan for the shared corpus is at
 
 Tools such as `serde_cityjson`, `cjlib`, and `cjindex` consume this corpus.
 These crates read the shared corpus index and reuse the same synthetic fixtures
-instead of defining separate benchmark models. Real-data preparation reuses the
-`cjindex` 3DBAG flow until this repository publishes its own pinned artifacts.
+instead of defining separate benchmark models. Published raw 3DBAG artifacts
+are acquired here and consumed directly by downstream crates; layout-specific
+prep still belongs to consumer repos.
