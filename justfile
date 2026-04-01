@@ -12,6 +12,9 @@ validate-profiles:
 validate-cases:
     uv run python ./scripts/validate_case_layout.py
 
+sync-catalog:
+    uv run python ./scripts/render_case_catalog.py
+
 generate-data:
     ./scripts/generate_data.sh
 
@@ -20,6 +23,7 @@ audit-corpus:
 
 bootstrap-cases:
     uv run python ./scripts/bootstrap_case_layout.py
+    uv run python ./scripts/render_case_catalog.py
 
 docs-serve:
     uv run mkdocs serve

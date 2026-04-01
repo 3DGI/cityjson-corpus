@@ -13,7 +13,7 @@ SOURCE_CONFORMANCE_ROOT = Path(
         ROOT.parent / "serde_cityjson" / "tests" / "data" / "v2_0",
     )
 )
-SOURCE_INVALID_ROOT = Path(os.environ.get("CITYJSON_BENCHMARKS_INVALID_ROOT", ROOT / "invalid"))
+SOURCE_INVALID_ROOT = os.environ.get("CITYJSON_BENCHMARKS_INVALID_ROOT")
 OUTPUT_CONFORMANCE_ROOT = ROOT / "cases" / "conformance" / "v2_0"
 OUTPUT_INVALID_ROOT = ROOT / "cases" / "invalid"
 
@@ -156,8 +156,13 @@ def secondary_costs(case_id: str, representation: str, negative: bool) -> list[s
     return ["serialize"]
 
 
-def case_dict(case_id: str, source_name: str, source_path: Path, negative: bool) -> dict[str, object]:
-    representation = source_representation(source_path)
+def repo_relative(path: Path) -> str:
+    return path.relative_to(ROOT).as_posix()
+
+
+def case_dict(case_id: str, source_output_path: Path, negative: bool) -> dict[str, object]:
+    source_name = source_output_path.name
+    representation = source_representation(source_output_path)
     assertions = assertions_for(case_id, negative)
     case = {
         "version": 1,
@@ -169,7 +174,7 @@ def case_dict(case_id: str, source_name: str, source_path: Path, negative: bool)
         "representation": representation,
         "artifact_mode": "checked-in",
         "artifact_paths": {
-            "source": source_name,
+            "source": repo_relative(source_output_path),
         },
         "primary_cost": primary_cost(case_id, representation, negative),
         "secondary_costs": secondary_costs(case_id, representation, negative),
@@ -209,8 +214,10 @@ def emit_case(case_id: str, source_path: Path, output_root: Path, negative: bool
     source_name = source_path.name
     case_dir = output_root / case_id
     case_dir.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source_path, case_dir / source_name)
-    write_json(case_dir / "case.json", case_dict(case_id, source_name, source_path, negative))
+    output_source_path = case_dir / source_name
+    if source_path.resolve() != output_source_path.resolve():
+        shutil.copy2(source_path, output_source_path)
+    write_json(case_dir / "case.json", case_dict(case_id, output_source_path, negative))
     write_json(case_dir / "invariants.json", invariants_dict(case_id, source_name, negative))
 
 
@@ -235,12 +242,25 @@ def bootstrap_conformance_cases() -> int:
 
 
 def bootstrap_invalid_cases() -> int:
-    if not SOURCE_INVALID_ROOT.exists():
-        raise SystemExit(f"missing invalid source root: {SOURCE_INVALID_ROOT}")
-
     OUTPUT_INVALID_ROOT.mkdir(parents=True, exist_ok=True)
+
+    if SOURCE_INVALID_ROOT is not None:
+        source_invalid_root = Path(SOURCE_INVALID_ROOT)
+        if not source_invalid_root.exists():
+            raise SystemExit(f"missing invalid source root: {source_invalid_root}")
+        source_paths = sorted(source_invalid_root.glob("*.json"))
+    else:
+        source_paths = []
+        for case_dir in sorted(OUTPUT_INVALID_ROOT.iterdir()):
+            if not case_dir.is_dir():
+                continue
+            for source_path in sorted(case_dir.glob("*.json")):
+                if source_path.name in {"case.json", "invariants.json"}:
+                    continue
+                source_paths.append(source_path)
+
     emitted = 0
-    for source_path in sorted(SOURCE_INVALID_ROOT.glob("*.json")):
+    for source_path in source_paths:
         emit_case(case_id_from_name(source_path.name), source_path, OUTPUT_INVALID_ROOT, negative=True)
         emitted += 1
     return emitted

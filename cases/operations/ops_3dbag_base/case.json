@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/operations/ops_3dbag_base/acquisition.json"
+  },
+  "assertions": [
+    "bounding_box_stable",
+    "hierarchy_traversal_complete"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/operations/ops_3dbag_base/README.md",
+  "family": "operation_kernel",
+  "geometry_validity": "real-preserved",
+  "id": "ops_3dbag_base",
+  "layer": "operation",
+  "operations": [
+    "bbox",
+    "filter",
+    "hierarchy_traversal"
+  ],
+  "primary_cost": "memory",
+  "representation": "cityjson",
+  "scale": "medium",
+  "secondary_costs": [
+    "deserialize",
+    "serialize"
+  ],
+  "source_kind": "real-geometry",
+  "version": 1
+}

@@ -139,8 +139,8 @@ Repository boundaries remain strict:
 the benchmark data described by those manifests. The repository specifies this
 contract explicitly in `profiles/cjfake-manifest.schema.json`.
 
-Concrete profile fixtures reside under `profiles/cases/` and are checked by
-the repository-side validation script before release.
+Concrete profile fixtures reside under their owning case directories and are
+checked by the repository-side validation script before release.
 
 ## Integration Plan
 

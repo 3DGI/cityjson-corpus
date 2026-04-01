@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "metadata_poc_minimal.city.json"
+    "source": "cases/conformance/v2_0/metadata_poc_minimal/metadata_poc_minimal.city.json"
   },
   "assertions": [
     "metadata_payload_preserved"

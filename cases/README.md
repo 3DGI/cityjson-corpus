@@ -1,17 +1,26 @@
 # Cases
 
-This directory is the bootstrap layout for the shared corpus case files.
+This directory is the canonical shared corpus layout.
 
-The first tranche currently mirrors the handcrafted fixtures from
-`serde_cityjson/tests/data/v2_0` plus the invalid fixtures used by the corpus
-audit. Each case directory owns:
+Each case directory owns:
 
 - `case.json` for the case metadata contract
 - `invariants.json` for the correctness contract
-- the source fixture itself, checked in next to the metadata
+- a checked-in source fixture, `profile.json`, or `acquisition.json` as
+  appropriate
+- an optional `README.md` for case-specific notes or narratives
 
-The layout is intentionally separate from `catalog/corpus.json`, which remains
-the benchmark taxonomy and release index.
+The main subtrees are:
 
-Use `just bootstrap-cases` to refresh the migrated fixture tree from the
-source repository.
+- `conformance/v2_0/` for migrated `serde_cityjson` conformance fixtures
+- `conformance/synthetic/` for generated conformance and omnibus profiles
+- `operations/` for medium-size real-data operation kernels
+- `workloads/` for synthetic stress fixtures and real-data I/O workloads
+- `invalid/` for negative fixtures
+
+`catalog/cases.json` is a derived index rendered from this tree. Run
+`just sync-catalog` after changing case metadata, or use `just validate-cases`
+to check that the catalog is in sync.
+
+Use `just bootstrap-cases` to refresh the migrated `serde_cityjson`
+conformance fixtures from the source repository.

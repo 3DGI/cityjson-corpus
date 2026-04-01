@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Bounding-box results remain stable across traversal.",
+      "id": "bounding_box_stable"
+    },
+    {
+      "description": "Hierarchy traversal visits the full reachable object graph.",
+      "id": "hierarchy_traversal_complete"
+    }
+  ],
+  "id": "ops_3dbag_base",
+  "kind": "positive",
+  "version": 1
+}

@@ -7,24 +7,28 @@ and release artifacts are separate from generator and consumer implementations.
 ## Documentation Map
 
 - [Repository overview](repository/index.md)
-- [Corpus catalog](catalog/index.md)
-- [Case catalog](catalog/cases/index.md)
+- [Catalog overview](catalog/index.md)
+- [Derived case catalog](reference/cases.md)
 - [Case layout](cases/index.md)
+- [Conformance cases](cases/conformance/index.md)
+- [Operation cases](cases/operations/index.md)
+- [Workload cases](cases/workloads/index.md)
+- [Invalid cases](cases/invalid/index.md)
 - [Profiles](profiles/index.md)
-- [Profile fixtures](profiles/cases/index.md)
 - [Pipelines](pipelines/index.md)
 - [Data Generation](data-generation.md)
 - [Shared Corpus Migration Plan](shared-corpus-migration-plan.md)
-- [Invariants](invariants/index.md)
-- [Corpus invariants](invariants/corpus.md)
-- [Invalid fixtures](invalid/index.md)
 - [Artifacts](artifacts/index.md)
-- [Corpus catalog reference](reference/corpus.md)
+- [Derived case catalog reference](reference/cases.md)
 - [CJFake manifest schema](reference/cjfake-manifest-schema.md)
+- [Case schema](reference/case-schema.md)
+- [Invariants schema](reference/invariants-schema.md)
+- [Acquisition schema](reference/acquisition-schema.md)
 - [ADR 0009: CityJSON Benchmark Corpus Design](adr/0009-cityjson-benchmark-corpus-design.md)
 
 ## Local Workflow
 
+- `just validate-cases` validates the case tree and the derived catalog.
 - `just validate-profiles` checks that catalog entries and profile fixtures
   still match.
 - `just generate-data` materializes the synthetic cases into

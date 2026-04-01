@@ -11,50 +11,24 @@ nav:
       - Shared Corpus Migration Plan: shared-corpus-migration-plan.md
   - Corpus:
       - Catalog Overview: catalog/index.md
-      - Case Catalog:
-          - Overview: catalog/cases/index.md
-          - Spec Atoms:
-              - Geometry Matrix: catalog/cases/spec_geometry_matrix.md
-              - Appearance Matrix: catalog/cases/spec_appearance_matrix.md
-              - Templates Matrix: catalog/cases/spec_templates_matrix.md
-              - Extensions Feature Stream: catalog/cases/spec_extensions_feature_stream.md
-          - Omnibus:
-              - Complete Omnibus: catalog/cases/spec_complete_omnibus.md
-          - I/O Cases:
-              - 3DBAG CityJSON: catalog/cases/io_3dbag_cityjson.md
-              - 3DBAG JSONL: catalog/cases/io_3dbag_jsonl.md
-              - 3DBAG Feature Files: catalog/cases/io_3dbag_feature_files.md
-          - Operation Kernels:
-              - 3DBAG Base: catalog/cases/ops_3dbag_base.md
-              - 3DBAG Enriched: catalog/cases/ops_3dbag_enriched.md
-              - 3DBAG Semantic Surfaces: catalog/cases/ops_3dbag_semantic_surfaces.md
-          - Stress Workloads:
-              - Geometry Flattening: catalog/cases/stress_geometry_flattening.md
-              - Vertex Transform: catalog/cases/stress_vertex_transform.md
-              - Attribute Tree: catalog/cases/stress_attribute_tree.md
-              - Relation Graph: catalog/cases/stress_relation_graph.md
-              - Deep Boundary: catalog/cases/stress_deep_boundary.md
-              - Composite Value: catalog/cases/stress_composite_value.md
-              - Appearance and Validation: catalog/cases/stress_appearance_and_validation.md
-          - Invalid Tranche:
-              - Invalid Missing Type: catalog/cases/invalid_missing_type.md
-              - Invalid Out Of Range Vertex Index: catalog/cases/invalid_out_of_range_vertex_index.md
       - Case Layout: cases/index.md
+      - Conformance Cases: cases/conformance/index.md
+      - Operation Cases: cases/operations/index.md
+      - Workload Cases: cases/workloads/index.md
+      - Invalid Cases: cases/invalid/index.md
   - Profiles:
       - Profiles Overview: profiles/index.md
-      - Case Fixtures: profiles/cases/index.md
   - Pipelines:
       - Pipelines Overview: pipelines/index.md
       - Audit Corpus Script: pipelines/audit-corpus.md
-  - Invariants:
-      - Invariants Overview: invariants/index.md
-      - Corpus Invariants: invariants/corpus.md
-      - Invalid Fixtures: invalid/index.md
   - Artifacts:
       - Artifacts Overview: artifacts/index.md
   - Reference Data:
-      - Corpus Catalog: reference/corpus.md
+      - Derived Case Catalog: reference/cases.md
       - CJFake Manifest Schema: reference/cjfake-manifest-schema.md
+      - Case Schema: reference/case-schema.md
+      - Invariants Schema: reference/invariants-schema.md
+      - Acquisition Schema: reference/acquisition-schema.md
   - Architecture Decisions:
       - CityJSON Benchmark Corpus Design: adr/0009-cityjson-benchmark-corpus-design.md
 theme:

@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "geometry_templates.city.json"
+    "source": "cases/conformance/v2_0/geometry_templates/geometry_templates.city.json"
   },
   "assertions": [
     "geometry_surface_preserved"

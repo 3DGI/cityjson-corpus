@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/workloads/io_3dbag_jsonl/acquisition.json"
+  },
+  "assertions": [
+    "record_count_preserved",
+    "stream_boundaries_stable"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/io_3dbag_jsonl/README.md",
+  "family": "io",
+  "geometry_validity": "real-preserved",
+  "id": "io_3dbag_jsonl",
+  "layer": "workload",
+  "operations": [
+    "scan",
+    "stream_iteration",
+    "serialize"
+  ],
+  "primary_cost": "io",
+  "representation": "jsonl",
+  "scale": "large",
+  "secondary_costs": [
+    "deserialize",
+    "allocation"
+  ],
+  "source_kind": "real-geometry",
+  "version": 1
+}

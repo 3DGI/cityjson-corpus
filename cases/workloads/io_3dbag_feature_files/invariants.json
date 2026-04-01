@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "The feature-file count remains stable.",
+      "id": "file_count_preserved"
+    },
+    {
+      "description": "The layout stays stable during feature lookup.",
+      "id": "layout_stable"
+    }
+  ],
+  "id": "io_3dbag_feature_files",
+  "kind": "positive",
+  "version": 1
+}

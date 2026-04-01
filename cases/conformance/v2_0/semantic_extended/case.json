@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "semantic_extended.city.json"
+    "source": "cases/conformance/v2_0/semantic_extended/semantic_extended.city.json"
   },
   "assertions": [
     "semantic_surface_preserved"

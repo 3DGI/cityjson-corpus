@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "vertices.city.json"
+    "source": "cases/conformance/v2_0/vertices/vertices.city.json"
   },
   "assertions": [
     "vertex_indices_preserved"

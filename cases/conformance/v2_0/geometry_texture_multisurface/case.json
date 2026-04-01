@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "geometry_texture_multisurface.city.json"
+    "source": "cases/conformance/v2_0/geometry_texture_multisurface/geometry_texture_multisurface.city.json"
   },
   "assertions": [
     "geometry_surface_preserved"

@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "texture_complete.city.json"
+    "source": "cases/conformance/v2_0/texture_complete/texture_complete.city.json"
   },
   "assertions": [
     "texture_payload_preserved"

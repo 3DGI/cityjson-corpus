@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Template expansion does not change the instance count.",
+      "id": "instance_count_stable"
+    },
+    {
+      "description": "Template reuse remains stable across parse and roundtrip.",
+      "id": "template_reuse_preserved"
+    }
+  ],
+  "id": "spec_templates_matrix",
+  "kind": "positive",
+  "version": 1
+}

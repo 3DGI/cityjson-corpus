@@ -1,0 +1,31 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_appearance_and_validation.city.json",
+    "profile": "cases/workloads/stress_appearance_and_validation/profile.json"
+  },
+  "assertions": [
+    "appearance_validation_preserved",
+    "write_path_regressions_visible"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/stress_appearance_and_validation/README.md",
+  "family": "stress",
+  "geometry_validity": "dummy",
+  "id": "stress_appearance_and_validation",
+  "layer": "workload",
+  "operations": [
+    "serialize",
+    "validate",
+    "roundtrip"
+  ],
+  "primary_cost": "serialize",
+  "representation": "cityjson",
+  "scale": "large",
+  "secondary_costs": [
+    "allocation",
+    "deserialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

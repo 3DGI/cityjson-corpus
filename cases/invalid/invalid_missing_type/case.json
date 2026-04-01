@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "invalid_missing_type.json"
+    "source": "cases/invalid/invalid_missing_type/invalid_missing_type.json"
   },
   "assertions": [
     "rejects_missing_top_level_type"

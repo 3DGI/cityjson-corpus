@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/operations/ops_3dbag_semantic_surfaces/acquisition.json"
+  },
+  "assertions": [
+    "semantic_surfaces_preserved",
+    "boundary_to_semantics_mapping_stable"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
+  "family": "operation_kernel",
+  "geometry_validity": "real-preserved",
+  "id": "ops_3dbag_semantic_surfaces",
+  "layer": "operation",
+  "operations": [
+    "semantic_query",
+    "boundary_mapping",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "medium",
+  "secondary_costs": [
+    "memory",
+    "serialize"
+  ],
+  "source_kind": "real-geometry",
+  "version": 1
+}

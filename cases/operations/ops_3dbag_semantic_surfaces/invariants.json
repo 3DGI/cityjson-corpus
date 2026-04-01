@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Semantic surfaces remain attached to their geometry.",
+      "id": "semantic_surfaces_preserved"
+    },
+    {
+      "description": "Boundary-to-semantics mapping remains stable.",
+      "id": "boundary_to_semantics_mapping_stable"
+    }
+  ],
+  "id": "ops_3dbag_semantic_surfaces",
+  "kind": "positive",
+  "version": 1
+}

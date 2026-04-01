@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Deep boundary nesting is preserved during parse.",
+      "id": "deep_boundaries_preserved"
+    },
+    {
+      "description": "The case exposes stack or heap pressure in boundary handling.",
+      "id": "stack_or_heap_pressure_visible"
+    }
+  ],
+  "id": "stress_deep_boundary",
+  "kind": "positive",
+  "version": 1
+}

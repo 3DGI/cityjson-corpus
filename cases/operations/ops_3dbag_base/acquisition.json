@@ -1,0 +1,27 @@
+{
+  "dataset": "3DBAG",
+  "id": "ops_3dbag_base",
+  "license": "Use the upstream 3DBAG license terms until the corpus release metadata is published.",
+  "notes": "Medium-sized real-geometry 3DBAG case for common object-model operations. It is the baseline for bounding boxes, filtering, hierarchy navigation, and geometry access on an externally sourced slice.",
+  "outputs": [
+    {
+      "byte_size": null,
+      "checksum": null,
+      "path": null,
+      "published": false,
+      "representation": "cityjson"
+    }
+  ],
+  "owner": "cjindex",
+  "preprocessing": [
+    "Select a reproducible 3DBAG slice through cjindex.",
+    "Materialize the layout required by this case.",
+    "Record checksums, byte sizes, and object counts in a future published release."
+  ],
+  "reference": "Reuse the cjindex 3DBAG preparation flow until this repository publishes pinned real-data artifacts.",
+  "selector": "Pinned tile selection and release metadata have not been published yet.",
+  "status": "planned",
+  "upstream_url": null,
+  "upstream_version": null,
+  "version": 1
+}

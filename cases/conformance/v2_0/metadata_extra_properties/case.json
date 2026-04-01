@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "metadata_extra_properties.city.json"
+    "source": "cases/conformance/v2_0/metadata_extra_properties/metadata_extra_properties.city.json"
   },
   "assertions": [
     "metadata_payload_preserved"

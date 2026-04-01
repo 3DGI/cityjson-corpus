@@ -1,21 +1,18 @@
 # Catalog
 
-This directory holds the canonical benchmark case catalog in
-[corpus.json](corpus.json).
+This directory holds the derived machine-readable case index in
+[cases.json](cases.json).
 
-Each case records:
-- source kind
-- primary cost
-- representation
-- supported operations
-- assertions
-- profile reference (for generated cases) under `profiles/cases/`
+The source of truth lives under [`cases/`](../cases/README.md). Each catalog
+entry is rendered from a case directory and adds the repo-relative pointers
+that downstream consumers need:
 
-The `just generate-data` command materializes generated synthetic cases. Real-geometry
-cases remain as catalog entries until their acquisition pipeline is active.
+- the case directory path
+- the owning `case.json`
+- the owning `invariants.json`
+- optional `README.md`
+- artifact paths for checked-in fixtures, generated outputs, profiles, or
+  acquisition metadata
 
-The shared corpus contract includes explicit invariants and an invalid fixture
-tranche, both located in the repository alongside positive cases.
-
-Case narratives are in [cases/](cases/README.md). The migrated fixture layout
-begins in [case layout](../cases/index.md).
+Run `just sync-catalog` after changing the case tree. `just validate-cases`
+checks that `cases.json` is in sync.

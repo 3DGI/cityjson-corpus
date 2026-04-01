@@ -83,7 +83,6 @@
     "artifact_paths": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source"],
       "properties": {
         "source": {
           "type": "string",
@@ -103,7 +102,7 @@
         "acquisition": {
           "type": "string",
           "minLength": 1,
-          "description": "Repo-relative path to the acquisition recipe."
+          "description": "Repo-relative path to the acquisition metadata."
         },
         "manifest": {
           "type": "string",
@@ -193,14 +192,25 @@
       "type": "string",
       "minLength": 1,
       "description": "Optional generator profile path."
-    },
-    "acquisition": {
-      "type": "object",
-      "additionalProperties": true,
-      "description": "Optional acquisition metadata for real-data cases."
     }
   },
   "allOf": [
+    {
+      "if": {
+        "properties": {
+          "artifact_mode": {
+            "const": "checked-in"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "artifact_paths": {
+            "required": ["source"]
+          }
+        }
+      }
+    },
     {
       "if": {
         "properties": {
@@ -212,7 +222,10 @@
       "then": {
         "properties": {
           "artifact_paths": {
-            "required": ["generated"]
+            "required": [
+              "generated",
+              "profile"
+            ]
           }
         }
       }
@@ -226,7 +239,11 @@
         }
       },
       "then": {
-        "required": ["acquisition"]
+        "properties": {
+          "artifact_paths": {
+            "required": ["acquisition"]
+          }
+        }
       }
     }
   ]

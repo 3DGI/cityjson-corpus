@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "appearance_minimal_complete.city.json"
+    "source": "cases/conformance/v2_0/appearance_minimal_complete/appearance_minimal_complete.city.json"
   },
   "assertions": [
     "appearance_preserved"

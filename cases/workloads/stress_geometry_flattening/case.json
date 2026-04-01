@@ -1,0 +1,31 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_geometry_flattening.city.json",
+    "profile": "cases/workloads/stress_geometry_flattening/profile.json"
+  },
+  "assertions": [
+    "geometry_normalization_stable",
+    "no_loss_on_flattening"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/stress_geometry_flattening/README.md",
+  "family": "stress",
+  "geometry_validity": "dummy",
+  "id": "stress_geometry_flattening",
+  "layer": "workload",
+  "operations": [
+    "normalize_geometry",
+    "parse",
+    "roundtrip"
+  ],
+  "primary_cost": "allocation",
+  "representation": "cityjson",
+  "scale": "large",
+  "secondary_costs": [
+    "deserialize",
+    "memory"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

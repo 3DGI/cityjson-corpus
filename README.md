@@ -3,35 +3,36 @@
 Shared benchmark corpus for CityJSON tooling.
 
 This repository defines benchmark cases, profile fixtures, correctness
-invariants, and derived artifacts for other CityJSON projects to consume.
-The corpus contract is kept in one place so generators and benchmark harnesses
-share a single model instead of each defining their own.
+invariants, acquisition metadata, and derived artifacts for other CityJSON
+projects to consume. The corpus contract is kept in one place so generators
+and benchmark harnesses share a single model instead of each defining their
+own.
 
 The migration plan for the shared corpus is at
 [docs/shared-corpus-migration-plan.md](docs/shared-corpus-migration-plan.md).
 
 ## Repository Layout
 
-- `catalog/` - canonical case definitions and the machine-readable corpus
-  catalog.
-- `profiles/` - manifest schema plus the concrete profile fixtures referenced
-  by the catalog.
+- `cases/` - canonical shared corpus layout. Each case directory owns its
+  metadata, invariants, checked-in source fixture or profile, and optional
+  acquisition notes.
+- `catalog/` - derived machine-readable case index rendered from `cases/`.
+- `profiles/` - manifest schema for synthetic profile fixtures.
 - `pipelines/` - corpus build and publication scripts.
-- `invalid/` - syntactically valid negative fixtures for testing rejection
-  paths.
-- `cases/` - migrated shared case layout, starting with the conformance
-  fixtures from `serde_cityjson`.
-- `invariants/` - machine-readable correctness checks that belong to the
-  corpus, not to a specific implementation.
 - `artifacts/` - derived benchmark outputs and release metadata.
+- `schemas/` - JSON Schemas for case, invariants, and acquisition metadata.
 - `docs/` - repository documentation and the design ADRs.
 
 ## Local Workflow
 
-- `just validate-profiles` checks that the catalog and profile fixtures still
-  match.
-- `just bootstrap-cases` refreshes the migrated shared case layout under
-  `cases/`.
+- `just validate-cases` validates the case tree and checks that
+  `catalog/cases.json` matches it.
+- `just validate-profiles` checks that generated-case profile fixtures still
+  match their owning case metadata.
+- `just bootstrap-cases` refreshes the migrated `serde_cityjson`
+  conformance fixtures under `cases/conformance/v2_0/` and rewrites the
+  derived catalog.
+- `just sync-catalog` rewrites `catalog/cases.json` from `cases/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
 - `just audit-corpus` runs validation and writes a corpus summary to
@@ -50,10 +51,8 @@ The migration plan for the shared corpus is at
 ## Documentation
 
 - [Documentation home](docs/index.md)
-- [Corpus catalog](catalog/corpus.json)
+- [Derived case catalog](catalog/cases.json)
 - [Profile schema](profiles/cjfake-manifest.schema.json)
-- [Corpus invariants](invariants/corpus.json)
-- [Invalid fixtures](invalid/index.md)
 - [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)
 - [Shared corpus migration plan](docs/shared-corpus-migration-plan.md)

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-corpus_path="${repo_dir}/catalog/corpus.json"
+corpus_path="${repo_dir}/catalog/cases.json"
 schema_path="${repo_dir}/profiles/cjfake-manifest.schema.json"
 cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
 
@@ -17,19 +17,15 @@ if [[ ! -f "${schema_path}" ]]; then
   exit 1
 fi
 
-declare -A referenced_profiles=()
+uv run python "${repo_dir}/scripts/render_case_catalog.py" --check
 
-while IFS= read -r profile_relpath; do
+while IFS=$'\t' read -r case_id profile_relpath; do
+  [[ -n "${case_id}" ]] || continue
   [[ -n "${profile_relpath}" ]] || continue
-  referenced_profiles["${profile_relpath}"]=1
-done < <(jq -r '.cases[] | select(.profile != null) | .profile' "${corpus_path}")
 
-for profile_path in "${repo_dir}"/profiles/cases/*.json; do
-  [[ -f "${profile_path}" ]] || continue
-
-  profile_relpath="profiles/cases/$(basename "${profile_path}")"
-  if [[ -z "${referenced_profiles[${profile_relpath}]+x}" ]]; then
-    echo "profile is not referenced by catalog: ${profile_relpath}" >&2
+  profile_path="${repo_dir}/${profile_relpath}"
+  if [[ ! -f "${profile_path}" ]]; then
+    echo "missing profile fixture for ${case_id}: ${profile_relpath}" >&2
     exit 1
   fi
 
@@ -38,12 +34,6 @@ for profile_path in "${repo_dir}"/profiles/cases/*.json; do
     --manifest "${profile_path}" \
     --schema "${schema_path}" \
     --check-manifest
-done
-
-for profile_relpath in "${!referenced_profiles[@]}"; do
-  if [[ ! -f "${repo_dir}/${profile_relpath}" ]]; then
-    echo "catalog references missing profile: ${profile_relpath}" >&2
-    exit 1
-  fi
-done
-
+done < <(
+  jq -r '.cases[] | select(.artifact_paths.profile != null) | [.id, .artifact_paths.profile] | @tsv' "${corpus_path}"
+)

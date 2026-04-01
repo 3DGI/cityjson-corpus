@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Synthetic attribute payloads survive the operation kernel.",
+      "id": "attribute_payload_preserved"
+    },
+    {
+      "description": "Geometry stays intact while enrichment is processed.",
+      "id": "geometry_preserved"
+    }
+  ],
+  "id": "ops_3dbag_enriched",
+  "kind": "positive",
+  "version": 1
+}

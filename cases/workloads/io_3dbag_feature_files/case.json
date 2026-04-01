@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/workloads/io_3dbag_feature_files/acquisition.json"
+  },
+  "assertions": [
+    "file_count_preserved",
+    "layout_stable"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/io_3dbag_feature_files/README.md",
+  "family": "io",
+  "geometry_validity": "real-preserved",
+  "id": "io_3dbag_feature_files",
+  "layer": "workload",
+  "operations": [
+    "feature_lookup",
+    "scan",
+    "serialize"
+  ],
+  "primary_cost": "io",
+  "representation": "feature-files",
+  "scale": "large",
+  "secondary_costs": [
+    "allocation",
+    "memory"
+  ],
+  "source_kind": "real-geometry",
+  "version": 1
+}

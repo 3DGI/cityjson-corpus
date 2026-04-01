@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "extension.city.json"
+    "source": "cases/conformance/v2_0/extension/extension.city.json"
   },
   "assertions": [
     "extension_payload_preserved"

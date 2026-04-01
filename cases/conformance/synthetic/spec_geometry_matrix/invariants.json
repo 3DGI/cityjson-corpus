@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "The full geometry type set remains present after parse and roundtrip.",
+      "id": "geometry_types_preserved"
+    },
+    {
+      "description": "Boundary normalization does not change the encoded topology.",
+      "id": "boundary_normalization_stable"
+    }
+  ],
+  "id": "spec_geometry_matrix",
+  "kind": "positive",
+  "version": 1
+}

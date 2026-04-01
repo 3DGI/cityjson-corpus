@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Nested attribute trees survive encode/decode.",
+      "id": "nested_attributes_preserved"
+    },
+    {
+      "description": "The case exposes the intended allocation shape.",
+      "id": "allocation_shape_visible"
+    }
+  ],
+  "id": "stress_attribute_tree",
+  "kind": "positive",
+  "version": 1
+}

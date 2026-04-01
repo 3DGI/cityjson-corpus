@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "invalid_out_of_range_vertex_index.json"
+    "source": "cases/invalid/invalid_out_of_range_vertex_index/invalid_out_of_range_vertex_index.json"
   },
   "assertions": [
     "rejects_out_of_range_vertex_index"

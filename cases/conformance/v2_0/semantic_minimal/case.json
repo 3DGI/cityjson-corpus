@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "semantic_minimal.city.json"
+    "source": "cases/conformance/v2_0/semantic_minimal/semantic_minimal.city.json"
   },
   "assertions": [
     "semantic_surface_preserved"

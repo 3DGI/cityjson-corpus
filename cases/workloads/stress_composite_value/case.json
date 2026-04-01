@@ -1,0 +1,31 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_composite_value.city.json",
+    "profile": "cases/workloads/stress_composite_value/profile.json"
+  },
+  "assertions": [
+    "composite_values_preserved",
+    "mixed_cost_paths_visible"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/stress_composite_value/README.md",
+  "family": "stress",
+  "geometry_validity": "dummy",
+  "id": "stress_composite_value",
+  "layer": "workload",
+  "operations": [
+    "mixed_path",
+    "serialize",
+    "roundtrip"
+  ],
+  "primary_cost": "allocation",
+  "representation": "cityjson",
+  "scale": "large",
+  "secondary_costs": [
+    "serialize",
+    "memory"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

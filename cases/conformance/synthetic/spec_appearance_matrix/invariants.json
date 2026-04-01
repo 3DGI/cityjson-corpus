@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Appearance data survives parse and serialization.",
+      "id": "appearance_preserved"
+    },
+    {
+      "description": "Theme dispatch stays stable across roundtrips.",
+      "id": "theme_dispatch_stable"
+    }
+  ],
+  "id": "spec_appearance_matrix",
+  "kind": "positive",
+  "version": 1
+}

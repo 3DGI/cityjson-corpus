@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Vertex count stays stable after transformation.",
+      "id": "vertex_count_preserved"
+    },
+    {
+      "description": "Transforms are applied in the expected order and scale.",
+      "id": "transform_applied_correctly"
+    }
+  ],
+  "id": "stress_vertex_transform",
+  "kind": "positive",
+  "version": 1
+}

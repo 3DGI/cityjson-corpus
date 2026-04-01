@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Extension payloads are preserved during feature streaming.",
+      "id": "extensions_preserved"
+    },
+    {
+      "description": "Feature boundaries remain stable when streaming.",
+      "id": "feature_boundaries_preserved"
+    }
+  ],
+  "id": "spec_extensions_feature_stream",
+  "kind": "positive",
+  "version": 1
+}

@@ -1,0 +1,31 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/spec_complete_omnibus.city.json",
+    "profile": "cases/conformance/synthetic/spec_complete_omnibus/profile.json"
+  },
+  "assertions": [
+    "full_surface_roundtrip",
+    "no_schema_regressions"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/conformance/synthetic/spec_complete_omnibus/README.md",
+  "family": "omnibus",
+  "geometry_validity": "dummy",
+  "id": "spec_complete_omnibus",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "validate",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "small",
+  "secondary_costs": [
+    "serialize",
+    "allocation"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

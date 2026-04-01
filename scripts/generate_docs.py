@@ -1,11 +1,19 @@
 from __future__ import annotations
 
+import json
+import sys
 from pathlib import Path
 
 import mkdocs_gen_files
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
-ROOT = Path(__file__).resolve().parents[1]
+from corpus_cases import ROOT, humanize_case_id, load_case_records, repo_relative
+
+
+CASE_ROOT = ROOT / "cases"
 
 
 def write_markdown(source: Path, destination: str, replacements: dict[str, str] | None = None) -> None:
@@ -19,6 +27,13 @@ def write_markdown(source: Path, destination: str, replacements: dict[str, str] 
     mkdocs_gen_files.set_edit_path(destination, source.relative_to(ROOT).as_posix())
 
 
+def write_generated_markdown(destination: str, text: str, edit_path: Path) -> None:
+    with mkdocs_gen_files.open(destination, "w") as handle:
+        handle.write(text)
+
+    mkdocs_gen_files.set_edit_path(destination, edit_path.relative_to(ROOT).as_posix())
+
+
 def write_reference_page(
     source: Path,
     destination: str,
@@ -28,101 +43,242 @@ def write_reference_page(
 ) -> None:
     text = source.read_text(encoding="utf-8").rstrip()
     page = f"# {title}\n\n{summary}\n\n```{language}\n{text}\n```\n"
+    write_generated_markdown(destination, page, source)
 
-    with mkdocs_gen_files.open(destination, "w") as handle:
-        handle.write(page)
 
-    mkdocs_gen_files.set_edit_path(destination, source.relative_to(ROOT).as_posix())
+def strip_title(text: str) -> str:
+    lines = text.splitlines()
+    if lines and lines[0].startswith("# "):
+        lines = lines[1:]
+    return "\n".join(lines).strip()
+
+
+def summary_from_text(text: str) -> str:
+    for chunk in text.split("\n\n"):
+        summary = " ".join(line.strip() for line in chunk.splitlines() if line.strip())
+        if summary:
+            return summary
+    return ""
+
+
+def case_page_path(case_dir: Path) -> str:
+    relative_dir = case_dir.relative_to(CASE_ROOT).as_posix()
+    return f"cases/{relative_dir}.md"
+
+
+def load_optional_json(path: Path | None) -> dict[str, object] | None:
+    if path is None or not path.exists():
+        return None
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        return None
+    return payload
+
+
+def render_json_block(title: str, payload: dict[str, object] | None) -> str:
+    if payload is None:
+        return ""
+
+    rendered = json.dumps(payload, indent=2, sort_keys=True)
+    return f"## {title}\n\n```json\n{rendered}\n```\n"
+
+
+def build_case_page(record) -> str:
+    title = humanize_case_id(record.case_id)
+    parts = [f"# {title}", ""]
+
+    if record.readme_path is not None:
+        readme_text = strip_title(record.readme_path.read_text(encoding="utf-8"))
+        if readme_text:
+            parts.extend([readme_text, ""])
+    elif isinstance(record.case_data.get("description"), str):
+        parts.extend([str(record.case_data["description"]), ""])
+
+    parts.extend(
+        [
+            "## Contract",
+            "",
+            f"- `id`: `{record.case_id}`",
+            f"- `layer`: `{record.case_data['layer']}`",
+            f"- `family`: `{record.case_data['family']}`",
+            f"- `artifact_mode`: `{record.case_data['artifact_mode']}`",
+            f"- `source_kind`: `{record.case_data['source_kind']}`",
+            f"- `representation`: `{record.case_data['representation']}`",
+            f"- `path`: `{repo_relative(record.case_dir)}`",
+            "",
+        ]
+    )
+
+    artifact_lines = []
+    for key, value in sorted(record.artifact_paths.items()):
+        artifact_lines.append(f"- `{key}`: `{value}`")
+
+    if artifact_lines:
+        parts.extend(["## Artifacts", "", *artifact_lines, ""])
+
+    parts.append(render_json_block("case.json", record.case_data).rstrip())
+    parts.append("")
+    parts.append(render_json_block("invariants.json", record.invariants_data).rstrip())
+    parts.append("")
+
+    profile_payload = load_optional_json(ROOT / record.artifact_paths["profile"]) if "profile" in record.artifact_paths else None
+    acquisition_payload = (
+        load_optional_json(ROOT / record.artifact_paths["acquisition"]) if "acquisition" in record.artifact_paths else None
+    )
+
+    if profile_payload is not None:
+        parts.append(render_json_block("profile.json", profile_payload).rstrip())
+        parts.append("")
+
+    if acquisition_payload is not None:
+        parts.append(render_json_block("acquisition.json", acquisition_payload).rstrip())
+        parts.append("")
+
+    return "\n".join(part for part in parts if part is not None).rstrip() + "\n"
+
+
+def build_layer_index(title: str, records: list, index_path: str) -> str:
+    parent = Path(index_path).parent
+    parts = [f"# {title}", ""]
+
+    for record in sorted(records, key=lambda item: item.case_id):
+        case_summary = ""
+        if record.readme_path is not None:
+            case_summary = summary_from_text(strip_title(record.readme_path.read_text(encoding="utf-8")))
+        elif isinstance(record.case_data.get("description"), str):
+            case_summary = str(record.case_data["description"])
+        elif record.invariants_data.get("checks"):
+            first_check = record.invariants_data["checks"][0]
+            if isinstance(first_check, dict) and isinstance(first_check.get("description"), str):
+                case_summary = str(first_check["description"])
+
+        link_path = Path(case_page_path(record.case_dir)).relative_to(parent).as_posix()
+        parts.append(f"- [{record.case_id}]({link_path})")
+        if case_summary:
+            parts.append(f"  {case_summary}")
+
+    parts.append("")
+    return "\n".join(parts)
 
 
 def main() -> None:
+    records = load_case_records()
+
     write_markdown(
         ROOT / "README.md",
         "repository/index.md",
         {
             "docs/index.md": "../index.md",
+            "catalog/cases.json": "../reference/cases.md",
+            "profiles/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
+            "cases/README.md": "../cases/index.md",
             "docs/data-generation.md": "../data-generation.md",
             "docs/shared-corpus-migration-plan.md": "../shared-corpus-migration-plan.md",
-            "catalog/corpus.json": "../reference/corpus.md",
-            "profiles/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
-            "invariants/corpus.json": "../invariants/corpus.md",
-            "cases/README.md": "../cases/index.md",
-            "invalid/index.md": "../invalid/index.md",
             "docs/adr/0009-cityjson-benchmark-corpus-design.md": "../adr/0009-cityjson-benchmark-corpus-design.md",
         },
     )
 
     write_markdown(
-        ROOT / "catalog/README.md",
+        ROOT / "catalog" / "README.md",
         "catalog/index.md",
         {
-            "[corpus.json](corpus.json)": "[corpus catalog](../reference/corpus.md)",
-            "[cases/](cases/README.md)": "[cases/](cases/index.md)",
+            "[cases.json](cases.json)": "[cases.json](../reference/cases.md)",
+            "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
     )
-    write_markdown(ROOT / "catalog/cases/README.md", "catalog/cases/index.md")
-
-    for source in sorted((ROOT / "catalog/cases").glob("*.md")):
-        if source.name == "README.md":
-            continue
-        write_markdown(source, f"catalog/cases/{source.name}")
 
     write_markdown(
-        ROOT / "profiles/README.md",
+        ROOT / "cases" / "README.md",
+        "cases/index.md",
+        {
+            "`catalog/cases.json`": "[`catalog/cases.json`](../reference/cases.md)",
+        },
+    )
+    write_markdown(
+        ROOT / "profiles" / "README.md",
         "profiles/index.md",
         {
-            "[cjfake-manifest.schema.json](cjfake-manifest.schema.json)": "[CJFake manifest schema](../reference/cjfake-manifest-schema.md)",
-            "[cases/](cases/)": "[cases/](cases/index.md)",
+            "[cjfake-manifest.schema.json](cjfake-manifest.schema.json)": "[cjfake-manifest.schema.json](../reference/cjfake-manifest-schema.md)",
+            "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
     )
     write_markdown(
-        ROOT / "profiles/cases/README.md",
-        "profiles/cases/index.md",
-        {
-            "`../cjfake-manifest.schema.json`": "[`../cjfake-manifest.schema.json`](../../reference/cjfake-manifest-schema.md)",
-        },
-    )
-
-    write_markdown(
-        ROOT / "pipelines/README.md",
+        ROOT / "pipelines" / "README.md",
         "pipelines/index.md",
-        {"[`audit_corpus.sh`](audit_corpus.sh)": "[audit_corpus.sh](audit-corpus.md)"},
+        {"[`audit_corpus.sh`](audit_corpus.sh)": "[`audit_corpus.sh`](audit-corpus.md)"},
     )
-    write_reference_page(
-        ROOT / "pipelines/audit_corpus.sh",
-        "pipelines/audit-corpus.md",
-        "Audit Corpus Pipeline Script",
-        "Shell implementation of the first executable corpus pipeline.",
-        language="sh",
+    write_markdown(ROOT / "artifacts" / "README.md", "artifacts/index.md")
+
+    grouped_records: dict[str, list] = {
+        "conformance": [],
+        "operation": [],
+        "workload": [],
+        "invalid": [],
+    }
+
+    for record in records:
+        grouped_records[str(record.case_data["layer"])].append(record)
+        page_path = case_page_path(record.case_dir)
+        write_generated_markdown(page_path, build_case_page(record), record.case_path)
+
+    write_generated_markdown(
+        "cases/conformance/index.md",
+        build_layer_index("Conformance Cases", grouped_records["conformance"], "cases/conformance/index.md"),
+        ROOT / "cases" / "README.md",
     )
-    write_markdown(
-        ROOT / "invariants/README.md",
-        "invariants/index.md",
-        {
-            "[corpus.json](corpus.json)": "[corpus invariants](corpus.md)",
-        },
+    write_generated_markdown(
+        "cases/operations/index.md",
+        build_layer_index("Operation Cases", grouped_records["operation"], "cases/operations/index.md"),
+        ROOT / "cases" / "README.md",
     )
-    write_reference_page(
-        ROOT / "invariants/corpus.json",
-        "invariants/corpus.md",
-        "Corpus Invariants Reference",
-        "Machine-readable correctness invariants for the shared benchmark corpus.",
+    write_generated_markdown(
+        "cases/workloads/index.md",
+        build_layer_index("Workload Cases", grouped_records["workload"], "cases/workloads/index.md"),
+        ROOT / "cases" / "README.md",
     )
-    write_markdown(ROOT / "cases/README.md", "cases/index.md")
-    write_markdown(ROOT / "invalid/README.md", "invalid/index.md")
-    write_markdown(ROOT / "artifacts/README.md", "artifacts/index.md")
+    write_generated_markdown(
+        "cases/invalid/index.md",
+        build_layer_index("Invalid Cases", grouped_records["invalid"], "cases/invalid/index.md"),
+        ROOT / "cases" / "README.md",
+    )
 
     write_reference_page(
-        ROOT / "catalog/corpus.json",
-        "reference/corpus.md",
-        "Corpus Catalog Reference",
-        "Machine-readable benchmark catalog consumed by validation, generation, and benchmark harnesses.",
+        ROOT / "catalog" / "cases.json",
+        "reference/cases.md",
+        "Derived Case Catalog",
+        "Machine-readable case index rendered from the canonical cases/ tree.",
     )
     write_reference_page(
-        ROOT / "profiles/cjfake-manifest.schema.json",
+        ROOT / "profiles" / "cjfake-manifest.schema.json",
         "reference/cjfake-manifest-schema.md",
         "CJFake Manifest Schema",
         "Machine-readable schema for benchmark generation manifests.",
+    )
+    write_reference_page(
+        ROOT / "schemas" / "case.schema.json",
+        "reference/case-schema.md",
+        "Case Schema",
+        "Machine-readable schema for per-case metadata contracts.",
+    )
+    write_reference_page(
+        ROOT / "schemas" / "invariants.schema.json",
+        "reference/invariants-schema.md",
+        "Invariants Schema",
+        "Machine-readable schema for per-case invariants.",
+    )
+    write_reference_page(
+        ROOT / "schemas" / "acquisition.schema.json",
+        "reference/acquisition-schema.md",
+        "Acquisition Schema",
+        "Machine-readable schema for per-case real-data acquisition metadata.",
+    )
+    write_reference_page(
+        ROOT / "pipelines" / "audit_corpus.sh",
+        "pipelines/audit-corpus.md",
+        "Audit Corpus Pipeline Script",
+        "Shell entrypoint for validating and auditing the shared corpus.",
+        language="sh",
     )
 
 

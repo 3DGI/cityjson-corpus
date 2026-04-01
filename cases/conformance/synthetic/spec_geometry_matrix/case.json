@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/spec_geometry_matrix.city.json",
+    "profile": "cases/conformance/synthetic/spec_geometry_matrix/profile.json"
+  },
+  "assertions": [
+    "geometry_types_preserved",
+    "boundary_normalization_stable"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "spec_geometry_matrix",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "geometry_validation",
+    "roundtrip"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "allocation"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

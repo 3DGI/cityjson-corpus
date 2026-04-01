@@ -3,7 +3,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-corpus_path="${repo_dir}/catalog/corpus.json"
+corpus_path="${repo_dir}/catalog/cases.json"
 schema_path="${repo_dir}/profiles/cjfake-manifest.schema.json"
 cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
 output_dir="${CORPUS_GENERATED_DIR:-${repo_dir}/artifacts/generated}"
@@ -31,6 +31,8 @@ if [[ ! -f "${cjfake_cargo}" ]]; then
   exit 1
 fi
 
+uv run python "${repo_dir}/scripts/render_case_catalog.py" --check
+
 rm -rf "${output_dir}"
 mkdir -p "${output_dir}"
 
@@ -48,11 +50,11 @@ while IFS=$'\t' read -r case_id profile_path; do
     --manifest "${case_profile_path}" \
     --schema "${schema_path}" \
     --output "${output_dir}/${case_id}.city.json"
-done < <(jq -r '.cases[] | select(.profile != null) | [.id, .profile] | @tsv' "${corpus_path}")
+done < <(jq -r '.cases[] | select(.artifact_paths.profile != null) | [.id, .artifact_paths.profile] | @tsv' "${corpus_path}")
 
 jq -S \
   --arg output_dir "${output_dir}" \
-  --arg corpus_path "catalog/corpus.json" \
+  --arg corpus_path "catalog/cases.json" \
   --arg schema_path "profiles/cjfake-manifest.schema.json" \
   --arg cjfake_cargo "${cjfake_cargo}" \
   '
@@ -60,48 +62,48 @@ jq -S \
     version: .version,
     purpose: .purpose,
     case_count: (.cases | length),
-    corpus: $corpus_path,
+    catalog: $corpus_path,
     generator: {
       tool: "cjfake",
       cargo_manifest: $cjfake_cargo,
       manifest_schema: $schema_path
     },
-    invariants: {
-      path: "invariants/corpus.json",
-      case_count: (.cases | length),
-      positive_case_count: ([.cases[] | select(.profile != null)] | length),
-      negative_case_count: ([.cases[] | select(.profile == null)] | length)
-    },
     output_dir: $output_dir,
-    synthetic_cases: [
+    generated_cases: [
       .cases[]
-      | select(.profile != null)
+      | select(.artifact_paths.profile != null)
       | {
           id,
+          layer,
           family,
           source_kind,
+          artifact_mode,
           primary_cost,
           representation,
           scale,
           operations,
           assertions,
-          profile,
+          artifact_paths,
           documentation,
+          invariants,
           output: ($output_dir + "/" + .id + ".city.json")
         }
     ],
-    external_cases: [
+    other_cases: [
       .cases[]
-      | select(.profile == null)
+      | select(.artifact_paths.profile == null)
       | {
           id,
+          layer,
           family,
           source_kind,
+          artifact_mode,
           primary_cost,
           representation,
           scale,
           operations,
           assertions,
+          artifact_paths,
           documentation
         }
     ]

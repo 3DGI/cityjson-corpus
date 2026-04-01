@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "material_minimal.city.json"
+    "source": "cases/conformance/v2_0/material_minimal/material_minimal.city.json"
   },
   "assertions": [
     "material_payload_preserved"

@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "geometry_semantics_multilinestring.city.json"
+    "source": "cases/conformance/v2_0/geometry_semantics_multilinestring/geometry_semantics_multilinestring.city.json"
   },
   "assertions": [
     "geometry_surface_preserved"

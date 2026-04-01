@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "transform.city.json"
+    "source": "cases/conformance/v2_0/transform/transform.city.json"
   },
   "assertions": [
     "transform_applied_correctly"

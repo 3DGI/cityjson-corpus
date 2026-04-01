@@ -1,0 +1,28 @@
+{
+  "dataset": "3DBAG",
+  "id": "ops_3dbag_enriched",
+  "license": "Use the upstream 3DBAG license terms until the corpus release metadata is published.",
+  "notes": "Real 3DBAG geometry enriched with synthetic non-geometric data so object-graph traversal, attribute lookup, and roundtrip stability can be measured on a mixed payload.",
+  "outputs": [
+    {
+      "byte_size": null,
+      "checksum": null,
+      "path": null,
+      "published": false,
+      "representation": "cityjson"
+    }
+  ],
+  "owner": "cjindex",
+  "preprocessing": [
+    "Select a reproducible 3DBAG slice through cjindex.",
+    "Materialize the layout required by this case.",
+    "Apply the synthetic enrichment step after preparing the base 3DBAG slice.",
+    "Record checksums, byte sizes, and object counts in a future published release."
+  ],
+  "reference": "Reuse the cjindex 3DBAG preparation flow until this repository publishes pinned real-data artifacts.",
+  "selector": "Pinned tile selection and release metadata have not been published yet.",
+  "status": "planned",
+  "upstream_url": null,
+  "upstream_version": null,
+  "version": 1
+}

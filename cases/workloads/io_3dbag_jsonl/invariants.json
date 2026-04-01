@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "The record count remains stable across streaming.",
+      "id": "record_count_preserved"
+    },
+    {
+      "description": "Stream boundaries remain stable when materialized.",
+      "id": "stream_boundaries_stable"
+    }
+  ],
+  "id": "io_3dbag_jsonl",
+  "kind": "positive",
+  "version": 1
+}

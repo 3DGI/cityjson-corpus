@@ -1,0 +1,31 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/operations/ops_3dbag_enriched/acquisition.json"
+  },
+  "assertions": [
+    "attribute_payload_preserved",
+    "geometry_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/operations/ops_3dbag_enriched/README.md",
+  "family": "operation_kernel",
+  "geometry_validity": "real-preserved",
+  "id": "ops_3dbag_enriched",
+  "layer": "operation",
+  "operations": [
+    "bbox",
+    "filter",
+    "attribute_lookup",
+    "roundtrip"
+  ],
+  "primary_cost": "allocation",
+  "representation": "cityjson",
+  "scale": "medium",
+  "secondary_costs": [
+    "memory",
+    "serialize"
+  ],
+  "source_kind": "real-geometry-enriched",
+  "version": 1
+}

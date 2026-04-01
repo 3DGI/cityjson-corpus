@@ -1,20 +1,19 @@
 # Data Generation
 
-`cityjson-benchmarks` contains the benchmark catalog in `catalog/corpus.json`,
-the migrated shared case layout under `cases/`, and the synthetic generation
-fixtures in `profiles/cases/`. Generated benchmark data is not checked in.
-The `just generate-data` command materializes current synthetic cases into
-`artifacts/generated/` and writes a machine-readable index at
+`cityjson-benchmarks` keeps the canonical corpus contract under `cases/` and
+renders a derived machine-readable index at `catalog/cases.json`. Synthetic
+`profile.json` fixtures live inside their owning case directories. Generated
+benchmark data is not checked in. The `just generate-data` command
+materializes current synthetic cases into `artifacts/generated/` and writes a
+machine-readable index at
 `artifacts/benchmark-index.json`.
 
 Real-data corpus members are kept separate. Their acquisition metadata
 references the `cjindex` 3DBAG preparation flow until this repository
 publishes its own pinned release artifacts.
 
-The corpus also carries machine-readable invariants in
-[`invariants/corpus.md`](invariants/corpus.md), a negative fixture tranche
-under [`invalid/`](invalid/index.md), and a schema-backed case bootstrap path
-under [`cases/`](cases/index.md).
+The corpus also carries per-case invariants and invalid fixtures under
+[`cases/`](cases/index.md).
 
 ## Requirements
 
@@ -36,8 +35,8 @@ manifest.
 
 ## What Is Generated
 
-- Synthetic cases with a `profile` entry in `catalog/corpus.json` are emitted
-  as one CityJSON file per case.
+- Synthetic cases with a `profile.json` entry in `cases/` are emitted as one
+  CityJSON file per case.
 - Real-geometry and invalid cases are listed in the benchmark index but remain
   external for now. They need a separate acquisition or rejection-fixture
   pipeline.

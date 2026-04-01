@@ -1,7 +1,7 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "cityobject_complete.city.json"
+    "source": "cases/conformance/v2_0/cityobject_complete/cityobject_complete.city.json"
   },
   "assertions": [
     "cityobject_structure_preserved"
