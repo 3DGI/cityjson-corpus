@@ -6,6 +6,14 @@ default:
 help:
     @just --list
 
+fmt:
+    uvx --from ruff ruff format .
+
+lint:
+    uvx --from ruff ruff check .
+    just validate-cases
+    just validate-profiles
+
 validate-profiles:
     ./scripts/validate_profiles.sh
 

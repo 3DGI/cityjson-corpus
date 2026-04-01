@@ -40,11 +40,15 @@ def validate_jsonish_file(path) -> None:
                 json.loads(line)
 
 
-def validate_profile_fixture(validator: Draft202012Validator, case_id: str, profile_path) -> None:
+def validate_profile_fixture(
+    validator: Draft202012Validator, case_id: str, profile_path
+) -> None:
     payload = validate_document(validator, profile_path)
     cases = payload.get("cases")
     if not isinstance(cases, list) or len(cases) != 1:
-        raise SystemExit(f"profile fixture must contain exactly one case: {profile_path}")
+        raise SystemExit(
+            f"profile fixture must contain exactly one case: {profile_path}"
+        )
 
     profile_case = cases[0]
     if not isinstance(profile_case, dict):
@@ -52,13 +56,19 @@ def validate_profile_fixture(validator: Draft202012Validator, case_id: str, prof
 
     profile_case_id = profile_case.get("id")
     if profile_case_id != case_id:
-        raise SystemExit(f"profile fixture id mismatch in {profile_path}: {profile_case_id} != {case_id}")
+        raise SystemExit(
+            f"profile fixture id mismatch in {profile_path}: {profile_case_id} != {case_id}"
+        )
 
 
-def validate_acquisition_fixture(validator: Draft202012Validator, case_id: str, acquisition_path) -> None:
+def validate_acquisition_fixture(
+    validator: Draft202012Validator, case_id: str, acquisition_path
+) -> None:
     payload = validate_document(validator, acquisition_path)
     if payload.get("id") != case_id:
-        raise SystemExit(f"acquisition id mismatch in {acquisition_path}: {payload.get('id')} != {case_id}")
+        raise SystemExit(
+            f"acquisition id mismatch in {acquisition_path}: {payload.get('id')} != {case_id}"
+        )
 
 
 def validate_tree() -> None:
@@ -76,7 +86,9 @@ def validate_tree() -> None:
 
     for record in records:
         case_payload = validate_document(case_validator, record.case_path)
-        invariants_payload = validate_document(invariants_validator, record.invariants_path)
+        invariants_payload = validate_document(
+            invariants_validator, record.invariants_path
+        )
 
         case_id = case_payload["id"]
         if case_id in seen_ids:
@@ -112,7 +124,9 @@ def validate_tree() -> None:
             acquisition_file = ROOT / acquisition_name
             if not acquisition_file.exists():
                 raise SystemExit(f"missing case acquisition file: {acquisition_file}")
-            validate_acquisition_fixture(acquisition_validator, case_id, acquisition_file)
+            validate_acquisition_fixture(
+                acquisition_validator, case_id, acquisition_file
+            )
 
         documentation_path = case_payload.get("documentation")
         if isinstance(documentation_path, str):

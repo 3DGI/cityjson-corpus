@@ -1,22 +1,42 @@
 from __future__ import annotations
 
 import json
+import importlib.util
 import sys
 from pathlib import Path
 
 import mkdocs_gen_files
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+CORPUS_CASES_PATH = SCRIPT_DIR / "corpus_cases.py"
 
-from corpus_cases import ROOT, humanize_case_id, load_case_records, repo_relative
+
+def load_corpus_cases_module():
+    spec = importlib.util.spec_from_file_location("corpus_cases", CORPUS_CASES_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(
+            f"failed to load corpus_cases module from {CORPUS_CASES_PATH}"
+        )
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules.setdefault("corpus_cases", module)
+    spec.loader.exec_module(module)
+    return module
+
+
+corpus_cases = load_corpus_cases_module()
+ROOT = corpus_cases.ROOT
+humanize_case_id = corpus_cases.humanize_case_id
+load_case_records = corpus_cases.load_case_records
+repo_relative = corpus_cases.repo_relative
 
 
 CASE_ROOT = ROOT / "cases"
 
 
-def write_markdown(source: Path, destination: str, replacements: dict[str, str] | None = None) -> None:
+def write_markdown(
+    source: Path, destination: str, replacements: dict[str, str] | None = None
+) -> None:
     text = source.read_text(encoding="utf-8")
     for old, new in (replacements or {}).items():
         text = text.replace(old, new)
@@ -122,9 +142,15 @@ def build_case_page(record) -> str:
     parts.append(render_json_block("invariants.json", record.invariants_data).rstrip())
     parts.append("")
 
-    profile_payload = load_optional_json(ROOT / record.artifact_paths["profile"]) if "profile" in record.artifact_paths else None
+    profile_payload = (
+        load_optional_json(ROOT / record.artifact_paths["profile"])
+        if "profile" in record.artifact_paths
+        else None
+    )
     acquisition_payload = (
-        load_optional_json(ROOT / record.artifact_paths["acquisition"]) if "acquisition" in record.artifact_paths else None
+        load_optional_json(ROOT / record.artifact_paths["acquisition"])
+        if "acquisition" in record.artifact_paths
+        else None
     )
 
     if profile_payload is not None:
@@ -132,7 +158,9 @@ def build_case_page(record) -> str:
         parts.append("")
 
     if acquisition_payload is not None:
-        parts.append(render_json_block("acquisition.json", acquisition_payload).rstrip())
+        parts.append(
+            render_json_block("acquisition.json", acquisition_payload).rstrip()
+        )
         parts.append("")
 
     return "\n".join(part for part in parts if part is not None).rstrip() + "\n"
@@ -145,12 +173,16 @@ def build_layer_index(title: str, records: list, index_path: str) -> str:
     for record in sorted(records, key=lambda item: item.case_id):
         case_summary = ""
         if record.readme_path is not None:
-            case_summary = summary_from_text(strip_title(record.readme_path.read_text(encoding="utf-8")))
+            case_summary = summary_from_text(
+                strip_title(record.readme_path.read_text(encoding="utf-8"))
+            )
         elif isinstance(record.case_data.get("description"), str):
             case_summary = str(record.case_data["description"])
         elif record.invariants_data.get("checks"):
             first_check = record.invariants_data["checks"][0]
-            if isinstance(first_check, dict) and isinstance(first_check.get("description"), str):
+            if isinstance(first_check, dict) and isinstance(
+                first_check.get("description"), str
+            ):
                 case_summary = str(first_check["description"])
 
         link_path = Path(case_page_path(record.case_dir)).relative_to(parent).as_posix()
@@ -206,7 +238,9 @@ def main() -> None:
     write_markdown(
         ROOT / "pipelines" / "README.md",
         "pipelines/index.md",
-        {"[`audit_corpus.sh`](audit_corpus.sh)": "[`audit_corpus.sh`](audit-corpus.md)"},
+        {
+            "[`audit_corpus.sh`](audit_corpus.sh)": "[`audit_corpus.sh`](audit-corpus.md)"
+        },
     )
     write_markdown(ROOT / "artifacts" / "README.md", "artifacts/index.md")
 
@@ -224,22 +258,32 @@ def main() -> None:
 
     write_generated_markdown(
         "cases/conformance/index.md",
-        build_layer_index("Conformance Cases", grouped_records["conformance"], "cases/conformance/index.md"),
+        build_layer_index(
+            "Conformance Cases",
+            grouped_records["conformance"],
+            "cases/conformance/index.md",
+        ),
         ROOT / "cases" / "README.md",
     )
     write_generated_markdown(
         "cases/operations/index.md",
-        build_layer_index("Operation Cases", grouped_records["operation"], "cases/operations/index.md"),
+        build_layer_index(
+            "Operation Cases", grouped_records["operation"], "cases/operations/index.md"
+        ),
         ROOT / "cases" / "README.md",
     )
     write_generated_markdown(
         "cases/workloads/index.md",
-        build_layer_index("Workload Cases", grouped_records["workload"], "cases/workloads/index.md"),
+        build_layer_index(
+            "Workload Cases", grouped_records["workload"], "cases/workloads/index.md"
+        ),
         ROOT / "cases" / "README.md",
     )
     write_generated_markdown(
         "cases/invalid/index.md",
-        build_layer_index("Invalid Cases", grouped_records["invalid"], "cases/invalid/index.md"),
+        build_layer_index(
+            "Invalid Cases", grouped_records["invalid"], "cases/invalid/index.md"
+        ),
         ROOT / "cases" / "README.md",
     )
 

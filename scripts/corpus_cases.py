@@ -99,7 +99,10 @@ def build_catalog_case(record: CaseRecord) -> JsonObject:
 
 
 def build_catalog_document(records: list[CaseRecord]) -> JsonObject:
-    cases = [build_catalog_case(record) for record in sorted(records, key=lambda item: item.case_id)]
+    cases = [
+        build_catalog_case(record)
+        for record in sorted(records, key=lambda item: item.case_id)
+    ]
     return {
         "version": 1,
         "purpose": "Derived case index for the shared CityJSON corpus. Source of truth lives under cases/.",

@@ -25,7 +25,9 @@ def main() -> None:
 
     if args.check:
         if not CORRECTNESS_INDEX_PATH.exists():
-            raise SystemExit(f"missing correctness index file: {CORRECTNESS_INDEX_PATH}")
+            raise SystemExit(
+                f"missing correctness index file: {CORRECTNESS_INDEX_PATH}"
+            )
 
         current = CORRECTNESS_INDEX_PATH.read_text(encoding="utf-8")
         if current != rendered:

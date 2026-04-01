@@ -39,10 +39,16 @@ def dummy_uv_vertices(count: int) -> list[list[float]]:
 
 def max_u64_in(value: Any) -> int | None:
     if isinstance(value, list):
-        maxima = [candidate for item in value if (candidate := max_u64_in(item)) is not None]
+        maxima = [
+            candidate for item in value if (candidate := max_u64_in(item)) is not None
+        ]
         return max(maxima) if maxima else None
     if isinstance(value, dict):
-        maxima = [candidate for item in value.values() if (candidate := max_u64_in(item)) is not None]
+        maxima = [
+            candidate
+            for item in value.values()
+            if (candidate := max_u64_in(item)) is not None
+        ]
         return max(maxima) if maxima else None
     if isinstance(value, int) and value >= 0:
         return value

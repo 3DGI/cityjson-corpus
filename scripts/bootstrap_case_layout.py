@@ -52,13 +52,20 @@ def case_id_from_name(name: str) -> str:
 def operations_for(case_id: str, representation: str, negative: bool) -> list[str]:
     if negative:
         return ["parse", "validate"]
-    if case_id == "cityjsonfeature_minimal_complete" or representation == "cityjsonfeature":
+    if (
+        case_id == "cityjsonfeature_minimal_complete"
+        or representation == "cityjsonfeature"
+    ):
         return ["parse", "stream_iteration", "serialize"]
     if case_id == "cityjson_fake_complete":
         return ["parse", "validate", "roundtrip"]
     if case_id.startswith("geometry_"):
         return ["parse", "geometry_validation", "roundtrip"]
-    if case_id.startswith("appearance_") or case_id.startswith("material_") or case_id.startswith("texture_"):
+    if (
+        case_id.startswith("appearance_")
+        or case_id.startswith("material_")
+        or case_id.startswith("texture_")
+    ):
         return ["parse", "serialize", "roundtrip"]
     if case_id.startswith("semantic_"):
         return ["parse", "roundtrip", "semantic_resolution"]
@@ -141,7 +148,11 @@ def primary_cost(case_id: str, representation: str, negative: bool) -> str:
         return "deserialize"
     if representation == "cityjsonfeature":
         return "io"
-    if case_id.startswith("appearance_") or case_id.startswith("material_") or case_id.startswith("texture_"):
+    if (
+        case_id.startswith("appearance_")
+        or case_id.startswith("material_")
+        or case_id.startswith("texture_")
+    ):
         return "serialize"
     return "deserialize"
 
@@ -151,7 +162,11 @@ def secondary_costs(case_id: str, representation: str, negative: bool) -> list[s
         return ["validate"]
     if representation == "cityjsonfeature":
         return ["deserialize", "serialize"]
-    if case_id.startswith("appearance_") or case_id.startswith("material_") or case_id.startswith("texture_"):
+    if (
+        case_id.startswith("appearance_")
+        or case_id.startswith("material_")
+        or case_id.startswith("texture_")
+    ):
         return ["deserialize"]
     return ["serialize"]
 
@@ -160,8 +175,9 @@ def repo_relative(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
 
 
-def case_dict(case_id: str, source_output_path: Path, negative: bool) -> dict[str, object]:
-    source_name = source_output_path.name
+def case_dict(
+    case_id: str, source_output_path: Path, negative: bool
+) -> dict[str, object]:
     representation = source_representation(source_output_path)
     assertions = assertions_for(case_id, negative)
     case = {
@@ -185,12 +201,16 @@ def case_dict(case_id: str, source_output_path: Path, negative: bool) -> dict[st
     }
 
     if not negative:
-        case["description"] = f"{humanize(case_id)} conformance fixture migrated from serde_cityjson."
+        case["description"] = (
+            f"{humanize(case_id)} conformance fixture migrated from serde_cityjson."
+        )
 
     return case
 
 
-def invariants_dict(case_id: str, source_name: str, negative: bool) -> dict[str, object]:
+def invariants_dict(
+    case_id: str, source_name: str, negative: bool
+) -> dict[str, object]:
     assertions = assertions_for(case_id, negative)
     invariants: dict[str, object] = {
         "version": 1,
@@ -207,10 +227,14 @@ def invariants_dict(case_id: str, source_name: str, negative: bool) -> dict[str,
 
 
 def write_json(path: Path, payload: dict[str, object]) -> None:
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
 
-def emit_case(case_id: str, source_path: Path, output_root: Path, negative: bool) -> None:
+def emit_case(
+    case_id: str, source_path: Path, output_root: Path, negative: bool
+) -> None:
     source_name = source_path.name
     case_dir = output_root / case_id
     case_dir.mkdir(parents=True, exist_ok=True)
@@ -218,7 +242,9 @@ def emit_case(case_id: str, source_path: Path, output_root: Path, negative: bool
     if source_path.resolve() != output_source_path.resolve():
         shutil.copy2(source_path, output_source_path)
     write_json(case_dir / "case.json", case_dict(case_id, output_source_path, negative))
-    write_json(case_dir / "invariants.json", invariants_dict(case_id, source_name, negative))
+    write_json(
+        case_dir / "invariants.json", invariants_dict(case_id, source_name, negative)
+    )
 
 
 def bootstrap_conformance_cases() -> int:
@@ -236,7 +262,12 @@ def bootstrap_conformance_cases() -> int:
             continue
         if source_path.suffix not in {".json", ".jsonl"}:
             continue
-        emit_case(case_id_from_name(source_path.name), source_path, OUTPUT_CONFORMANCE_ROOT, negative=False)
+        emit_case(
+            case_id_from_name(source_path.name),
+            source_path,
+            OUTPUT_CONFORMANCE_ROOT,
+            negative=False,
+        )
         emitted += 1
     return emitted
 
@@ -261,7 +292,12 @@ def bootstrap_invalid_cases() -> int:
 
     emitted = 0
     for source_path in source_paths:
-        emit_case(case_id_from_name(source_path.name), source_path, OUTPUT_INVALID_ROOT, negative=True)
+        emit_case(
+            case_id_from_name(source_path.name),
+            source_path,
+            OUTPUT_INVALID_ROOT,
+            negative=True,
+        )
         emitted += 1
     return emitted
 
