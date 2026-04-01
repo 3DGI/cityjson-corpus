@@ -66,7 +66,7 @@ while IFS=$'\t' read -r case_id acquisition_path; do
     jq -c --arg case_id "${case_id}" --arg output_path "${acquired_output_path}" \
       '. + {($case_id): $output_path}' <<<"${acquired_map_json}"
   )"
-done < <(jq -r '.cases[] | select(.artifact_mode == "acquired" and .artifact_paths.acquisition != null) | [.id, .artifact_paths.acquisition] | @tsv' "${corpus_path}")
+done < <(jq -r '.cases[] | select(.layer == "workload" and .artifact_mode == "acquired" and .artifact_paths.acquisition != null) | [.id, .artifact_paths.acquisition] | @tsv' "${corpus_path}")
 
 while IFS=$'\t' read -r case_id profile_path; do
   [[ -n "${case_id}" ]] || continue
@@ -82,7 +82,7 @@ while IFS=$'\t' read -r case_id profile_path; do
     --manifest "${case_profile_path}" \
     --schema "${schema_path}" \
     --output "${output_dir}/${case_id}.city.json"
-done < <(jq -r '.cases[] | select(.artifact_paths.profile != null) | [.id, .artifact_paths.profile] | @tsv' "${corpus_path}")
+done < <(jq -r '.cases[] | select(.layer == "workload" and .artifact_paths.profile != null) | [.id, .artifact_paths.profile] | @tsv' "${corpus_path}")
 
 jq -S \
   --arg output_dir "${output_dir}" \
@@ -94,7 +94,16 @@ jq -S \
   {
     version: .version,
     purpose: .purpose,
-    case_count: (.cases | length),
+    case_count: (
+      [.cases[]
+       | select(.layer == "workload")
+       | select(
+           .artifact_paths.profile != null
+           or (.artifact_paths.profile == null and (.artifact_mode != "acquired" or ($acquired_map[.id] != null)))
+         )]
+      | length
+    ),
+    catalog_case_count: (.cases | length),
     catalog: $corpus_path,
     generator: {
       tool: "cjfake",
@@ -104,6 +113,7 @@ jq -S \
     output_dir: $output_dir,
     generated_cases: [
       .cases[]
+      | select(.layer == "workload")
       | select(.artifact_paths.profile != null)
       | {
           id,
@@ -124,6 +134,7 @@ jq -S \
     ],
     other_cases: [
       .cases[]
+      | select(.layer == "workload")
       | select(.artifact_paths.profile == null)
       | select(.artifact_mode != "acquired" or ($acquired_map[.id] != null))
       | {

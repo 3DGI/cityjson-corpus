@@ -7,7 +7,7 @@
     {
       "byte_size": null,
       "checksum": null,
-      "path": "artifacts/acquired/3dbag/v20231008/10-356-724.city.json",
+      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.city.json",
       "published": true,
       "representation": "cityjson"
     }
@@ -20,7 +20,7 @@
   "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw slice.",
   "selector": "Pinned 3DBAG release metadata is captured by the shared acquisition script.",
   "status": "published",
-  "upstream_url": "https://data.3dbag.nl/v20231008/",
-  "upstream_version": "v20231008",
+  "upstream_url": "https://data.3dbag.nl/v20250903/",
+  "upstream_version": "2025.09.03",
   "version": 1
 }

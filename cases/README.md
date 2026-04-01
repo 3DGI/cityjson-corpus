@@ -12,7 +12,8 @@ Each case directory owns:
 
 The main subtrees are:
 
-- `conformance/v2_0/` for migrated `serde_cityjson` conformance fixtures
+- `conformance/v2_0/` for migrated `serde_cityjson` conformance fixtures,
+  materialized as minimal valid CityJSON documents
 - `conformance/synthetic/` for generated conformance and omnibus profiles
 - `operations/` for medium-size real-data operation kernels
 - `workloads/` for synthetic stress fixtures and real-data I/O workloads

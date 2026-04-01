@@ -34,10 +34,11 @@ The migration plan for the shared corpus is at
   conformance fixtures under `cases/conformance/v2_0/` and rewrites the
   derived catalog.
 - `just sync-catalog` rewrites `catalog/cases.json` from `cases/`.
-- `just acquire-3dbag` materializes the published raw 3DBAG slice under
-  `artifacts/acquired/3dbag/v20231008/`.
-- `just generate-data` materializes the synthetic cases into
-  `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
+- `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
+  slice under `artifacts/acquired/3dbag/v20250903/`.
+- `just generate-data` materializes the synthetic workload cases into
+  `artifacts/generated/` and writes the benchmark-only export at
+  `artifacts/benchmark-index.json`.
 - `just audit-corpus` runs validation and writes a corpus summary to
   `artifacts/corpus-audit.json`.
 - `just docs-build` builds the MkDocs site through `uv`.
