@@ -1223,7 +1223,7 @@
     }
   ],
   "catalog": "catalog/cases.json",
-  "catalog_case_count": 52,
+  "catalog_case_count": 53,
   "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures.",
   "version": 1
 }

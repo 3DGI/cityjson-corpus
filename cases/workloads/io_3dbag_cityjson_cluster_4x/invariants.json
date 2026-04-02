@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "The number of objects remains stable on parse and serialize.",
+      "id": "object_count_preserved"
+    },
+    {
+      "description": "The bounding box remains stable across the I/O path.",
+      "id": "bbox_stable"
+    }
+  ],
+  "id": "io_3dbag_cityjson_cluster_4x",
+  "kind": "positive",
+  "version": 1
+}

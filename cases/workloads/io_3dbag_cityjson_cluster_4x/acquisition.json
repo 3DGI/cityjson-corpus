@@ -1,27 +1,27 @@
 {
   "dataset": "3DBAG",
-  "id": "io_3dbag_cityjson",
+  "id": "io_3dbag_cityjson_cluster_4x",
   "license": "Use the upstream 3DBAG license terms until the corpus release metadata is published.",
-  "notes": "Monolithic real-geometry 3DBAG case stored as a whole CityJSON file. It is acquired by the shared corpus repo and consumed directly by downstream benchmarks.",
+  "notes": "Merged real-geometry 3DBAG workload built from four contiguous tiles in the published v20250903 release. It extends the monolithic CityJSON workload to a larger, still realistic memory and cache stress case.",
   "outputs": [
     {
       "byte_size": null,
       "checksum": null,
-      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.city.json",
+      "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json",
       "published": true,
       "representation": "cityjson"
     },
     {
       "byte_size": null,
       "checksum": null,
-      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjarrow",
+      "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjarrow",
       "published": true,
       "representation": "cityarrow"
     },
     {
       "byte_size": null,
       "checksum": null,
-      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjparquet",
+      "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjparquet",
       "published": true,
       "representation": "cityparquet"
     }
@@ -29,12 +29,13 @@
   "owner": "cjindex",
   "preprocessing": [
     "Run the shared 3DBAG acquisition script in cityjson-benchmarks.",
-    "Reuse the published raw CityJSON file for JSON read and write benchmarking.",
+    "Download the pinned 2x2 tile cluster around the base tile.",
+    "Merge the four real CityJSON tiles with cjio and publish the merged workload artifact.",
     "Export a sibling live cityarrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
     "Export a sibling cityparquet package file for package-to-memory and memory-to-package benchmarking."
   ],
-  "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw slice and native cityarrow/cityparquet artifacts.",
-  "selector": "Pinned 3DBAG release metadata is captured by the shared acquisition script.",
+  "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw tiles, merged stress case, and native cityarrow/cityparquet artifacts.",
+  "selector": "Pinned v20250903 tiles: 10-758-50, 10-756-48, 10-756-50, and 10-758-48.",
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",
   "upstream_version": "2025.09.03",

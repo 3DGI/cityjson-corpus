@@ -35,7 +35,8 @@ The migration plan for the shared corpus is at
   derived catalog.
 - `just sync-catalog` rewrites `catalog/cases.json` from `cases/`.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
-  slice under `artifacts/acquired/3dbag/v20250903/`.
+  slice under `artifacts/acquired/3dbag/v20250903/`, including the sibling
+  cityarrow and cityparquet benchmark artifacts.
 - `just generate-data` materializes the synthetic workload cases into
   `artifacts/generated/` and writes the benchmark-only export at
   `artifacts/benchmark-index.json`.
@@ -66,6 +67,6 @@ The migration plan for the shared corpus is at
 
 Tools such as `serde_cityjson`, `cjlib`, and `cjindex` consume this corpus.
 These crates read the shared corpus index and reuse the same synthetic fixtures
-instead of defining separate benchmark models. Published raw 3DBAG artifacts
-are acquired here and consumed directly by downstream crates; layout-specific
-prep still belongs to consumer repos.
+instead of defining separate benchmark models. Published 3DBAG CityJSON,
+cityarrow, and cityparquet artifacts are acquired here and consumed directly
+by downstream crates.

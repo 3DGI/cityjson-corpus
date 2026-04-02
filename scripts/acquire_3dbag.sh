@@ -6,72 +6,161 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 release_date="${CORPUS_3DBAG_VERSION:-2025.09.03}"
 version_slug="v${release_date//./}"
 output_root="${CORPUS_3DBAG_OUTPUT_ROOT:-${repo_dir}/artifacts/acquired/3dbag/${version_slug}}"
-tile_id="${CORPUS_3DBAG_TILE_ID:-10-758-50}"
-IFS="-" read -r tile_x tile_y tile_z <<<"${tile_id}"
-if [[ -z "${tile_x:-}" || -z "${tile_y:-}" || -z "${tile_z:-}" ]]; then
-  echo "invalid 3DBAG tile id: ${tile_id}" >&2
-  exit 1
-fi
-download_url="https://data.3dbag.nl/${version_slug}/tiles/${tile_x}/${tile_y}/${tile_z}/${tile_id}.city.json.gz"
-output_path="${output_root}/${tile_id}.city.json"
+cjlib_cargo_manifest="${CORPUS_CJLIB_CARGO_MANIFEST:-${repo_dir}/../cjlib/Cargo.toml}"
+base_tile_id="${CORPUS_3DBAG_TILE_ID:-10-758-50}"
+cluster_tile_ids_raw="${CORPUS_3DBAG_CLUSTER_TILE_IDS:-10-756-48 10-756-50 10-758-48}"
+cluster_output_name="${CORPUS_3DBAG_CLUSTER_OUTPUT_NAME:-cluster_4x.city.json}"
 metadata_path="${output_root}/metadata.json"
 manifest_path="${output_root}/manifest.json"
 
-for tool in curl gunzip sha256sum jq; do
+for tool in cargo curl gunzip sha256sum jq uvx; do
   if ! command -v "${tool}" >/dev/null 2>&1; then
     echo "missing required tool: ${tool}" >&2
     exit 1
   fi
 done
 
+if [[ ! -f "${cjlib_cargo_manifest}" ]]; then
+  echo "missing cjlib Cargo manifest: ${cjlib_cargo_manifest}" >&2
+  exit 1
+fi
+
 mkdir -p "${output_root}"
 
-gzip_path="${output_path}.gz"
-curl -fsSL "${download_url}" -o "${gzip_path}"
-gunzip -f "${gzip_path}"
+read -r -a cluster_tile_ids <<<"${cluster_tile_ids_raw}"
+if [[ "${#cluster_tile_ids[@]}" -eq 0 ]]; then
+  echo "cluster tile list is empty" >&2
+  exit 1
+fi
+
+download_tile() {
+  local tile_id="$1"
+  local tile_x tile_y tile_z download_url output_path gzip_path
+
+  IFS="-" read -r tile_x tile_y tile_z <<<"${tile_id}"
+  if [[ -z "${tile_x:-}" || -z "${tile_y:-}" || -z "${tile_z:-}" ]]; then
+    echo "invalid 3DBAG tile id: ${tile_id}" >&2
+    exit 1
+  fi
+
+  output_path="${output_root}/${tile_id}.city.json"
+  if [[ -f "${output_path}" ]]; then
+    return
+  fi
+
+  download_url="https://data.3dbag.nl/${version_slug}/tiles/${tile_x}/${tile_y}/${tile_z}/${tile_id}.city.json.gz"
+  gzip_path="${output_path}.gz"
+  curl -fsSL "${download_url}" -o "${gzip_path}"
+  gunzip -f "${gzip_path}"
+}
+
+download_tile "${base_tile_id}"
+for tile_id in "${cluster_tile_ids[@]}"; do
+  download_tile "${tile_id}"
+done
+
+cluster_output_path="${output_root}/${cluster_output_name}"
+merge_args=("${output_root}/${base_tile_id}.city.json")
+for tile_id in "${cluster_tile_ids[@]}"; do
+  merge_args+=(merge "${output_root}/${tile_id}.city.json")
+done
+merge_args+=(save "${cluster_output_path}")
+uvx --from cjio cjio "${merge_args[@]}"
+
+export_native_formats() {
+  local input_json="$1"
+  local stem="$2"
+  cargo run --quiet --manifest-path "${cjlib_cargo_manifest}" --bin bench_export_formats -- \
+    --input "${input_json}" \
+    --arrow-file "${output_root}/${stem}.cjarrow" \
+    --parquet-file "${output_root}/${stem}.cjparquet"
+}
+
+export_native_formats "${output_root}/${base_tile_id}.city.json" "${base_tile_id}"
+export_native_formats "${cluster_output_path}" "${cluster_output_name%.city.json}"
+
+tile_urls_json="$(
+  {
+    printf '%s\n' "${base_tile_id}"
+    printf '%s\n' "${cluster_tile_ids[@]}"
+  } | while IFS= read -r tile_id; do
+    IFS="-" read -r tile_x tile_y tile_z <<<"${tile_id}"
+    jq -n -c \
+      --arg tile_id "${tile_id}" \
+      --arg download_url "https://data.3dbag.nl/${version_slug}/tiles/${tile_x}/${tile_y}/${tile_z}/${tile_id}.city.json.gz" \
+      '{tile_id: $tile_id, download_url: $download_url}'
+  done | jq -s -S .
+)"
+
+outputs_json="$(
+  {
+    printf '%s\t%s\n' "${base_tile_id}.city.json" "cityjson"
+    printf '%s\t%s\n' "${base_tile_id}.cjarrow" "cityarrow"
+    printf '%s\t%s\n' "${base_tile_id}.cjparquet" "cityparquet"
+    printf '%s\t%s\n' "${cluster_output_name}" "cityjson"
+    printf '%s\t%s\n' "${cluster_output_name%.city.json}.cjarrow" "cityarrow"
+    printf '%s\t%s\n' "${cluster_output_name%.city.json}.cjparquet" "cityparquet"
+  } | while IFS=$'\t' read -r relative_name representation; do
+    output_path="${output_root}/${relative_name}"
+    jq -n -c \
+      --arg path "artifacts/acquired/3dbag/${version_slug}/${relative_name}" \
+      --arg representation "${representation}" \
+      --arg checksum "$(sha256sum "${output_path}" | awk '{print $1}')" \
+      --argjson byte_size "$(stat -c '%s' "${output_path}")" \
+      '{path: $path, representation: $representation, checksum: $checksum, byte_size: $byte_size}'
+  done | jq -s -S .
+)"
+
 jq -n -S \
   --arg dataset "3DBAG" \
-  --arg tile_id "${tile_id}" \
+  --arg base_tile_id "${base_tile_id}" \
   --arg upstream_version "${release_date}" \
   --arg upstream_release_path "${version_slug}" \
   --arg tile_index_url "https://data.3dbag.nl/${version_slug}/tile_index.fgb" \
-  --arg download_url "${download_url}" \
+  --arg cluster_output_name "${cluster_output_name}" \
+  --argjson cluster_tile_ids "$(printf '%s\n' "${cluster_tile_ids[@]}" | jq -R . | jq -s .)" \
+  --argjson tile_urls "${tile_urls_json}" \
   '
   {
     dataset: $dataset,
-    tile_id: $tile_id,
     upstream_version: $upstream_version,
     upstream_release_path: $upstream_release_path,
     tile_index_url: $tile_index_url,
-    download_url: $download_url
+    base_tile_id: $base_tile_id,
+    cluster_tile_ids: $cluster_tile_ids,
+    cluster_output_name: $cluster_output_name,
+    downloads: $tile_urls
   }
   ' > "${metadata_path}"
 
-checksum="$(sha256sum "${output_path}" | awk '{print $1}')"
-byte_size="$(stat -c '%s' "${output_path}")"
-
-jq -S \
+jq -n -S \
   --arg dataset "3DBAG" \
-  --arg id "${tile_id}" \
-  --arg version "${release_date}" \
-  --arg download_url "${download_url}" \
-  --arg output_path "artifacts/acquired/3dbag/${version_slug}/${tile_id}.city.json" \
-  --arg checksum "${checksum}" \
-  --argjson byte_size "${byte_size}" \
+  --arg upstream_version "${release_date}" \
+  --arg base_tile_id "${base_tile_id}" \
+  --arg cluster_case_id "io_3dbag_cityjson_cluster_4x" \
+  --arg cluster_output_name "${cluster_output_name}" \
+  --argjson cluster_tile_ids "$(printf '%s\n' "${cluster_tile_ids[@]}" | jq -R . | jq -s .)" \
+  --argjson outputs "${outputs_json}" \
   '
   {
     dataset: $dataset,
-    id: $id,
-    upstream_version: $version,
-    download_url: $download_url,
-    output: {
-      path: $output_path,
-      checksum: $checksum,
-      byte_size: $byte_size
-    }
+    upstream_version: $upstream_version,
+    base_tile_id: $base_tile_id,
+    cluster_case_id: $cluster_case_id,
+    cluster_output_name: $cluster_output_name,
+    cluster_tile_ids: $cluster_tile_ids,
+    outputs: $outputs
   }
   ' > "${manifest_path}"
 
-echo "wrote ${output_path}"
+echo "wrote ${output_root}/${base_tile_id}.city.json"
+echo "wrote ${output_root}/${base_tile_id}.cjarrow"
+echo "wrote ${output_root}/${base_tile_id}.cjparquet"
+for tile_id in "${cluster_tile_ids[@]}"; do
+  echo "wrote ${output_root}/${tile_id}.city.json"
+done
+echo "wrote ${cluster_output_path}"
+echo "wrote ${output_root}/${cluster_output_name%.city.json}.cjarrow"
+echo "wrote ${output_root}/${cluster_output_name%.city.json}.cjparquet"
 echo "wrote ${metadata_path}"
 echo "wrote ${manifest_path}"

@@ -12,7 +12,10 @@ Real-data corpus members are kept separate. Their acquisition metadata points
 at the shared 3DBAG raw-slice acquisition, and `just acquire-3dbag`
 materializes the pinned September 3, 2025 release slice under
 `artifacts/acquired/3dbag/v20250903/` without checking the CityJSON files into
-git.
+git. That acquisition now includes both the baseline `10-758-50.city.json`
+tile and the published merged `cluster_4x.city.json` stress workload, plus
+native `.cjarrow` live-stream files and `.cjparquet` package files for each
+workload.
 
 The corpus also carries per-case invariants and invalid fixtures under
 [`cases/`](cases/index.md).
@@ -25,6 +28,9 @@ The corpus also carries per-case invariants and invalid fixtures under
 - A local sibling checkout of `../cjfake`, or an override via
   `CJFAKE_CARGO_MANIFEST`
 - `curl`, `gunzip`, and `sha256sum` for the published 3DBAG acquisition
+- A local sibling checkout of `../cjlib`, or an override via
+  `CORPUS_CJLIB_CARGO_MANIFEST`, to export the native cityarrow and
+  cityparquet artifacts
 
 ## Generate The Data
 
@@ -41,8 +47,10 @@ manifest.
 
 - Synthetic cases with a `profile.json` entry in `cases/` are emitted as one
   CityJSON file per case.
-- Published real-data cases point at the raw acquired CityJSON file under
-  `artifacts/acquired/3dbag/v20250903/`.
+- Published real-data cases point at the acquired artifacts under
+  `artifacts/acquired/3dbag/v20250903/`, including the single-tile baseline
+  and merged 4-tile stress case in CityJSON, cityarrow, and cityparquet
+  forms.
 - Cases without a published acquisition remain metadata-only until their
   consumer-owned pipeline publishes concrete artifacts.
 

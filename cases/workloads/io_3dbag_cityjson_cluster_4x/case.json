@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/workloads/io_3dbag_cityjson_cluster_4x/acquisition.json"
+  },
+  "assertions": [
+    "object_count_preserved",
+    "bbox_stable"
+  ],
+  "cityjson_version": "2.0",
+  "documentation": "cases/workloads/io_3dbag_cityjson_cluster_4x/README.md",
+  "family": "io",
+  "geometry_validity": "real-preserved",
+  "id": "io_3dbag_cityjson_cluster_4x",
+  "layer": "workload",
+  "operations": [
+    "scan",
+    "parse",
+    "serialize"
+  ],
+  "primary_cost": "io",
+  "representation": "cityjson",
+  "scale": "large",
+  "secondary_costs": [
+    "deserialize",
+    "memory"
+  ],
+  "source_kind": "real-geometry",
+  "version": 1
+}
