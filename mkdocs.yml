@@ -8,7 +8,6 @@ nav:
       - Repository Overview: repository/index.md
   - Workflow:
       - Data Generation: data-generation.md
-      - Shared Corpus Migration Plan: shared-corpus-migration-plan.md
   - Corpus:
       - Catalog Overview: catalog/index.md
       - Case Layout: cases/index.md
@@ -20,7 +19,6 @@ nav:
       - Profiles Overview: profiles/index.md
   - Pipelines:
       - Pipelines Overview: pipelines/index.md
-      - Audit Corpus Script: pipelines/audit-corpus.md
   - Artifacts:
       - Artifacts Overview: artifacts/index.md
   - Reference Data:

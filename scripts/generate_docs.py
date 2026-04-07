@@ -206,7 +206,6 @@ def main() -> None:
             "profiles/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
             "cases/README.md": "../cases/index.md",
             "docs/data-generation.md": "../data-generation.md",
-            "docs/shared-corpus-migration-plan.md": "../shared-corpus-migration-plan.md",
             "docs/adr/0009-cityjson-benchmark-corpus-design.md": "../adr/0009-cityjson-benchmark-corpus-design.md",
         },
     )
@@ -235,13 +234,7 @@ def main() -> None:
             "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
     )
-    write_markdown(
-        ROOT / "pipelines" / "README.md",
-        "pipelines/index.md",
-        {
-            "[`audit_corpus.sh`](audit_corpus.sh)": "[`audit_corpus.sh`](audit-corpus.md)"
-        },
-    )
+    write_markdown(ROOT / "pipelines" / "README.md", "pipelines/index.md")
     write_markdown(ROOT / "artifacts" / "README.md", "artifacts/index.md")
 
     grouped_records: dict[str, list] = {
@@ -316,13 +309,6 @@ def main() -> None:
         "reference/acquisition-schema.md",
         "Acquisition Schema",
         "Machine-readable schema for per-case real-data acquisition metadata.",
-    )
-    write_reference_page(
-        ROOT / "pipelines" / "audit_corpus.sh",
-        "pipelines/audit-corpus.md",
-        "Audit Corpus Pipeline Script",
-        "Shell entrypoint for validating and auditing the shared corpus.",
-        language="sh",
     )
 
 

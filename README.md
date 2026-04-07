@@ -8,9 +8,6 @@ projects to consume. The corpus contract is kept in one place so generators
 and benchmark harnesses share a single model instead of each defining their
 own.
 
-The migration plan for the shared corpus is at
-[docs/shared-corpus-migration-plan.md](docs/shared-corpus-migration-plan.md).
-
 ## Repository Layout
 
 - `cases/` - canonical shared corpus layout. Each case directory owns its
@@ -22,36 +19,53 @@ The migration plan for the shared corpus is at
 - `artifacts/` - derived benchmark outputs, raw acquired slices, and release
   metadata.
 - `schemas/` - JSON Schemas for case, invariants, and acquisition metadata.
+- `scripts/` - validation, rendering, and data-pipeline scripts.
 - `docs/` - repository documentation and the design ADRs.
 
-## Local Workflow
+## Corpus Use Cases
 
-- `just validate-cases` validates the case tree and checks that
-  `catalog/cases.json` matches it.
-- `just validate-profiles` checks that generated-case profile fixtures still
-  match their owning case metadata.
-- `just bootstrap-cases` refreshes the migrated `serde_cityjson`
-  conformance fixtures under `cases/conformance/v2_0/` and rewrites the
-  derived catalog.
-- `just sync-catalog` rewrites `catalog/cases.json` from `cases/`.
+The corpus serves two purposes:
+
+- **Correctness testing.** Conformance, invalid, and operations cases define
+  invariants that consuming tools must satisfy. Their fixtures are checked in
+  or acquired, never generated. `artifacts/correctness-index.json` is a
+  derived index of these cases, rendered by `just sync-catalog`.
+- **Benchmark performance.** Workload cases provide synthetic stress fixtures
+  and real-data I/O workloads for measuring throughput and latency.
+  `artifacts/benchmark-index.json` lists their output paths after
+  `just generate-data` materializes them.
+
+## Getting Started
+
+Prerequisites: `just`, `uv`, `jq`, `cargo`, and a sibling checkout of
+`../cjfake` (or override via `CJFAKE_CARGO_MANIFEST`).
+
+1. `just lint` - verify the case tree and profiles are healthy.
+2. `just acquire-3dbag` - download the 3DBAG slice into `artifacts/acquired/`.
+3. `just generate-data` - materialize synthetic workloads into
+   `artifacts/generated/`.
+
+Conformance and invalid cases are checked-in fixtures that need no generation.
+They are ready to use for correctness testing immediately after cloning.
+
+After step 3, `artifacts/benchmark-index.json` lists all workload cases and
+their output paths.
+
+## Recipes
+
+- `just fmt` formats Python files with ruff.
+- `just lint` runs ruff check and validates the case tree, catalog sync, and
+  profile fixtures.
+- `just sync-catalog` rewrites `catalog/cases.json` and
+  `artifacts/correctness-index.json` from `cases/`.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
   slice under `artifacts/acquired/3dbag/v20250903/`, including the sibling
   cityarrow and cityparquet benchmark artifacts.
 - `just generate-data` materializes the synthetic workload cases into
   `artifacts/generated/` and writes the benchmark-only export at
   `artifacts/benchmark-index.json`.
-- `just audit-corpus` runs validation and writes a corpus summary to
-  `artifacts/corpus-audit.json`.
 - `just docs-build` builds the MkDocs site through `uv`.
 - `just docs-serve` starts a local docs server through `uv`.
-
-## Requirements
-
-- `just` for repository tasks.
-- `uv` for MkDocs dependency management and docs builds.
-- `jq` and `cargo` for corpus validation and auditing.
-- A sibling checkout of `../cjfake` for profile validation and the corpus
-  audit pipeline.
 
 ## Documentation
 
@@ -60,7 +74,6 @@ The migration plan for the shared corpus is at
 - [Profile schema](profiles/cjfake-manifest.schema.json)
 - [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)
-- [Shared corpus migration plan](docs/shared-corpus-migration-plan.md)
 - [Corpus design ADR](docs/adr/0009-cityjson-benchmark-corpus-design.md)
 
 ## Benchmark Consumers

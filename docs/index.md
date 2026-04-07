@@ -17,7 +17,6 @@ and release artifacts are separate from generator and consumer implementations.
 - [Profiles](profiles/index.md)
 - [Pipelines](pipelines/index.md)
 - [Data Generation](data-generation.md)
-- [Shared Corpus Migration Plan](shared-corpus-migration-plan.md)
 - [Artifacts](artifacts/index.md)
 - [Derived case catalog reference](reference/cases.md)
 - [CJFake manifest schema](reference/cjfake-manifest-schema.md)
@@ -28,13 +27,11 @@ and release artifacts are separate from generator and consumer implementations.
 
 ## Local Workflow
 
-- `just validate-cases` validates the case tree and the derived catalog and
-  correctness index.
+- `just lint` validates the case tree, catalog sync, profile fixtures, and
+  runs ruff check.
 - `just sync-catalog` refreshes `catalog/cases.json` and
   `artifacts/correctness-index.json`.
-- `just validate-profiles` checks that catalog entries and profile fixtures
-  still match.
+- `just acquire-3dbag` downloads the published 3DBAG slice into
+  `artifacts/acquired/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
-- `just audit-corpus` runs validation and writes a summary artifact to
-  `artifacts/corpus-audit.json`.
