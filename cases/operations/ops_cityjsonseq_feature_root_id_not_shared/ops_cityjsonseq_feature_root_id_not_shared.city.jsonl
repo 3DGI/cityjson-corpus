@@ -1,0 +1,3 @@
+{"type":"CityJSON","version":"2.0","metadata":{"title":"stream-base"},"CityObjects":{},"vertices":[]}
+{"type":"CityJSONFeature","id":"building-1","metadata":{"title":"stream-base"},"CityObjects":{"building-1":{"type":"Building"}},"vertices":[]}
+{"type":"CityJSONFeature","id":"building-2","metadata":{"title":"stream-base"},"CityObjects":{"building-2":{"type":"BuildingPart"}},"vertices":[]}

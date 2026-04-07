@@ -1,11 +1,10 @@
 {
   "type": "CityJSONFeature",
-  "id": "myid",
+  "id": "missing-main-object",
   "CityObjects": {
-    "myid": {
+    "building-1": {
       "type": "Building"
     }
   },
-  "vertices": [],
-  "appearance": {}
+  "vertices": []
 }

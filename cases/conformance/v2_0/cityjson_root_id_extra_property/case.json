@@ -1,0 +1,27 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/cityjson_root_id_extra_property/cityjson_root_id_extra_property.city.json"
+  },
+  "assertions": [
+    "root_extra_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
+  "family": "spec_atom",
+  "geometry_validity": "dummy",
+  "id": "cityjson_root_id_extra_property",
+  "layer": "conformance",
+  "operations": [
+    "parse",
+    "serialize"
+  ],
+  "primary_cost": "deserialize",
+  "representation": "cityjson",
+  "scale": "tiny",
+  "secondary_costs": [
+    "serialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

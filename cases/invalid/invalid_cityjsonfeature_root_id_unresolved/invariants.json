@@ -1,0 +1,13 @@
+{
+  "checks": [
+    {
+      "description": "A CityJSONFeature whose root id does not resolve is rejected.",
+      "id": "feature_root_id_unresolved"
+    }
+  ],
+  "expected_result": "reject",
+  "fixture": "invalid_cityjsonfeature_root_id_unresolved.city.jsonl",
+  "id": "invalid_cityjsonfeature_root_id_unresolved",
+  "kind": "negative",
+  "version": 1
+}

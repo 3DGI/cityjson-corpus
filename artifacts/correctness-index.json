@@ -1,5 +1,5 @@
 {
-  "case_count": 39,
+  "case_count": 42,
   "cases": [
     {
       "artifact_mode": "checked-in",
@@ -128,6 +128,36 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityjson_root_id_extra_property/cityjson_root_id_extra_property.city.json"
+      },
+      "assertions": [
+        "root_extra_preserved"
+      ],
+      "case": "cases/conformance/v2_0/cityjson_root_id_extra_property/case.json",
+      "cityjson_version": "2.0",
+      "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
+      "family": "spec_atom",
+      "geometry_validity": "dummy",
+      "id": "cityjson_root_id_extra_property",
+      "invariants": "cases/conformance/v2_0/cityjson_root_id_extra_property/invariants.json",
+      "layer": "conformance",
+      "operations": [
+        "parse",
+        "serialize"
+      ],
+      "path": "cases/conformance/v2_0/cityjson_root_id_extra_property",
+      "primary_cost": "deserialize",
+      "representation": "cityjson",
+      "scale": "tiny",
+      "secondary_costs": [
+        "serialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 1
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
         "source": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/cityjsonfeature_minimal_complete.city.jsonl"
       },
       "assertions": [
@@ -152,6 +182,38 @@
       "scale": "tiny",
       "secondary_costs": [
         "deserialize",
+        "serialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 1
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/cityjsonfeature_root_id_resolves.city.jsonl"
+      },
+      "assertions": [
+        "feature_root_id_resolves",
+        "feature_boundaries_preserved"
+      ],
+      "case": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/case.json",
+      "cityjson_version": "2.0",
+      "description": "Hand-written CityJSONFeature fixture where root id resolves to a real CityObject in the same feature.",
+      "family": "spec_atom",
+      "geometry_validity": "dummy",
+      "id": "cityjsonfeature_root_id_resolves",
+      "invariants": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/invariants.json",
+      "layer": "conformance",
+      "operations": [
+        "parse",
+        "stream_iteration",
+        "serialize"
+      ],
+      "path": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves",
+      "primary_cost": "deserialize",
+      "representation": "cityjsonfeature",
+      "scale": "tiny",
+      "secondary_costs": [
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
@@ -618,6 +680,37 @@
       "scale": "tiny",
       "secondary_costs": [
         "serialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 1
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/invalid_cityjsonfeature_root_id_unresolved.city.jsonl"
+      },
+      "assertions": [
+        "feature_root_id_unresolved"
+      ],
+      "case": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/case.json",
+      "cityjson_version": "2.0",
+      "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
+      "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
+      "family": "invalid",
+      "geometry_validity": "dummy",
+      "id": "invalid_cityjsonfeature_root_id_unresolved",
+      "invariants": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/invariants.json",
+      "layer": "invalid",
+      "operations": [
+        "parse",
+        "validate"
+      ],
+      "path": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved",
+      "primary_cost": "validate",
+      "representation": "cityjsonfeature",
+      "scale": "tiny",
+      "secondary_costs": [
+        "deserialize"
       ],
       "source_kind": "synthetic-controlled",
       "version": 1
@@ -1223,7 +1316,7 @@
     }
   ],
   "catalog": "catalog/cases.json",
-  "catalog_case_count": 53,
+  "catalog_case_count": 57,
   "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures.",
   "version": 1
 }

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Feature root id resolves to a real CityObject in the same feature item.",
+      "id": "feature_root_id_resolves"
+    },
+    {
+      "description": "Feature boundaries remain stable during streaming.",
+      "id": "feature_boundaries_preserved"
+    }
+  ],
+  "id": "cityjsonfeature_root_id_resolves",
+  "kind": "positive",
+  "version": 1
+}

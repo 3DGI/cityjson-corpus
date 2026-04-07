@@ -1,0 +1,28 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/invalid_cityjsonfeature_root_id_unresolved.city.jsonl"
+  },
+  "assertions": [
+    "feature_root_id_unresolved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
+  "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
+  "family": "invalid",
+  "geometry_validity": "dummy",
+  "id": "invalid_cityjsonfeature_root_id_unresolved",
+  "layer": "invalid",
+  "operations": [
+    "parse",
+    "validate"
+  ],
+  "primary_cost": "validate",
+  "representation": "cityjsonfeature",
+  "scale": "tiny",
+  "secondary_costs": [
+    "deserialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}

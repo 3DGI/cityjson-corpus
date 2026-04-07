@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "Plain CityJSON root id is preserved as an ordinary extra property.",
+      "id": "root_extra_preserved"
+    }
+  ],
+  "id": "cityjson_root_id_extra_property",
+  "kind": "positive",
+  "version": 1
+}

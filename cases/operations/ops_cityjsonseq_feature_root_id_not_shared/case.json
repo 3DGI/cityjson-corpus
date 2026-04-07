@@ -1,0 +1,30 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/ops_cityjsonseq_feature_root_id_not_shared.city.jsonl"
+  },
+  "assertions": [
+    "feature_root_id_not_shared_state",
+    "feature_boundaries_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
+  "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
+  "family": "operation_kernel",
+  "geometry_validity": "dummy",
+  "id": "ops_cityjsonseq_feature_root_id_not_shared",
+  "layer": "operation",
+  "operations": [
+    "parse",
+    "stream_iteration",
+    "serialize"
+  ],
+  "primary_cost": "serialize",
+  "representation": "jsonl",
+  "scale": "tiny",
+  "secondary_costs": [
+    "deserialize"
+  ],
+  "source_kind": "synthetic-controlled",
+  "version": 1
+}
