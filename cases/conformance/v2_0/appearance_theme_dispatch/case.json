@@ -1,31 +1,30 @@
 {
-  "artifact_mode": "generated",
+  "artifact_mode": "checked-in",
   "artifact_paths": {
-    "generated": "artifacts/generated/spec_appearance_matrix.city.json",
-    "profile": "cases/conformance/synthetic/spec_appearance_matrix/profile.json"
+    "source": "cases/conformance/v2_0/appearance_theme_dispatch/appearance_theme_dispatch.city.json"
   },
   "assertions": [
     "appearance_preserved",
     "theme_dispatch_stable"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "supplemental",
-  "documentation": "cases/conformance/synthetic/spec_appearance_matrix/README.md",
+  "correctness_class": "normative",
+  "description": "Minimized appearance conformance fixture covering theme dispatch and default-theme stability.",
   "family": "spec_atom",
   "geometry_validity": "dummy",
-  "id": "spec_appearance_matrix",
+  "id": "appearance_theme_dispatch",
   "layer": "conformance",
   "operations": [
     "parse",
     "serialize",
     "roundtrip"
   ],
-  "oracle_mode": "generator-derived",
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "serialize",
   "representation": "cityjson",
   "scale": "tiny",
   "secondary_costs": [
-    "allocation"
+    "deserialize"
   ],
   "source_kind": "synthetic-controlled",
   "version": 2

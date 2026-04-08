@@ -1,0 +1,168 @@
+{
+  "type": "CityJSON",
+  "version": "2.0",
+  "CityObjects": {
+    "building-0": {
+      "type": "Building",
+      "geometry": [
+        {
+          "type": "MultiSurface",
+          "lod": "2",
+          "boundaries": [
+            [
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "material": {
+            "warm": {
+              "value": 0
+            }
+          },
+          "texture": {
+            "day-textures": {
+              "values": [
+                [
+                  [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "building-1": {
+      "type": "Building",
+      "geometry": [
+        {
+          "type": "MultiSurface",
+          "lod": "2",
+          "boundaries": [
+            [
+              [
+                4,
+                5,
+                6,
+                7
+              ]
+            ]
+          ],
+          "material": {
+            "cool": {
+              "value": 1
+            }
+          },
+          "texture": {
+            "night-textures": {
+              "values": [
+                [
+                  [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "appearance": {
+    "materials": [
+      {
+        "name": "warm"
+      },
+      {
+        "name": "cool"
+      }
+    ],
+    "textures": [
+      {
+        "type": "PNG",
+        "image": "day.png"
+      },
+      {
+        "type": "PNG",
+        "image": "night.png"
+      }
+    ],
+    "vertices-texture": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "default-theme-texture": "day-textures",
+    "default-theme-material": "warm"
+  },
+  "geometry-templates": {
+    "templates": [],
+    "vertices-templates": []
+  },
+  "vertices": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      1
+    ]
+  ]
+}

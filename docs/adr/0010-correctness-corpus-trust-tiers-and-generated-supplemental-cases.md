@@ -338,6 +338,31 @@ Positive:
 - downstream crates can distinguish default correctness gates from opt-in
   supplemental sweeps without hard-coding path heuristics
 - redundant omnibus coverage is removed
+
+## Implementation Note
+
+The corpus reshaping described above has been implemented as of 2026-04-08.
+
+The final corpus split is:
+
+- 44 normative correctness cases
+- 1 supplemental generated correctness case
+
+The removed supplemental benchmark-style cases were:
+
+- `spec_complete_omnibus`
+- `spec_appearance_matrix`
+- `spec_extensions_feature_stream`
+- `spec_templates_matrix`
+
+The checked-in normative replacements are:
+
+- `appearance_theme_dispatch`
+- `cityjsonfeature_extension_roundtrip`
+- `geometry_templates_reuse`
+
+The combinatorial geometry sweep remains in `spec_geometry_matrix` as
+supplemental generated coverage.
 - interaction-heavy generated cases remain useful without overstating their
   oracle independence
 

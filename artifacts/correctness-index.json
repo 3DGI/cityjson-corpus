@@ -1,5 +1,5 @@
 {
-  "case_count": 46,
+  "case_count": 45,
   "cases": [
     {
       "artifact_mode": "checked-in",
@@ -58,6 +58,41 @@
       ],
       "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_minimal_complete",
+      "primary_cost": "serialize",
+      "representation": "cityjson",
+      "scale": "tiny",
+      "secondary_costs": [
+        "deserialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/appearance_theme_dispatch/appearance_theme_dispatch.city.json"
+      },
+      "assertions": [
+        "appearance_preserved",
+        "theme_dispatch_stable"
+      ],
+      "case": "cases/conformance/v2_0/appearance_theme_dispatch/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "description": "Minimized appearance conformance fixture covering theme dispatch and default-theme stability.",
+      "documentation": "cases/conformance/v2_0/appearance_theme_dispatch/README.md",
+      "family": "spec_atom",
+      "geometry_validity": "dummy",
+      "id": "appearance_theme_dispatch",
+      "invariants": "cases/conformance/v2_0/appearance_theme_dispatch/invariants.json",
+      "layer": "conformance",
+      "operations": [
+        "parse",
+        "serialize",
+        "roundtrip"
+      ],
+      "oracle_mode": "frozen-fixture",
+      "path": "cases/conformance/v2_0/appearance_theme_dispatch",
       "primary_cost": "serialize",
       "representation": "cityjson",
       "scale": "tiny",
@@ -160,6 +195,42 @@
       "representation": "cityjson",
       "scale": "tiny",
       "secondary_costs": [
+        "serialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/cityjsonfeature_extension_roundtrip.city.jsonl"
+      },
+      "assertions": [
+        "extensions_preserved",
+        "feature_boundaries_preserved"
+      ],
+      "case": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "description": "Minimized CityJSONFeature conformance fixture covering extension payload preservation and feature streaming.",
+      "documentation": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/README.md",
+      "family": "spec_atom",
+      "geometry_validity": "dummy",
+      "id": "cityjsonfeature_extension_roundtrip",
+      "invariants": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/invariants.json",
+      "layer": "conformance",
+      "operations": [
+        "parse",
+        "serialize",
+        "stream_iteration"
+      ],
+      "oracle_mode": "frozen-fixture",
+      "path": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip",
+      "primary_cost": "deserialize",
+      "representation": "cityjsonfeature",
+      "scale": "tiny",
+      "secondary_costs": [
+        "io",
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
@@ -625,6 +696,41 @@
       "scale": "tiny",
       "secondary_costs": [
         "serialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/geometry_templates_reuse/geometry_templates_reuse.city.json"
+      },
+      "assertions": [
+        "instance_count_stable",
+        "template_reuse_preserved"
+      ],
+      "case": "cases/conformance/v2_0/geometry_templates_reuse/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "description": "Minimized template conformance fixture covering repeated GeometryInstance reuse and instance count stability.",
+      "documentation": "cases/conformance/v2_0/geometry_templates_reuse/README.md",
+      "family": "spec_atom",
+      "geometry_validity": "dummy",
+      "id": "geometry_templates_reuse",
+      "invariants": "cases/conformance/v2_0/geometry_templates_reuse/invariants.json",
+      "layer": "conformance",
+      "operations": [
+        "parse",
+        "roundtrip",
+        "template_instance_resolution"
+      ],
+      "oracle_mode": "frozen-fixture",
+      "path": "cases/conformance/v2_0/geometry_templates_reuse",
+      "primary_cost": "memory",
+      "representation": "cityjson",
+      "scale": "tiny",
+      "secondary_costs": [
+        "allocation"
       ],
       "source_kind": "synthetic-controlled",
       "version": 2
@@ -1233,113 +1339,6 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/spec_appearance_matrix.city.json",
-        "profile": "cases/conformance/synthetic/spec_appearance_matrix/profile.json"
-      },
-      "assertions": [
-        "appearance_preserved",
-        "theme_dispatch_stable"
-      ],
-      "case": "cases/conformance/synthetic/spec_appearance_matrix/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "supplemental",
-      "documentation": "cases/conformance/synthetic/spec_appearance_matrix/README.md",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "spec_appearance_matrix",
-      "invariants": "cases/conformance/synthetic/spec_appearance_matrix/invariants.json",
-      "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "generator-derived",
-      "path": "cases/conformance/synthetic/spec_appearance_matrix",
-      "primary_cost": "serialize",
-      "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "allocation"
-      ],
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "generated",
-      "artifact_paths": {
-        "generated": "artifacts/generated/spec_complete_omnibus.city.json",
-        "profile": "cases/conformance/synthetic/spec_complete_omnibus/profile.json"
-      },
-      "assertions": [
-        "full_surface_roundtrip",
-        "no_schema_regressions"
-      ],
-      "case": "cases/conformance/synthetic/spec_complete_omnibus/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "supplemental",
-      "documentation": "cases/conformance/synthetic/spec_complete_omnibus/README.md",
-      "family": "omnibus",
-      "geometry_validity": "dummy",
-      "id": "spec_complete_omnibus",
-      "invariants": "cases/conformance/synthetic/spec_complete_omnibus/invariants.json",
-      "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "generator-derived",
-      "path": "cases/conformance/synthetic/spec_complete_omnibus",
-      "primary_cost": "deserialize",
-      "representation": "cityjson",
-      "scale": "small",
-      "secondary_costs": [
-        "serialize",
-        "allocation"
-      ],
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "generated",
-      "artifact_paths": {
-        "generated": "artifacts/generated/spec_extensions_feature_stream.city.json",
-        "profile": "cases/conformance/synthetic/spec_extensions_feature_stream/profile.json"
-      },
-      "assertions": [
-        "extensions_preserved",
-        "feature_boundaries_preserved"
-      ],
-      "case": "cases/conformance/synthetic/spec_extensions_feature_stream/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "supplemental",
-      "documentation": "cases/conformance/synthetic/spec_extensions_feature_stream/README.md",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "spec_extensions_feature_stream",
-      "invariants": "cases/conformance/synthetic/spec_extensions_feature_stream/invariants.json",
-      "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "stream_iteration"
-      ],
-      "oracle_mode": "generator-derived",
-      "path": "cases/conformance/synthetic/spec_extensions_feature_stream",
-      "primary_cost": "deserialize",
-      "representation": "cityjsonfeature",
-      "scale": "tiny",
-      "secondary_costs": [
-        "io",
-        "serialize"
-      ],
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "generated",
-      "artifact_paths": {
         "generated": "artifacts/generated/spec_geometry_matrix.city.json",
         "profile": "cases/conformance/synthetic/spec_geometry_matrix/profile.json"
       },
@@ -1364,41 +1363,6 @@
       "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_geometry_matrix",
       "primary_cost": "deserialize",
-      "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "allocation"
-      ],
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "generated",
-      "artifact_paths": {
-        "generated": "artifacts/generated/spec_templates_matrix.city.json",
-        "profile": "cases/conformance/synthetic/spec_templates_matrix/profile.json"
-      },
-      "assertions": [
-        "instance_count_stable",
-        "template_reuse_preserved"
-      ],
-      "case": "cases/conformance/synthetic/spec_templates_matrix/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "supplemental",
-      "documentation": "cases/conformance/synthetic/spec_templates_matrix/README.md",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "spec_templates_matrix",
-      "invariants": "cases/conformance/synthetic/spec_templates_matrix/invariants.json",
-      "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "template_instance_resolution"
-      ],
-      "oracle_mode": "generator-derived",
-      "path": "cases/conformance/synthetic/spec_templates_matrix",
-      "primary_cost": "memory",
       "representation": "cityjson",
       "scale": "tiny",
       "secondary_costs": [
@@ -1541,10 +1505,10 @@
     }
   ],
   "catalog": "catalog/cases.json",
-  "catalog_case_count": 57,
+  "catalog_case_count": 56,
   "default_correctness_class": "normative",
-  "normative_case_count": 41,
+  "normative_case_count": 44,
   "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures with normative and supplemental trust tiers.",
-  "supplemental_case_count": 5,
+  "supplemental_case_count": 1,
   "version": 2
 }

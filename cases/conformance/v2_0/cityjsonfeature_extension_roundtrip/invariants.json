@@ -9,7 +9,7 @@
       "id": "feature_boundaries_preserved"
     }
   ],
-  "id": "spec_extensions_feature_stream",
+  "id": "cityjsonfeature_extension_roundtrip",
   "kind": "positive",
   "version": 1
 }

@@ -1,26 +1,25 @@
 {
-  "artifact_mode": "generated",
+  "artifact_mode": "checked-in",
   "artifact_paths": {
-    "generated": "artifacts/generated/spec_extensions_feature_stream.city.json",
-    "profile": "cases/conformance/synthetic/spec_extensions_feature_stream/profile.json"
+    "source": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/cityjsonfeature_extension_roundtrip.city.jsonl"
   },
   "assertions": [
     "extensions_preserved",
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "supplemental",
-  "documentation": "cases/conformance/synthetic/spec_extensions_feature_stream/README.md",
+  "correctness_class": "normative",
+  "description": "Minimized CityJSONFeature conformance fixture covering extension payload preservation and feature streaming.",
   "family": "spec_atom",
   "geometry_validity": "dummy",
-  "id": "spec_extensions_feature_stream",
+  "id": "cityjsonfeature_extension_roundtrip",
   "layer": "conformance",
   "operations": [
     "parse",
     "serialize",
     "stream_iteration"
   ],
-  "oracle_mode": "generator-derived",
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "deserialize",
   "representation": "cityjsonfeature",
   "scale": "tiny",
