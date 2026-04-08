@@ -115,20 +115,23 @@ def build_case_page(record) -> str:
     elif isinstance(record.case_data.get("description"), str):
         parts.extend([str(record.case_data["description"]), ""])
 
-    parts.extend(
-        [
-            "## Contract",
-            "",
-            f"- `id`: `{record.case_id}`",
-            f"- `layer`: `{record.case_data['layer']}`",
-            f"- `family`: `{record.case_data['family']}`",
-            f"- `artifact_mode`: `{record.case_data['artifact_mode']}`",
-            f"- `source_kind`: `{record.case_data['source_kind']}`",
-            f"- `representation`: `{record.case_data['representation']}`",
-            f"- `path`: `{repo_relative(record.case_dir)}`",
-            "",
-        ]
-    )
+    contract_lines = [
+        "## Contract",
+        "",
+        f"- `id`: `{record.case_id}`",
+        f"- `layer`: `{record.case_data['layer']}`",
+        f"- `family`: `{record.case_data['family']}`",
+        f"- `artifact_mode`: `{record.case_data['artifact_mode']}`",
+        f"- `source_kind`: `{record.case_data['source_kind']}`",
+        f"- `representation`: `{record.case_data['representation']}`",
+    ]
+    for key in ("correctness_class", "oracle_mode"):
+        value = record.case_data.get(key)
+        if isinstance(value, str):
+            contract_lines.append(f"- `{key}`: `{value}`")
+    contract_lines.append(f"- `path`: `{repo_relative(record.case_dir)}`")
+    contract_lines.append("")
+    parts.extend(contract_lines)
 
     artifact_lines = []
     for key, value in sorted(record.artifact_paths.items()):

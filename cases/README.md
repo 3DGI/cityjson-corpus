@@ -12,17 +12,19 @@ Each case directory owns:
 
 The main subtrees are:
 
-- `conformance/v2_0/` for canonical conformance fixtures, minimal valid
-  CityJSON 2.0 documents
-- `conformance/synthetic/` for generated conformance and omnibus profiles
+- `conformance/v2_0/` for reviewed normative conformance fixtures
+- `conformance/synthetic/` for supplemental generated conformance coverage
 - `operations/` for medium-size real-data operation kernels
 - `workloads/` for synthetic stress fixtures and real-data I/O workloads
 - `invalid/` for negative fixtures
 
-Conformance, invalid, and operations cases form the **correctness corpus**.
-Each defines invariants that consuming tools must satisfy (e.g. roundtrip
-fidelity, expected validation errors). `artifacts/correctness-index.json` is
-a derived index of these cases, rendered by `just sync-catalog`.
+Conformance, invalid, and operation cases form the **correctness corpus**.
+The default gate is the reviewed normative subset; the correctness index also
+includes supplemental generated conformance cases for broader interaction
+coverage. Each correctness case defines invariants that consuming tools must
+satisfy (e.g. roundtrip fidelity, expected validation errors).
+`artifacts/correctness-index.json` is a derived index of these cases,
+rendered by `just sync-catalog`.
 
 Workload cases are for **benchmark performance** measurement — throughput and
 latency under synthetic stress or real-data I/O loads.

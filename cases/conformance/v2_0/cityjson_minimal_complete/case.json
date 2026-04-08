@@ -7,6 +7,7 @@
     "roundtrip_stable"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "normative",
   "description": "cityjson minimal complete conformance fixture migrated from serde_cityjson.",
   "family": "spec_atom",
   "geometry_validity": "dummy",
@@ -16,6 +17,7 @@
     "parse",
     "roundtrip"
   ],
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "deserialize",
   "representation": "cityjson",
   "scale": "tiny",
@@ -23,5 +25,5 @@
     "serialize"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }

@@ -9,6 +9,7 @@
     "no_schema_regressions"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "supplemental",
   "documentation": "cases/conformance/synthetic/spec_complete_omnibus/README.md",
   "family": "omnibus",
   "geometry_validity": "dummy",
@@ -19,6 +20,7 @@
     "validate",
     "roundtrip"
   ],
+  "oracle_mode": "generator-derived",
   "primary_cost": "deserialize",
   "representation": "cityjson",
   "scale": "small",
@@ -27,5 +29,5 @@
     "allocation"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }

@@ -8,6 +8,7 @@
     "hierarchy_traversal_complete"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "normative",
   "documentation": "cases/operations/ops_3dbag_base/README.md",
   "family": "operation_kernel",
   "geometry_validity": "real-preserved",
@@ -18,6 +19,7 @@
     "filter",
     "hierarchy_traversal"
   ],
+  "oracle_mode": "upstream-published",
   "primary_cost": "memory",
   "representation": "cityjson",
   "scale": "medium",
@@ -26,5 +28,5 @@
     "serialize"
   ],
   "source_kind": "real-geometry",
-  "version": 1
+  "version": 2
 }

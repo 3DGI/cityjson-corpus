@@ -24,7 +24,7 @@
   "properties": {
     "version": {
       "type": "integer",
-      "const": 1,
+      "const": 2,
       "description": "Case metadata format version."
     },
     "id": {
@@ -55,6 +55,23 @@
         "real-geometry-enriched"
       ],
       "description": "Origin of the underlying case data."
+    },
+    "correctness_class": {
+      "type": "string",
+      "enum": [
+        "normative",
+        "supplemental"
+      ],
+      "description": "Whether the case belongs in the default correctness gate or opt-in supplemental coverage."
+    },
+    "oracle_mode": {
+      "type": "string",
+      "enum": [
+        "frozen-fixture",
+        "generator-derived",
+        "upstream-published"
+      ],
+      "description": "What kind of oracle the correctness case relies on."
     },
     "cityjson_version": {
       "type": "string",
@@ -195,6 +212,51 @@
     }
   },
   "allOf": [
+    {
+      "if": {
+        "properties": {
+          "layer": {
+            "const": "conformance"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "correctness_class",
+          "oracle_mode"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "layer": {
+            "const": "operation"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "correctness_class",
+          "oracle_mode"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "layer": {
+            "const": "invalid"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "correctness_class",
+          "oracle_mode"
+        ]
+      }
+    },
     {
       "if": {
         "properties": {

@@ -1,5 +1,5 @@
 {
-  "case_count": 42,
+  "case_count": 46,
   "cases": [
     {
       "artifact_mode": "checked-in",
@@ -11,6 +11,7 @@
       ],
       "case": "cases/conformance/v2_0/appearance_empty/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "appearance empty conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -22,6 +23,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_empty",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -30,7 +32,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -42,6 +44,7 @@
       ],
       "case": "cases/conformance/v2_0/appearance_minimal_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "appearance minimal complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -53,6 +56,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_minimal_complete",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -61,7 +65,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -74,6 +78,7 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_fake_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "cityjson fake complete conformance fixture migrated from serde_cityjson.",
       "family": "omnibus",
       "geometry_validity": "dummy",
@@ -85,6 +90,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_fake_complete",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -93,7 +99,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -105,6 +111,7 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_minimal_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "cityjson minimal complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -115,6 +122,7 @@
         "parse",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_minimal_complete",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -123,7 +131,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -135,6 +143,7 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_root_id_extra_property/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -145,6 +154,7 @@
         "parse",
         "serialize"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_root_id_extra_property",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -153,7 +163,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -165,6 +175,7 @@
       ],
       "case": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -176,6 +187,7 @@
         "stream_iteration",
         "serialize"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjsonfeature_minimal_complete",
       "primary_cost": "io",
       "representation": "cityjsonfeature",
@@ -185,7 +197,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -198,6 +210,7 @@
       ],
       "case": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "Hand-written CityJSONFeature fixture where root id resolves to a real CityObject in the same feature.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -209,6 +222,7 @@
         "stream_iteration",
         "serialize"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves",
       "primary_cost": "deserialize",
       "representation": "cityjsonfeature",
@@ -217,7 +231,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -229,6 +243,7 @@
       ],
       "case": "cases/conformance/v2_0/cityobject_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "cityobject complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -240,6 +255,7 @@
         "attribute_lookup",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityobject_complete",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -248,7 +264,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -260,6 +276,7 @@
       ],
       "case": "cases/conformance/v2_0/cityobject_extended/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "cityobject extended conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -271,6 +288,7 @@
         "attribute_lookup",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityobject_extended",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -279,7 +297,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -291,6 +309,7 @@
       ],
       "case": "cases/conformance/v2_0/extension/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "extension conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -302,6 +321,7 @@
         "extension_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/extension",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -310,7 +330,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -322,6 +342,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_complete_solid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry complete solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -333,6 +354,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_complete_solid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -341,7 +363,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -353,6 +375,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_instance/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry instance conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -364,6 +387,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_instance",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -372,7 +396,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -384,6 +408,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_material_solid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry material solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -395,6 +420,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_material_solid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -403,7 +429,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -415,6 +441,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multilinestring/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry semantics multilinestring conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -426,6 +453,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multilinestring",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -434,7 +462,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -446,6 +474,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multipoint/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry semantics multipoint conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -457,6 +486,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multipoint",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -465,7 +495,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -477,6 +507,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisolid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry semantics multisolid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -488,6 +519,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multisolid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -496,7 +528,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -508,6 +540,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisurface/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry semantics multisurface conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -519,6 +552,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multisurface",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -527,7 +561,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -539,6 +573,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_solid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry semantics solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -550,6 +585,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_solid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -558,7 +594,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -570,6 +606,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_templates/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry templates conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -581,6 +618,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_templates",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -589,7 +627,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -601,6 +639,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_texture_multisolid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry texture multisolid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -612,6 +651,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_multisolid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -620,7 +660,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -632,6 +672,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_texture_multisurface/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry texture multisurface conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -643,6 +684,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_multisurface",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -651,7 +693,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -663,6 +705,7 @@
       ],
       "case": "cases/conformance/v2_0/geometry_texture_solid/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "geometry texture solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -674,6 +717,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_solid",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -682,7 +726,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -694,6 +738,7 @@
       ],
       "case": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
       "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
       "family": "invalid",
@@ -705,6 +750,7 @@
         "parse",
         "validate"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved",
       "primary_cost": "validate",
       "representation": "cityjsonfeature",
@@ -713,7 +759,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -725,6 +771,7 @@
       ],
       "case": "cases/invalid/invalid_missing_type/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "documentation": "cases/invalid/invalid_missing_type/README.md",
       "family": "invalid",
       "geometry_validity": "dummy",
@@ -735,6 +782,7 @@
         "parse",
         "validate"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_missing_type",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -743,7 +791,7 @@
         "validate"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -755,6 +803,7 @@
       ],
       "case": "cases/invalid/invalid_out_of_range_vertex_index/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "documentation": "cases/invalid/invalid_out_of_range_vertex_index/README.md",
       "family": "invalid",
       "geometry_validity": "dummy",
@@ -765,6 +814,7 @@
         "parse",
         "validate"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_out_of_range_vertex_index",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -773,7 +823,7 @@
         "validate"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -785,6 +835,7 @@
       ],
       "case": "cases/conformance/v2_0/material_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "material complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -796,6 +847,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/material_complete",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -804,7 +856,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -816,6 +868,7 @@
       ],
       "case": "cases/conformance/v2_0/material_minimal/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "material minimal conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -827,6 +880,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/material_minimal",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -835,7 +889,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -847,6 +901,7 @@
       ],
       "case": "cases/conformance/v2_0/metadata_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "metadata complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -858,6 +913,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_complete",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -866,7 +922,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -878,6 +934,7 @@
       ],
       "case": "cases/conformance/v2_0/metadata_empty/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "metadata empty conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -889,6 +946,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_empty",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -897,7 +955,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -909,6 +967,7 @@
       ],
       "case": "cases/conformance/v2_0/metadata_extra_properties/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "metadata extra properties conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -920,6 +979,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_extra_properties",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -928,7 +988,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -940,6 +1000,7 @@
       ],
       "case": "cases/conformance/v2_0/metadata_poc_minimal/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "metadata poc minimal conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -951,6 +1012,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_poc_minimal",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -959,7 +1021,148 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
+    },
+    {
+      "artifact_mode": "acquired",
+      "artifact_paths": {
+        "acquisition": "cases/operations/ops_3dbag_base/acquisition.json"
+      },
+      "assertions": [
+        "bounding_box_stable",
+        "hierarchy_traversal_complete"
+      ],
+      "case": "cases/operations/ops_3dbag_base/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "documentation": "cases/operations/ops_3dbag_base/README.md",
+      "family": "operation_kernel",
+      "geometry_validity": "real-preserved",
+      "id": "ops_3dbag_base",
+      "invariants": "cases/operations/ops_3dbag_base/invariants.json",
+      "layer": "operation",
+      "operations": [
+        "bbox",
+        "filter",
+        "hierarchy_traversal"
+      ],
+      "oracle_mode": "upstream-published",
+      "path": "cases/operations/ops_3dbag_base",
+      "primary_cost": "memory",
+      "representation": "cityjson",
+      "scale": "medium",
+      "secondary_costs": [
+        "deserialize",
+        "serialize"
+      ],
+      "source_kind": "real-geometry",
+      "version": 2
+    },
+    {
+      "artifact_mode": "acquired",
+      "artifact_paths": {
+        "acquisition": "cases/operations/ops_3dbag_enriched/acquisition.json"
+      },
+      "assertions": [
+        "attribute_payload_preserved",
+        "geometry_preserved"
+      ],
+      "case": "cases/operations/ops_3dbag_enriched/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "documentation": "cases/operations/ops_3dbag_enriched/README.md",
+      "family": "operation_kernel",
+      "geometry_validity": "real-preserved",
+      "id": "ops_3dbag_enriched",
+      "invariants": "cases/operations/ops_3dbag_enriched/invariants.json",
+      "layer": "operation",
+      "operations": [
+        "bbox",
+        "filter",
+        "attribute_lookup",
+        "roundtrip"
+      ],
+      "oracle_mode": "upstream-published",
+      "path": "cases/operations/ops_3dbag_enriched",
+      "primary_cost": "allocation",
+      "representation": "cityjson",
+      "scale": "medium",
+      "secondary_costs": [
+        "memory",
+        "serialize"
+      ],
+      "source_kind": "real-geometry-enriched",
+      "version": 2
+    },
+    {
+      "artifact_mode": "acquired",
+      "artifact_paths": {
+        "acquisition": "cases/operations/ops_3dbag_semantic_surfaces/acquisition.json"
+      },
+      "assertions": [
+        "semantic_surfaces_preserved",
+        "boundary_to_semantics_mapping_stable"
+      ],
+      "case": "cases/operations/ops_3dbag_semantic_surfaces/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
+      "family": "operation_kernel",
+      "geometry_validity": "real-preserved",
+      "id": "ops_3dbag_semantic_surfaces",
+      "invariants": "cases/operations/ops_3dbag_semantic_surfaces/invariants.json",
+      "layer": "operation",
+      "operations": [
+        "semantic_query",
+        "boundary_mapping",
+        "roundtrip"
+      ],
+      "oracle_mode": "upstream-published",
+      "path": "cases/operations/ops_3dbag_semantic_surfaces",
+      "primary_cost": "deserialize",
+      "representation": "cityjson",
+      "scale": "medium",
+      "secondary_costs": [
+        "memory",
+        "serialize"
+      ],
+      "source_kind": "real-geometry",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/ops_cityjsonseq_feature_root_id_not_shared.city.jsonl"
+      },
+      "assertions": [
+        "feature_root_id_not_shared_state",
+        "feature_boundaries_preserved"
+      ],
+      "case": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/case.json",
+      "cityjson_version": "2.0",
+      "correctness_class": "normative",
+      "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
+      "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
+      "family": "operation_kernel",
+      "geometry_validity": "dummy",
+      "id": "ops_cityjsonseq_feature_root_id_not_shared",
+      "invariants": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/invariants.json",
+      "layer": "operation",
+      "operations": [
+        "parse",
+        "stream_iteration",
+        "serialize"
+      ],
+      "oracle_mode": "frozen-fixture",
+      "path": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared",
+      "primary_cost": "serialize",
+      "representation": "jsonl",
+      "scale": "tiny",
+      "secondary_costs": [
+        "deserialize"
+      ],
+      "source_kind": "synthetic-controlled",
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -971,6 +1174,7 @@
       ],
       "case": "cases/conformance/v2_0/semantic_extended/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "semantic extended conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -982,6 +1186,7 @@
         "roundtrip",
         "semantic_resolution"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/semantic_extended",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -990,7 +1195,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -1002,6 +1207,7 @@
       ],
       "case": "cases/conformance/v2_0/semantic_minimal/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "semantic minimal conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1013,6 +1219,7 @@
         "roundtrip",
         "semantic_resolution"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/semantic_minimal",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -1021,7 +1228,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "generated",
@@ -1035,6 +1242,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_appearance_matrix/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_appearance_matrix/README.md",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1046,6 +1254,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_appearance_matrix",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -1054,7 +1263,7 @@
         "allocation"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "generated",
@@ -1068,6 +1277,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_complete_omnibus/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_complete_omnibus/README.md",
       "family": "omnibus",
       "geometry_validity": "dummy",
@@ -1079,6 +1289,7 @@
         "validate",
         "roundtrip"
       ],
+      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_complete_omnibus",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -1088,7 +1299,7 @@
         "allocation"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "generated",
@@ -1102,6 +1313,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_extensions_feature_stream/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_extensions_feature_stream/README.md",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1113,6 +1325,7 @@
         "serialize",
         "stream_iteration"
       ],
+      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_extensions_feature_stream",
       "primary_cost": "deserialize",
       "representation": "cityjsonfeature",
@@ -1122,7 +1335,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "generated",
@@ -1136,6 +1349,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_geometry_matrix/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1147,6 +1361,7 @@
         "geometry_validation",
         "roundtrip"
       ],
+      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_geometry_matrix",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -1155,7 +1370,7 @@
         "allocation"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "generated",
@@ -1169,6 +1384,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_templates_matrix/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_templates_matrix/README.md",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1180,6 +1396,7 @@
         "roundtrip",
         "template_instance_resolution"
       ],
+      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_templates_matrix",
       "primary_cost": "memory",
       "representation": "cityjson",
@@ -1188,7 +1405,7 @@
         "allocation"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -1200,6 +1417,7 @@
       ],
       "case": "cases/conformance/v2_0/texture_complete/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "texture complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1211,6 +1429,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/texture_complete",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -1219,7 +1438,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -1231,6 +1450,7 @@
       ],
       "case": "cases/conformance/v2_0/texture_minimal/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "texture minimal conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1242,6 +1462,7 @@
         "serialize",
         "roundtrip"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/texture_minimal",
       "primary_cost": "serialize",
       "representation": "cityjson",
@@ -1250,7 +1471,7 @@
         "deserialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -1262,6 +1483,7 @@
       ],
       "case": "cases/conformance/v2_0/transform/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "transform conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1273,6 +1495,7 @@
         "roundtrip",
         "vertex_transform"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/transform",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -1281,7 +1504,7 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     },
     {
       "artifact_mode": "checked-in",
@@ -1293,6 +1516,7 @@
       ],
       "case": "cases/conformance/v2_0/vertices/case.json",
       "cityjson_version": "2.0",
+      "correctness_class": "normative",
       "description": "vertices conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
       "geometry_validity": "dummy",
@@ -1304,6 +1528,7 @@
         "roundtrip",
         "vertex_indexing"
       ],
+      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/vertices",
       "primary_cost": "deserialize",
       "representation": "cityjson",
@@ -1312,11 +1537,14 @@
         "serialize"
       ],
       "source_kind": "synthetic-controlled",
-      "version": 1
+      "version": 2
     }
   ],
   "catalog": "catalog/cases.json",
   "catalog_case_count": 57,
-  "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures.",
-  "version": 1
+  "default_correctness_class": "normative",
+  "normative_case_count": 41,
+  "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures with normative and supplemental trust tiers.",
+  "supplemental_case_count": 5,
+  "version": 2
 }

@@ -9,6 +9,7 @@
     "boundary_normalization_stable"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "supplemental",
   "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
   "family": "spec_atom",
   "geometry_validity": "dummy",
@@ -19,6 +20,7 @@
     "geometry_validation",
     "roundtrip"
   ],
+  "oracle_mode": "generator-derived",
   "primary_cost": "deserialize",
   "representation": "cityjson",
   "scale": "tiny",
@@ -26,5 +28,5 @@
     "allocation"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }

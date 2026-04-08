@@ -8,6 +8,7 @@
     "no_schema_regressions"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "normative",
   "description": "cityjson fake complete conformance fixture migrated from serde_cityjson.",
   "family": "omnibus",
   "geometry_validity": "dummy",
@@ -18,6 +19,7 @@
     "validate",
     "roundtrip"
   ],
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "deserialize",
   "representation": "cityjson",
   "scale": "tiny",
@@ -25,5 +27,5 @@
     "serialize"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }

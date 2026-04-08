@@ -26,10 +26,12 @@ own.
 
 The corpus serves two purposes:
 
-- **Correctness testing.** Conformance, invalid, and operations cases define
-  invariants that consuming tools must satisfy. Their fixtures are checked in
-  or acquired, never generated. `artifacts/correctness-index.json` is a
-  derived index of these cases, rendered by `just sync-catalog`.
+- **Correctness testing.** Conformance, invalid, and operation cases define
+  invariants that consuming tools must satisfy. The default correctness corpus
+  is the reviewed, pinned set of checked-in or acquired fixtures. Supplemental
+  generated conformance cases are also indexed for opt-in coverage.
+  `artifacts/correctness-index.json` is a derived index of these cases,
+  rendered by `just sync-catalog`.
 - **Benchmark performance.** Workload cases provide synthetic stress fixtures
   and real-data I/O workloads for measuring throughput and latency.
   `artifacts/benchmark-index.json` lists their output paths after
@@ -45,8 +47,9 @@ Prerequisites: `just`, `uv`, `jq`, `cargo`, and a sibling checkout of
 3. `just generate-data` - materialize synthetic workloads into
    `artifacts/generated/`.
 
-Conformance and invalid cases are checked-in fixtures that need no generation.
-They are ready to use for correctness testing immediately after cloning.
+Normative conformance, invalid, and operation cases are ready to use
+immediately after cloning. Supplemental generated conformance cases require
+`just generate-data` before their artifacts are materialized.
 
 After step 3, `artifacts/benchmark-index.json` lists all workload cases and
 their output paths.

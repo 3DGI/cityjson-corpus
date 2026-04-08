@@ -8,6 +8,7 @@
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "normative",
   "description": "Hand-written CityJSONFeature fixture where root id resolves to a real CityObject in the same feature.",
   "family": "spec_atom",
   "geometry_validity": "dummy",
@@ -18,6 +19,7 @@
     "stream_iteration",
     "serialize"
   ],
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "deserialize",
   "representation": "cityjsonfeature",
   "scale": "tiny",
@@ -25,5 +27,5 @@
     "serialize"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }

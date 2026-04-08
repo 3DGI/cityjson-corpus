@@ -7,6 +7,7 @@
     "feature_root_id_unresolved"
   ],
   "cityjson_version": "2.0",
+  "correctness_class": "normative",
   "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
   "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
   "family": "invalid",
@@ -17,6 +18,7 @@
     "parse",
     "validate"
   ],
+  "oracle_mode": "frozen-fixture",
   "primary_cost": "validate",
   "representation": "cityjsonfeature",
   "scale": "tiny",
@@ -24,5 +26,5 @@
     "deserialize"
   ],
   "source_kind": "synthetic-controlled",
-  "version": 1
+  "version": 2
 }
