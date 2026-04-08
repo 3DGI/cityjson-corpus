@@ -29,6 +29,7 @@ nav:
       - Acquisition Schema: reference/acquisition-schema.md
   - Architecture Decisions:
       - CityJSON Benchmark Corpus Design: adr/0009-cityjson-benchmark-corpus-design.md
+      - Correctness Corpus Trust Tiers and Generated Supplemental Cases: adr/0010-correctness-corpus-trust-tiers-and-generated-supplemental-cases.md
 theme:
   name: material
   features:
