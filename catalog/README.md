@@ -14,5 +14,5 @@ that downstream consumers need:
 - artifact paths for checked-in fixtures, generated outputs, profiles, or
   acquisition metadata
 
-Run `just sync-catalog` after changing the case tree. `just validate-cases`
-checks that `cases.json` is in sync.
+Run `just sync-catalog` after changing the case tree. `just lint` checks that
+`cases.json` is in sync.

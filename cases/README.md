@@ -32,3 +32,24 @@ latency under synthetic stress or real-data I/O loads.
 `catalog/cases.json` is a derived index rendered from this tree. Run
 `just sync-catalog` after changing case metadata, or use `just lint`
 to check that the catalog is in sync.
+
+## Adding Or Removing Cases
+
+To add a case, create a new directory under the appropriate subtree and add
+the files that match the case type:
+
+- `case.json` and `invariants.json` are required for every case
+- checked-in fixtures use a source file in the case directory
+- synthetic workload cases use `profile.json`
+- real-data workload or operation cases use `acquisition.json`
+
+After adding the case, run:
+
+- `just sync-catalog`
+- `just generate-data` for workload cases that need generated or acquired outputs
+- `uv run python ./scripts/generate_docs.py` or `just docs-build`
+- `just lint`
+
+To remove a case, delete the case directory and its generated docs page under
+`docs/cases/...`, then rerun the same regeneration steps. Stale generated docs
+pages are not removed automatically.

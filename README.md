@@ -54,6 +54,25 @@ immediately after cloning. Supplemental generated conformance cases require
 After step 3, `artifacts/benchmark-index.json` lists all workload cases and
 their output paths.
 
+## Adding Or Removing Cases
+
+Case authoring happens under `cases/`, and the derived indexes and docs are
+regenerated from that tree.
+
+- Add a new case directory under the right subtree in `cases/`.
+- Include `case.json` and `invariants.json`; add `profile.json` or
+  `acquisition.json` only when the case type needs them.
+- Run `just sync-catalog` after changing case metadata.
+- Run `just generate-data` for workload cases that need generated or acquired
+  outputs.
+- Run `uv run python ./scripts/generate_docs.py` or `just docs-build` to
+  refresh the rendered docs.
+- Run `just lint` before committing.
+
+When removing a case, delete the case directory and its generated docs page
+under `docs/cases/...` before regenerating the docs. The docs generator does
+not delete stale pages for removed cases.
+
 ## Recipes
 
 - `just fmt` formats Python files with ruff.

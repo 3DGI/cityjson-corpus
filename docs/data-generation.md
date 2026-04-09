@@ -35,7 +35,7 @@ The corpus also carries per-case invariants and invalid fixtures under
 ## Generate The Data
 
 1. Acquire the raw 3DBAG slice: `just acquire-3dbag`.
-2. Validate the manifest fixtures: `just validate-profiles`.
+2. Validate the manifest fixtures: `./scripts/validate_profiles.sh`.
 3. Generate the benchmark data: `just generate-data`.
 4. Inspect `artifacts/benchmark-index.json` for the workload case list and the
    generated/acquired output paths.
