@@ -82,7 +82,14 @@
   "appearance": {
     "materials": [
       {
-        "name": "warm"
+        "name": "warm",
+        "ambientIntensity": 0.5,
+        "diffuseColor": [0.5, 0.6, 0.7],
+        "emissiveColor": [0.5, 0.6, 0.7],
+        "specularColor": [0.5, 0.6, 0.7],
+        "shininess": 0.1,
+        "transparency": 0.9,
+        "isSmooth": true
       },
       {
         "name": "cool"
@@ -95,7 +102,10 @@
       },
       {
         "type": "PNG",
-        "image": "night.png"
+        "image": "night.png",
+        "wrapMode": "wrap",
+        "textureType": "unknown",
+        "borderColor": [0.0, 0.1, 0.2, 1.0]
       }
     ],
     "vertices-texture": [
@@ -118,10 +128,6 @@
     ],
     "default-theme-texture": "day-textures",
     "default-theme-material": "warm"
-  },
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
   },
   "vertices": [
     [

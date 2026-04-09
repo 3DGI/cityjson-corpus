@@ -1,18 +1,18 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "cases/conformance/v2_0/appearance_theme_dispatch/appearance_theme_dispatch.city.json"
+    "source": "cases/conformance/v2_0/appearance_complete/appearance_complete.city.json"
   },
   "assertions": [
     "appearance_preserved",
-    "theme_dispatch_stable"
+    "complete_stable"
   ],
   "cityjson_version": "2.0",
   "correctness_class": "normative",
   "description": "Minimized appearance conformance fixture covering theme dispatch and default-theme stability.",
   "family": "spec_atom",
   "geometry_validity": "dummy",
-  "id": "appearance_theme_dispatch",
+  "id": "appearance_complete",
   "layer": "conformance",
   "representation": "cityjson",
   "source_kind": "synthetic-controlled",
