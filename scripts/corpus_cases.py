@@ -14,10 +14,12 @@ CORRECTNESS_INDEX_PATH = ROOT / "artifacts" / "correctness-index.json"
 CASE_SCHEMA_PATH = ROOT / "schemas" / "case.schema.json"
 INVARIANTS_SCHEMA_PATH = ROOT / "schemas" / "invariants.schema.json"
 ACQUISITION_SCHEMA_PATH = ROOT / "schemas" / "acquisition.schema.json"
-PROFILE_SCHEMA_PATH = ROOT / "schemas" / "cjfake-manifest.schema.json"
+# The canonical CJFake manifest schema lives in the sibling cjfake checkout.
+PROFILE_SCHEMA_PATH = (
+    ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+)
 CORRECTNESS_LAYERS = frozenset({"conformance", "invalid", "operation"})
 CASE_METADATA_VERSION = 2
-DEFAULT_CORRECTNESS_CLASS = "normative"
 
 
 @dataclass(frozen=True)
@@ -128,21 +130,12 @@ def build_correctness_index_document(records: list[CaseRecord]) -> JsonObject:
         build_catalog_case(record)
         for record in sorted(correctness_records, key=lambda item: item.case_id)
     ]
-    normative_case_count = sum(
-        1
-        for record in correctness_records
-        if record.case_data.get("correctness_class") == DEFAULT_CORRECTNESS_CLASS
-    )
-    supplemental_case_count = len(cases) - normative_case_count
     return {
         "version": CASE_METADATA_VERSION,
-        "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures with normative and supplemental trust tiers.",
+        "purpose": "Derived correctness case index for shared conformance, invalid, and operation fixtures.",
         "catalog": repo_relative(CATALOG_PATH),
         "catalog_case_count": len(records),
         "case_count": len(cases),
-        "default_correctness_class": DEFAULT_CORRECTNESS_CLASS,
-        "normative_case_count": normative_case_count,
-        "supplemental_case_count": supplemental_case_count,
         "cases": cases,
     }
 

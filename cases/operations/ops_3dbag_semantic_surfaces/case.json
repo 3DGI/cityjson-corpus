@@ -8,10 +8,9 @@
     "boundary_to_semantics_mapping_stable"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
   "family": "operation_kernel",
-  "geometry_validity": "real-preserved",
+  "geometry_kind": "real-preserved",
   "id": "ops_3dbag_semantic_surfaces",
   "layer": "operation",
   "representation": "cityjson",

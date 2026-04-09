@@ -14,7 +14,7 @@
     "representation",
     "artifact_mode",
     "artifact_paths",
-    "geometry_validity",
+    "geometry_kind",
     "assertions"
   ],
   "properties": {
@@ -36,29 +36,21 @@
         "workload",
         "invalid"
       ],
-      "description": "Corpus layer for the case."
+      "description": "Corpus layer for the case. See schemas/README.md for the controlled vocabulary."
     },
     "family": {
       "type": "string",
       "minLength": 1,
-      "description": "Case family or taxonomy bucket."
+      "description": "Case family or taxonomy bucket. See schemas/README.md for the current corpus labels."
     },
     "source_kind": {
       "type": "string",
       "enum": [
-        "synthetic-controlled",
+        "synthetic",
         "real-geometry",
         "real-geometry-enriched"
       ],
-      "description": "Origin of the underlying case data."
-    },
-    "correctness_class": {
-      "type": "string",
-      "enum": [
-        "normative",
-        "supplemental"
-      ],
-      "description": "Whether the case belongs in the default correctness gate or opt-in supplemental coverage."
+      "description": "Provenance of the underlying case data. See schemas/README.md for the controlled vocabulary."
     },
     "cityjson_version": {
       "type": "string",
@@ -73,7 +65,7 @@
         "jsonl",
         "feature-files"
       ],
-      "description": "Primary storage layout for the case."
+      "description": "Primary storage layout for the case. See schemas/README.md for the controlled vocabulary."
     },
     "artifact_mode": {
       "type": "string",
@@ -82,7 +74,7 @@
         "generated",
         "acquired"
       ],
-      "description": "How the source artifact is materialized."
+      "description": "How the source artifact is materialized. See schemas/README.md for the controlled vocabulary."
     },
     "artifact_paths": {
       "type": "object",
@@ -116,13 +108,13 @@
       },
       "description": "Artifact pointers associated with the case."
     },
-    "geometry_validity": {
+    "geometry_kind": {
       "type": "string",
       "enum": [
         "dummy",
         "real-preserved"
       ],
-      "description": "Whether geometry is synthetic or preserved from real data."
+      "description": "Whether geometry is synthetic or preserved from real data. See schemas/README.md for the controlled vocabulary."
     },
     "assertions": {
       "type": "array",
@@ -132,7 +124,7 @@
         "type": "string",
         "minLength": 1
       },
-      "description": "Correctness expectations associated with the case."
+      "description": "Human-readable correctness expectations associated with the case. The list is not a controlled vocabulary."
     },
     "documentation": {
       "type": "string",
@@ -151,48 +143,6 @@
     }
   },
   "allOf": [
-    {
-      "if": {
-        "properties": {
-          "layer": {
-            "const": "conformance"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "correctness_class"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "layer": {
-            "const": "operation"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "correctness_class"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "layer": {
-            "const": "invalid"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "correctness_class"
-        ]
-      }
-    },
     {
       "if": {
         "properties": {

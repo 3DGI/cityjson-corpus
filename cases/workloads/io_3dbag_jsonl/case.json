@@ -10,7 +10,7 @@
   "cityjson_version": "2.0",
   "documentation": "cases/workloads/io_3dbag_jsonl/README.md",
   "family": "io",
-  "geometry_validity": "real-preserved",
+  "geometry_kind": "real-preserved",
   "id": "io_3dbag_jsonl",
   "layer": "workload",
   "representation": "jsonl",

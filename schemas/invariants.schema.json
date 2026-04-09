@@ -27,7 +27,7 @@
         "positive",
         "negative"
       ],
-      "description": "Whether the case should be accepted or rejected."
+      "description": "Whether the fixture is expected to be accepted or rejected. See schemas/README.md for the controlled vocabulary."
     },
     "fixture": {
       "type": "string",

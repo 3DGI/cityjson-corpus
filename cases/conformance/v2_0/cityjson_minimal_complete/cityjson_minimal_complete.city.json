@@ -1,25 +1,18 @@
 {
   "type": "CityJSON",
   "version": "2.0",
-  "extensions": {},
   "transform": {
     "scale": [
-      1.0,
-      1.0,
-      1.0
+      0.001,
+      0.001,
+      0.001
     ],
     "translate": [
-      0.0,
-      0.0,
-      0.0
+      442464.879,
+      5482614.692,
+      310.19
     ]
   },
-  "metadata": {},
   "CityObjects": {},
-  "vertices": [],
-  "appearance": {},
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
-  }
+  "vertices": []
 }

@@ -3,69 +3,25 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/appearance_empty/appearance_empty.city.json"
-      },
-      "assertions": [
-        "appearance_preserved"
-      ],
-      "case": "cases/conformance/v2_0/appearance_empty/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "appearance empty conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "appearance_empty",
-      "invariants": "cases/conformance/v2_0/appearance_empty/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/appearance_empty",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/appearance_minimal_complete/appearance_minimal_complete.city.json"
-      },
-      "assertions": [
-        "appearance_preserved"
-      ],
-      "case": "cases/conformance/v2_0/appearance_minimal_complete/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "appearance minimal complete conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "appearance_minimal_complete",
-      "invariants": "cases/conformance/v2_0/appearance_minimal_complete/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/appearance_minimal_complete",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/appearance_theme_dispatch/appearance_theme_dispatch.city.json"
+        "source": "cases/conformance/v2_0/appearance_complete/appearance_complete.city.json"
       },
       "assertions": [
         "appearance_preserved",
-        "theme_dispatch_stable"
+        "material_assignment",
+        "default_material_texture_set",
+        "multiple_material_texture_set"
       ],
-      "case": "cases/conformance/v2_0/appearance_theme_dispatch/case.json",
+      "case": "cases/conformance/v2_0/appearance_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "Minimized appearance conformance fixture covering theme dispatch and default-theme stability.",
-      "documentation": "cases/conformance/v2_0/appearance_theme_dispatch/README.md",
+      "description": "One material and texture with the minimum required properties and one material and texture with all properties. One material assignment uses 'value', the other uses 'values'. Geometry with two materials and two textures. Default theme and texture are set.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "appearance_theme_dispatch",
-      "invariants": "cases/conformance/v2_0/appearance_theme_dispatch/invariants.json",
+      "geometry_kind": "dummy",
+      "id": "appearance_complete",
+      "invariants": "cases/conformance/v2_0/appearance_complete/invariants.json",
       "layer": "conformance",
-      "path": "cases/conformance/v2_0/appearance_theme_dispatch",
+      "path": "cases/conformance/v2_0/appearance_complete",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -79,16 +35,15 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_fake_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "cityjson fake complete conformance fixture migrated from serde_cityjson.",
       "family": "omnibus",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjson_fake_complete",
       "invariants": "cases/conformance/v2_0/cityjson_fake_complete/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjson_fake_complete",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -101,16 +56,15 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_minimal_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "cityjson minimal complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjson_minimal_complete",
       "invariants": "cases/conformance/v2_0/cityjson_minimal_complete/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjson_minimal_complete",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -123,16 +77,15 @@
       ],
       "case": "cases/conformance/v2_0/cityjson_root_id_extra_property/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjson_root_id_extra_property",
       "invariants": "cases/conformance/v2_0/cityjson_root_id_extra_property/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjson_root_id_extra_property",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -146,17 +99,16 @@
       ],
       "case": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Minimized CityJSONFeature conformance fixture covering extension payload preservation and feature streaming.",
       "documentation": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/README.md",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjsonfeature_extension_roundtrip",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip",
       "representation": "cityjsonfeature",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -169,16 +121,15 @@
       ],
       "case": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjsonfeature_minimal_complete",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjsonfeature_minimal_complete",
       "representation": "cityjsonfeature",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -192,16 +143,15 @@
       ],
       "case": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Hand-written CityJSONFeature fixture where root id resolves to a real CityObject in the same feature.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityjsonfeature_root_id_resolves",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves",
       "representation": "cityjsonfeature",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -214,16 +164,15 @@
       ],
       "case": "cases/conformance/v2_0/cityobject_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "cityobject complete conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityobject_complete",
       "invariants": "cases/conformance/v2_0/cityobject_complete/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityobject_complete",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -236,16 +185,15 @@
       ],
       "case": "cases/conformance/v2_0/cityobject_extended/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "cityobject extended conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "cityobject_extended",
       "invariants": "cases/conformance/v2_0/cityobject_extended/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityobject_extended",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -258,16 +206,15 @@
       ],
       "case": "cases/conformance/v2_0/extension/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "extension conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "extension",
       "invariants": "cases/conformance/v2_0/extension/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/extension",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -280,16 +227,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_complete_solid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry complete solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_complete_solid",
       "invariants": "cases/conformance/v2_0/geometry_complete_solid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_complete_solid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -302,16 +248,57 @@
       ],
       "case": "cases/conformance/v2_0/geometry_instance/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry instance conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_instance",
       "invariants": "cases/conformance/v2_0/geometry_instance/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_instance",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/geometry_material_multisolid/geometry_material_multisolid.city.json"
+      },
+      "assertions": [
+        "geometry_material_preserved"
+      ],
+      "case": "cases/conformance/v2_0/geometry_material_multisolid/case.json",
+      "cityjson_version": "2.0",
+      "description": "MultiSolid with a single material.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "geometry_material_multisolid",
+      "invariants": "cases/conformance/v2_0/geometry_material_multisolid/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/geometry_material_multisolid",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/geometry_material_multisurface/geometry_material_multisurface.city.json"
+      },
+      "assertions": [
+        "geometry_material_preserved"
+      ],
+      "case": "cases/conformance/v2_0/geometry_material_multisurface/case.json",
+      "cityjson_version": "2.0",
+      "description": "MultiSurface with a single material.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "geometry_material_multisurface",
+      "invariants": "cases/conformance/v2_0/geometry_material_multisurface/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/geometry_material_multisurface",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -320,20 +307,19 @@
         "source": "cases/conformance/v2_0/geometry_material_solid/geometry_material_solid.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_material_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_material_solid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "geometry material solid conformance fixture migrated from serde_cityjson.",
+      "description": "Solid with a single material.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_material_solid",
       "invariants": "cases/conformance/v2_0/geometry_material_solid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_material_solid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -346,16 +332,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multilinestring/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry semantics multilinestring conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_semantics_multilinestring",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multilinestring/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_semantics_multilinestring",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -368,16 +353,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multipoint/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry semantics multipoint conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_semantics_multipoint",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multipoint/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_semantics_multipoint",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -390,16 +374,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisolid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry semantics multisolid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_semantics_multisolid",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multisolid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_semantics_multisolid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -412,16 +395,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisurface/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry semantics multisurface conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_semantics_multisurface",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multisurface/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_semantics_multisurface",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -434,16 +416,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_solid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry semantics solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_semantics_solid",
       "invariants": "cases/conformance/v2_0/geometry_semantics_solid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_semantics_solid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -456,16 +437,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_templates/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry templates conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_templates",
       "invariants": "cases/conformance/v2_0/geometry_templates/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_templates",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -479,17 +459,16 @@
       ],
       "case": "cases/conformance/v2_0/geometry_templates_reuse/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Minimized template conformance fixture covering repeated GeometryInstance reuse and instance count stability.",
       "documentation": "cases/conformance/v2_0/geometry_templates_reuse/README.md",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_templates_reuse",
       "invariants": "cases/conformance/v2_0/geometry_templates_reuse/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_templates_reuse",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -502,16 +481,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_texture_multisolid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry texture multisolid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_texture_multisolid",
       "invariants": "cases/conformance/v2_0/geometry_texture_multisolid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_texture_multisolid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -520,20 +498,19 @@
         "source": "cases/conformance/v2_0/geometry_texture_multisurface/geometry_texture_multisurface.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_texture_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_texture_multisurface/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "geometry texture multisurface conformance fixture migrated from serde_cityjson.",
+      "description": "MultiSurface with textured surfaces. One textured surface has an inner ring. Last surface is not textured (set to 'null').",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_texture_multisurface",
       "invariants": "cases/conformance/v2_0/geometry_texture_multisurface/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_texture_multisurface",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -546,16 +523,15 @@
       ],
       "case": "cases/conformance/v2_0/geometry_texture_solid/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "geometry texture solid conformance fixture migrated from serde_cityjson.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "geometry_texture_solid",
       "invariants": "cases/conformance/v2_0/geometry_texture_solid/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/geometry_texture_solid",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -568,17 +544,16 @@
       ],
       "case": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
       "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
       "family": "invalid",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "invalid_cityjsonfeature_root_id_unresolved",
       "invariants": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/invariants.json",
       "layer": "invalid",
       "path": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved",
       "representation": "cityjsonfeature",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -591,16 +566,15 @@
       ],
       "case": "cases/invalid/invalid_missing_type/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "documentation": "cases/invalid/invalid_missing_type/README.md",
       "family": "invalid",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "invalid_missing_type",
       "invariants": "cases/invalid/invalid_missing_type/invariants.json",
       "layer": "invalid",
       "path": "cases/invalid/invalid_missing_type",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -613,16 +587,36 @@
       ],
       "case": "cases/invalid/invalid_out_of_range_vertex_index/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "documentation": "cases/invalid/invalid_out_of_range_vertex_index/README.md",
       "family": "invalid",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "invalid_out_of_range_vertex_index",
       "invariants": "cases/invalid/invalid_out_of_range_vertex_index/invariants.json",
       "layer": "invalid",
       "path": "cases/invalid/invalid_out_of_range_vertex_index",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/invalid/invalid_u64_f64_bounds/invalid_u64_f64_bounds.json"
+      },
+      "assertions": [
+        "rejects_numeric_bounds_overflow"
+      ],
+      "case": "cases/invalid/invalid_u64_f64_bounds/case.json",
+      "cityjson_version": "2.0",
+      "description": "Synthetic invalid CityJSON fixture that uses stored vertex values above `u64::MAX` and transform values outside the `f64` range. The input remains syntactically valid JSON, but implementations that coerce the numeric fields into bounded integer or float types should reject it.",
+      "family": "invalid",
+      "geometry_kind": "dummy",
+      "id": "invalid_u64_f64_bounds",
+      "invariants": "cases/invalid/invalid_u64_f64_bounds/invariants.json",
+      "layer": "invalid",
+      "path": "cases/invalid/invalid_u64_f64_bounds",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -638,7 +632,7 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/io_3dbag_cityjson/README.md",
       "family": "io",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "io_3dbag_cityjson",
       "invariants": "cases/workloads/io_3dbag_cityjson/invariants.json",
       "layer": "workload",
@@ -660,7 +654,7 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/io_3dbag_cityjson_cluster_4x/README.md",
       "family": "io",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "io_3dbag_cityjson_cluster_4x",
       "invariants": "cases/workloads/io_3dbag_cityjson_cluster_4x/invariants.json",
       "layer": "workload",
@@ -682,7 +676,7 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/io_3dbag_feature_files/README.md",
       "family": "io",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "io_3dbag_feature_files",
       "invariants": "cases/workloads/io_3dbag_feature_files/invariants.json",
       "layer": "workload",
@@ -704,7 +698,7 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/io_3dbag_jsonl/README.md",
       "family": "io",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "io_3dbag_jsonl",
       "invariants": "cases/workloads/io_3dbag_jsonl/invariants.json",
       "layer": "workload",
@@ -716,89 +710,22 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/material_complete/material_complete.city.json"
-      },
-      "assertions": [
-        "material_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/material_complete/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "material complete conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "material_complete",
-      "invariants": "cases/conformance/v2_0/material_complete/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/material_complete",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/material_minimal/material_minimal.city.json"
-      },
-      "assertions": [
-        "material_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/material_minimal/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "material minimal conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "material_minimal",
-      "invariants": "cases/conformance/v2_0/material_minimal/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/material_minimal",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
         "source": "cases/conformance/v2_0/metadata_complete/metadata_complete.city.json"
       },
       "assertions": [
-        "metadata_payload_preserved"
+        "metadata_properties_preserved"
       ],
       "case": "cases/conformance/v2_0/metadata_complete/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "metadata complete conformance fixture migrated from serde_cityjson.",
+      "description": "Metadata with all properties that are defined in the spec.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "metadata_complete",
       "invariants": "cases/conformance/v2_0/metadata_complete/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/metadata_complete",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/metadata_empty/metadata_empty.city.json"
-      },
-      "assertions": [
-        "metadata_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/metadata_empty/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "metadata empty conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "metadata_empty",
-      "invariants": "cases/conformance/v2_0/metadata_empty/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/metadata_empty",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -807,42 +734,19 @@
         "source": "cases/conformance/v2_0/metadata_extra_properties/metadata_extra_properties.city.json"
       },
       "assertions": [
-        "metadata_payload_preserved"
+        "metadata_extra_properties_preserved"
       ],
       "case": "cases/conformance/v2_0/metadata_extra_properties/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "metadata extra properties conformance fixture migrated from serde_cityjson.",
+      "description": "Metadata with extra properties that are not in the specs.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "metadata_extra_properties",
       "invariants": "cases/conformance/v2_0/metadata_extra_properties/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/metadata_extra_properties",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/metadata_poc_minimal/metadata_poc_minimal.city.json"
-      },
-      "assertions": [
-        "metadata_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/metadata_poc_minimal/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "metadata poc minimal conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "metadata_poc_minimal",
-      "invariants": "cases/conformance/v2_0/metadata_poc_minimal/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/metadata_poc_minimal",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -856,10 +760,9 @@
       ],
       "case": "cases/operations/ops_3dbag_base/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "documentation": "cases/operations/ops_3dbag_base/README.md",
       "family": "operation_kernel",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "ops_3dbag_base",
       "invariants": "cases/operations/ops_3dbag_base/invariants.json",
       "layer": "operation",
@@ -879,10 +782,9 @@
       ],
       "case": "cases/operations/ops_3dbag_enriched/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "documentation": "cases/operations/ops_3dbag_enriched/README.md",
       "family": "operation_kernel",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "ops_3dbag_enriched",
       "invariants": "cases/operations/ops_3dbag_enriched/invariants.json",
       "layer": "operation",
@@ -902,10 +804,9 @@
       ],
       "case": "cases/operations/ops_3dbag_semantic_surfaces/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
       "family": "operation_kernel",
-      "geometry_validity": "real-preserved",
+      "geometry_kind": "real-preserved",
       "id": "ops_3dbag_semantic_surfaces",
       "invariants": "cases/operations/ops_3dbag_semantic_surfaces/invariants.json",
       "layer": "operation",
@@ -925,17 +826,60 @@
       ],
       "case": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
       "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
       "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
       "family": "operation_kernel",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "ops_cityjsonseq_feature_root_id_not_shared",
       "invariants": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/invariants.json",
       "layer": "operation",
       "path": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared",
       "representation": "jsonl",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/semantic_all_types/semantic_all_types.city.json"
+      },
+      "assertions": [
+        "semantic_surface_preserved"
+      ],
+      "case": "cases/conformance/v2_0/semantic_all_types/case.json",
+      "cityjson_version": "2.0",
+      "description": "Semantic surfaces with all possible semantic types, including a surface without semantics (last surface).",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "semantic_all_types",
+      "invariants": "cases/conformance/v2_0/semantic_all_types/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/semantic_all_types",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/semantic_complete/semantic_complete.city.json"
+      },
+      "assertions": [
+        "semantic_surface_preserved",
+        "semantic_hierarchy_resolved",
+        "semantic_attributes_resolved"
+      ],
+      "case": "cases/conformance/v2_0/semantic_complete/case.json",
+      "cityjson_version": "2.0",
+      "description": "Two semantic surfaces that together contain all possible semantic properties. These include semantic hierarchy and allowed attribute value types.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "semantic_complete",
+      "invariants": "cases/conformance/v2_0/semantic_complete/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/semantic_complete",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -944,42 +888,20 @@
         "source": "cases/conformance/v2_0/semantic_extended/semantic_extended.city.json"
       },
       "assertions": [
-        "semantic_surface_preserved"
+        "semantic_extension_type_preserved",
+        "semantic_extension_properties_preserved"
       ],
       "case": "cases/conformance/v2_0/semantic_extended/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "semantic extended conformance fixture migrated from serde_cityjson.",
+      "description": "Semantic surface with an 'extended' or custom type that start with a '+', e.g. +MySemantic, including attributes and hierarchy.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "semantic_extended",
       "invariants": "cases/conformance/v2_0/semantic_extended/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/semantic_extended",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/semantic_minimal/semantic_minimal.city.json"
-      },
-      "assertions": [
-        "semantic_surface_preserved"
-      ],
-      "case": "cases/conformance/v2_0/semantic_minimal/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "semantic minimal conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "semantic_minimal",
-      "invariants": "cases/conformance/v2_0/semantic_minimal/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/semantic_minimal",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -994,16 +916,15 @@
       ],
       "case": "cases/conformance/synthetic/spec_geometry_matrix/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "supplemental",
       "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "spec_geometry_matrix",
       "invariants": "cases/conformance/synthetic/spec_geometry_matrix/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/synthetic/spec_geometry_matrix",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1020,13 +941,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_appearance_and_validation/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_appearance_and_validation",
       "invariants": "cases/workloads/stress_appearance_and_validation/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_appearance_and_validation",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1043,13 +964,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_attribute_tree/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_attribute_tree",
       "invariants": "cases/workloads/stress_attribute_tree/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_attribute_tree",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1066,13 +987,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_composite_value/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_composite_value",
       "invariants": "cases/workloads/stress_composite_value/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_composite_value",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1089,13 +1010,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_deep_boundary/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_deep_boundary",
       "invariants": "cases/workloads/stress_deep_boundary/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_deep_boundary",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1112,13 +1033,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_geometry_flattening/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_geometry_flattening",
       "invariants": "cases/workloads/stress_geometry_flattening/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_geometry_flattening",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1135,13 +1056,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_relation_graph/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_relation_graph",
       "invariants": "cases/workloads/stress_relation_graph/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_relation_graph",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1158,79 +1079,13 @@
       "cityjson_version": "2.0",
       "documentation": "cases/workloads/stress_vertex_transform/README.md",
       "family": "stress",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "stress_vertex_transform",
       "invariants": "cases/workloads/stress_vertex_transform/invariants.json",
       "layer": "workload",
       "path": "cases/workloads/stress_vertex_transform",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/texture_complete/texture_complete.city.json"
-      },
-      "assertions": [
-        "texture_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/texture_complete/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "texture complete conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "texture_complete",
-      "invariants": "cases/conformance/v2_0/texture_complete/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/texture_complete",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/texture_minimal/texture_minimal.city.json"
-      },
-      "assertions": [
-        "texture_payload_preserved"
-      ],
-      "case": "cases/conformance/v2_0/texture_minimal/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "texture minimal conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "texture_minimal",
-      "invariants": "cases/conformance/v2_0/texture_minimal/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/texture_minimal",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/transform/transform.city.json"
-      },
-      "assertions": [
-        "transform_applied_correctly"
-      ],
-      "case": "cases/conformance/v2_0/transform/case.json",
-      "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "transform conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_validity": "dummy",
-      "id": "transform",
-      "invariants": "cases/conformance/v2_0/transform/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/transform",
-      "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     },
     {
@@ -1239,20 +1094,21 @@
         "source": "cases/conformance/v2_0/vertices/vertices.city.json"
       },
       "assertions": [
-        "vertex_indices_preserved"
+        "vertex_indices_preserved",
+        "extreme_coordinates_preserved",
+        "transform_preserved"
       ],
       "case": "cases/conformance/v2_0/vertices/case.json",
       "cityjson_version": "2.0",
-      "correctness_class": "normative",
-      "description": "vertices conformance fixture migrated from serde_cityjson.",
+      "description": "Coordinates and transformation properties that exceed the lower/upper-bounds of u32 and f32.",
       "family": "spec_atom",
-      "geometry_validity": "dummy",
+      "geometry_kind": "dummy",
       "id": "vertices",
       "invariants": "cases/conformance/v2_0/vertices/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/vertices",
       "representation": "cityjson",
-      "source_kind": "synthetic-controlled",
+      "source_kind": "synthetic",
       "version": 2
     }
   ],

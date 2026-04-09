@@ -8,14 +8,13 @@
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
   "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
   "family": "operation_kernel",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "ops_cityjsonseq_feature_root_id_not_shared",
   "layer": "operation",
   "representation": "jsonl",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

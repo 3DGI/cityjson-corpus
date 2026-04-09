@@ -1,8 +1,8 @@
 {
   "checks": [
     {
-      "description": "Geometry stays stable across parse and roundtrip.",
-      "id": "geometry_surface_preserved"
+      "description": "Geometry semantics stay stable across roundtrip.",
+      "id": "geometry_semantics_preserved"
     }
   ],
   "id": "geometry_semantics_solid",

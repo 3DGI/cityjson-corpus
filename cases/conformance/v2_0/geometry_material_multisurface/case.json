@@ -1,0 +1,18 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/geometry_material_multisurface/geometry_material_multisurface.city.json"
+  },
+  "assertions": [
+    "geometry_material_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "MultiSurface with a single material.",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "geometry_material_multisurface",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

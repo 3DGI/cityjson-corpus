@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "Geometry materials stay stable across roundtrip.",
+      "id": "geometry_material_preserved"
+    }
+  ],
+  "id": "geometry_material_multisolid",
+  "kind": "positive",
+  "version": 1
+}

@@ -1,8 +1,12 @@
 {
   "checks": [
     {
-      "description": "Geometry stays stable across parse and roundtrip.",
-      "id": "geometry_surface_preserved"
+      "description": "Geometry stays stable across roundtrip.",
+      "id": "geometry_instance_preserved"
+    },
+    {
+      "description": "GeometryInstance can resolve its geometry template, reference point and transformation matrix.",
+      "id": "geometry_instance_resolved"
     }
   ],
   "id": "geometry_instance",

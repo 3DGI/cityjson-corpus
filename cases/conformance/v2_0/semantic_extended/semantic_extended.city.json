@@ -3,26 +3,15 @@
   "version": "2.0",
   "CityObjects": {
     "fixture": {
-      "type": "GenericCityObject",
+      "type": "Building",
       "geometry": [
         {
           "type": "MultiSurface",
-          "lod": "1",
+          "lod": "2",
           "boundaries": [
-            [
-              [
-                0,
-                1,
-                2
-              ]
-            ],
-            [
-              [
-                0,
-                1,
-                2
-              ]
-            ]
+            [[ 0, 1, 2 ]],
+            [[ 0, 1, 2 ]],
+            [[ 0, 1, 2 ]]
           ],
           "semantics": {
             "surfaces": [
@@ -31,53 +20,27 @@
               },
               {
                 "type": "+MySemantic",
-                "my_attribute": 42,
-                "my_complex_attribute": {
-                  "scalar": 1,
-                  "string": "this is a string",
-                  "array": [
-                    2,
-                    4
-                  ]
-                },
-                "children": [
-                  2
-                ],
+                "integer": 42,
+                "children": [ 2 ],
                 "parent": 0
               },
               {
                 "type": "WallSurface"
               }
             ],
-            "values": [
-              0,
-              1
-            ]
+            "values": [ 0, 1, 2 ]
           }
         }
       ]
     }
   },
-  "appearance": {},
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
-  },
   "vertices": [
-    [
-      0,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      2,
-      0,
-      0
-    ]
-  ]
+    [ 0, 0, 0 ],
+    [ 1, 0, 0 ],
+    [ 2, 0, 0 ]
+  ],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
 }

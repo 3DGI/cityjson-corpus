@@ -1,0 +1,13 @@
+{
+  "checks": [
+    {
+      "description": "CityJSON readers reject vertices and transform values outside u64/f64 bounds.",
+      "id": "rejects_numeric_bounds_overflow"
+    }
+  ],
+  "expected_result": "reject",
+  "fixture": "invalid_u64_f64_bounds.json",
+  "id": "invalid_u64_f64_bounds",
+  "kind": "negative",
+  "version": 1
+}

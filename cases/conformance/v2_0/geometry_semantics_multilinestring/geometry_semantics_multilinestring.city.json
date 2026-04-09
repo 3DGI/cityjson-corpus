@@ -9,13 +9,8 @@
           "type": "MultiLineString",
           "lod": "0",
           "boundaries": [
-            [
-              0,
-              1,
-              2,
-              3,
-              4
-            ]
+            [ 0, 3, 2, 1 ],
+            [ 0, 3, 2, 1 ]
           ],
           "semantics": {
             "surfaces": [
@@ -23,44 +18,20 @@
                 "type": "TransportationMarking"
               }
             ],
-            "values": [
-              0
-            ]
+            "values": [ 0, null ]
           }
         }
       ]
     }
   },
-  "appearance": {},
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
-  },
   "vertices": [
-    [
-      0,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      2,
-      0,
-      0
-    ],
-    [
-      3,
-      0,
-      0
-    ],
-    [
-      4,
-      0,
-      0
-    ]
-  ]
+    [ 0, 0, 0 ],
+    [ 1, 0, 0 ],
+    [ 2, 0, 0 ],
+    [ 3, 0, 0 ]
+  ],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
 }

@@ -4,9 +4,18 @@ site/
 target/
 dist/
 build/
+# Generated MkDocs output. The hand-authored source docs stay tracked.
+docs/artifacts/
+docs/cases/
+docs/catalog/
+docs/pipelines/
+docs/reference/
+docs/repository/
+docs/schemas/
 *.pyc
 __pycache__/
 .idea
 artifacts/generated/
 artifacts/acquired/
 artifacts/benchmark-index.json
+artifacts/correctness-index.json

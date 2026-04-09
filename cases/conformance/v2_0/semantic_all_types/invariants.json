@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "Semantic surfaces stay stable across parse and roundtrip.",
+      "id": "semantic_surface_preserved"
+    }
+  ],
+  "id": "semantic_all_types",
+  "kind": "positive",
+  "version": 1
+}

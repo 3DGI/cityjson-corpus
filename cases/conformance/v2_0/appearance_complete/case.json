@@ -5,16 +5,17 @@
   },
   "assertions": [
     "appearance_preserved",
-    "complete_stable"
+    "material_assignment",
+    "default_material_texture_set",
+    "multiple_material_texture_set"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "Minimized appearance conformance fixture covering theme dispatch and default-theme stability.",
+  "description": "One material and texture with the minimum required properties and one material and texture with all properties. One material assignment uses 'value', the other uses 'values'. Geometry with two materials and two textures. Default theme and texture are set.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "appearance_complete",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

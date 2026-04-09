@@ -7,13 +7,12 @@
     "cityobject_structure_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "cityobject extended conformance fixture migrated from serde_cityjson.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "cityobject_extended",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

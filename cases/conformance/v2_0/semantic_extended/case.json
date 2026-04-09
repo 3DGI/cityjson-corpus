@@ -4,16 +4,16 @@
     "source": "cases/conformance/v2_0/semantic_extended/semantic_extended.city.json"
   },
   "assertions": [
-    "semantic_surface_preserved"
+    "semantic_extension_type_preserved",
+    "semantic_extension_properties_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "semantic extended conformance fixture migrated from serde_cityjson.",
+  "description": "Semantic surface with an 'extended' or custom type that start with a '+', e.g. +MySemantic, including attributes and hierarchy.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "semantic_extended",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

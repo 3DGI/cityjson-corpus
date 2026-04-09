@@ -9,13 +9,12 @@
     "boundary_normalization_stable"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "supplemental",
   "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "spec_geometry_matrix",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

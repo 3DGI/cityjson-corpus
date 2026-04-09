@@ -6,9 +6,26 @@ import sys
 from pathlib import Path
 
 import mkdocs_gen_files
+import mkdocs_gen_files.editor as mkdocs_editor
+from mkdocs.config import load_config as load_mkdocs_config
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 CORPUS_CASES_PATH = SCRIPT_DIR / "corpus_cases.py"
+DOCS_CONFIG_PATH = SCRIPT_DIR.parent / "properdocs.yml"
+
+
+def configure_mkdocs_gen_files() -> None:
+    if not DOCS_CONFIG_PATH.exists():
+        return
+
+    def load_properdocs_config(config_file=None, *, config_file_path=None, **kwargs):
+        if config_file is None and config_file_path is None:
+            config_file = str(DOCS_CONFIG_PATH)
+        return load_mkdocs_config(
+            config_file, config_file_path=config_file_path, **kwargs
+        )
+
+    mkdocs_editor.load_config = load_properdocs_config
 
 
 def load_corpus_cases_module():
@@ -29,9 +46,13 @@ ROOT = corpus_cases.ROOT
 humanize_case_id = corpus_cases.humanize_case_id
 load_case_records = corpus_cases.load_case_records
 repo_relative = corpus_cases.repo_relative
+configure_mkdocs_gen_files()
 
 
 CASE_ROOT = ROOT / "cases"
+CJFAKE_SCHEMA_SOURCE = ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+CJFAKE_SCHEMA_PAGE = "reference/cjfake-manifest-schema.md"
+CJFAKE_SCHEMA_LINK = "https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json"
 
 
 def write_markdown(
@@ -51,7 +72,12 @@ def write_generated_markdown(destination: str, text: str, edit_path: Path) -> No
     with mkdocs_gen_files.open(destination, "w") as handle:
         handle.write(text)
 
-    mkdocs_gen_files.set_edit_path(destination, edit_path.relative_to(ROOT).as_posix())
+    try:
+        edit_target = edit_path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return
+
+    mkdocs_gen_files.set_edit_path(destination, edit_target)
 
 
 def write_reference_page(
@@ -125,10 +151,6 @@ def build_case_page(record) -> str:
         f"- `source_kind`: `{record.case_data['source_kind']}`",
         f"- `representation`: `{record.case_data['representation']}`",
     ]
-    for key in ("correctness_class",):
-        value = record.case_data.get(key)
-        if isinstance(value, str):
-            contract_lines.append(f"- `{key}`: `{value}`")
     contract_lines.append(f"- `path`: `{repo_relative(record.case_dir)}`")
     contract_lines.append("")
     parts.extend(contract_lines)
@@ -206,8 +228,9 @@ def main() -> None:
         {
             "docs/index.md": "../index.md",
             "catalog/cases.json": "../reference/cases.md",
-            "schemas/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
+            CJFAKE_SCHEMA_LINK: f"../{CJFAKE_SCHEMA_PAGE}",
             "cases/README.md": "../cases/index.md",
+            "schemas/README.md": "../schemas/index.md",
             "docs/data-generation.md": "../data-generation.md",
             "docs/adr/0009-cityjson-benchmark-corpus-design.md": "../adr/0009-cityjson-benchmark-corpus-design.md",
         },
@@ -227,13 +250,17 @@ def main() -> None:
         "cases/index.md",
         {
             "`catalog/cases.json`": "[`catalog/cases.json`](../reference/cases.md)",
+            "[`schemas/README.md`](../schemas/README.md)": "[`schemas/index.md`](../schemas/index.md)",
         },
     )
     write_markdown(
         ROOT / "schemas" / "README.md",
         "schemas/index.md",
         {
-            "[cjfake-manifest.schema.json](cjfake-manifest.schema.json)": "[cjfake-manifest.schema.json](../reference/cjfake-manifest-schema.md)",
+            "[case.schema.json](case.schema.json)": "[case.schema.json](../reference/case-schema.md)",
+            "[invariants.schema.json](invariants.schema.json)": "[invariants.schema.json](../reference/invariants-schema.md)",
+            "[acquisition.schema.json](acquisition.schema.json)": "[acquisition.schema.json](../reference/acquisition-schema.md)",
+            f"[cjfake-manifest.schema.json]({CJFAKE_SCHEMA_LINK})": f"[cjfake-manifest.schema.json](../{CJFAKE_SCHEMA_PAGE})",
             "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
     )
@@ -290,8 +317,8 @@ def main() -> None:
         "Machine-readable case index rendered from the canonical cases/ tree.",
     )
     write_reference_page(
-        ROOT / "schemas" / "cjfake-manifest.schema.json",
-        "reference/cjfake-manifest-schema.md",
+        CJFAKE_SCHEMA_SOURCE,
+        CJFAKE_SCHEMA_PAGE,
         "CJFake Manifest Schema",
         "Machine-readable schema for benchmark generation manifests.",
     )

@@ -39,13 +39,14 @@ single implementation's internal model.
 
 ## Source Kinds
 
-- `synthetic-controlled` - generated from manifests when the benchmark needs
-  tight control over data shape, allocation behavior, or serialization
-  structure.
-- `real-geometry` - untouched `3DBAG` slices when geometry correctness and
-  realistic object structure matter.
-- `real-geometry-enriched` - `3DBAG` geometry augmented with synthetic
-  attributes, metadata, appearance, or other non-geometric surfaces.
+- `synthetic-controlled` - controlled synthetic fixtures generated from
+  manifests when the benchmark needs tight control over data shape,
+  allocation behavior, or serialization structure.
+- `real-geometry` - preserved real-data slices, typically from `3DBAG`, when
+  geometry correctness and realistic object structure matter.
+- `real-geometry-enriched` - preserved real geometry with synthetic
+  attributes, metadata, appearance, or other non-geometric surfaces layered
+  on top.
 
 ## Taxonomy
 
@@ -137,7 +138,7 @@ Repository boundaries remain strict:
 
 `cjfake` ingests manifests directly for both library and CLI use and produces
 the benchmark data described by those manifests. The repository specifies this
-contract explicitly in `schemas/cjfake-manifest.schema.json`.
+contract in the `cjfake` manifest schema.
 
 Concrete profile fixtures reside under their owning case directories and are
 checked by the repository-side validation script before release.

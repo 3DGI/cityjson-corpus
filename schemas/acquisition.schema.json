@@ -31,7 +31,8 @@
       "enum": [
         "planned",
         "published"
-      ]
+      ],
+      "description": "Acquisition lifecycle state. See schemas/README.md for the controlled vocabulary."
     },
     "dataset": {
       "type": "string",

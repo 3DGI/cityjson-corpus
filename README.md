@@ -17,8 +17,8 @@ own.
 - `pipelines/` - corpus build and publication scripts.
 - `artifacts/` - derived benchmark outputs, raw acquired slices, and release
   metadata.
-- `schemas/` - JSON Schemas for case, invariants, acquisition metadata, and
-  generator manifests.
+- `schemas/` - JSON Schemas and the canonical value glossary for case,
+  invariants, acquisition metadata, and generator manifests.
 - `scripts/` - validation, rendering, and data-pipeline scripts.
 - `docs/` - repository documentation and the design ADRs.
 
@@ -27,11 +27,8 @@ own.
 The corpus serves two purposes:
 
 - **Correctness testing.** Conformance, invalid, and operation cases define
-  invariants that consuming tools must satisfy. The default correctness corpus
-  is the reviewed, pinned set of checked-in or acquired fixtures. Supplemental
-  generated conformance cases are also indexed for opt-in coverage.
-  `artifacts/correctness-index.json` is a derived index of these cases,
-  rendered by `just sync-catalog`.
+  invariants that consuming tools must satisfy. `artifacts/correctness-index.json`
+  is a derived index of these cases, rendered by `just sync-catalog`.
 - **Benchmark performance.** Workload cases provide synthetic stress fixtures
   and real-data I/O workloads for measuring throughput and latency.
   `artifacts/benchmark-index.json` lists their output paths after
@@ -42,13 +39,14 @@ The corpus serves two purposes:
 Prerequisites: `just`, `uv`, `jq`, `cargo`, and a sibling checkout of
 `../cjfake` (or override via `CJFAKE_CARGO_MANIFEST`).
 
-1. `just lint` - verify the case tree and profiles are healthy.
+1. `just lint` - verify the case tree, profiles, and checked-in conformance
+   fixtures are healthy.
 2. `just acquire-3dbag` - download the 3DBAG slice into `artifacts/acquired/`.
 3. `just generate-data` - materialize synthetic workloads into
    `artifacts/generated/`.
 
-Normative conformance, invalid, and operation cases are ready to use
-immediately after cloning. Supplemental generated conformance cases require
+Correctness cases are ready to use once their checked-in, generated, or
+acquired artifacts exist. Generated conformance cases require
 `just generate-data` before their artifacts are materialized.
 
 After step 3, `artifacts/benchmark-index.json` lists all workload cases and
@@ -76,8 +74,9 @@ not delete stale pages for removed cases.
 ## Recipes
 
 - `just fmt` formats Python files with ruff.
-- `just lint` runs ruff check and validates the case tree, catalog sync, and
-  profile fixtures.
+- `just lint` runs ruff check, validates the case tree, catalog sync, profile
+  fixtures, and checks each checked-in `cases/conformance/v2_0/*.city.json`
+  file with `cjval -q`.
 - `just sync-catalog` rewrites `catalog/cases.json` and
   `artifacts/correctness-index.json` from `cases/`.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
@@ -93,7 +92,8 @@ not delete stale pages for removed cases.
 
 - [Documentation home](docs/index.md)
 - [Derived case catalog](catalog/cases.json)
-- [CJFake manifest schema](schemas/cjfake-manifest.schema.json)
+- [CJFake manifest schema](https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json)
+- [Schema value glossary](schemas/README.md)
 - [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)
 - [Corpus design ADR](docs/adr/0009-cityjson-benchmark-corpus-design.md)

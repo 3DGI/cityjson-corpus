@@ -4,16 +4,15 @@
     "source": "cases/conformance/v2_0/geometry_texture_multisurface/geometry_texture_multisurface.city.json"
   },
   "assertions": [
-    "geometry_surface_preserved"
+    "geometry_texture_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "geometry texture multisurface conformance fixture migrated from serde_cityjson.",
+  "description": "MultiSurface with textured surfaces. One textured surface has an inner ring. Last surface is not textured (set to 'null').",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "geometry_texture_multisurface",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

@@ -1,8 +1,16 @@
 {
   "checks": [
     {
-      "description": "CityObject structure stays stable across parse and roundtrip.",
+      "description": "CityObject structure stays stable across roundtrip.",
       "id": "cityobject_structure_preserved"
+    },
+    {
+      "description": "CityObject hierarchy resolves to a valid structure.",
+      "id": "cityobject_hierarchy_resolved"
+    },
+    {
+      "description": "The geometry member can be empty.",
+      "id": "empty_geometry_member"
     }
   ],
   "id": "cityobject_complete",

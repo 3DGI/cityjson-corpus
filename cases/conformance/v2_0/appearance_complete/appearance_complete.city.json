@@ -9,31 +9,25 @@
           "type": "MultiSurface",
           "lod": "2",
           "boundaries": [
-            [
-              [
-                0,
-                1,
-                2,
-                3
-              ]
-            ]
+            [[ 0, 1, 2, 3 ]]
           ],
           "material": {
             "warm": {
+              "value": 0
+            },
+            "cool": {
               "value": 0
             }
           },
           "texture": {
             "day-textures": {
               "values": [
-                [
-                  [
-                    0,
-                    1,
-                    2,
-                    3
-                  ]
-                ]
+                [[ 0, 0, 1, 2, 3 ]]
+              ]
+            },
+            "night-textures": {
+              "values": [
+                [[ 1, 0, 1, 2, 3 ]]
               ]
             }
           }
@@ -47,31 +41,17 @@
           "type": "MultiSurface",
           "lod": "2",
           "boundaries": [
-            [
-              [
-                4,
-                5,
-                6,
-                7
-              ]
-            ]
+            [[ 4, 5, 6, 7 ]]
           ],
           "material": {
             "cool": {
-              "value": 1
+              "values": [ 1 ]
             }
           },
           "texture": {
             "night-textures": {
               "values": [
-                [
-                  [
-                    0,
-                    1,
-                    2,
-                    3
-                  ]
-                ]
+                [[ 1, 0, 1, 2, 3 ]]
               ]
             }
           }
@@ -84,9 +64,9 @@
       {
         "name": "warm",
         "ambientIntensity": 0.5,
-        "diffuseColor": [0.5, 0.6, 0.7],
-        "emissiveColor": [0.5, 0.6, 0.7],
-        "specularColor": [0.5, 0.6, 0.7],
+        "diffuseColor": [ 0.5, 0.6, 0.7 ],
+        "emissiveColor": [ 0.5, 0.6, 0.7 ],
+        "specularColor": [ 0.5, 0.6, 0.7 ],
         "shininess": 0.1,
         "transparency": 0.9,
         "isSmooth": true
@@ -109,66 +89,26 @@
       }
     ],
     "vertices-texture": [
-      [
-        0.0,
-        0.0
-      ],
-      [
-        1.0,
-        0.0
-      ],
-      [
-        1.0,
-        1.0
-      ],
-      [
-        0.0,
-        1.0
-      ]
+      [ 0.0, 0.0 ],
+      [ 1.0, 0.0 ],
+      [ 1.0, 1.0 ],
+      [ 0.0, 1.0 ]
     ],
     "default-theme-texture": "day-textures",
     "default-theme-material": "warm"
   },
   "vertices": [
-    [
-      0,
-      0,
-      0
-    ],
-    [
-      1,
-      0,
-      0
-    ],
-    [
-      1,
-      1,
-      0
-    ],
-    [
-      0,
-      1,
-      0
-    ],
-    [
-      0,
-      0,
-      1
-    ],
-    [
-      1,
-      0,
-      1
-    ],
-    [
-      1,
-      1,
-      1
-    ],
-    [
-      0,
-      1,
-      1
-    ]
-  ]
+    [ 0, 0, 0 ],
+    [ 1, 0, 0 ],
+    [ 1, 1, 0 ],
+    [ 0, 1, 0 ],
+    [ 0, 0, 1 ],
+    [ 1, 0, 1 ],
+    [ 1, 1, 1 ],
+    [ 0, 1, 1 ]
+  ],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
 }

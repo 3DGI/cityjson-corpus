@@ -4,16 +4,16 @@
     "source": "cases/conformance/v2_0/geometry_instance/geometry_instance.city.json"
   },
   "assertions": [
-    "geometry_surface_preserved"
+    "geometry_instance_preserved",
+    "geometry_instance_resolved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "geometry instance conformance fixture migrated from serde_cityjson.",
+  "description": "Two GeometryInstances with the same template, but different transformation matrices.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "geometry_instance",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

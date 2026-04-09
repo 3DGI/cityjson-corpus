@@ -3,39 +3,47 @@
   "version": "2.0",
   "CityObjects": {
     "fixture": {
-      "type": "BuildingPart",
-      "geographicalExtent": [
-        84710.1,
-        446846.0,
-        -5.3,
-        84757.1,
-        446944.0,
-        40.9
-      ],
+      "type": "CityObjectGroup",
+      "geographicalExtent": [ 84710.1, 446846.0, -5.3, 84757.1, 446944.0, 40.9 ],
       "attributes": {
-        "measuredHeight": 22.3,
-        "roofType": "gable",
-        "owner": "Elvis Presley"
+        "measuredHeight": 22.3
       },
       "children": [
         "id-2"
       ],
-      "parents": [
-        "id-3"
-      ],
       "geometry": []
     },
+    "id-1": {
+      "type": "GenericCityObject",
+      "children": [
+        "id-2"
+      ]
+    },
     "id-2": {
-      "type": "GenericCityObject"
+      "type": "GenericCityObject",
+      "parents": [
+        "fixture", "id-1"
+      ],
+      "children": [
+        "id-3", "id-4"
+      ]
     },
     "id-3": {
-      "type": "GenericCityObject"
+      "type": "GenericCityObject",
+      "parents": [
+        "id-2"
+      ]
+    },
+    "id-4": {
+      "type": "GenericCityObject",
+      "parents": [
+        "id-2"
+      ]
     }
   },
-  "appearance": {},
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
-  },
-  "vertices": []
+  "vertices": [],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
 }

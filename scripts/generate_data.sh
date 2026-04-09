@@ -4,7 +4,8 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 corpus_path="${repo_dir}/catalog/cases.json"
-schema_path="${repo_dir}/schemas/cjfake-manifest.schema.json"
+schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cjfake/src/data/cjfake-manifest.schema.json}"
+schema_ref="${CJFAKE_MANIFEST_SCHEMA_REF:-https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json}"
 cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
 output_dir="${CORPUS_GENERATED_DIR:-${repo_dir}/artifacts/generated}"
 index_path="${CORPUS_BENCHMARK_INDEX_PATH:-${repo_dir}/artifacts/benchmark-index.json}"
@@ -87,7 +88,7 @@ done < <(jq -r '.cases[] | select(.layer == "workload" and .artifact_paths.profi
 jq -S \
   --arg output_dir "${output_dir}" \
   --arg corpus_path "catalog/cases.json" \
-  --arg schema_path "schemas/cjfake-manifest.schema.json" \
+  --arg schema_path "${schema_ref}" \
   --arg cjfake_cargo "${cjfake_cargo}" \
   --argjson acquired_map "${acquired_map_json}" \
   '

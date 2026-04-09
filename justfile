@@ -9,9 +9,18 @@ fmt:
 
 # Lint Python, validate the case tree and catalog sync, and check profile fixtures.
 lint:
-    uvx --from ruff ruff check .
-    uv run python ./scripts/validate_case_layout.py
-    ./scripts/validate_profiles.sh
+    @echo "{{BOLD}}Linting Python files...{{NORMAL}}"
+    @uvx --from ruff ruff check .
+    @echo "{{BOLD}}Validating case tree...{{NORMAL}}"
+    @uv run python ./scripts/validate_case_layout.py
+    @echo "{{BOLD}}Validating profiles...{{NORMAL}}"
+    @./scripts/validate_profiles.sh
+    just cjval
+
+# Run cjval on all conformance cases.
+cjval:
+    @echo "{{BOLD}}Running cjval on conformance cases...{{NORMAL}}"
+    @status=0; while IFS= read -r -d '' file; do basename="$(basename "$file")"; output="$(cjval -q "$file" 2>&1)"; printf "%s %s\n" "$output" "$basename"; case "$output" in *"❌ File is invalid"*) status=1 ;; esac; done < <(find cases/conformance/v2_0 -type f -name '*.city.json' -print0); exit "$status"
 
 # Rewrite catalog/cases.json and artifacts/correctness-index.json from cases/.
 sync-catalog:
@@ -26,10 +35,10 @@ generate-data:
 acquire-3dbag:
     ./scripts/acquire_3dbag.sh
 
-# Start a local MkDocs dev server.
+# Start a local ProperDocs dev server.
 docs-serve:
-    uv run mkdocs serve
+    uv run properdocs serve -o
 
 # Build the MkDocs site.
 docs-build:
-    uv run mkdocs build
+    uv run properdocs build

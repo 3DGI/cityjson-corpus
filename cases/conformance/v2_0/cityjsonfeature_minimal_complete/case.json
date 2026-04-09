@@ -7,13 +7,12 @@
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "cityjsonfeature_minimal_complete",
   "layer": "conformance",
   "representation": "cityjsonfeature",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

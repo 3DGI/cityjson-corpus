@@ -2,7 +2,7 @@
   "checks": [
     {
       "description": "Metadata stays stable across parse and roundtrip.",
-      "id": "metadata_payload_preserved"
+      "id": "metadata_properties_preserved"
     }
   ],
   "id": "metadata_complete",

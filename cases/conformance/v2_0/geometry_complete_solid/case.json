@@ -7,13 +7,12 @@
     "geometry_surface_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "geometry complete solid conformance fixture migrated from serde_cityjson.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "geometry_complete_solid",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

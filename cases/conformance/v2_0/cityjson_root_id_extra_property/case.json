@@ -7,13 +7,12 @@
     "root_extra_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "cityjson_root_id_extra_property",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

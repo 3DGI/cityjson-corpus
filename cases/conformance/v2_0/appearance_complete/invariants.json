@@ -1,15 +1,23 @@
 {
   "checks": [
     {
-      "description": "Appearance data survives parse and serialization.",
+      "description": "Appearance data survives roundtrip.",
       "id": "appearance_preserved"
     },
     {
-      "description": "Theme dispatch stays stable across roundtrips.",
-      "id": "theme_dispatch_stable"
+      "description": "Default material and texture are set.",
+      "id": "default_material_texture_set"
+    },
+    {
+      "description": "Multiple material and texture are set.",
+      "id": "multiple_material_texture_set"
+    },
+    {
+      "description": "Material can be assigned with 'value' for all surfaces and with 'values' too.",
+      "id": "material_assignment"
     }
   ],
-  "id": "appearance_theme_dispatch",
+  "id": "appearance_complete",
   "kind": "positive",
   "version": 1
 }

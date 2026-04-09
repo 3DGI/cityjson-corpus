@@ -4,16 +4,17 @@
     "source": "cases/conformance/v2_0/vertices/vertices.city.json"
   },
   "assertions": [
-    "vertex_indices_preserved"
+    "vertex_indices_preserved",
+    "extreme_coordinates_preserved",
+    "transform_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "vertices conformance fixture migrated from serde_cityjson.",
+  "description": "Coordinates and transformation properties that exceed the lower/upper-bounds of u32 and f32.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "vertices",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

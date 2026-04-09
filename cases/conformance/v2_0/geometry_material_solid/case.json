@@ -4,16 +4,15 @@
     "source": "cases/conformance/v2_0/geometry_material_solid/geometry_material_solid.city.json"
   },
   "assertions": [
-    "geometry_surface_preserved"
+    "geometry_material_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "geometry material solid conformance fixture migrated from serde_cityjson.",
+  "description": "Solid with a single material.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "geometry_material_solid",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "description": "Building address stays stable across roundtrip.",
+      "id": "building_address_preserved"
+    },
+    {
+      "description": "The point location of the address is resolved to a valid point.",
+      "id": "address_location_resolved"
+    },
+    {
+      "description": "The geometry member can be omitted.",
+      "id": "missing_geometry_member"
+    }
+  ],
+  "id": "cityobject_complete",
+  "kind": "positive",
+  "version": 1
+}

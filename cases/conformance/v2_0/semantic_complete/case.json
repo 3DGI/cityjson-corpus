@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/semantic_complete/semantic_complete.city.json"
+  },
+  "assertions": [
+    "semantic_surface_preserved",
+    "semantic_hierarchy_resolved",
+    "semantic_attributes_resolved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Two semantic surfaces that together contain all possible semantic properties. These include semantic hierarchy and allowed attribute value types.",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "semantic_complete",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

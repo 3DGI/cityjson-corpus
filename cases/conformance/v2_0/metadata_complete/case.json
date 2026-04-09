@@ -4,16 +4,15 @@
     "source": "cases/conformance/v2_0/metadata_complete/metadata_complete.city.json"
   },
   "assertions": [
-    "metadata_payload_preserved"
+    "metadata_properties_preserved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
-  "description": "metadata complete conformance fixture migrated from serde_cityjson.",
+  "description": "Metadata with all properties that are defined in the spec.",
   "family": "spec_atom",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "metadata_complete",
   "layer": "conformance",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

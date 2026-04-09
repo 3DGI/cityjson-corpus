@@ -166,28 +166,6 @@ def wrap_geometry_templates(value: dict[str, Any]) -> dict[str, Any]:
     return root
 
 
-def wrap_semantic_minimal(value: dict[str, Any]) -> dict[str, Any]:
-    root = base_citymodel()
-    root["vertices"] = dummy_vertices(3)
-    root["CityObjects"] = {
-        "fixture": {
-            "type": "GenericCityObject",
-            "geometry": [
-                {
-                    "type": "MultiSurface",
-                    "lod": "1",
-                    "boundaries": [[[0, 1, 2]]],
-                    "semantics": {
-                        "surfaces": [value],
-                        "values": [0],
-                    },
-                }
-            ],
-        }
-    }
-    return root
-
-
 def wrap_semantic_extended(value: dict[str, Any]) -> dict[str, Any]:
     root = base_citymodel()
     root["vertices"] = dummy_vertices(3)
@@ -252,8 +230,6 @@ def materialize_case(case_id: str, value: Any) -> Any:
         return wrap_material(value)
     if case_id.startswith("texture_"):
         return wrap_texture(value)
-    if case_id == "semantic_minimal":
-        return wrap_semantic_minimal(value)
     if case_id == "semantic_extended":
         return wrap_semantic_extended(value)
     if case_id == "vertices":

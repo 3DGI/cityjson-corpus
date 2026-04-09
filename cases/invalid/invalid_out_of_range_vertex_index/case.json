@@ -7,12 +7,11 @@
     "rejects_out_of_range_vertex_index"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "family": "invalid",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "invalid_out_of_range_vertex_index",
   "layer": "invalid",
   "representation": "cityjson",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

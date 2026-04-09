@@ -1,8 +1,8 @@
 {
   "checks": [
     {
-      "description": "Metadata stays stable across parse and roundtrip.",
-      "id": "metadata_payload_preserved"
+      "description": "Metadata with custom properties stays stable across parse and roundtrip.",
+      "id": "metadata_extra_properties_preserved"
     }
   ],
   "id": "metadata_extra_properties",

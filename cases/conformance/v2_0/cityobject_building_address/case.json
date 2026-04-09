@@ -1,0 +1,18 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/cityobject_building_address/cityobject_building_address.city.json"
+  },
+  "assertions": [
+    "building_address_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "A BuildingPart with with two addresses, including a point location. Without a geometry member.",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "cityobject_building_address",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

@@ -7,14 +7,13 @@
     "feature_root_id_unresolved"
   ],
   "cityjson_version": "2.0",
-  "correctness_class": "normative",
   "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
   "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
   "family": "invalid",
-  "geometry_validity": "dummy",
+  "geometry_kind": "dummy",
   "id": "invalid_cityjsonfeature_root_id_unresolved",
   "layer": "invalid",
   "representation": "cityjsonfeature",
-  "source_kind": "synthetic-controlled",
+  "source_kind": "synthetic",
   "version": 2
 }

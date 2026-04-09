@@ -14,7 +14,7 @@ and release artifacts are separate from generator and consumer implementations.
 - [Operation cases](cases/operations/index.md)
 - [Workload cases](cases/workloads/index.md)
 - [Invalid cases](cases/invalid/index.md)
-- [Schemas](schemas/index.md)
+- [Schemas and value glossary](schemas/index.md)
 - [Pipelines](pipelines/index.md)
 - [Data Generation](data-generation.md)
 - [Artifacts](artifacts/index.md)
@@ -24,12 +24,13 @@ and release artifacts are separate from generator and consumer implementations.
 - [Invariants schema](reference/invariants-schema.md)
 - [Acquisition schema](reference/acquisition-schema.md)
 - [ADR 0009: CityJSON Benchmark Corpus Design](adr/0009-cityjson-benchmark-corpus-design.md)
-- [ADR 0010: Correctness Corpus Trust Tiers and Generated Supplemental Cases](adr/0010-correctness-corpus-trust-tiers-and-generated-supplemental-cases.md)
+- [ADR 0010: Correctness Corpus Coverage and Generated Cases](adr/0010-correctness-corpus-coverage-and-generated-cases.md)
 
 ## Local Workflow
 
-- `just lint` validates the case tree, catalog sync, profile fixtures, and
-  runs ruff check.
+- `just lint` validates the case tree, catalog sync, profile fixtures, runs
+  ruff check, and checks each checked-in `cases/conformance/v2_0/*.city.json`
+  file with `cjval -q`.
 - `just sync-catalog` refreshes `catalog/cases.json` and
   `artifacts/correctness-index.json`.
 - `just acquire-3dbag` downloads the published 3DBAG slice into

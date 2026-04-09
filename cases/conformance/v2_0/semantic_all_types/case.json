@@ -1,0 +1,18 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/semantic_all_types/semantic_all_types.city.json"
+  },
+  "assertions": [
+    "semantic_surface_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Semantic surfaces with all possible semantic types, including a surface without semantics (last surface).",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "semantic_all_types",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

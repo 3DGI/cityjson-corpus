@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "description": "Semantic surfaces stay stable across parse and roundtrip.",
+      "id": "semantic_surface_preserved"
+    },
+    {
+      "description": "Semantic hierarchy is resolved correctly on parse.",
+      "id": "semantic_hierarchy_resolved"
+    },
+    {
+      "description": "Semantic attributes are parsed.",
+      "id": "semantic_attributes_resolved"
+    }
+  ],
+  "id": "semantic_complete",
+  "kind": "positive",
+  "version": 1
+}

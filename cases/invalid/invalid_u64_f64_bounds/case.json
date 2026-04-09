@@ -1,0 +1,18 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/invalid/invalid_u64_f64_bounds/invalid_u64_f64_bounds.json"
+  },
+  "assertions": [
+    "rejects_numeric_bounds_overflow"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Synthetic invalid CityJSON fixture that uses stored vertex values above `u64::MAX` and transform values outside the `f64` range. The input remains syntactically valid JSON, but implementations that coerce the numeric fields into bounded integer or float types should reject it.",
+  "family": "invalid",
+  "geometry_kind": "dummy",
+  "id": "invalid_u64_f64_bounds",
+  "layer": "invalid",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

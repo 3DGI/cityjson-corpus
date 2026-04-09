@@ -1,0 +1,45 @@
+{
+  "type": "CityJSON",
+  "version": "2.0",
+  "CityObjects": {
+    "fixture": {
+      "type": "Building",
+      "geometry": [
+        {
+          "type": "MultiSurface",
+          "lod": "2.0",
+          "boundaries": [
+            [[ 0, 1, 2 ]],
+            [[ 0, 1, 2 ]]
+          ],
+          "semantics": {
+            "surfaces": [
+              {
+                "type": "RoofSurface",
+                "children": [1],
+                "number": 1.234,
+                "string": "string",
+                "boolean": true,
+                "integer": 1
+              },
+              {
+                "type": "Window",
+                "parent": 0
+              }
+            ],
+            "values": [ 0, 1 ]
+          }
+        }
+      ]
+    }
+  },
+  "vertices": [
+    [ 0, 0, 0 ],
+    [ 1, 0, 0 ],
+    [ 2, 0, 0 ]
+  ],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
+}

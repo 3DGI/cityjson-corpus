@@ -10,19 +10,23 @@ Each case directory owns:
   appropriate
 - an optional `README.md` for case-specific notes or narratives
 
+The canonical meaning of schema values such as `layer`, `artifact_mode`,
+`source_kind`, `representation`, `geometry_kind`, `family`, and
+`status` is documented in [`schemas/README.md`](../schemas/README.md).
+
 The main subtrees are:
 
-- `conformance/v2_0/` for reviewed normative conformance fixtures
-- `conformance/synthetic/` for supplemental generated conformance coverage
+- `conformance/v2_0/` for checked-in conformance fixtures
+- `conformance/synthetic/` for generated conformance coverage
 - `operations/` for medium-size real-data operation kernels
 - `workloads/` for synthetic stress fixtures and real-data I/O workloads
 - `invalid/` for negative fixtures
 
 Conformance, invalid, and operation cases form the **correctness corpus**.
-The default gate is the reviewed normative subset; the correctness index also
-includes supplemental generated conformance cases for broader interaction
-coverage. Each correctness case defines invariants that consuming tools must
-satisfy (e.g. roundtrip fidelity, expected validation errors).
+Each correctness case defines invariants that consuming tools must satisfy
+(e.g. roundtrip fidelity, expected validation errors).
+Generated conformance cases are part of the same corpus when their artifacts
+are materialized.
 `artifacts/correctness-index.json` is a derived index of these cases,
 rendered by `just sync-catalog`.
 
