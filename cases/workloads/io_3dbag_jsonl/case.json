@@ -13,18 +13,7 @@
   "geometry_validity": "real-preserved",
   "id": "io_3dbag_jsonl",
   "layer": "workload",
-  "operations": [
-    "scan",
-    "stream_iteration",
-    "serialize"
-  ],
-  "primary_cost": "io",
   "representation": "jsonl",
-  "scale": "large",
-  "secondary_costs": [
-    "deserialize",
-    "allocation"
-  ],
   "source_kind": "real-geometry",
   "version": 2
 }

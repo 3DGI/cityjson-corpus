@@ -14,17 +14,7 @@
   "geometry_validity": "dummy",
   "id": "stress_relation_graph",
   "layer": "workload",
-  "operations": [
-    "relation_resolution",
-    "traversal",
-    "roundtrip"
-  ],
-  "primary_cost": "allocation",
   "representation": "cityjson",
-  "scale": "large",
-  "secondary_costs": [
-    "memory"
-  ],
   "source_kind": "synthetic-controlled",
   "version": 2
 }

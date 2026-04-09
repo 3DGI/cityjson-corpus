@@ -14,18 +14,7 @@
   "geometry_validity": "dummy",
   "id": "stress_geometry_flattening",
   "layer": "workload",
-  "operations": [
-    "normalize_geometry",
-    "parse",
-    "roundtrip"
-  ],
-  "primary_cost": "allocation",
   "representation": "cityjson",
-  "scale": "large",
-  "secondary_costs": [
-    "deserialize",
-    "memory"
-  ],
   "source_kind": "synthetic-controlled",
   "version": 2
 }

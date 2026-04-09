@@ -13,18 +13,7 @@
   "geometry_validity": "real-preserved",
   "id": "io_3dbag_cityjson",
   "layer": "workload",
-  "operations": [
-    "scan",
-    "parse",
-    "serialize"
-  ],
-  "primary_cost": "io",
   "representation": "cityjson",
-  "scale": "large",
-  "secondary_costs": [
-    "deserialize",
-    "memory"
-  ],
   "source_kind": "real-geometry",
   "version": 2
 }

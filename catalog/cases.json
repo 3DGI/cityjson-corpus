@@ -17,19 +17,8 @@
       "id": "appearance_empty",
       "invariants": "cases/conformance/v2_0/appearance_empty/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_empty",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -50,19 +39,8 @@
       "id": "appearance_minimal_complete",
       "invariants": "cases/conformance/v2_0/appearance_minimal_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_minimal_complete",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -85,19 +63,8 @@
       "id": "appearance_theme_dispatch",
       "invariants": "cases/conformance/v2_0/appearance_theme_dispatch/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/appearance_theme_dispatch",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -119,19 +86,8 @@
       "id": "cityjson_fake_complete",
       "invariants": "cases/conformance/v2_0/cityjson_fake_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_fake_complete",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -152,18 +108,8 @@
       "id": "cityjson_minimal_complete",
       "invariants": "cases/conformance/v2_0/cityjson_minimal_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_minimal_complete",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -184,18 +130,8 @@
       "id": "cityjson_root_id_extra_property",
       "invariants": "cases/conformance/v2_0/cityjson_root_id_extra_property/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjson_root_id_extra_property",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -218,20 +154,8 @@
       "id": "cityjsonfeature_extension_roundtrip",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "stream_iteration"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip",
-      "primary_cost": "deserialize",
       "representation": "cityjsonfeature",
-      "scale": "tiny",
-      "secondary_costs": [
-        "io",
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -252,20 +176,8 @@
       "id": "cityjsonfeature_minimal_complete",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "stream_iteration",
-        "serialize"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjsonfeature_minimal_complete",
-      "primary_cost": "io",
       "representation": "cityjsonfeature",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize",
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -287,19 +199,8 @@
       "id": "cityjsonfeature_root_id_resolves",
       "invariants": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "stream_iteration",
-        "serialize"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves",
-      "primary_cost": "deserialize",
       "representation": "cityjsonfeature",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -320,19 +221,8 @@
       "id": "cityobject_complete",
       "invariants": "cases/conformance/v2_0/cityobject_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "attribute_lookup",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityobject_complete",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -353,19 +243,8 @@
       "id": "cityobject_extended",
       "invariants": "cases/conformance/v2_0/cityobject_extended/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "attribute_lookup",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/cityobject_extended",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -386,19 +265,8 @@
       "id": "extension",
       "invariants": "cases/conformance/v2_0/extension/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "extension_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/extension",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -419,19 +287,8 @@
       "id": "geometry_complete_solid",
       "invariants": "cases/conformance/v2_0/geometry_complete_solid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_complete_solid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -452,19 +309,8 @@
       "id": "geometry_instance",
       "invariants": "cases/conformance/v2_0/geometry_instance/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_instance",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -485,19 +331,8 @@
       "id": "geometry_material_solid",
       "invariants": "cases/conformance/v2_0/geometry_material_solid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_material_solid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -518,19 +353,8 @@
       "id": "geometry_semantics_multilinestring",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multilinestring/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multilinestring",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -551,19 +375,8 @@
       "id": "geometry_semantics_multipoint",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multipoint/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multipoint",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -584,19 +397,8 @@
       "id": "geometry_semantics_multisolid",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multisolid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multisolid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -617,19 +419,8 @@
       "id": "geometry_semantics_multisurface",
       "invariants": "cases/conformance/v2_0/geometry_semantics_multisurface/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_multisurface",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -650,19 +441,8 @@
       "id": "geometry_semantics_solid",
       "invariants": "cases/conformance/v2_0/geometry_semantics_solid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_semantics_solid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -683,19 +463,8 @@
       "id": "geometry_templates",
       "invariants": "cases/conformance/v2_0/geometry_templates/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_templates",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -718,19 +487,8 @@
       "id": "geometry_templates_reuse",
       "invariants": "cases/conformance/v2_0/geometry_templates_reuse/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "template_instance_resolution"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_templates_reuse",
-      "primary_cost": "memory",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "allocation"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -751,19 +509,8 @@
       "id": "geometry_texture_multisolid",
       "invariants": "cases/conformance/v2_0/geometry_texture_multisolid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_multisolid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -784,19 +531,8 @@
       "id": "geometry_texture_multisurface",
       "invariants": "cases/conformance/v2_0/geometry_texture_multisurface/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_multisurface",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -817,19 +553,8 @@
       "id": "geometry_texture_solid",
       "invariants": "cases/conformance/v2_0/geometry_texture_solid/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/geometry_texture_solid",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -851,18 +576,8 @@
       "id": "invalid_cityjsonfeature_root_id_unresolved",
       "invariants": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/invariants.json",
       "layer": "invalid",
-      "operations": [
-        "parse",
-        "validate"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved",
-      "primary_cost": "validate",
       "representation": "cityjsonfeature",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -883,18 +598,8 @@
       "id": "invalid_missing_type",
       "invariants": "cases/invalid/invalid_missing_type/invariants.json",
       "layer": "invalid",
-      "operations": [
-        "parse",
-        "validate"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_missing_type",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "validate"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -915,18 +620,8 @@
       "id": "invalid_out_of_range_vertex_index",
       "invariants": "cases/invalid/invalid_out_of_range_vertex_index/invariants.json",
       "layer": "invalid",
-      "operations": [
-        "parse",
-        "validate"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/invalid/invalid_out_of_range_vertex_index",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "validate"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -947,19 +642,8 @@
       "id": "io_3dbag_cityjson",
       "invariants": "cases/workloads/io_3dbag_cityjson/invariants.json",
       "layer": "workload",
-      "operations": [
-        "scan",
-        "parse",
-        "serialize"
-      ],
       "path": "cases/workloads/io_3dbag_cityjson",
-      "primary_cost": "io",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "deserialize",
-        "memory"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -980,19 +664,8 @@
       "id": "io_3dbag_cityjson_cluster_4x",
       "invariants": "cases/workloads/io_3dbag_cityjson_cluster_4x/invariants.json",
       "layer": "workload",
-      "operations": [
-        "scan",
-        "parse",
-        "serialize"
-      ],
       "path": "cases/workloads/io_3dbag_cityjson_cluster_4x",
-      "primary_cost": "io",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "deserialize",
-        "memory"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -1013,19 +686,8 @@
       "id": "io_3dbag_feature_files",
       "invariants": "cases/workloads/io_3dbag_feature_files/invariants.json",
       "layer": "workload",
-      "operations": [
-        "feature_lookup",
-        "scan",
-        "serialize"
-      ],
       "path": "cases/workloads/io_3dbag_feature_files",
-      "primary_cost": "io",
       "representation": "feature-files",
-      "scale": "large",
-      "secondary_costs": [
-        "allocation",
-        "memory"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -1046,19 +708,8 @@
       "id": "io_3dbag_jsonl",
       "invariants": "cases/workloads/io_3dbag_jsonl/invariants.json",
       "layer": "workload",
-      "operations": [
-        "scan",
-        "stream_iteration",
-        "serialize"
-      ],
       "path": "cases/workloads/io_3dbag_jsonl",
-      "primary_cost": "io",
       "representation": "jsonl",
-      "scale": "large",
-      "secondary_costs": [
-        "deserialize",
-        "allocation"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -1079,19 +730,8 @@
       "id": "material_complete",
       "invariants": "cases/conformance/v2_0/material_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/material_complete",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1112,19 +752,8 @@
       "id": "material_minimal",
       "invariants": "cases/conformance/v2_0/material_minimal/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/material_minimal",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1145,19 +774,8 @@
       "id": "metadata_complete",
       "invariants": "cases/conformance/v2_0/metadata_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_complete",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1178,19 +796,8 @@
       "id": "metadata_empty",
       "invariants": "cases/conformance/v2_0/metadata_empty/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_empty",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1211,19 +818,8 @@
       "id": "metadata_extra_properties",
       "invariants": "cases/conformance/v2_0/metadata_extra_properties/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_extra_properties",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1244,19 +840,8 @@
       "id": "metadata_poc_minimal",
       "invariants": "cases/conformance/v2_0/metadata_poc_minimal/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "validate",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/metadata_poc_minimal",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1278,20 +863,8 @@
       "id": "ops_3dbag_base",
       "invariants": "cases/operations/ops_3dbag_base/invariants.json",
       "layer": "operation",
-      "operations": [
-        "bbox",
-        "filter",
-        "hierarchy_traversal"
-      ],
-      "oracle_mode": "upstream-published",
       "path": "cases/operations/ops_3dbag_base",
-      "primary_cost": "memory",
       "representation": "cityjson",
-      "scale": "medium",
-      "secondary_costs": [
-        "deserialize",
-        "serialize"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -1313,21 +886,8 @@
       "id": "ops_3dbag_enriched",
       "invariants": "cases/operations/ops_3dbag_enriched/invariants.json",
       "layer": "operation",
-      "operations": [
-        "bbox",
-        "filter",
-        "attribute_lookup",
-        "roundtrip"
-      ],
-      "oracle_mode": "upstream-published",
       "path": "cases/operations/ops_3dbag_enriched",
-      "primary_cost": "allocation",
       "representation": "cityjson",
-      "scale": "medium",
-      "secondary_costs": [
-        "memory",
-        "serialize"
-      ],
       "source_kind": "real-geometry-enriched",
       "version": 2
     },
@@ -1349,20 +909,8 @@
       "id": "ops_3dbag_semantic_surfaces",
       "invariants": "cases/operations/ops_3dbag_semantic_surfaces/invariants.json",
       "layer": "operation",
-      "operations": [
-        "semantic_query",
-        "boundary_mapping",
-        "roundtrip"
-      ],
-      "oracle_mode": "upstream-published",
       "path": "cases/operations/ops_3dbag_semantic_surfaces",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "medium",
-      "secondary_costs": [
-        "memory",
-        "serialize"
-      ],
       "source_kind": "real-geometry",
       "version": 2
     },
@@ -1385,19 +933,8 @@
       "id": "ops_cityjsonseq_feature_root_id_not_shared",
       "invariants": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/invariants.json",
       "layer": "operation",
-      "operations": [
-        "parse",
-        "stream_iteration",
-        "serialize"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared",
-      "primary_cost": "serialize",
       "representation": "jsonl",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1418,19 +955,8 @@
       "id": "semantic_extended",
       "invariants": "cases/conformance/v2_0/semantic_extended/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "semantic_resolution"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/semantic_extended",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1451,19 +977,8 @@
       "id": "semantic_minimal",
       "invariants": "cases/conformance/v2_0/semantic_minimal/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "semantic_resolution"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/semantic_minimal",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1486,19 +1001,8 @@
       "id": "spec_geometry_matrix",
       "invariants": "cases/conformance/synthetic/spec_geometry_matrix/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "geometry_validation",
-        "roundtrip"
-      ],
-      "oracle_mode": "generator-derived",
       "path": "cases/conformance/synthetic/spec_geometry_matrix",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "allocation"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1520,19 +1024,8 @@
       "id": "stress_appearance_and_validation",
       "invariants": "cases/workloads/stress_appearance_and_validation/invariants.json",
       "layer": "workload",
-      "operations": [
-        "serialize",
-        "validate",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_appearance_and_validation",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "allocation",
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1554,18 +1047,8 @@
       "id": "stress_attribute_tree",
       "invariants": "cases/workloads/stress_attribute_tree/invariants.json",
       "layer": "workload",
-      "operations": [
-        "attribute_decode",
-        "serialize",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_attribute_tree",
-      "primary_cost": "allocation",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1587,19 +1070,8 @@
       "id": "stress_composite_value",
       "invariants": "cases/workloads/stress_composite_value/invariants.json",
       "layer": "workload",
-      "operations": [
-        "mixed_path",
-        "serialize",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_composite_value",
-      "primary_cost": "allocation",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "serialize",
-        "memory"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1621,18 +1093,8 @@
       "id": "stress_deep_boundary",
       "invariants": "cases/workloads/stress_deep_boundary/invariants.json",
       "layer": "workload",
-      "operations": [
-        "boundary_parse",
-        "normalize_geometry",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_deep_boundary",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "allocation"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1654,19 +1116,8 @@
       "id": "stress_geometry_flattening",
       "invariants": "cases/workloads/stress_geometry_flattening/invariants.json",
       "layer": "workload",
-      "operations": [
-        "normalize_geometry",
-        "parse",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_geometry_flattening",
-      "primary_cost": "allocation",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "deserialize",
-        "memory"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1688,18 +1139,8 @@
       "id": "stress_relation_graph",
       "invariants": "cases/workloads/stress_relation_graph/invariants.json",
       "layer": "workload",
-      "operations": [
-        "relation_resolution",
-        "traversal",
-        "roundtrip"
-      ],
       "path": "cases/workloads/stress_relation_graph",
-      "primary_cost": "allocation",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "memory"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1721,19 +1162,8 @@
       "id": "stress_vertex_transform",
       "invariants": "cases/workloads/stress_vertex_transform/invariants.json",
       "layer": "workload",
-      "operations": [
-        "vertex_import",
-        "transform",
-        "reindex"
-      ],
       "path": "cases/workloads/stress_vertex_transform",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "large",
-      "secondary_costs": [
-        "memory",
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1754,19 +1184,8 @@
       "id": "texture_complete",
       "invariants": "cases/conformance/v2_0/texture_complete/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/texture_complete",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1787,19 +1206,8 @@
       "id": "texture_minimal",
       "invariants": "cases/conformance/v2_0/texture_minimal/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "serialize",
-        "roundtrip"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/texture_minimal",
-      "primary_cost": "serialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "deserialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1820,19 +1228,8 @@
       "id": "transform",
       "invariants": "cases/conformance/v2_0/transform/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "vertex_transform"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/transform",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     },
@@ -1853,19 +1250,8 @@
       "id": "vertices",
       "invariants": "cases/conformance/v2_0/vertices/invariants.json",
       "layer": "conformance",
-      "operations": [
-        "parse",
-        "roundtrip",
-        "vertex_indexing"
-      ],
-      "oracle_mode": "frozen-fixture",
       "path": "cases/conformance/v2_0/vertices",
-      "primary_cost": "deserialize",
       "representation": "cityjson",
-      "scale": "tiny",
-      "secondary_costs": [
-        "serialize"
-      ],
       "source_kind": "synthetic-controlled",
       "version": 2
     }

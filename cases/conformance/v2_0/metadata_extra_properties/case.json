@@ -13,18 +13,7 @@
   "geometry_validity": "dummy",
   "id": "metadata_extra_properties",
   "layer": "conformance",
-  "operations": [
-    "parse",
-    "validate",
-    "roundtrip"
-  ],
-  "oracle_mode": "frozen-fixture",
-  "primary_cost": "deserialize",
   "representation": "cityjson",
-  "scale": "tiny",
-  "secondary_costs": [
-    "serialize"
-  ],
   "source_kind": "synthetic-controlled",
   "version": 2
 }

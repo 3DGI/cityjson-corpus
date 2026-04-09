@@ -14,19 +14,7 @@
   "geometry_validity": "real-preserved",
   "id": "ops_3dbag_semantic_surfaces",
   "layer": "operation",
-  "operations": [
-    "semantic_query",
-    "boundary_mapping",
-    "roundtrip"
-  ],
-  "oracle_mode": "upstream-published",
-  "primary_cost": "deserialize",
   "representation": "cityjson",
-  "scale": "medium",
-  "secondary_costs": [
-    "memory",
-    "serialize"
-  ],
   "source_kind": "real-geometry",
   "version": 2
 }

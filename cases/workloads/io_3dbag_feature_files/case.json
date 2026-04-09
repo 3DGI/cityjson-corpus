@@ -13,18 +13,7 @@
   "geometry_validity": "real-preserved",
   "id": "io_3dbag_feature_files",
   "layer": "workload",
-  "operations": [
-    "feature_lookup",
-    "scan",
-    "serialize"
-  ],
-  "primary_cost": "io",
   "representation": "feature-files",
-  "scale": "large",
-  "secondary_costs": [
-    "allocation",
-    "memory"
-  ],
   "source_kind": "real-geometry",
   "version": 2
 }

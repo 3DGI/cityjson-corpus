@@ -125,7 +125,7 @@ def build_case_page(record) -> str:
         f"- `source_kind`: `{record.case_data['source_kind']}`",
         f"- `representation`: `{record.case_data['representation']}`",
     ]
-    for key in ("correctness_class", "oracle_mode"):
+    for key in ("correctness_class",):
         value = record.case_data.get(key)
         if isinstance(value, str):
             contract_lines.append(f"- `{key}`: `{value}`")

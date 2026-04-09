@@ -14,19 +14,7 @@
   "geometry_validity": "real-preserved",
   "id": "ops_3dbag_base",
   "layer": "operation",
-  "operations": [
-    "bbox",
-    "filter",
-    "hierarchy_traversal"
-  ],
-  "oracle_mode": "upstream-published",
-  "primary_cost": "memory",
   "representation": "cityjson",
-  "scale": "medium",
-  "secondary_costs": [
-    "deserialize",
-    "serialize"
-  ],
   "source_kind": "real-geometry",
   "version": 2
 }

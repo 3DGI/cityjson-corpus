@@ -14,17 +14,7 @@
   "geometry_validity": "dummy",
   "id": "stress_deep_boundary",
   "layer": "workload",
-  "operations": [
-    "boundary_parse",
-    "normalize_geometry",
-    "roundtrip"
-  ],
-  "primary_cost": "deserialize",
   "representation": "cityjson",
-  "scale": "large",
-  "secondary_costs": [
-    "allocation"
-  ],
   "source_kind": "synthetic-controlled",
   "version": 2
 }

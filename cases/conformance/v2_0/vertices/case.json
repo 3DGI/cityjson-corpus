@@ -13,18 +13,7 @@
   "geometry_validity": "dummy",
   "id": "vertices",
   "layer": "conformance",
-  "operations": [
-    "parse",
-    "roundtrip",
-    "vertex_indexing"
-  ],
-  "oracle_mode": "frozen-fixture",
-  "primary_cost": "deserialize",
   "representation": "cityjson",
-  "scale": "tiny",
-  "secondary_costs": [
-    "serialize"
-  ],
   "source_kind": "synthetic-controlled",
   "version": 2
 }
