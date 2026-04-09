@@ -4,7 +4,7 @@ This directory is for derived benchmark outputs, release packages, and release
 metadata.
 
 These files are outputs of the corpus pipeline, not the source of truth. The
-catalog, profiles, and pipelines define how they are reproduced.
+catalog, schemas, and pipelines define how they are reproduced.
 
 Current generated outputs are written to `artifacts/generated/`, the published
 3DBAG acquired artifacts live under `artifacts/acquired/3dbag/v20250903/`

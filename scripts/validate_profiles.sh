@@ -4,7 +4,7 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 corpus_path="${repo_dir}/catalog/cases.json"
-schema_path="${repo_dir}/profiles/cjfake-manifest.schema.json"
+schema_path="${repo_dir}/schemas/cjfake-manifest.schema.json"
 cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
 
 if [[ ! -f "${corpus_path}" ]]; then

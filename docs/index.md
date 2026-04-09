@@ -14,7 +14,7 @@ and release artifacts are separate from generator and consumer implementations.
 - [Operation cases](cases/operations/index.md)
 - [Workload cases](cases/workloads/index.md)
 - [Invalid cases](cases/invalid/index.md)
-- [Profiles](profiles/index.md)
+- [Schemas](schemas/index.md)
 - [Pipelines](pipelines/index.md)
 - [Data Generation](data-generation.md)
 - [Artifacts](artifacts/index.md)

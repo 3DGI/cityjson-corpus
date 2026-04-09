@@ -206,7 +206,7 @@ def main() -> None:
         {
             "docs/index.md": "../index.md",
             "catalog/cases.json": "../reference/cases.md",
-            "profiles/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
+            "schemas/cjfake-manifest.schema.json": "../reference/cjfake-manifest-schema.md",
             "cases/README.md": "../cases/index.md",
             "docs/data-generation.md": "../data-generation.md",
             "docs/adr/0009-cityjson-benchmark-corpus-design.md": "../adr/0009-cityjson-benchmark-corpus-design.md",
@@ -230,8 +230,8 @@ def main() -> None:
         },
     )
     write_markdown(
-        ROOT / "profiles" / "README.md",
-        "profiles/index.md",
+        ROOT / "schemas" / "README.md",
+        "schemas/index.md",
         {
             "[cjfake-manifest.schema.json](cjfake-manifest.schema.json)": "[cjfake-manifest.schema.json](../reference/cjfake-manifest-schema.md)",
             "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
@@ -290,7 +290,7 @@ def main() -> None:
         "Machine-readable case index rendered from the canonical cases/ tree.",
     )
     write_reference_page(
-        ROOT / "profiles" / "cjfake-manifest.schema.json",
+        ROOT / "schemas" / "cjfake-manifest.schema.json",
         "reference/cjfake-manifest-schema.md",
         "CJFake Manifest Schema",
         "Machine-readable schema for benchmark generation manifests.",

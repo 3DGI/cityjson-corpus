@@ -15,8 +15,8 @@ nav:
       - Operation Cases: cases/operations/index.md
       - Workload Cases: cases/workloads/index.md
       - Invalid Cases: cases/invalid/index.md
-  - Profiles:
-      - Profiles Overview: profiles/index.md
+  - Schemas:
+      - Schemas Overview: schemas/index.md
   - Pipelines:
       - Pipelines Overview: pipelines/index.md
   - Artifacts:

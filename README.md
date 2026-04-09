@@ -14,11 +14,11 @@ own.
   metadata, invariants, checked-in source fixture or profile, and optional
   acquisition notes.
 - `catalog/` - derived machine-readable case index rendered from `cases/`.
-- `profiles/` - manifest schema for synthetic profile fixtures.
 - `pipelines/` - corpus build and publication scripts.
 - `artifacts/` - derived benchmark outputs, raw acquired slices, and release
   metadata.
-- `schemas/` - JSON Schemas for case, invariants, and acquisition metadata.
+- `schemas/` - JSON Schemas for case, invariants, acquisition metadata, and
+  generator manifests.
 - `scripts/` - validation, rendering, and data-pipeline scripts.
 - `docs/` - repository documentation and the design ADRs.
 
@@ -74,7 +74,7 @@ their output paths.
 
 - [Documentation home](docs/index.md)
 - [Derived case catalog](catalog/cases.json)
-- [Profile schema](profiles/cjfake-manifest.schema.json)
+- [CJFake manifest schema](schemas/cjfake-manifest.schema.json)
 - [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)
 - [Corpus design ADR](docs/adr/0009-cityjson-benchmark-corpus-design.md)
