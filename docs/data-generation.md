@@ -64,6 +64,9 @@ The generated index is the handoff point to downstream CityJSON crates.
 - `cityarrow` uses the same shared correctness index for conformance
   coverage; a failing case indicates an incomplete or incorrect
   implementation.
+- The current correctness index contains 36 correctness cases, including 28
+  conformance fixtures and the invalid and operation cases that live
+  alongside them.
 - `cjlib` can reuse the same shared index for parse, serialize, and roundtrip
   benchmarks.
 - `cjindex` keeps its own layout-building prep pipeline and can reuse the raw

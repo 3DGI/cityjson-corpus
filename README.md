@@ -29,6 +29,8 @@ The corpus serves two purposes:
 - **Correctness testing.** Conformance, invalid, and operation cases define
   invariants that consuming tools must satisfy. `artifacts/correctness-index.json`
   is the full derived index of these cases, rendered by `just sync-catalog`.
+  The current index contains 36 correctness cases, including the full CityJSON
+  2.0 conformance subset.
 - **Benchmark performance.** Workload cases provide synthetic stress fixtures
   and real-data I/O workloads for measuring throughput and latency.
   `artifacts/benchmark-index.json` lists their output paths after
@@ -103,8 +105,9 @@ not delete stale pages for removed cases.
 Tools such as `serde_cityjson`, `cityarrow`, `cjlib`, and `cjindex` consume
 this corpus. Correctness-oriented consumers read the full
 `artifacts/correctness-index.json` set; any failing conformance case is a bug
-or missing implementation detail, not a reason to trim the corpus. Workload
-consumers reuse the same synthetic fixtures and acquired artifacts instead of
-defining separate benchmark models. Published 3DBAG CityJSON, cityarrow, and
-cityparquet artifacts are acquired here and consumed directly by downstream
-crates.
+or missing implementation detail, not a reason to trim the corpus. The shared
+index currently exposes 28 conformance fixtures and 8 non-conformance
+correctness cases. Workload consumers reuse the same synthetic fixtures and
+acquired artifacts instead of defining separate benchmark models. Published
+3DBAG CityJSON, cityarrow, and cityparquet artifacts are acquired here and
+consumed directly by downstream crates.
