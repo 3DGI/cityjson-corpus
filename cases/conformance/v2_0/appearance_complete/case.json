@@ -10,7 +10,7 @@
     "multiple_material_texture_set"
   ],
   "cityjson_version": "2.0",
-  "description": "One material and texture with the minimum required properties and one material and texture with all properties. One material assignment uses 'value', the other uses 'values'. Geometry with two materials and two textures. Default theme and texture are set.",
+  "description": "One material and texture with the minimum required properties and one material and texture with all properties. Uniform material assignments use the canonical 'value' form. Geometry with two materials and two textures. Default theme and texture are set.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
   "id": "appearance_complete",

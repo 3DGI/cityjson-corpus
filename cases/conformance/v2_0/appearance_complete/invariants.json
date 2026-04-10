@@ -13,7 +13,7 @@
       "id": "multiple_material_texture_set"
     },
     {
-      "description": "Material can be assigned with 'value' for all surfaces and with 'values' too.",
+      "description": "Uniform material assignments use the canonical 'value' form.",
       "id": "material_assignment"
     }
   ],
