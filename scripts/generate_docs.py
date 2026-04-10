@@ -50,9 +50,13 @@ configure_mkdocs_gen_files()
 
 
 CASE_ROOT = ROOT / "cases"
-CJFAKE_SCHEMA_SOURCE = ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+CJFAKE_SCHEMA_SOURCE = (
+    ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+)
 CJFAKE_SCHEMA_PAGE = "reference/cjfake-manifest-schema.md"
-CJFAKE_SCHEMA_LINK = "https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json"
+CJFAKE_SCHEMA_LINK = (
+    "https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json"
+)
 
 
 def write_markdown(

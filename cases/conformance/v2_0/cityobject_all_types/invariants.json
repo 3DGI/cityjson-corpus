@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "CityObject types and hierarchy stay stable across roundtrip.",
+      "id": "cityobject_structure_preserved"
+    },
+    {
+      "description": "CityObject hierarchy resolves to a valid structure.",
+      "id": "cityobject_hierarchy_resolved"
+    }
+  ],
+  "id": "cityobject_all_types",
+  "kind": "positive",
+  "version": 1
+}

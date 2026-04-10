@@ -111,6 +111,28 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityobject_all_types/cityobject_all_types.city.json"
+      },
+      "assertions": [
+        "cityobject_structure_preserved",
+        "cityobject_hierarchy_resolved"
+      ],
+      "case": "cases/conformance/v2_0/cityobject_all_types/case.json",
+      "cityjson_version": "2.0",
+      "description": "CityObjects covering every core type, with the valid Bridge, Building, and Tunnel hierarchies and only type/children/parents members.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "cityobject_all_types",
+      "invariants": "cases/conformance/v2_0/cityobject_all_types/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/cityobject_all_types",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
         "source": "cases/conformance/v2_0/cityobject_building_address/cityobject_building_address.city.json"
       },
       "assertions": [

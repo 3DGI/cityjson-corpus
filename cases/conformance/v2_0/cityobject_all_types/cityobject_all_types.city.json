@@ -1,0 +1,134 @@
+{
+  "type": "CityJSON",
+  "version": "2.0",
+  "CityObjects": {
+    "Bridge": {
+      "type": "Bridge",
+      "parents": [ "CityObjectGroup" ],
+      "children": [ "BridgePart", "BridgeInstallation", "BridgeConstructiveElement", "BridgeRoom", "BridgeFurniture" ]
+    },
+    "Building": {
+      "type": "Building",
+      "parents": [ "CityObjectGroup" ],
+      "children": [ "BuildingPart", "BuildingInstallation", "BuildingConstructiveElement", "BuildingFurniture", "BuildingStorey", "BuildingRoom", "BuildingUnit" ]
+    },
+    "CityFurniture": {
+      "type": "CityFurniture"
+    },
+    "CityObjectGroup": {
+      "type": "CityObjectGroup",
+      "children": [ "Bridge", "Building" ],
+      "children_roles": [ "primary-bridge", "primary-building" ]
+    },
+    "GenericCityObject": {
+      "type": "GenericCityObject"
+    },
+    "LandUse": {
+      "type": "LandUse"
+    },
+    "OtherConstruction": {
+      "type": "OtherConstruction"
+    },
+    "PlantCover": {
+      "type": "PlantCover"
+    },
+    "SolitaryVegetationObject": {
+      "type": "SolitaryVegetationObject"
+    },
+    "TINRelief": {
+      "type": "TINRelief"
+    },
+    "TransportSquare": {
+      "type": "TransportSquare"
+    },
+    "Railway": {
+      "type": "Railway"
+    },
+    "Road": {
+      "type": "Road"
+    },
+    "Tunnel": {
+      "type": "Tunnel",
+      "children": [ "TunnelPart", "TunnelInstallation", "TunnelConstructiveElement", "TunnelHollowSpace", "TunnelFurniture" ]
+    },
+    "WaterBody": {
+      "type": "WaterBody"
+    },
+    "Waterway": {
+      "type": "Waterway"
+    },
+    "BridgePart": {
+      "type": "BridgePart",
+      "parents": [ "Bridge" ]
+    },
+    "BridgeInstallation": {
+      "type": "BridgeInstallation",
+      "parents": [ "Bridge" ]
+    },
+    "BridgeConstructiveElement": {
+      "type": "BridgeConstructiveElement",
+      "parents": [ "Bridge" ]
+    },
+    "BridgeRoom": {
+      "type": "BridgeRoom",
+      "parents": [ "Bridge" ]
+    },
+    "BridgeFurniture": {
+      "type": "BridgeFurniture",
+      "parents": [ "Bridge" ]
+    },
+    "BuildingPart": {
+      "type": "BuildingPart",
+      "parents": [ "Building" ]
+    },
+    "BuildingInstallation": {
+      "type": "BuildingInstallation",
+      "parents": [ "Building" ]
+    },
+    "BuildingConstructiveElement": {
+      "type": "BuildingConstructiveElement",
+      "parents": [ "Building" ]
+    },
+    "BuildingFurniture": {
+      "type": "BuildingFurniture",
+      "parents": [ "Building" ]
+    },
+    "BuildingStorey": {
+      "type": "BuildingStorey",
+      "parents": [ "Building" ]
+    },
+    "BuildingRoom": {
+      "type": "BuildingRoom",
+      "parents": [ "Building" ]
+    },
+    "BuildingUnit": {
+      "type": "BuildingUnit",
+      "parents": [ "Building" ]
+    },
+    "TunnelPart": {
+      "type": "TunnelPart",
+      "parents": [ "Tunnel" ]
+    },
+    "TunnelInstallation": {
+      "type": "TunnelInstallation",
+      "parents": [ "Tunnel" ]
+    },
+    "TunnelConstructiveElement": {
+      "type": "TunnelConstructiveElement",
+      "parents": [ "Tunnel" ]
+    },
+    "TunnelHollowSpace": {
+      "type": "TunnelHollowSpace",
+      "parents": [ "Tunnel" ]
+    },
+    "TunnelFurniture": {
+      "type": "TunnelFurniture",
+      "parents": [ "Tunnel" ]
+    }
+  },
+  "vertices": [],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  }
+}
