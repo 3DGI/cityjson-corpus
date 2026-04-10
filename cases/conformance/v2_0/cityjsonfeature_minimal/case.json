@@ -1,16 +1,16 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/cityjsonfeature_minimal_complete.city.jsonl"
+    "source": "cases/conformance/v2_0/cityjsonfeature_minimal/cityjsonfeature_minimal.city.jsonl"
   },
   "assertions": [
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
-  "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
+  "description": "Minimal CityJSONFeature with only the required members.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
-  "id": "cityjsonfeature_minimal_complete",
+  "id": "cityjsonfeature_minimal",
   "layer": "conformance",
   "representation": "cityjsonfeature",
   "source_kind": "synthetic",

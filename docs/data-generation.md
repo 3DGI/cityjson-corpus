@@ -58,8 +58,12 @@ manifest.
 
 The generated index is the handoff point to downstream CityJSON crates.
 
-- `serde_cityjson` consumes the shared benchmark index directly and reads the
-  published workload artifacts from this repository.
+- `serde_cityjson` consumes the shared correctness index for the full
+  conformance set and reads the published workload artifacts from this
+  repository.
+- `cityarrow` uses the same shared correctness index for conformance
+  coverage; a failing case indicates an incomplete or incorrect
+  implementation.
 - `cjlib` can reuse the same shared index for parse, serialize, and roundtrip
   benchmarks.
 - `cjindex` keeps its own layout-building prep pipeline and can reuse the raw

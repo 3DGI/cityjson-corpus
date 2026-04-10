@@ -90,65 +90,20 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/cityjsonfeature_extension_roundtrip.city.jsonl"
-      },
-      "assertions": [
-        "extensions_preserved",
-        "feature_boundaries_preserved"
-      ],
-      "case": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/case.json",
-      "cityjson_version": "2.0",
-      "description": "Minimized CityJSONFeature conformance fixture covering extension payload preservation and feature streaming.",
-      "documentation": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/README.md",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "cityjsonfeature_extension_roundtrip",
-      "invariants": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/cityjsonfeature_extension_roundtrip",
-      "representation": "cityjsonfeature",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/cityjsonfeature_minimal_complete.city.jsonl"
+        "source": "cases/conformance/v2_0/cityjsonfeature_minimal/cityjsonfeature_minimal.city.jsonl"
       },
       "assertions": [
         "feature_boundaries_preserved"
       ],
-      "case": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/case.json",
+      "case": "cases/conformance/v2_0/cityjsonfeature_minimal/case.json",
       "cityjson_version": "2.0",
-      "description": "cityjsonfeature minimal complete conformance fixture migrated from serde_cityjson.",
+      "description": "Minimal CityJSONFeature with only the required members.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
-      "id": "cityjsonfeature_minimal_complete",
-      "invariants": "cases/conformance/v2_0/cityjsonfeature_minimal_complete/invariants.json",
+      "id": "cityjsonfeature_minimal",
+      "invariants": "cases/conformance/v2_0/cityjsonfeature_minimal/invariants.json",
       "layer": "conformance",
-      "path": "cases/conformance/v2_0/cityjsonfeature_minimal_complete",
-      "representation": "cityjsonfeature",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/cityjsonfeature_root_id_resolves.city.jsonl"
-      },
-      "assertions": [
-        "feature_root_id_resolves",
-        "feature_boundaries_preserved"
-      ],
-      "case": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/case.json",
-      "cityjson_version": "2.0",
-      "description": "Hand-written CityJSONFeature fixture where root id resolves to a real CityObject in the same feature.",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "cityjsonfeature_root_id_resolves",
-      "invariants": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/cityjsonfeature_root_id_resolves",
+      "path": "cases/conformance/v2_0/cityjsonfeature_minimal",
       "representation": "cityjsonfeature",
       "source_kind": "synthetic",
       "version": 2

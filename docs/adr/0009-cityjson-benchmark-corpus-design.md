@@ -150,8 +150,8 @@ shared data package those harnesses consume.
 
 - `cityjson-benchmarks` publishes a generated benchmark index and the
   materialized synthetic outputs from `just generate-data`.
-- `serde_cityjson` stops curating its own benchmark taxonomy and instead points
-  its fixtures and benchmarks at the shared corpus index.
+- `serde_cityjson` and `cityarrow` stop curating their own conformance subsets
+  and instead point their correctness suites at the shared correctness index.
 - `cjlib` consumes the same generated synthetic cases for parse, serialize, and
   roundtrip benchmarks.
 - `cjindex` consumes the shared synthetic cases and maintains its separate
