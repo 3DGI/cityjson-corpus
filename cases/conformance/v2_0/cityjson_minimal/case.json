@@ -1,16 +1,16 @@
 {
   "artifact_mode": "checked-in",
   "artifact_paths": {
-    "source": "cases/conformance/v2_0/geometry_complete_solid/geometry_complete_solid.city.json"
+    "source": "cases/conformance/v2_0/cityjson_minimal/cityjson_minimal.city.json"
   },
   "assertions": [
-    "geometry_surface_preserved"
+    "roundtrip_stable"
   ],
   "cityjson_version": "2.0",
-  "description": "geometry complete solid conformance fixture migrated from serde_cityjson.",
+  "description": "CityJSON minimal example from the spec.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
-  "id": "geometry_complete_solid",
+  "id": "cityjson_minimal",
   "layer": "conformance",
   "representation": "cityjson",
   "source_kind": "synthetic",

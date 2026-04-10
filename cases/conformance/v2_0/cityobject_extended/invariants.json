@@ -1,8 +1,12 @@
 {
   "checks": [
     {
-      "description": "CityObject structure stays stable across parse and roundtrip.",
-      "id": "cityobject_structure_preserved"
+      "description": "Extended CityObject stay stable across roundtrip.",
+      "id": "cityobject_extension_type_preserved"
+    },
+    {
+      "description": "Extended CityObject members stay stable across roundtrip.",
+      "id": "cityobject_extension_members_preserved"
     }
   ],
   "id": "cityobject_extended",

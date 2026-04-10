@@ -1,12 +1,12 @@
 {
   "checks": [
     {
-      "description": "Extended semantic surface stay stable across parse and roundtrip.",
+      "description": "Extended semantic surface stay stable across roundtrip.",
       "id": "semantic_extension_type_preserved"
     },
     {
-      "description": "Extended semantic surface properties stay stable across parse and roundtrip.",
-      "id": "semantic_extension_properties_preserved"
+      "description": "Extended semantic surface members stay stable across roundtrip.",
+      "id": "semantic_extension_members_preserved"
     }
   ],
   "id": "semantic_extended",

@@ -27,15 +27,35 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityjson_extended/cityjson_extended.city.json"
+      },
+      "assertions": [
+        "roundtrip_stable_with_extra_members"
+      ],
+      "case": "cases/conformance/v2_0/cityjson_extended/case.json",
+      "cityjson_version": "2.0",
+      "description": "CityJSON with extended root members.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "cityjson_extended",
+      "invariants": "cases/conformance/v2_0/cityjson_extended/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/cityjson_extended",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
         "source": "cases/conformance/v2_0/cityjson_fake_complete/cityjson_fake_complete.city.json"
       },
       "assertions": [
-        "full_surface_roundtrip",
-        "no_schema_regressions"
+        "full_surface_roundtrip"
       ],
       "case": "cases/conformance/v2_0/cityjson_fake_complete/case.json",
       "cityjson_version": "2.0",
-      "description": "cityjson fake complete conformance fixture migrated from serde_cityjson.",
+      "description": "CityJSON that covers the entire spec.",
       "family": "omnibus",
       "geometry_kind": "dummy",
       "id": "cityjson_fake_complete",
@@ -49,41 +69,20 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/cityjson_minimal_complete/cityjson_minimal_complete.city.json"
+        "source": "cases/conformance/v2_0/cityjson_minimal/cityjson_minimal.city.json"
       },
       "assertions": [
         "roundtrip_stable"
       ],
-      "case": "cases/conformance/v2_0/cityjson_minimal_complete/case.json",
+      "case": "cases/conformance/v2_0/cityjson_minimal/case.json",
       "cityjson_version": "2.0",
-      "description": "cityjson minimal complete conformance fixture migrated from serde_cityjson.",
+      "description": "CityJSON minimal example from the spec.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
-      "id": "cityjson_minimal_complete",
-      "invariants": "cases/conformance/v2_0/cityjson_minimal_complete/invariants.json",
+      "id": "cityjson_minimal",
+      "invariants": "cases/conformance/v2_0/cityjson_minimal/invariants.json",
       "layer": "conformance",
-      "path": "cases/conformance/v2_0/cityjson_minimal_complete",
-      "representation": "cityjson",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/cityjson_root_id_extra_property/cityjson_root_id_extra_property.city.json"
-      },
-      "assertions": [
-        "root_extra_preserved"
-      ],
-      "case": "cases/conformance/v2_0/cityjson_root_id_extra_property/case.json",
-      "cityjson_version": "2.0",
-      "description": "Hand-written CityJSON fixture where root id is preserved as an ordinary extra root property.",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "cityjson_root_id_extra_property",
-      "invariants": "cases/conformance/v2_0/cityjson_root_id_extra_property/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/cityjson_root_id_extra_property",
+      "path": "cases/conformance/v2_0/cityjson_minimal",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -157,6 +156,27 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
+        "source": "cases/conformance/v2_0/cityobject_building_address/cityobject_building_address.city.json"
+      },
+      "assertions": [
+        "building_address_preserved"
+      ],
+      "case": "cases/conformance/v2_0/cityobject_building_address/case.json",
+      "cityjson_version": "2.0",
+      "description": "A BuildingPart with with two addresses, including a point location. Without a geometry member.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "cityobject_building_address",
+      "invariants": "cases/conformance/v2_0/cityobject_building_address/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/cityobject_building_address",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
         "source": "cases/conformance/v2_0/cityobject_complete/cityobject_complete.city.json"
       },
       "assertions": [
@@ -164,7 +184,7 @@
       ],
       "case": "cases/conformance/v2_0/cityobject_complete/case.json",
       "cityjson_version": "2.0",
-      "description": "cityobject complete conformance fixture migrated from serde_cityjson.",
+      "description": "CityObject with all properties and hierarchy. With an empty geometry member.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "cityobject_complete",
@@ -181,11 +201,12 @@
         "source": "cases/conformance/v2_0/cityobject_extended/cityobject_extended.city.json"
       },
       "assertions": [
-        "cityobject_structure_preserved"
+        "cityobject_extension_type_preserved",
+        "cityobject_extension_members_preserved"
       ],
       "case": "cases/conformance/v2_0/cityobject_extended/case.json",
       "cityjson_version": "2.0",
-      "description": "cityobject extended conformance fixture migrated from serde_cityjson.",
+      "description": "CityObject with an 'extended' type, e.g. +ExtendedCityObject, including attributes and hierarchy.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "cityobject_extended",
@@ -202,11 +223,11 @@
         "source": "cases/conformance/v2_0/extension/extension.city.json"
       },
       "assertions": [
-        "extension_payload_preserved"
+        "extension_member_preserved"
       ],
       "case": "cases/conformance/v2_0/extension/case.json",
       "cityjson_version": "2.0",
-      "description": "extension conformance fixture migrated from serde_cityjson.",
+      "description": "CityJSON with an extension.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "extension",
@@ -220,35 +241,15 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/geometry_complete_solid/geometry_complete_solid.city.json"
-      },
-      "assertions": [
-        "geometry_surface_preserved"
-      ],
-      "case": "cases/conformance/v2_0/geometry_complete_solid/case.json",
-      "cityjson_version": "2.0",
-      "description": "geometry complete solid conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "geometry_complete_solid",
-      "invariants": "cases/conformance/v2_0/geometry_complete_solid/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/geometry_complete_solid",
-      "representation": "cityjson",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
         "source": "cases/conformance/v2_0/geometry_instance/geometry_instance.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_instance_preserved",
+        "geometry_instance_resolved"
       ],
       "case": "cases/conformance/v2_0/geometry_instance/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry instance conformance fixture migrated from serde_cityjson.",
+      "description": "Two GeometryInstances with the same template, but different transformation matrices.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_instance",
@@ -328,11 +329,11 @@
         "source": "cases/conformance/v2_0/geometry_semantics_multilinestring/geometry_semantics_multilinestring.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_semantics_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multilinestring/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry semantics multilinestring conformance fixture migrated from serde_cityjson.",
+      "description": "MultiLineString with semantics. One of the linestrings does not have a semantic assigned ('null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_semantics_multilinestring",
@@ -349,11 +350,11 @@
         "source": "cases/conformance/v2_0/geometry_semantics_multipoint/geometry_semantics_multipoint.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_semantics_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multipoint/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry semantics multipoint conformance fixture migrated from serde_cityjson.",
+      "description": "MultiPoint with semantics. One of the points does not have a semantic assigned ('null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_semantics_multipoint",
@@ -370,11 +371,11 @@
         "source": "cases/conformance/v2_0/geometry_semantics_multisolid/geometry_semantics_multisolid.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_semantics_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisolid/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry semantics multisolid conformance fixture migrated from serde_cityjson.",
+      "description": "MultiSolid with semantics. One of the solids does not have a semantic assigned ('null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_semantics_multisolid",
@@ -391,11 +392,11 @@
         "source": "cases/conformance/v2_0/geometry_semantics_multisurface/geometry_semantics_multisurface.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_semantics_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_multisurface/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry semantics multisurface conformance fixture migrated from serde_cityjson.",
+      "description": "MultiSurface with semantics. One of the surfaces has an inner ring, one of the surfaces does not have a semantic assigned ('null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_semantics_multisurface",
@@ -412,11 +413,11 @@
         "source": "cases/conformance/v2_0/geometry_semantics_solid/geometry_semantics_solid.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_semantics_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_semantics_solid/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry semantics solid conformance fixture migrated from serde_cityjson.",
+      "description": "Solid with semantics. One of the faces does not have a semantic assigned ('null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_semantics_solid",
@@ -430,58 +431,14 @@
     {
       "artifact_mode": "checked-in",
       "artifact_paths": {
-        "source": "cases/conformance/v2_0/geometry_templates/geometry_templates.city.json"
-      },
-      "assertions": [
-        "geometry_surface_preserved"
-      ],
-      "case": "cases/conformance/v2_0/geometry_templates/case.json",
-      "cityjson_version": "2.0",
-      "description": "geometry templates conformance fixture migrated from serde_cityjson.",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "geometry_templates",
-      "invariants": "cases/conformance/v2_0/geometry_templates/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/geometry_templates",
-      "representation": "cityjson",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
-        "source": "cases/conformance/v2_0/geometry_templates_reuse/geometry_templates_reuse.city.json"
-      },
-      "assertions": [
-        "instance_count_stable",
-        "template_reuse_preserved"
-      ],
-      "case": "cases/conformance/v2_0/geometry_templates_reuse/case.json",
-      "cityjson_version": "2.0",
-      "description": "Minimized template conformance fixture covering repeated GeometryInstance reuse and instance count stability.",
-      "documentation": "cases/conformance/v2_0/geometry_templates_reuse/README.md",
-      "family": "spec_atom",
-      "geometry_kind": "dummy",
-      "id": "geometry_templates_reuse",
-      "invariants": "cases/conformance/v2_0/geometry_templates_reuse/invariants.json",
-      "layer": "conformance",
-      "path": "cases/conformance/v2_0/geometry_templates_reuse",
-      "representation": "cityjson",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "checked-in",
-      "artifact_paths": {
         "source": "cases/conformance/v2_0/geometry_texture_multisolid/geometry_texture_multisolid.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_texture_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_texture_multisolid/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry texture multisolid conformance fixture migrated from serde_cityjson.",
+      "description": "MultiSolid with textured and untextured surfaces. One textured surface has an inner ring.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_texture_multisolid",
@@ -519,11 +476,11 @@
         "source": "cases/conformance/v2_0/geometry_texture_solid/geometry_texture_solid.city.json"
       },
       "assertions": [
-        "geometry_surface_preserved"
+        "geometry_texture_preserved"
       ],
       "case": "cases/conformance/v2_0/geometry_texture_solid/case.json",
       "cityjson_version": "2.0",
-      "description": "geometry texture solid conformance fixture migrated from serde_cityjson.",
+      "description": "Solid with textured surfaces. One textured surface has an inner ring. Last surface is not textured (set to 'null').",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "geometry_texture_solid",

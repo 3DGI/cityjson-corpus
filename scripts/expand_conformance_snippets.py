@@ -11,7 +11,7 @@ CONFORMANCE_ROOT = ROOT / "cases" / "conformance" / "v2_0"
 
 FULL_DOCUMENT_CASES = {
     "cityjson_fake_complete",
-    "cityjson_minimal_complete",
+    "cityjson_minimal",
 }
 
 

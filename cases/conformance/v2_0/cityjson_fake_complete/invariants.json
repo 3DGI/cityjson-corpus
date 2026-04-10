@@ -1,12 +1,8 @@
 {
   "checks": [
     {
-      "description": "The full fixture surface roundtrips without loss.",
-      "id": "full_surface_roundtrip"
-    },
-    {
-      "description": "The fixture does not regress schema coverage.",
-      "id": "no_schema_regressions"
+      "description": "The full fixture roundtrips without loss.",
+      "id": "roundtrip_stable"
     }
   ],
   "id": "cityjson_fake_complete",

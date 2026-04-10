@@ -20,7 +20,7 @@ lint:
 # Run cjval on all conformance cases.
 cjval:
     @echo "{{BOLD}}Running cjval on conformance cases...{{NORMAL}}"
-    @status=0; while IFS= read -r -d '' file; do basename="$(basename "$file")"; output="$(cjval -q "$file" 2>&1)"; printf "%s %s\n" "$output" "$basename"; case "$output" in *"❌ File is invalid"*) status=1 ;; esac; done < <(find cases/conformance/v2_0 -type f -name '*.city.json' -print0); exit "$status"
+    @status=0; while IFS= read -r -d '' file; do basename="$(basename "$file")"; output="$(cjval -q -e schemas/cityjson/noise.ext.json "$file" 2>&1)"; printf "%s %s\n" "$output" "$basename"; case "$output" in *"❌ File is invalid"*) status=1 ;; esac; done < <(find cases/conformance/v2_0 -type f -name '*.city.json' -print0); exit "$status"
 
 # Rewrite catalog/cases.json and artifacts/correctness-index.json from cases/.
 sync-catalog:

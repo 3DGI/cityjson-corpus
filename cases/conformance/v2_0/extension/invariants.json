@@ -1,8 +1,8 @@
 {
   "checks": [
     {
-      "description": "Extension payloads stay stable across parse and roundtrip.",
-      "id": "extension_payload_preserved"
+      "description": "Extension member stay stable across roundtrip.",
+      "id": "extension_member_preserved"
     }
   ],
   "id": "extension",

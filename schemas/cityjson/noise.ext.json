@@ -1,0 +1,143 @@
+{
+  "type": "CityJSONExtension",
+  "name": "Noise",
+  "description": "Extension to model the noise",
+  "url": "https://someurl.org/noise.ext.json",
+  "version": "0.5",
+  "versionCityJSON": "2.0",
+  "extraRootProperties": {
+    "+census": {
+      "type": "object",
+      "properties": {
+        "percent_men": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 100.0
+        },
+        "percent_women": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 100.0
+        }
+      }
+    }
+  },
+  "extraAttributes": {},
+  "extraCityObjects": {
+    "+ExtendedCityObject": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+ExtendedCityObject" ]
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "string": {
+              "type": "string"
+            }
+          }
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [ "type" ]
+    },
+    "+ExtendedChild": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+ExtendedChild" ]
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "bool": {
+              "type": "boolean"
+            }
+          }
+        },
+        "parents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [ "type" ]
+    },
+    "+NoiseBuilding": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+NoiseBuilding" ]
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "buildingLDenMin": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [ "type" ]
+    },
+    "+NoiseBuildingPart": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+NoiseBuildingPart" ]
+        },
+        "attributes": {
+          "type": "object",
+          "properties": {
+            "buildingLDenMin": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "required": [ "type" ]
+    }
+  },
+  "extraSemanticSurfaces": {
+    "+MySemantic": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+MySemantic" ]
+        },
+        "integer": {
+          "type": "integer"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "parent": {
+          "type": "integer"
+        }
+      },
+      "required": [ "type" ]
+    },
+    "+PatioDoor": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "+PatioDoor" ]
+        },
+        "parent": {
+          "type": "integer"
+        }
+      },
+      "required": [ "type" ]
+    }
+  }
+}

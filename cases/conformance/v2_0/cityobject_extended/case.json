@@ -4,10 +4,11 @@
     "source": "cases/conformance/v2_0/cityobject_extended/cityobject_extended.city.json"
   },
   "assertions": [
-    "cityobject_structure_preserved"
+    "cityobject_extension_type_preserved",
+    "cityobject_extension_members_preserved"
   ],
   "cityjson_version": "2.0",
-  "description": "cityobject extended conformance fixture migrated from serde_cityjson.",
+  "description": "CityObject with an 'extended' type, e.g. +ExtendedCityObject, including attributes and hierarchy.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
   "id": "cityobject_extended",

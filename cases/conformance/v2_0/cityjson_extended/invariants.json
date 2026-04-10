@@ -1,0 +1,11 @@
+{
+  "checks": [
+    {
+      "description": "The fixture roundtrips without loss.",
+      "id": "roundtrip_stable_with_extra_members"
+    }
+  ],
+  "id": "cityjson_extended",
+  "kind": "positive",
+  "version": 1
+}

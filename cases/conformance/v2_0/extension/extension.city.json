@@ -2,16 +2,15 @@
   "type": "CityJSON",
   "version": "2.0",
   "CityObjects": {},
-  "appearance": {},
-  "geometry-templates": {
-    "templates": [],
-    "vertices-templates": []
-  },
   "vertices": [],
+  "transform": {
+    "scale": [ 1.0, 1.0, 1.0 ],
+    "translate": [ 0.0, 0.0, 0.0 ]
+  },
   "extensions": {
     "Noise": {
-      "url": "https://someurl.org/noise.json",
-      "version": "2.0"
+      "url": "https://someurl.org/noise.ext.json",
+      "version": "0.5"
     }
   }
 }

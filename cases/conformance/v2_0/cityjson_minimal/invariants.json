@@ -5,7 +5,7 @@
       "id": "roundtrip_stable"
     }
   ],
-  "id": "cityjson_minimal_complete",
+  "id": "cityjson_minimal",
   "kind": "positive",
   "version": 1
 }

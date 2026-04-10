@@ -4,10 +4,10 @@
     "source": "cases/conformance/v2_0/extension/extension.city.json"
   },
   "assertions": [
-    "extension_payload_preserved"
+    "extension_member_preserved"
   ],
   "cityjson_version": "2.0",
-  "description": "extension conformance fixture migrated from serde_cityjson.",
+  "description": "CityJSON with an extension.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
   "id": "extension",

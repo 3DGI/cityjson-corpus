@@ -4,11 +4,10 @@
     "source": "cases/conformance/v2_0/cityjson_fake_complete/cityjson_fake_complete.city.json"
   },
   "assertions": [
-    "full_surface_roundtrip",
-    "no_schema_regressions"
+    "full_surface_roundtrip"
   ],
   "cityjson_version": "2.0",
-  "description": "cityjson fake complete conformance fixture migrated from serde_cityjson.",
+  "description": "CityJSON that covers the entire spec.",
   "family": "omnibus",
   "geometry_kind": "dummy",
   "id": "cityjson_fake_complete",

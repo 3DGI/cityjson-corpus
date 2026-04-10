@@ -3,8 +3,8 @@
   "id": "feature-1",
   "extensions": {
     "Noise": {
-      "url": "https://someurl.org/noise.json",
-      "version": "2.0"
+      "url": "https://someurl.org/noise.ext.json",
+      "version": "0.5"
     }
   },
   "CityObjects": {

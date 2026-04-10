@@ -42,5 +42,11 @@
   "transform": {
     "scale": [ 1.0, 1.0, 1.0 ],
     "translate": [ 0.0, 0.0, 0.0 ]
+  },
+  "extensions": {
+    "Noise": {
+      "url": "https://someurl.org/noise.ext.json",
+      "version": "0.5"
+    }
   }
 }
