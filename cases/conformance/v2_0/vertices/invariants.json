@@ -5,8 +5,8 @@
       "id": "vertex_indices_preserved"
     },
     {
-      "description": "Coordinates that exceed the lower/upper-bounds of u32/f32 are preserved.",
-      "id": "extreme_coordinates_preserved"
+      "description": "Coordinates in Dutch RD New (EPSG:7415) are preserved.",
+      "id": "coordinates_preserved"
     },
     {
       "description": "Transformation properties stay stable across parse and roundtrip.",

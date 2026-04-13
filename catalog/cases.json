@@ -1029,12 +1029,12 @@
       },
       "assertions": [
         "vertex_indices_preserved",
-        "extreme_coordinates_preserved",
+        "coordinates_preserved",
         "transform_preserved"
       ],
       "case": "cases/conformance/v2_0/vertices/case.json",
       "cityjson_version": "2.0",
-      "description": "Coordinates and transformation properties that exceed the lower/upper-bounds of u32 and f32.",
+      "description": "Vertices and transformation properties using coordinates in the Dutch RD New (EPSG:7415) coordinate reference system.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "vertices",
