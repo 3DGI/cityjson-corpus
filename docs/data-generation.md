@@ -18,7 +18,8 @@ Neither workflow checks the large CityJSON files into git. The 3DBAG
 acquisition includes both the baseline `10-758-50.city.json` tile and the
 published merged `cluster_4x.city.json` stress workload; both real-data
 acquisitions also export sibling native `.cjarrow` live-stream files and
-`.cjparquet` package files.
+`.cjparquet` package files. The acquisition contract now marks which outputs
+are canonical shared inputs and which are benchmark-only derived formats.
 
 The corpus also carries per-case invariants and invalid fixtures under
 [`cases/`](cases/index.md).
@@ -34,7 +35,7 @@ The corpus also carries per-case invariants and invalid fixtures under
   acquisitions
 - A local sibling checkout of `../cjlib`, or an override via
   `CORPUS_CJLIB_CARGO_MANIFEST`, to export the native cityarrow and
-  cityparquet artifacts
+  cityparquet benchmark formats
 
 ## Generate The Data
 
@@ -43,7 +44,7 @@ The corpus also carries per-case invariants and invalid fixtures under
 2. Validate the manifest fixtures: `./scripts/validate_profiles.sh`.
 3. Generate the benchmark data: `just generate-data`.
 4. Inspect `artifacts/benchmark-index.json` for the workload case list and the
-   generated/acquired output paths.
+   canonical artifacts and sibling benchmark-only derived paths.
 
 Generation is deterministic: each synthetic fixture carries a seed and a fixed
 manifest.
@@ -55,7 +56,8 @@ manifest.
 - Published real-data cases point at the acquired artifacts under
   `artifacts/acquired/3dbag/v20250903/` and
   `artifacts/acquired/basisvoorziening-3d/2022/`, including CityJSON,
-  cityarrow, and cityparquet forms for the published workloads.
+  cityarrow, and cityparquet forms for the published workloads, with explicit
+  provenance and validation-role metadata per artifact.
 - Cases without a published acquisition remain metadata-only until their
   consumer-owned pipeline publishes concrete artifacts.
 
@@ -75,7 +77,7 @@ The generated index is the handoff point to downstream CityJSON crates.
 - `cjlib` can reuse the same shared index for parse, serialize, and roundtrip
   benchmarks.
 - `cjindex` keeps its own layout-building prep pipeline and can reuse the raw
-  3DBAG and Basisvoorziening 3D acquisition outputs as source data.
+  3DBAG and Basisvoorziening 3D canonical acquisition outputs as source data.
 
 One corpus contract is shared across these tools. The benchmark repository
 is not a Cargo dependency of those crates.

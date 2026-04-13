@@ -5,11 +5,14 @@
   "notes": "Real 3DBAG geometry enriched with synthetic non-geometric data so object-graph traversal, attribute lookup, and roundtrip stability can be measured on a mixed payload. It reuses the published raw 3DBAG CityJSON slice.",
   "outputs": [
     {
+      "derivation": "acquired",
       "byte_size": null,
       "checksum": null,
       "path": "artifacts/acquired/3dbag/v20250903/10-758-50.city.json",
       "published": true,
-      "representation": "cityjson"
+      "producer": "upstream",
+      "representation": "cityjson",
+      "validation_role": "canonical"
     }
   ],
   "owner": "cjindex",
@@ -23,5 +26,5 @@
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",
   "upstream_version": "2025.09.03",
-  "version": 1
+  "version": 2
 }

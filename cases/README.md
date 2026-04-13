@@ -33,6 +33,10 @@ rendered by `just sync-catalog`.
 Workload cases are for **benchmark performance** measurement — throughput and
 latency under synthetic stress or real-data I/O loads.
 
+Acquired workload metadata can declare multiple published outputs. The
+acquisition contract marks which one is the canonical shared input and which
+ones are benchmark-only derived artifacts.
+
 `catalog/cases.json` is a derived index rendered from this tree. Run
 `just sync-catalog` after changing case metadata, or use `just lint`
 to check that the catalog is in sync.

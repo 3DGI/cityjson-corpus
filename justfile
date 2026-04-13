@@ -39,6 +39,16 @@ acquire-3dbag:
 acquire-basisvoorziening-3d:
     ./scripts/acquire_basisvoorziening_3d.sh
 
+# Remove generated workload data, acquired artifacts, derived indexes, generated docs pages, and the built site.
+clean:
+    rm -rf artifacts/generated
+    rm -rf artifacts/acquired
+    rm -f artifacts/benchmark-index.json
+    rm -f artifacts/correctness-index.json
+    rm -f catalog/cases.json
+    rm -rf docs/artifacts docs/cases docs/catalog docs/pipelines docs/reference docs/repository docs/schemas
+    rm -rf site
+
 # Start a local ProperDocs dev server.
 docs-serve:
     uv run properdocs serve -o

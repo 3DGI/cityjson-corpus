@@ -92,22 +92,47 @@ tile_urls_json="$(
   done | jq -s -S .
 )"
 
+cluster_derived_from_json="$(
+  {
+    printf '%s\n' "artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json"
+    for tile_id in "${cluster_tile_ids[@]}"; do
+      printf '%s\n' "artifacts/acquired/3dbag/${version_slug}/${tile_id}.city.json"
+    done
+  } | jq -R . | jq -s .
+)"
+
 outputs_json="$(
   {
-    printf '%s\t%s\n' "${base_tile_id}.city.json" "cityjson"
-    printf '%s\t%s\n' "${base_tile_id}.cjarrow" "cityarrow"
-    printf '%s\t%s\n' "${base_tile_id}.cjparquet" "cityparquet"
-    printf '%s\t%s\n' "${cluster_output_name}" "cityjson"
-    printf '%s\t%s\n' "${cluster_output_name%.city.json}.cjarrow" "cityarrow"
-    printf '%s\t%s\n' "${cluster_output_name%.city.json}.cjparquet" "cityparquet"
-  } | while IFS=$'\t' read -r relative_name representation; do
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.city.json" "cityjson" "upstream" "acquired" "canonical" "[]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name}" "cityjson" "cjio" "merged" "benchmark-only" "${cluster_derived_from_json}"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
+  } | while IFS=$'\t' read -r relative_name representation producer derivation validation_role derived_from_json; do
     output_path="${output_root}/${relative_name}"
     jq -n -c \
       --arg path "artifacts/acquired/3dbag/${version_slug}/${relative_name}" \
       --arg representation "${representation}" \
+      --arg producer "${producer}" \
+      --arg derivation "${derivation}" \
+      --arg validation_role "${validation_role}" \
       --arg checksum "$(sha256sum "${output_path}" | awk '{print $1}')" \
       --argjson byte_size "$(stat -c '%s' "${output_path}")" \
-      '{path: $path, representation: $representation, checksum: $checksum, byte_size: $byte_size}'
+      --argjson derived_from "${derived_from_json}" \
+      '
+      {
+        path: $path,
+        representation: $representation,
+        producer: $producer,
+        derivation: $derivation,
+        validation_role: $validation_role,
+        checksum: $checksum,
+        byte_size: $byte_size,
+        published: true
+      }
+      + (if $derived_from | length > 0 then {derived_from: $derived_from} else {} end)
+      '
   done | jq -s -S .
 )"
 

@@ -49,17 +49,38 @@ export_native_formats "${cityjson_path}" "${cityjson_stem}"
 
 outputs_json="$(
   {
-    printf '%s\t%s\n' "${cityjson_name}" "cityjson"
-    printf '%s\t%s\n' "${cityjson_stem}.cjarrow" "cityarrow"
-    printf '%s\t%s\n' "${cityjson_stem}.cjparquet" "cityparquet"
-  } | while IFS=$'\t' read -r relative_name representation; do
+    printf '%s\t%s\t%s\t%s\t%s\n' "${cityjson_name}" "cityjson" "upstream" "acquired" "canonical"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
+  } | while IFS=$'\t' read -r relative_name representation producer derivation validation_role dep1; do
     output_path="${output_root}/${relative_name}"
+    derived_from_json="$(
+      printf '%s\n' "${dep1:-}" \
+        | jq -R . \
+        | jq -s 'map(select(length > 0))'
+    )"
     jq -n -c \
       --arg path "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${relative_name}" \
       --arg representation "${representation}" \
+      --arg producer "${producer}" \
+      --arg derivation "${derivation}" \
+      --arg validation_role "${validation_role}" \
       --arg checksum "$(sha256sum "${output_path}" | awk '{print $1}')" \
       --argjson byte_size "$(stat -c '%s' "${output_path}")" \
-      '{path: $path, representation: $representation, checksum: $checksum, byte_size: $byte_size}'
+      --argjson derived_from "${derived_from_json}" \
+      '
+      {
+        path: $path,
+        representation: $representation,
+        producer: $producer,
+        derivation: $derivation,
+        validation_role: $validation_role,
+        checksum: $checksum,
+        byte_size: $byte_size,
+        published: true
+      }
+      + (if $derived_from | length > 0 then {derived_from: $derived_from} else {} end)
+      '
   done | jq -s -S .
 )"
 

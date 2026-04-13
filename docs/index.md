@@ -39,3 +39,5 @@ and release artifacts are separate from generator and consumer implementations.
   3D tile into `artifacts/acquired/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
+- `just clean` removes generated workload data, acquired artifacts, derived
+  indexes, generated docs pages, and the built docs site.

@@ -5,25 +5,40 @@
   "notes": "Monolithic real-geometry Basisvoorziening 3D case stored as a whole CityJSON file. It complements the 3DBAG baseline with a larger terrain-inclusive Dutch tile acquired directly from the published 2022 PDOK collection.",
   "outputs": [
     {
+      "derivation": "acquired",
       "byte_size": null,
       "checksum": null,
       "path": "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.city.json",
       "published": true,
-      "representation": "cityjson"
+      "producer": "upstream",
+      "representation": "cityjson",
+      "validation_role": "canonical"
     },
     {
+      "derivation": "exported",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.city.json"
+      ],
       "path": "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.cjarrow",
       "published": true,
-      "representation": "cityarrow"
+      "producer": "cjlib",
+      "representation": "cityarrow",
+      "validation_role": "benchmark-only"
     },
     {
+      "derivation": "exported",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.city.json"
+      ],
       "path": "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.cjparquet",
       "published": true,
-      "representation": "cityparquet"
+      "producer": "cjlib",
+      "representation": "cityparquet",
+      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
@@ -39,5 +54,5 @@
   "status": "published",
   "upstream_url": "https://download.pdok.nl/kadaster/basisvoorziening-3d/v1_0/2022/volledig/volledig_2022_84000_450000.zip",
   "upstream_version": "2022",
-  "version": 1
+  "version": 2
 }

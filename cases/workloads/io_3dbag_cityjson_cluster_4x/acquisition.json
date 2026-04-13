@@ -5,25 +5,46 @@
   "notes": "Merged real-geometry 3DBAG workload built from four contiguous tiles in the published v20250903 release. It extends the monolithic CityJSON workload to a larger, still realistic memory and cache stress case.",
   "outputs": [
     {
+      "derivation": "merged",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json",
+        "artifacts/acquired/3dbag/v20250903/10-756-48.city.json",
+        "artifacts/acquired/3dbag/v20250903/10-756-50.city.json",
+        "artifacts/acquired/3dbag/v20250903/10-758-48.city.json"
+      ],
       "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json",
       "published": true,
-      "representation": "cityjson"
+      "producer": "cjio",
+      "representation": "cityjson",
+      "validation_role": "benchmark-only"
     },
     {
+      "derivation": "exported",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json"
+      ],
       "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjarrow",
       "published": true,
-      "representation": "cityarrow"
+      "producer": "cjlib",
+      "representation": "cityarrow",
+      "validation_role": "benchmark-only"
     },
     {
+      "derivation": "exported",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json"
+      ],
       "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjparquet",
       "published": true,
-      "representation": "cityparquet"
+      "producer": "cjlib",
+      "representation": "cityparquet",
+      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
@@ -39,5 +60,5 @@
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",
   "upstream_version": "2025.09.03",
-  "version": 1
+  "version": 2
 }

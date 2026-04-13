@@ -47,25 +47,78 @@ while IFS=$'\t' read -r case_id acquisition_path; do
     continue
   fi
 
-  acquired_output_path="$(
-    jq -r '
-      .outputs[]
-      | select(.published == true and .path != null and .representation == "cityjson")
-      | .path
-    ' "${case_acquisition_path}" | head -n1
+  acquired_outputs_json="$(
+    jq -c '
+      [
+        .outputs[]
+        | select(.published == true and .path != null)
+      ]
+    ' "${case_acquisition_path}"
   )"
 
-  if [[ -z "${acquired_output_path}" || "${acquired_output_path}" == "null" ]]; then
+  if [[ -z "${acquired_outputs_json}" || "${acquired_outputs_json}" == "[]" ]]; then
     continue
   fi
 
-  if [[ "${acquired_output_path}" != /* ]]; then
-    acquired_output_path="${repo_dir}/${acquired_output_path}"
-  fi
+  acquired_case_json="$(
+    jq -c --arg repo_dir "${repo_dir}" '
+      . as $outputs
+      | {
+          canonical_artifact: (
+            (
+              $outputs
+              | map(select(.validation_role == "canonical"))
+              | .[0].path
+            ) as $canonical_path
+            | if $canonical_path == null then
+                null
+              elif ($canonical_path | startswith("/")) then
+                $canonical_path
+              else
+                ($repo_dir + "/" + $canonical_path)
+              end
+          ),
+          artifacts: (
+            $outputs
+            | map(
+                (
+                  . + {
+                    path: (
+                      if (.path | startswith("/")) then
+                        .path
+                      else
+                        ($repo_dir + "/" + .path)
+                      end
+                    )
+                  }
+                )
+                + (
+                  if (.derived_from // [] | length) > 0 then
+                    {
+                      derived_from: (
+                        .derived_from
+                        | map(
+                            if startswith("/") then
+                              .
+                            else
+                              ($repo_dir + "/" + .)
+                            end
+                          )
+                      )
+                    }
+                  else
+                    {}
+                  end
+                )
+              )
+          )
+        }
+    ' <<<"${acquired_outputs_json}"
+  )"
 
   acquired_map_json="$(
-    jq -c --arg case_id "${case_id}" --arg output_path "${acquired_output_path}" \
-      '. + {($case_id): $output_path}' <<<"${acquired_map_json}"
+    jq -c --arg case_id "${case_id}" --argjson case_artifacts "${acquired_case_json}" \
+      '. + {($case_id): $case_artifacts}' <<<"${acquired_map_json}"
   )"
 done < <(jq -r '.cases[] | select(.layer == "workload" and .artifact_mode == "acquired" and .artifact_paths.acquisition != null) | [.id, .artifact_paths.acquisition] | @tsv' "${corpus_path}")
 
@@ -87,6 +140,7 @@ done < <(jq -r '.cases[] | select(.layer == "workload" and .artifact_paths.profi
 
 jq -S \
   --arg output_dir "${output_dir}" \
+  --arg repo_dir "${repo_dir}" \
   --arg corpus_path "catalog/cases.json" \
   --arg schema_path "${schema_ref}" \
   --arg cjfake_cargo "${cjfake_cargo}" \
@@ -100,7 +154,7 @@ jq -S \
        | select(.layer == "workload")
        | select(
            .artifact_paths.profile != null
-           or (.artifact_paths.profile == null and (.artifact_mode != "acquired" or ($acquired_map[.id] != null)))
+           or (.artifact_paths.profile == null and (.artifact_mode != "acquired" or (($acquired_map[.id].artifacts // []) | length > 0)))
          )]
       | length
     ),
@@ -127,14 +181,24 @@ jq -S \
           artifact_paths,
           documentation,
           invariants,
-          output: ($output_dir + "/" + .id + ".city.json")
+          canonical_artifact: ($output_dir + "/" + .id + ".city.json"),
+          artifacts: [
+            {
+              representation,
+              producer: "cjfake",
+              derivation: "materialized",
+              derived_from: [($repo_dir + "/" + .artifact_paths.profile)],
+              validation_role: "canonical",
+              path: ($output_dir + "/" + .id + ".city.json")
+            }
+          ]
         }
     ],
     other_cases: [
       .cases[]
       | select(.layer == "workload")
       | select(.artifact_paths.profile == null)
-      | select(.artifact_mode != "acquired" or ($acquired_map[.id] != null))
+      | select(.artifact_mode != "acquired" or (($acquired_map[.id].artifacts // []) | length > 0))
       | {
           id,
           layer,
@@ -145,7 +209,8 @@ jq -S \
           assertions,
           artifact_paths,
           documentation,
-          output: ($acquired_map[.id] // null)
+          canonical_artifact: ($acquired_map[.id].canonical_artifact // null),
+          artifacts: ($acquired_map[.id].artifacts // [])
         }
     ]
   }

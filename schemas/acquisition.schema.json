@@ -20,7 +20,7 @@
   "properties": {
     "version": {
       "type": "integer",
-      "const": 1
+      "const": 2
     },
     "id": {
       "type": "string",
@@ -90,6 +90,9 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "producer",
+        "derivation",
+        "validation_role",
         "representation",
         "published"
       ],
@@ -97,6 +100,33 @@
         "representation": {
           "type": "string",
           "minLength": 1
+        },
+        "producer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "derivation": {
+          "type": "string",
+          "enum": [
+            "acquired",
+            "merged",
+            "exported",
+            "materialized"
+          ]
+        },
+        "derived_from": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "validation_role": {
+          "type": "string",
+          "enum": [
+            "canonical",
+            "benchmark-only"
+          ]
         },
         "path": {
           "type": [
@@ -120,7 +150,39 @@
         "published": {
           "type": "boolean"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "derivation": {
+                "const": "acquired"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": ["derived_from"]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "derivation": {
+                "enum": [
+                  "merged",
+                  "exported",
+                  "materialized"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["derived_from"]
+          }
+        }
+      ]
     }
   }
 }

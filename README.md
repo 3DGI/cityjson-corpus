@@ -33,8 +33,9 @@ The corpus serves two purposes:
   2.0 conformance subset.
 - **Benchmark performance.** Workload cases provide synthetic stress fixtures
   and real-data I/O workloads for measuring throughput and latency.
-  `artifacts/benchmark-index.json` lists their output paths after
-  `just generate-data` materializes them.
+  `artifacts/benchmark-index.json` lists each workload's canonical artifact
+  and any sibling benchmark-only derived formats after `just generate-data`
+  materializes them.
 
 ## Getting Started
 
@@ -54,8 +55,8 @@ Correctness cases are ready to use once their checked-in, generated, or
 acquired artifacts exist. Generated conformance cases require
 `just generate-data` before their artifacts are materialized.
 
-After step 3, `artifacts/benchmark-index.json` lists all workload cases and
-their output paths.
+After step 3, `artifacts/benchmark-index.json` lists all workload cases, their
+canonical artifacts, and any sibling benchmark-only derived formats.
 
 ## Adding Or Removing Cases
 
@@ -86,13 +87,16 @@ not delete stale pages for removed cases.
   `artifacts/correctness-index.json` from `cases/`.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
   slice under `artifacts/acquired/3dbag/v20250903/`, including the sibling
-  cityarrow and cityparquet benchmark artifacts.
+  cityarrow and cityparquet benchmark-only derived artifacts.
 - `just acquire-basisvoorziening-3d` materializes the published 2022
   Basisvoorziening 3D tile under `artifacts/acquired/basisvoorziening-3d/2022/`,
-  including the sibling cityarrow and cityparquet benchmark artifacts.
+  including the sibling cityarrow and cityparquet benchmark-only derived
+  artifacts.
 - `just generate-data` materializes the synthetic workload cases into
   `artifacts/generated/` and writes the benchmark-only export at
   `artifacts/benchmark-index.json`.
+- `just clean` removes generated workload data, acquired artifacts, derived
+  indexes, generated docs pages, and the built docs site.
 - `just docs-build` builds the MkDocs site through `uv`.
 - `just docs-serve` starts a local docs server through `uv`.
 
@@ -116,4 +120,5 @@ index currently exposes 28 conformance fixtures and 8 non-conformance
 correctness cases. Workload consumers reuse the same synthetic fixtures and
 acquired artifacts instead of defining separate benchmark models. Published
 3DBAG and Basisvoorziening 3D CityJSON, cityarrow, and cityparquet artifacts
-are acquired here and consumed directly by downstream crates.
+are acquired here and classified explicitly as canonical or benchmark-only in
+their acquisition metadata and workload index entries.

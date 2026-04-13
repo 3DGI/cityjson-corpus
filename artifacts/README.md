@@ -13,5 +13,7 @@ stress workload, each with sibling `.cjarrow` live-stream and `.cjparquet`
 package files), the published Basisvoorziening 3D acquired artifacts live
 under `artifacts/acquired/basisvoorziening-3d/2022/`, and the workload
 benchmark index produced by `just generate-data` lives at
-`artifacts/benchmark-index.json`. The shared correctness index consumed by
-downstream test suites lives at `artifacts/correctness-index.json`.
+`artifacts/benchmark-index.json`. That index exposes each workload's
+`canonical_artifact` and any sibling `artifacts` entries marked as
+`benchmark-only`. The shared correctness index consumed by downstream test
+suites lives at `artifacts/correctness-index.json`.

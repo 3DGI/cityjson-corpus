@@ -5,11 +5,17 @@
   "notes": "The same real-geometry 3DBAG slice split into one file per feature. This is a filesystem-heavy layout case for open/close overhead, metadata lookup, and random-access behavior.",
   "outputs": [
     {
+      "derivation": "materialized",
       "byte_size": null,
       "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
+      ],
       "path": null,
       "published": false,
-      "representation": "feature-files"
+      "producer": "cjindex",
+      "representation": "feature-files",
+      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
@@ -23,5 +29,5 @@
   "status": "planned",
   "upstream_url": null,
   "upstream_version": null,
-  "version": 1
+  "version": 2
 }
