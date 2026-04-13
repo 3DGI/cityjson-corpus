@@ -43,8 +43,11 @@ Prerequisites: `just`, `uv`, `jq`, `cargo`, and a sibling checkout of
 
 1. `just lint` - verify the case tree, profiles, and checked-in conformance
    fixtures are healthy.
-2. `just acquire-3dbag` - download the 3DBAG slice into `artifacts/acquired/`.
-3. `just generate-data` - materialize synthetic workloads into
+2. `just acquire-3dbag` - download the published 3DBAG slice into
+   `artifacts/acquired/`.
+3. `just acquire-basisvoorziening-3d` - download the published Basisvoorziening
+   3D tile into `artifacts/acquired/`.
+4. `just generate-data` - materialize synthetic workloads into
    `artifacts/generated/`.
 
 Correctness cases are ready to use once their checked-in, generated, or
@@ -84,6 +87,9 @@ not delete stale pages for removed cases.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
   slice under `artifacts/acquired/3dbag/v20250903/`, including the sibling
   cityarrow and cityparquet benchmark artifacts.
+- `just acquire-basisvoorziening-3d` materializes the published 2022
+  Basisvoorziening 3D tile under `artifacts/acquired/basisvoorziening-3d/2022/`,
+  including the sibling cityarrow and cityparquet benchmark artifacts.
 - `just generate-data` materializes the synthetic workload cases into
   `artifacts/generated/` and writes the benchmark-only export at
   `artifacts/benchmark-index.json`.
@@ -109,5 +115,5 @@ or missing implementation detail, not a reason to trim the corpus. The shared
 index currently exposes 28 conformance fixtures and 8 non-conformance
 correctness cases. Workload consumers reuse the same synthetic fixtures and
 acquired artifacts instead of defining separate benchmark models. Published
-3DBAG CityJSON, cityarrow, and cityparquet artifacts are acquired here and
-consumed directly by downstream crates.
+3DBAG and Basisvoorziening 3D CityJSON, cityarrow, and cityparquet artifacts
+are acquired here and consumed directly by downstream crates.

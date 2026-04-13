@@ -780,6 +780,28 @@
       "version": 2
     },
     {
+      "artifact_mode": "acquired",
+      "artifact_paths": {
+        "acquisition": "cases/workloads/io_basisvoorziening_3d_cityjson/acquisition.json"
+      },
+      "assertions": [
+        "object_count_preserved",
+        "bbox_stable"
+      ],
+      "case": "cases/workloads/io_basisvoorziening_3d_cityjson/case.json",
+      "cityjson_version": "2.0",
+      "documentation": "cases/workloads/io_basisvoorziening_3d_cityjson/README.md",
+      "family": "io",
+      "geometry_kind": "real-preserved",
+      "id": "io_basisvoorziening_3d_cityjson",
+      "invariants": "cases/workloads/io_basisvoorziening_3d_cityjson/invariants.json",
+      "layer": "workload",
+      "path": "cases/workloads/io_basisvoorziening_3d_cityjson",
+      "representation": "cityjson",
+      "source_kind": "real-geometry",
+      "version": 2
+    },
+    {
       "artifact_mode": "checked-in",
       "artifact_paths": {
         "source": "cases/conformance/v2_0/metadata_complete/metadata_complete.city.json"

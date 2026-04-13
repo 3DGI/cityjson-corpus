@@ -35,6 +35,10 @@ generate-data:
 acquire-3dbag:
     ./scripts/acquire_3dbag.sh
 
+# Download the published Basisvoorziening 3D tile (CityJSON, cityarrow, cityparquet) into artifacts/acquired/.
+acquire-basisvoorziening-3d:
+    ./scripts/acquire_basisvoorziening_3d.sh
+
 # Start a local ProperDocs dev server.
 docs-serve:
     uv run properdocs serve -o

@@ -35,5 +35,7 @@ and release artifacts are separate from generator and consumer implementations.
   `artifacts/correctness-index.json`.
 - `just acquire-3dbag` downloads the published 3DBAG slice into
   `artifacts/acquired/`.
+- `just acquire-basisvoorziening-3d` downloads the published Basisvoorziening
+  3D tile into `artifacts/acquired/`.
 - `just generate-data` materializes the synthetic cases into
   `artifacts/generated/` and writes `artifacts/benchmark-index.json`.

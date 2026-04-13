@@ -18,7 +18,8 @@ Existing projects provide the necessary building blocks:
 
 - `cjfake` generates deterministic synthetic CityJSON from manifests.
 - `serde_cityjson` uses a manifest-driven synthetic benchmark setup.
-- `3DBAG` provides real-geometry data for geometry-sensitive workloads.
+- `3DBAG` and `Basisvoorziening 3D` provide real-geometry data for
+  geometry-sensitive workloads.
 
 A corpus with clear systems taxonomy and strict ownership boundaries between
 the generator, shared benchmark catalog, and downstream consumers is needed.
@@ -42,8 +43,9 @@ single implementation's internal model.
 - `synthetic-controlled` - controlled synthetic fixtures generated from
   manifests when the benchmark needs tight control over data shape,
   allocation behavior, or serialization structure.
-- `real-geometry` - preserved real-data slices, typically from `3DBAG`, when
-  geometry correctness and realistic object structure matter.
+- `real-geometry` - preserved real-data slices, typically from `3DBAG` or
+  `Basisvoorziening 3D`, when geometry correctness and realistic object
+  structure matter.
 - `real-geometry-enriched` - preserved real geometry with synthetic
   attributes, metadata, appearance, or other non-geometric surfaces layered
   on top.
@@ -105,7 +107,7 @@ while remaining controlled enough to attribute cost and correctness failures.
 
 Large cases exercise throughput and memory pressure:
 
-- large `3DBAG` scans,
+- large `3DBAG` or `Basisvoorziening 3D` scans,
 - `feature-files` and other layout variants,
 - dense synthetic attribute or relation workloads,
 - repeated-instance and template-heavy workloads, and
@@ -154,9 +156,9 @@ shared data package those harnesses consume.
   and instead point their correctness suites at the shared correctness index.
 - `cjlib` consumes the same generated synthetic cases for parse, serialize, and
   roundtrip benchmarks.
-- `cjindex` consumes the shared synthetic cases and maintains its separate
-  3DBAG-specific acquisition path for real-geometry data until this repository
-  publishes those inputs.
+- `cjindex` consumes the shared synthetic cases and can reuse the shared
+  repository acquisition paths for real-geometry data once those inputs are
+  published here.
 
 The benchmark contract is centralized without making the corpus repository a
 code dependency of the consumer crates.
