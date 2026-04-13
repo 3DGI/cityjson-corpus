@@ -13,7 +13,7 @@
       ],
       "case": "cases/conformance/v2_0/appearance_complete/case.json",
       "cityjson_version": "2.0",
-      "description": "One material and texture with the minimum required properties and one material and texture with all properties. One material assignment uses 'value', the other uses 'values'. Geometry with two materials and two textures. Default theme and texture are set.",
+      "description": "One material and texture with the minimum required properties and one material and texture with all properties. Uniform material assignments use the canonical 'value' form. Geometry with two materials and two textures. Default theme and texture are set.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "appearance_complete",
@@ -190,6 +190,144 @@
       "invariants": "cases/conformance/v2_0/cityobject_extended/invariants.json",
       "layer": "conformance",
       "path": "cases/conformance/v2_0/cityobject_extended",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_ecef/coordinates_precision_ecef.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_ecef/case.json",
+      "cityjson_version": "2.0",
+      "description": "ECEF/geocentric CRS with millimeter precision at full Earth radius. Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_ecef",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_ecef/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_ecef",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_local/coordinates_precision_local.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_local/case.json",
+      "cityjson_version": "2.0",
+      "description": "Local engineering CRS at the origin with sub-millimeter (0.1 mm) precision. Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_local",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_local/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_local",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_stateplane/coordinates_precision_stateplane.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_stateplane/case.json",
+      "cityjson_version": "2.0",
+      "description": "State Plane (survey feet) national grid CRS with millimeter precision and large false origin. Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_stateplane",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_stateplane/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_stateplane",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_utm/coordinates_precision_utm.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_utm/case.json",
+      "cityjson_version": "2.0",
+      "description": "UTM-class projected CRS with millimeter precision and maximum realistic northing. Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_utm",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_utm/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_utm",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_wgs84/coordinates_precision_wgs84.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_wgs84/case.json",
+      "cityjson_version": "2.0",
+      "description": "WGS84 geographic CRS at full lon/lat extent with millimeter precision (1e-8 deg scale). Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_wgs84",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_wgs84/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_wgs84",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "checked-in",
+      "artifact_paths": {
+        "source": "cases/conformance/v2_0/coordinates_precision_worst/coordinates_precision_worst.city.json"
+      },
+      "assertions": [
+        "vertex_indices_preserved",
+        "coordinates_precision_roundtrip",
+        "transform_preserved"
+      ],
+      "case": "cases/conformance/v2_0/coordinates_precision_worst/case.json",
+      "cityjson_version": "2.0",
+      "description": "Worst realistic case: national grid with 0.1 mm precision at maximum extent. Roundtrip drift must stay below 1e-4 m.",
+      "family": "spec_atom",
+      "geometry_kind": "dummy",
+      "id": "coordinates_precision_worst",
+      "invariants": "cases/conformance/v2_0/coordinates_precision_worst/invariants.json",
+      "layer": "conformance",
+      "path": "cases/conformance/v2_0/coordinates_precision_worst",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2

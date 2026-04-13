@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/coordinates_precision_wgs84/coordinates_precision_wgs84.city.json"
+  },
+  "assertions": [
+    "vertex_indices_preserved",
+    "coordinates_precision_roundtrip",
+    "transform_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "WGS84 geographic CRS at full lon/lat extent with millimeter precision (1e-8 deg scale). Roundtrip drift must stay below 1e-4 m.",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "coordinates_precision_wgs84",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

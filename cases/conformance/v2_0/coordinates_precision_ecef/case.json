@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "checked-in",
+  "artifact_paths": {
+    "source": "cases/conformance/v2_0/coordinates_precision_ecef/coordinates_precision_ecef.city.json"
+  },
+  "assertions": [
+    "vertex_indices_preserved",
+    "coordinates_precision_roundtrip",
+    "transform_preserved"
+  ],
+  "cityjson_version": "2.0",
+  "description": "ECEF/geocentric CRS with millimeter precision at full Earth radius. Roundtrip drift must stay below 1e-4 m.",
+  "family": "spec_atom",
+  "geometry_kind": "dummy",
+  "id": "coordinates_precision_ecef",
+  "layer": "conformance",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

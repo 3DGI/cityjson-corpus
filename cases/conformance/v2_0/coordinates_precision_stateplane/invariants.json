@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "description": "Vertex indexing stays stable across parse and roundtrip.",
+      "id": "vertex_indices_preserved"
+    },
+    {
+      "description": "Roundtrip coordinate drift stays below 1e-4 meters (sub-100-micrometer) for State Plane (survey feet) CRS with large false origin.",
+      "id": "coordinates_precision_roundtrip"
+    },
+    {
+      "description": "Transformation properties stay stable across parse and roundtrip.",
+      "id": "transform_preserved"
+    }
+  ],
+  "id": "coordinates_precision_stateplane",
+  "kind": "positive",
+  "version": 1
+}
