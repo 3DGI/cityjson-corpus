@@ -10,8 +10,7 @@
       },
       "children": [
         "id-2"
-      ],
-      "geometry": []
+      ]
     },
     "id-1": {
       "type": "GenericCityObject",
