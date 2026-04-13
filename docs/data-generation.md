@@ -33,9 +33,9 @@ The corpus also carries per-case invariants and invalid fixtures under
   `CJFAKE_CARGO_MANIFEST`
 - `curl`, `gunzip`, `unzip`, and `sha256sum` for the published real-data
   acquisitions
-- A local sibling checkout of `../cjlib`, or an override via
-  `CORPUS_CJLIB_CARGO_MANIFEST`, to export the native cityarrow and
-  cityparquet benchmark formats
+- A local sibling checkout of `../cityjson-lib`, or an override via
+  `CORPUS_CITYJSON_LIB_CARGO_MANIFEST`, to export the native cityjson-arrow and
+  cityjson-parquet benchmark formats
 
 ## Generate The Data
 
@@ -56,7 +56,7 @@ manifest.
 - Published real-data cases point at the acquired artifacts under
   `artifacts/acquired/3dbag/v20250903/` and
   `artifacts/acquired/basisvoorziening-3d/2022/`, including CityJSON,
-  cityarrow, and cityparquet forms for the published workloads, with explicit
+  cityjson-arrow, and cityjson-parquet forms for the published workloads, with explicit
   provenance and validation-role metadata per artifact.
 - Cases without a published acquisition remain metadata-only until their
   consumer-owned pipeline publishes concrete artifacts.
@@ -65,16 +65,16 @@ manifest.
 
 The generated index is the handoff point to downstream CityJSON crates.
 
-- `serde_cityjson` consumes the shared correctness index for the full
+- `cityjson-json` consumes the shared correctness index for the full
   conformance set and reads the published workload artifacts from this
   repository.
-- `cityarrow` uses the same shared correctness index for conformance
+- `cityjson-arrow` uses the same shared correctness index for conformance
   coverage; a failing case indicates an incomplete or incorrect
   implementation.
 - The current correctness index contains 36 correctness cases, including 28
   conformance fixtures and the invalid and operation cases that live
   alongside them.
-- `cjlib` can reuse the same shared index for parse, serialize, and roundtrip
+- `cityjson-lib` can reuse the same shared index for parse, serialize, and roundtrip
   benchmarks.
 - `cjindex` keeps its own layout-building prep pipeline and can reuse the raw
   3DBAG and Basisvoorziening 3D canonical acquisition outputs as source data.

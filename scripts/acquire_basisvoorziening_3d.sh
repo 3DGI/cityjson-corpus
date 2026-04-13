@@ -9,7 +9,7 @@ archive_name="${CORPUS_BASISVOORZIENING_3D_ARCHIVE_NAME:-volledig_${dataset_year
 cityjson_name="${CORPUS_BASISVOORZIENING_3D_CITYJSON_NAME:-3d_volledig_${tile_slug}.city.json}"
 download_url="${CORPUS_BASISVOORZIENING_3D_URL:-https://download.pdok.nl/kadaster/basisvoorziening-3d/v1_0/${dataset_year}/volledig/${archive_name}}"
 output_root="${CORPUS_BASISVOORZIENING_3D_OUTPUT_ROOT:-${repo_dir}/artifacts/acquired/basisvoorziening-3d/${dataset_year}}"
-cjlib_cargo_manifest="${CORPUS_CJLIB_CARGO_MANIFEST:-${repo_dir}/../cjlib/Cargo.toml}"
+cityjson_lib_cargo_manifest="${CORPUS_CITYJSON_LIB_CARGO_MANIFEST:-${repo_dir}/../cityjson-lib/Cargo.toml}"
 metadata_path="${output_root}/metadata.json"
 manifest_path="${output_root}/manifest.json"
 archive_path="${output_root}/${archive_name}"
@@ -23,8 +23,8 @@ for tool in cargo curl unzip sha256sum jq; do
   fi
 done
 
-if [[ ! -f "${cjlib_cargo_manifest}" ]]; then
-  echo "missing cjlib Cargo manifest: ${cjlib_cargo_manifest}" >&2
+if [[ ! -f "${cityjson_lib_cargo_manifest}" ]]; then
+  echo "missing cityjson-lib Cargo manifest: ${cityjson_lib_cargo_manifest}" >&2
   exit 1
 fi
 
@@ -39,7 +39,7 @@ fi
 export_native_formats() {
   local input_json="$1"
   local stem="$2"
-  cargo run --quiet --manifest-path "${cjlib_cargo_manifest}" --bin bench_export_formats -- \
+  cargo run --quiet --manifest-path "${cityjson_lib_cargo_manifest}" --bin bench_export_formats -- \
     --input "${input_json}" \
     --arrow-file "${output_root}/${stem}.cjarrow" \
     --parquet-file "${output_root}/${stem}.cjparquet"
@@ -50,8 +50,8 @@ export_native_formats "${cityjson_path}" "${cityjson_stem}"
 outputs_json="$(
   {
     printf '%s\t%s\t%s\t%s\t%s\n' "${cityjson_name}" "cityjson" "upstream" "acquired" "canonical"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjarrow" "cityjson-arrow" "cityjson-lib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cityjson_stem}.cjparquet" "cityjson-parquet" "cityjson-lib" "exported" "benchmark-only" "artifacts/acquired/basisvoorziening-3d/${dataset_year}/${cityjson_name}"
   } | while IFS=$'\t' read -r relative_name representation producer derivation validation_role dep1; do
     output_path="${output_root}/${relative_name}"
     derived_from_json="$(

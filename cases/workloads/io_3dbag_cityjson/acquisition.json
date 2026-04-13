@@ -23,8 +23,8 @@
       ],
       "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjarrow",
       "published": true,
-      "producer": "cjlib",
-      "representation": "cityarrow",
+      "producer": "cityjson-lib",
+      "representation": "cityjson-arrow",
       "validation_role": "benchmark-only"
     },
     {
@@ -36,8 +36,8 @@
       ],
       "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjparquet",
       "published": true,
-      "producer": "cjlib",
-      "representation": "cityparquet",
+      "producer": "cityjson-lib",
+      "representation": "cityjson-parquet",
       "validation_role": "benchmark-only"
     }
   ],
@@ -45,10 +45,10 @@
   "preprocessing": [
     "Run the shared 3DBAG acquisition script in cityjson-benchmarks.",
     "Reuse the published raw CityJSON file for JSON read and write benchmarking.",
-    "Export a sibling live cityarrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
-    "Export a sibling cityparquet package file for package-to-memory and memory-to-package benchmarking."
+    "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
+    "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
   ],
-  "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw slice and native cityarrow/cityparquet artifacts.",
+  "reference": "Use `just acquire-3dbag` in cityjson-benchmarks to materialize the raw slice and native cityjson-arrow/cityjson-parquet artifacts.",
   "selector": "Pinned 3DBAG release metadata is captured by the shared acquisition script.",
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",

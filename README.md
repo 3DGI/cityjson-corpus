@@ -87,10 +87,10 @@ not delete stale pages for removed cases.
   `artifacts/correctness-index.json` from `cases/`.
 - `just acquire-3dbag` materializes the published September 3, 2025 3DBAG
   slice under `artifacts/acquired/3dbag/v20250903/`, including the sibling
-  cityarrow and cityparquet benchmark-only derived artifacts.
+  cityjson-arrow and cityjson-parquet benchmark-only derived artifacts.
 - `just acquire-basisvoorziening-3d` materializes the published 2022
   Basisvoorziening 3D tile under `artifacts/acquired/basisvoorziening-3d/2022/`,
-  including the sibling cityarrow and cityparquet benchmark-only derived
+  including the sibling cityjson-arrow and cityjson-parquet benchmark-only derived
   artifacts.
 - `just generate-data` materializes the synthetic workload cases into
   `artifacts/generated/` and writes the benchmark-only export at
@@ -112,13 +112,13 @@ not delete stale pages for removed cases.
 
 ## Benchmark Consumers
 
-Tools such as `serde_cityjson`, `cityarrow`, `cjlib`, and `cjindex` consume
+Tools such as `cityjson-json`, `cityjson-arrow`, `cityjson-lib`, and `cjindex` consume
 this corpus. Correctness-oriented consumers read the full
 `artifacts/correctness-index.json` set; any failing conformance case is a bug
 or missing implementation detail, not a reason to trim the corpus. The shared
 index currently exposes 28 conformance fixtures and 8 non-conformance
 correctness cases. Workload consumers reuse the same synthetic fixtures and
 acquired artifacts instead of defining separate benchmark models. Published
-3DBAG and Basisvoorziening 3D CityJSON, cityarrow, and cityparquet artifacts
+3DBAG and Basisvoorziening 3D CityJSON, cityjson-arrow, and cityjson-parquet artifacts
 are acquired here and classified explicitly as canonical or benchmark-only in
 their acquisition metadata and workload index entries.

@@ -17,7 +17,7 @@ This repository defines a shared CityJSON benchmark corpus with three goals:
 Existing projects provide the necessary building blocks:
 
 - `cjfake` generates deterministic synthetic CityJSON from manifests.
-- `serde_cityjson` uses a manifest-driven synthetic benchmark setup.
+- `cityjson-json` uses a manifest-driven synthetic benchmark setup.
 - `3DBAG` and `Basisvoorziening 3D` provide real-geometry data for
   geometry-sensitive workloads.
 
@@ -85,7 +85,7 @@ work.
 
 A single deterministic fake dataset covers the full CityJSON surface to the
 extent the generator and post-processing pipeline allow. It is a correctness
-fixture, not a primary performance benchmark. The existing `serde_cityjson`
+fixture, not a primary performance benchmark. The existing `cityjson-json`
 test data `cityjson_fake_complete` serves as a starting point.
 
 ### 3. Operation kernels
@@ -134,8 +134,8 @@ Repository boundaries remain strict:
   and corpus generation.
 - `cityjson-benchmarks` owns the canonical catalog, source manifests,
   correctness invariants, and released artifacts.
-- Benchmark consumers such as `cjindex`, `serde_cityjson`, `cjlib`,
-  `cityarrow`, and `cityjson-rs` consume published benchmark data. They do not
+- Benchmark consumers such as `cjindex`, `cityjson-json`, `cityjson-lib`,
+  `cityjson-arrow`, and `cityjson-rs` consume published benchmark data. They do not
   own corpus generation.
 
 `cjfake` ingests manifests directly for both library and CLI use and produces
@@ -152,9 +152,9 @@ shared data package those harnesses consume.
 
 - `cityjson-benchmarks` publishes a generated benchmark index and the
   materialized synthetic outputs from `just generate-data`.
-- `serde_cityjson` and `cityarrow` stop curating their own conformance subsets
+- `cityjson-json` and `cityjson-arrow` stop curating their own conformance subsets
   and instead point their correctness suites at the shared correctness index.
-- `cjlib` consumes the same generated synthetic cases for parse, serialize, and
+- `cityjson-lib` consumes the same generated synthetic cases for parse, serialize, and
   roundtrip benchmarks.
 - `cjindex` consumes the shared synthetic cases and can reuse the shared
   repository acquisition paths for real-geometry data once those inputs are

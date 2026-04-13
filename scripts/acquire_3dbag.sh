@@ -6,7 +6,7 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 release_date="${CORPUS_3DBAG_VERSION:-2025.09.03}"
 version_slug="v${release_date//./}"
 output_root="${CORPUS_3DBAG_OUTPUT_ROOT:-${repo_dir}/artifacts/acquired/3dbag/${version_slug}}"
-cjlib_cargo_manifest="${CORPUS_CJLIB_CARGO_MANIFEST:-${repo_dir}/../cjlib/Cargo.toml}"
+cityjson_lib_cargo_manifest="${CORPUS_CITYJSON_LIB_CARGO_MANIFEST:-${repo_dir}/../cityjson-lib/Cargo.toml}"
 base_tile_id="${CORPUS_3DBAG_TILE_ID:-10-758-50}"
 cluster_tile_ids_raw="${CORPUS_3DBAG_CLUSTER_TILE_IDS:-10-756-48 10-756-50 10-758-48}"
 cluster_output_name="${CORPUS_3DBAG_CLUSTER_OUTPUT_NAME:-cluster_4x.city.json}"
@@ -20,8 +20,8 @@ for tool in cargo curl gunzip sha256sum jq uvx; do
   fi
 done
 
-if [[ ! -f "${cjlib_cargo_manifest}" ]]; then
-  echo "missing cjlib Cargo manifest: ${cjlib_cargo_manifest}" >&2
+if [[ ! -f "${cityjson_lib_cargo_manifest}" ]]; then
+  echo "missing cityjson-lib Cargo manifest: ${cityjson_lib_cargo_manifest}" >&2
   exit 1
 fi
 
@@ -70,7 +70,7 @@ uvx --from cjio cjio "${merge_args[@]}"
 export_native_formats() {
   local input_json="$1"
   local stem="$2"
-  cargo run --quiet --manifest-path "${cjlib_cargo_manifest}" --bin bench_export_formats -- \
+  cargo run --quiet --manifest-path "${cityjson_lib_cargo_manifest}" --bin bench_export_formats -- \
     --input "${input_json}" \
     --arrow-file "${output_root}/${stem}.cjarrow" \
     --parquet-file "${output_root}/${stem}.cjparquet"
@@ -104,11 +104,11 @@ cluster_derived_from_json="$(
 outputs_json="$(
   {
     printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.city.json" "cityjson" "upstream" "acquired" "canonical" "[]"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjarrow" "cityjson-arrow" "cityjson-lib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${base_tile_id}.cjparquet" "cityjson-parquet" "cityjson-lib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${base_tile_id}.city.json\"]"
     printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name}" "cityjson" "cjio" "merged" "benchmark-only" "${cluster_derived_from_json}"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjarrow" "cityarrow" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
-    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjparquet" "cityparquet" "cjlib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjarrow" "cityjson-arrow" "cityjson-lib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "${cluster_output_name%.city.json}.cjparquet" "cityjson-parquet" "cityjson-lib" "exported" "benchmark-only" "[\"artifacts/acquired/3dbag/${version_slug}/${cluster_output_name}\"]"
   } | while IFS=$'\t' read -r relative_name representation producer derivation validation_role derived_from_json; do
     output_path="${output_root}/${relative_name}"
     jq -n -c \

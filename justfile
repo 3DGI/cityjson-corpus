@@ -31,11 +31,11 @@ sync-catalog:
 generate-data:
     ./scripts/generate_data.sh
 
-# Download the published 3DBAG slice (CityJSON, cityarrow, cityparquet) into artifacts/acquired/.
+# Download the published 3DBAG slice (CityJSON, cityjson-arrow, cityjson-parquet) into artifacts/acquired/.
 acquire-3dbag:
     ./scripts/acquire_3dbag.sh
 
-# Download the published Basisvoorziening 3D tile (CityJSON, cityarrow, cityparquet) into artifacts/acquired/.
+# Download the published Basisvoorziening 3D tile (CityJSON, cityjson-arrow, cityjson-parquet) into artifacts/acquired/.
 acquire-basisvoorziening-3d:
     ./scripts/acquire_basisvoorziening_3d.sh
 
