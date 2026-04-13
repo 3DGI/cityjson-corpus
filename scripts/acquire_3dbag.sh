@@ -98,7 +98,7 @@ cluster_derived_from_json="$(
     for tile_id in "${cluster_tile_ids[@]}"; do
       printf '%s\n' "artifacts/acquired/3dbag/${version_slug}/${tile_id}.city.json"
     done
-  } | jq -R . | jq -s .
+  } | jq -R . | jq -c -s .
 )"
 
 outputs_json="$(
