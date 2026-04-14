@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -15,12 +16,19 @@ CASE_SCHEMA_PATH = ROOT / "schemas" / "case.schema.json"
 INVARIANTS_SCHEMA_PATH = ROOT / "schemas" / "invariants.schema.json"
 ACQUISITION_SCHEMA_PATH = ROOT / "schemas" / "acquisition.schema.json"
 # The canonical CJFake manifest schema lives in the sibling cityjson-fake checkout.
-PROFILE_SCHEMA_PATH = (
-    ROOT.parent
-    / "cityjson-fake"
-    / "src"
-    / "data"
-    / "cityjson-fake-manifest.schema.json"
+# Override with CJFAKE_MANIFEST_SCHEMA env var when the sibling is not available
+# (matches the convention used in validate_profiles.sh and generate_data.sh).
+PROFILE_SCHEMA_PATH = Path(
+    os.environ.get(
+        "CJFAKE_MANIFEST_SCHEMA",
+        str(
+            ROOT.parent
+            / "cityjson-fake"
+            / "src"
+            / "data"
+            / "cityjson-fake-manifest.schema.json"
+        ),
+    )
 )
 CORRECTNESS_LAYERS = frozenset({"conformance", "invalid", "operation"})
 CASE_METADATA_VERSION = 2
