@@ -6,24 +6,31 @@ on:
       - main
   pull_request:
 
-# cityjson-benchmarks uses cityjson-fake for profile validation and data
-# generation. The cityjson-fake repo is checked out as a sibling so that
-# scripts can find it at ../cityjson-fake (the default path used by all
-# scripts and corpus_cases.py).
+# Sibling checkout layout under $GITHUB_WORKSPACE:
+#   cityjson-benchmarks/   ← this repo
+#   cityjson-fake/         ← sibling, found at ../cityjson-fake from scripts
+#
+# Both paths are under $GITHUB_WORKSPACE so actions/checkout accepts them.
+# All run steps use working-directory: cityjson-benchmarks.
 
 jobs:
   lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cityjson-benchmarks
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          path: cityjson-benchmarks
 
       - name: Check out cityjson-fake
         uses: actions/checkout@v4
         with:
           repository: 3DGI/cityjson-fake
-          path: ../cityjson-fake
+          path: cityjson-fake
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
