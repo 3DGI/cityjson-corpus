@@ -51,12 +51,14 @@ configure_mkdocs_gen_files()
 
 CASE_ROOT = ROOT / "cases"
 CJFAKE_SCHEMA_SOURCE = (
-    ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+    ROOT.parent
+    / "cityjson-fake"
+    / "src"
+    / "data"
+    / "cityjson-fake-manifest.schema.json"
 )
-CJFAKE_SCHEMA_PAGE = "reference/cjfake-manifest-schema.md"
-CJFAKE_SCHEMA_LINK = (
-    "https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json"
-)
+CJFAKE_SCHEMA_PAGE = "reference/cityjson-fake-manifest-schema.md"
+CJFAKE_SCHEMA_LINK = "https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json"
 
 
 def write_markdown(
@@ -264,7 +266,7 @@ def main() -> None:
             "[case.schema.json](case.schema.json)": "[case.schema.json](../reference/case-schema.md)",
             "[invariants.schema.json](invariants.schema.json)": "[invariants.schema.json](../reference/invariants-schema.md)",
             "[acquisition.schema.json](acquisition.schema.json)": "[acquisition.schema.json](../reference/acquisition-schema.md)",
-            f"[cjfake-manifest.schema.json]({CJFAKE_SCHEMA_LINK})": f"[cjfake-manifest.schema.json](../{CJFAKE_SCHEMA_PAGE})",
+            f"[cityjson-fake-manifest.schema.json]({CJFAKE_SCHEMA_LINK})": f"[cityjson-fake-manifest.schema.json](../{CJFAKE_SCHEMA_PAGE})",
             "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
     )

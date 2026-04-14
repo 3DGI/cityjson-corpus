@@ -7,12 +7,12 @@ The canonical schemas are:
 - [case.schema.json](case.schema.json)
 - [invariants.schema.json](invariants.schema.json)
 - [acquisition.schema.json](acquisition.schema.json)
-- [cjfake-manifest.schema.json](https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json)
+- [cityjson-fake-manifest.schema.json](https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json)
 
 `cases/` owns the concrete per-case JSON files, and these schemas describe the
 repository-level contracts those files must satisfy. Profile fixtures still
 live inside their owning case directories under [`cases/`](../cases/README.md),
-but the generator manifest schema is sourced from the sibling `cjfake`
+but the generator manifest schema is sourced from the sibling `cityjson-fake`
 checkout and mirrored here only in generated docs.
 
 ## Value Glossary

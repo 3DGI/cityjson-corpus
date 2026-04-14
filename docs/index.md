@@ -19,7 +19,7 @@ and release artifacts are separate from generator and consumer implementations.
 - [Data Generation](data-generation.md)
 - [Artifacts](artifacts/index.md)
 - [Derived case catalog reference](reference/cases.md)
-- [CJFake manifest schema](reference/cjfake-manifest-schema.md)
+- [CJFake manifest schema](reference/cityjson-fake-manifest-schema.md)
 - [Case schema](reference/case-schema.md)
 - [Invariants schema](reference/invariants-schema.md)
 - [Acquisition schema](reference/acquisition-schema.md)

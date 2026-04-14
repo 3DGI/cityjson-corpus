@@ -29,7 +29,7 @@ The corpus also carries per-case invariants and invalid fixtures under
 - `just`
 - `jq`
 - `cargo`
-- A local sibling checkout of `../cjfake`, or an override via
+- A local sibling checkout of `../cityjson-fake`, or an override via
   `CJFAKE_CARGO_MANIFEST`
 - `curl`, `gunzip`, `unzip`, and `sha256sum` for the published real-data
   acquisitions

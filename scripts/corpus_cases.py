@@ -14,9 +14,13 @@ CORRECTNESS_INDEX_PATH = ROOT / "artifacts" / "correctness-index.json"
 CASE_SCHEMA_PATH = ROOT / "schemas" / "case.schema.json"
 INVARIANTS_SCHEMA_PATH = ROOT / "schemas" / "invariants.schema.json"
 ACQUISITION_SCHEMA_PATH = ROOT / "schemas" / "acquisition.schema.json"
-# The canonical CJFake manifest schema lives in the sibling cjfake checkout.
+# The canonical CJFake manifest schema lives in the sibling cityjson-fake checkout.
 PROFILE_SCHEMA_PATH = (
-    ROOT.parent / "cjfake" / "src" / "data" / "cjfake-manifest.schema.json"
+    ROOT.parent
+    / "cityjson-fake"
+    / "src"
+    / "data"
+    / "cityjson-fake-manifest.schema.json"
 )
 CORRECTNESS_LAYERS = frozenset({"conformance", "invalid", "operation"})
 CASE_METADATA_VERSION = 2

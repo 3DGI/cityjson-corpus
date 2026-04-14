@@ -16,7 +16,7 @@ This repository defines a shared CityJSON benchmark corpus with three goals:
 
 Existing projects provide the necessary building blocks:
 
-- `cjfake` generates deterministic synthetic CityJSON from manifests.
+- `cityjson-fake` generates deterministic synthetic CityJSON from manifests.
 - `cityjson-json` uses a manifest-driven synthetic benchmark setup.
 - `3DBAG` and `Basisvoorziening 3D` provide real-geometry data for
   geometry-sensitive workloads.
@@ -130,7 +130,7 @@ The catalog makes the intended cost center explicit for each case.
 
 Repository boundaries remain strict:
 
-- `cjfake` is the first generator implementation. It owns manifest ingestion
+- `cityjson-fake` is the first generator implementation. It owns manifest ingestion
   and corpus generation.
 - `cityjson-benchmarks` owns the canonical catalog, source manifests,
   correctness invariants, and released artifacts.
@@ -138,9 +138,9 @@ Repository boundaries remain strict:
   `cityjson-arrow`, and `cityjson-rs` consume published benchmark data. They do not
   own corpus generation.
 
-`cjfake` ingests manifests directly for both library and CLI use and produces
+`cityjson-fake` ingests manifests directly for both library and CLI use and produces
 the benchmark data described by those manifests. The repository specifies this
-contract in the `cjfake` manifest schema.
+contract in the `cityjson-fake` manifest schema.
 
 Concrete profile fixtures reside under their owning case directories and are
 checked by the repository-side validation script before release.

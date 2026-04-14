@@ -40,7 +40,7 @@ The corpus serves two purposes:
 ## Getting Started
 
 Prerequisites: `just`, `uv`, `jq`, `cargo`, and a sibling checkout of
-`../cjfake` (or override via `CJFAKE_CARGO_MANIFEST`).
+`../cityjson-fake` (or override via `CJFAKE_CARGO_MANIFEST`).
 
 1. `just lint` - verify the case tree, profiles, and checked-in conformance
    fixtures are healthy.
@@ -104,7 +104,7 @@ not delete stale pages for removed cases.
 
 - [Documentation home](docs/index.md)
 - [Derived case catalog](catalog/cases.json)
-- [CJFake manifest schema](https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json)
+- [CJFake manifest schema](https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json)
 - [Schema value glossary](schemas/README.md)
 - [Case layout](cases/README.md)
 - [Data generation](docs/data-generation.md)

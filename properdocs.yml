@@ -23,7 +23,7 @@ nav:
       - Artifacts Overview: artifacts/index.md
   - Reference Data:
       - Derived Case Catalog: reference/cases.md
-      - CJFake Manifest Schema: reference/cjfake-manifest-schema.md
+      - CJFake Manifest Schema: reference/cityjson-fake-manifest-schema.md
       - Case Schema: reference/case-schema.md
       - Invariants Schema: reference/invariants-schema.md
       - Acquisition Schema: reference/acquisition-schema.md

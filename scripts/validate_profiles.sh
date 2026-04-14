@@ -4,8 +4,8 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 corpus_path="${repo_dir}/catalog/cases.json"
-schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cjfake/src/data/cjfake-manifest.schema.json}"
-cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
+schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cityjson-fake/src/data/cityjson-fake-manifest.schema.json}"
+cityjson_fake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cityjson-fake/Cargo.toml}"
 
 if [[ ! -f "${corpus_path}" ]]; then
   echo "missing corpus catalog: ${corpus_path}" >&2
@@ -30,7 +30,7 @@ while IFS=$'\t' read -r case_id profile_relpath; do
   fi
 
   jq empty "${profile_path}"
-  cargo run --quiet --manifest-path "${cjfake_cargo}" -- \
+  cargo run --quiet --manifest-path "${cityjson_fake_cargo}" -- \
     --manifest "${profile_path}" \
     --schema "${schema_path}" \
     --check-manifest

@@ -4,9 +4,9 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 corpus_path="${repo_dir}/catalog/cases.json"
-schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cjfake/src/data/cjfake-manifest.schema.json}"
-schema_ref="${CJFAKE_MANIFEST_SCHEMA_REF:-https://github.com/3DGI/cjfake/blob/main/src/data/cjfake-manifest.schema.json}"
-cjfake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cjfake/Cargo.toml}"
+schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cityjson-fake/src/data/cityjson-fake-manifest.schema.json}"
+schema_ref="${CJFAKE_MANIFEST_SCHEMA_REF:-https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json}"
+cityjson_fake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cityjson-fake/Cargo.toml}"
 output_dir="${CORPUS_GENERATED_DIR:-${repo_dir}/artifacts/generated}"
 index_path="${CORPUS_BENCHMARK_INDEX_PATH:-${repo_dir}/artifacts/benchmark-index.json}"
 
@@ -27,8 +27,8 @@ if [[ ! -f "${schema_path}" ]]; then
   exit 1
 fi
 
-if [[ ! -f "${cjfake_cargo}" ]]; then
-  echo "missing cjfake Cargo manifest: ${cjfake_cargo}" >&2
+if [[ ! -f "${cityjson_fake_cargo}" ]]; then
+  echo "missing cityjson-fake Cargo manifest: ${cityjson_fake_cargo}" >&2
   exit 1
 fi
 
@@ -132,7 +132,7 @@ while IFS=$'\t' read -r case_id profile_path; do
     exit 1
   fi
 
-  cargo run --quiet --manifest-path "${cjfake_cargo}" -- \
+  cargo run --quiet --manifest-path "${cityjson_fake_cargo}" -- \
     --manifest "${case_profile_path}" \
     --schema "${schema_path}" \
     --output "${output_dir}/${case_id}.city.json"
@@ -143,7 +143,7 @@ jq -S \
   --arg repo_dir "${repo_dir}" \
   --arg corpus_path "catalog/cases.json" \
   --arg schema_path "${schema_ref}" \
-  --arg cjfake_cargo "${cjfake_cargo}" \
+  --arg cityjson_fake_cargo "${cityjson_fake_cargo}" \
   --argjson acquired_map "${acquired_map_json}" \
   '
   {
@@ -161,8 +161,8 @@ jq -S \
     catalog_case_count: (.cases | length),
     catalog: $corpus_path,
     generator: {
-      tool: "cjfake",
-      cargo_manifest: $cjfake_cargo,
+      tool: "cityjson-fake",
+      cargo_manifest: $cityjson_fake_cargo,
       manifest_schema: $schema_path
     },
     output_dir: $output_dir,
@@ -185,7 +185,7 @@ jq -S \
           artifacts: [
             {
               representation,
-              producer: "cjfake",
+              producer: "cityjson-fake",
               derivation: "materialized",
               derived_from: [($repo_dir + "/" + .artifact_paths.profile)],
               validation_role: "canonical",
