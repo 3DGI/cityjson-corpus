@@ -1,11 +1,18 @@
 # Pipelines
 
-This directory holds corpus build and publication scripts.
+This directory describes how generated and acquired artifacts are materialized.
+For the full command flow, read `docs/data-generation.md`.
 
-The executable pipeline is `just generate-data`, which materializes synthetic
-cases into `artifacts/generated/` and writes `artifacts/benchmark-index.json`
-with canonical-artifact and benchmark-only artifact metadata for each
-workload.
+## Main Commands
 
-This directory contains work that converts the canonical `cases/` tree into
-reproducible benchmark outputs.
+- `just sync-catalog`: rebuild derived case indexes.
+- `just generate-data`: build generated workload artifacts.
+- `just acquire-3dbag`: materialize the pinned 3DBAG dataset slice.
+- `just acquire-basisvoorziening-3d`: materialize the pinned Basisvoorziening 3D
+  dataset slice.
+
+## How To Change It
+
+Edit pipeline logic when you need to change how generated or acquired data is
+materialized. After that, rerun the owning command and verify the output in
+`artifacts/`.

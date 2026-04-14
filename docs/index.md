@@ -1,43 +1,31 @@
 # cityjson-benchmarks
 
-`cityjson-benchmarks` is the shared benchmark corpus for CityJSON tooling.
-The repository defines the corpus contract. Benchmark inputs, validation rules,
-and release artifacts are separate from generator and consumer implementations.
+`cityjson-benchmarks` is a shared corpus of test cases, benchmark inputs, and
+supporting metadata.
 
-## Documentation Map
+Start with the path that matches your goal.
 
-- [Repository overview](repository/index.md)
-- [Catalog overview](catalog/index.md)
-- [Derived case catalog](reference/cases.md)
-- [Case layout](cases/index.md)
-- [Conformance cases](cases/conformance/index.md)
-- [Operation cases](cases/operations/index.md)
-- [Workload cases](cases/workloads/index.md)
-- [Invalid cases](cases/invalid/index.md)
-- [Schemas and value glossary](schemas/index.md)
-- [Pipelines](pipelines/index.md)
-- [Data Generation](data-generation.md)
-- [Artifacts](artifacts/index.md)
-- [Derived case catalog reference](reference/cases.md)
-- [CJFake manifest schema](reference/cityjson-fake-manifest-schema.md)
-- [Case schema](reference/case-schema.md)
-- [Invariants schema](reference/invariants-schema.md)
-- [Acquisition schema](reference/acquisition-schema.md)
-- [ADR 0009: CityJSON Benchmark Corpus Design](adr/0009-cityjson-benchmark-corpus-design.md)
-- [ADR 0010: Correctness Corpus Coverage and Generated Cases](adr/0010-correctness-corpus-coverage-and-generated-cases.md)
+## Reader Paths
 
-## Local Workflow
+If you are new to the repo:
 
-- `just lint` validates the case tree, catalog sync, profile fixtures, runs
-  ruff check, and checks each checked-in `cases/conformance/v2_0/*.city.json`
-  file with `cjval -q`.
-- `just sync-catalog` refreshes `catalog/cases.json` and
-  `artifacts/correctness-index.json`.
-- `just acquire-3dbag` downloads the published 3DBAG slice into
-  `artifacts/acquired/`.
-- `just acquire-basisvoorziening-3d` downloads the published Basisvoorziening
-  3D tile into `artifacts/acquired/`.
-- `just generate-data` materializes the synthetic cases into
-  `artifacts/generated/` and writes `artifacts/benchmark-index.json`.
-- `just clean` removes generated workload data, acquired artifacts, derived
-  indexes, generated docs pages, and the built docs site.
+1. [Shared Corpus](shared-corpus.md)
+2. [Repository Overview](repository/index.md)
+3. [Case Layout](cases/index.md)
+
+If you want to change the corpus:
+
+1. [Contributing](contributing.md)
+2. [Schemas](schemas/index.md)
+3. [Data Generation](data-generation.md)
+
+If you want to use the corpus from another project:
+
+1. [Independent Use](independent-use.md)
+2. [Catalog Overview](catalog/index.md)
+3. [Derived Case Catalog](reference/cases.md)
+4. [Artifacts](artifacts/index.md)
+
+If you need the license split and reuse rules:
+
+1. [Licensing](licensing.md)

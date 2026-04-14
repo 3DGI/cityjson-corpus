@@ -2,11 +2,23 @@ site_name: cityjson-benchmarks
 site_description: Shared benchmark corpus documentation for CityJSON tooling
 docs_dir: docs
 strict: true
+not_in_nav: |
+  cases/conformance/*/*.md
+  cases/invalid/*.md
+  cases/operations/*.md
+  cases/workloads/*.md
+  !cases/invalid/index.md
+  !cases/operations/index.md
+  !cases/workloads/index.md
 nav:
   - Overview:
       - Home: index.md
+      - Shared Corpus: shared-corpus.md
       - Repository Overview: repository/index.md
+      - Independent Use: independent-use.md
+      - Licensing: licensing.md
   - Workflow:
+      - Contributing: contributing.md
       - Data Generation: data-generation.md
   - Corpus:
       - Catalog Overview: catalog/index.md

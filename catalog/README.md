@@ -1,18 +1,34 @@
 # Catalog
 
-This directory holds the derived machine-readable case index in
-[cases.json](cases.json).
+This directory holds the derived machine-readable case index.
 
-The source of truth lives under [`cases/`](../cases/README.md). Each catalog
-entry is rendered from a case directory and adds the repo-relative pointers
-that downstream consumers need:
+The source of truth is [`cases/`](../cases/README.md). The catalog is rebuilt
+from that tree.
 
-- the case directory path
-- the owning `case.json`
-- the owning `invariants.json`
-- optional `README.md`
-- artifact paths for checked-in fixtures, generated outputs, profiles, or
-  acquisition metadata
+## Main File
 
-Run `just sync-catalog` after changing the case tree. `just lint` checks that
-`cases.json` is in sync.
+- [cases.json](cases.json)
+
+## What It Contains
+
+Each catalog entry points to:
+
+- the case folder;
+- `case.json`;
+- `invariants.json`;
+- optional `README.md`;
+- any checked-in, generated, or acquired artifact paths named by the case.
+
+## How To Use It
+
+Use the catalog when you want to:
+
+- list all cases;
+- filter by layer, family, artifact mode, or representation;
+- find the files owned by a case without walking the repo tree yourself.
+
+## How To Change It
+
+Run `just sync-catalog` after changing `cases/`.
+
+Do not edit `cases.json` by hand.

@@ -128,12 +128,34 @@ def load_optional_json(path: Path | None) -> dict[str, object] | None:
     return payload
 
 
-def render_json_block(title: str, payload: dict[str, object] | None) -> str:
+def render_json_block(
+    title: str, payload: dict[str, object] | None, *, level: int = 2
+) -> str:
     if payload is None:
         return ""
 
     rendered = json.dumps(payload, indent=2, sort_keys=True)
-    return f"## {title}\n\n```json\n{rendered}\n```\n"
+    heading = "#" * level
+    return f"{heading} {title}\n\n```json\n{rendered}\n```\n"
+
+
+def build_case_summary(record) -> str:
+    if record.readme_path is not None:
+        return summary_from_text(
+            strip_title(record.readme_path.read_text(encoding="utf-8"))
+        )
+
+    if isinstance(record.case_data.get("description"), str):
+        return str(record.case_data["description"])
+
+    if record.invariants_data.get("checks"):
+        first_check = record.invariants_data["checks"][0]
+        if isinstance(first_check, dict) and isinstance(
+            first_check.get("description"), str
+        ):
+            return str(first_check["description"])
+
+    return ""
 
 
 def build_case_page(record) -> str:
@@ -147,8 +169,8 @@ def build_case_page(record) -> str:
     elif isinstance(record.case_data.get("description"), str):
         parts.extend([str(record.case_data["description"]), ""])
 
-    contract_lines = [
-        "## Contract",
+    case_lines = [
+        "## Case",
         "",
         f"- `id`: `{record.case_id}`",
         f"- `layer`: `{record.case_data['layer']}`",
@@ -157,20 +179,23 @@ def build_case_page(record) -> str:
         f"- `source_kind`: `{record.case_data['source_kind']}`",
         f"- `representation`: `{record.case_data['representation']}`",
     ]
-    contract_lines.append(f"- `path`: `{repo_relative(record.case_dir)}`")
-    contract_lines.append("")
-    parts.extend(contract_lines)
+    case_lines.append(f"- `path`: `{repo_relative(record.case_dir)}`")
+    case_lines.append("")
+    parts.extend(case_lines)
 
-    artifact_lines = []
+    file_lines = []
     for key, value in sorted(record.artifact_paths.items()):
-        artifact_lines.append(f"- `{key}`: `{value}`")
+        file_lines.append(f"- `{key}`: `{value}`")
 
-    if artifact_lines:
-        parts.extend(["## Artifacts", "", *artifact_lines, ""])
+    if file_lines:
+        parts.extend(["## Files", "", *file_lines, ""])
 
-    parts.append(render_json_block("case.json", record.case_data).rstrip())
+    parts.extend(["## Source JSON", ""])
+    parts.append(render_json_block("case.json", record.case_data, level=3).rstrip())
     parts.append("")
-    parts.append(render_json_block("invariants.json", record.invariants_data).rstrip())
+    parts.append(
+        render_json_block("invariants.json", record.invariants_data, level=3).rstrip()
+    )
     parts.append("")
 
     profile_payload = (
@@ -185,12 +210,12 @@ def build_case_page(record) -> str:
     )
 
     if profile_payload is not None:
-        parts.append(render_json_block("profile.json", profile_payload).rstrip())
+        parts.append(render_json_block("profile.json", profile_payload, level=3).rstrip())
         parts.append("")
 
     if acquisition_payload is not None:
         parts.append(
-            render_json_block("acquisition.json", acquisition_payload).rstrip()
+            render_json_block("acquisition.json", acquisition_payload, level=3).rstrip()
         )
         parts.append("")
 
@@ -201,25 +226,44 @@ def build_layer_index(title: str, records: list, index_path: str) -> str:
     parent = Path(index_path).parent
     parts = [f"# {title}", ""]
 
+    layer_intro = {
+        "Conformance Cases": (
+            "Small valid cases used to check whether software handles a known "
+            "part of the format correctly."
+        ),
+        "Operation Cases": (
+            "Medium-sized cases built around common tasks on realistic data."
+        ),
+        "Workload Cases": (
+            "Larger cases used to compare throughput, memory use, and storage "
+            "layout effects."
+        ),
+        "Invalid Cases": (
+            "Deliberately broken cases that software should reject."
+        ),
+    }
+
+    intro = layer_intro.get(title)
+    if intro:
+        parts.extend([intro, ""])
+
+    parts.extend(
+        [
+            f"This section contains {len(records)} cases. Each item links to the full case page.",
+            "",
+            "## Cases",
+            "",
+        ]
+    )
+
     for record in sorted(records, key=lambda item: item.case_id):
-        case_summary = ""
-        if record.readme_path is not None:
-            case_summary = summary_from_text(
-                strip_title(record.readme_path.read_text(encoding="utf-8"))
-            )
-        elif isinstance(record.case_data.get("description"), str):
-            case_summary = str(record.case_data["description"])
-        elif record.invariants_data.get("checks"):
-            first_check = record.invariants_data["checks"][0]
-            if isinstance(first_check, dict) and isinstance(
-                first_check.get("description"), str
-            ):
-                case_summary = str(first_check["description"])
+        case_summary = build_case_summary(record)
 
         link_path = Path(case_page_path(record.case_dir)).relative_to(parent).as_posix()
-        parts.append(f"- [{record.case_id}]({link_path})")
         if case_summary:
-            parts.append(f"  {case_summary}")
+            parts.append(f"- [{record.case_id}]({link_path}): {case_summary}")
+        else:
+            parts.append(f"- [{record.case_id}]({link_path})")
 
     parts.append("")
     return "\n".join(parts)
@@ -233,6 +277,10 @@ def main() -> None:
         "repository/index.md",
         {
             "docs/index.md": "../index.md",
+            "docs/shared-corpus.md": "../shared-corpus.md",
+            "docs/contributing.md": "../contributing.md",
+            "docs/independent-use.md": "../independent-use.md",
+            "docs/licensing.md": "../licensing.md",
             "catalog/cases.json": "../reference/cases.md",
             CJFAKE_SCHEMA_LINK: f"../{CJFAKE_SCHEMA_PAGE}",
             "cases/README.md": "../cases/index.md",

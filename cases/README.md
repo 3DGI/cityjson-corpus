@@ -1,63 +1,82 @@
 # Cases
 
-This directory is the canonical shared corpus layout.
+This directory is the source of truth for the shared corpus.
 
-Each case directory owns:
+Every case lives in its own folder. That folder tells you:
 
-- `case.json` for the case metadata contract
-- `invariants.json` for the correctness contract
-- a checked-in source fixture, `profile.json`, or `acquisition.json` as
-  appropriate
-- an optional `README.md` for case-specific notes or narratives
+- what the case is;
+- what result is expected;
+- where the artifact comes from.
 
-The canonical meaning of schema values such as `layer`, `artifact_mode`,
-`source_kind`, `representation`, `geometry_kind`, `family`, and
-`status` is documented in [`schemas/README.md`](../schemas/README.md).
+## Case Folder Layout
+
+A case folder usually looks like this:
+
+```text
+cases/<layer>/<group>/<case-id>/
+  case.json
+  invariants.json
+  README.md            # optional
+  <source file>        # for checked-in cases
+  profile.json         # for generated cases
+  acquisition.json     # for acquired cases
+```
+
+Files mean:
+
+- `case.json`: stable metadata for the case.
+- `invariants.json`: expected acceptance, rejection, or preservation checks.
+- `README.md`: short notes for people reading the repo.
+- source file: the checked-in artifact, if the case stores its bytes in git.
+- `profile.json`: generator input for a case that is built later.
+- `acquisition.json`: description of an external published source.
+
+The meaning of controlled values such as `layer`, `artifact_mode`,
+`representation`, and `status` is documented in
+[`schemas/README.md`](../schemas/README.md).
+
+## Corpus Layers
 
 The main subtrees are:
 
-- `conformance/v2_0/` for checked-in conformance fixtures
-- `conformance/synthetic/` for generated conformance coverage
-- `operations/` for medium-size real-data operation kernels
-- `workloads/` for synthetic stress fixtures and real-data I/O workloads
-- `invalid/` for negative fixtures
+- `conformance/v2_0/`: checked-in valid fixtures.
+- `conformance/synthetic/`: generated valid fixtures.
+- `operations/`: medium cases for common tasks on realistic data.
+- `workloads/`: larger performance cases, both synthetic and real data.
+- `invalid/`: deliberately broken fixtures.
 
-Conformance, invalid, and operation cases form the **correctness corpus**.
-Each correctness case defines invariants that consuming tools must satisfy
-(e.g. roundtrip fidelity, expected validation errors).
-Generated conformance cases are part of the same corpus when their artifacts
-are materialized.
-`artifacts/correctness-index.json` is a derived index of these cases,
-rendered by `just sync-catalog`.
+## Correctness And Performance
 
-Workload cases are for **benchmark performance** measurement — throughput and
-latency under synthetic stress or real-data I/O loads.
+Conformance, invalid, and operation cases form the correctness corpus.
 
-Acquired workload metadata can declare multiple published outputs. The
-acquisition contract marks which one is the canonical shared input and which
-ones are benchmark-only derived artifacts.
+Use them when you need to check whether software accepts, rejects, or preserves
+the right things.
 
-`catalog/cases.json` is a derived index rendered from this tree. Run
-`just sync-catalog` after changing case metadata, or use `just lint`
-to check that the catalog is in sync.
+Workload cases are for performance work. Use them when you want to compare file
+layout, throughput, or memory behavior.
 
-## Adding Or Removing Cases
+`catalog/cases.json` is the derived index of all cases.
+`artifacts/correctness-index.json` is the derived index of correctness cases.
 
-To add a case, create a new directory under the appropriate subtree and add
-the files that match the case type:
+## How To Change A Case
 
-- `case.json` and `invariants.json` are required for every case
-- checked-in fixtures use a source file in the case directory
-- synthetic workload cases use `profile.json`
-- real-data workload or operation cases use `acquisition.json`
+1. Create or edit the case folder under the right subtree.
+2. Keep `case.json` and `invariants.json` in sync with each other.
+3. Add the right artifact source:
+   - checked-in file,
+   - `profile.json`,
+   - or `acquisition.json`.
+4. Add `README.md` when the case needs a short human explanation.
+5. Run:
+   - `just sync-catalog`
+   - `just generate-data` when needed
+   - `just docs-build`
+   - `just lint`
 
-After adding the case, run:
+## How To Remove A Case
 
-- `just sync-catalog`
-- `just generate-data` for workload cases that need generated or acquired outputs
-- `uv run python ./scripts/generate_docs.py` or `just docs-build`
-- `just lint`
+1. Delete the case folder.
+2. Run `just clean` to remove generated docs pages.
+3. Rebuild with `just docs-build`.
 
-To remove a case, delete the case directory and its generated docs page under
-`docs/cases/...`, then rerun the same regeneration steps. Stale generated docs
-pages are not removed automatically.
+Do not edit `catalog/cases.json` by hand. Rebuild it from the case tree.

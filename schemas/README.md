@@ -1,26 +1,23 @@
 # Schemas
 
-This directory holds the JSON Schemas for the corpus contracts.
+This directory holds the JSON rules for the shared corpus metadata.
 
-The canonical schemas are:
+## Main Files
+
+The main schema files are:
 
 - [case.schema.json](case.schema.json)
 - [invariants.schema.json](invariants.schema.json)
 - [acquisition.schema.json](acquisition.schema.json)
 - [cityjson-fake-manifest.schema.json](https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json)
 
-`cases/` owns the concrete per-case JSON files, and these schemas describe the
-repository-level contracts those files must satisfy. Profile fixtures still
-live inside their owning case directories under [`cases/`](../cases/README.md),
-but the generator manifest schema is sourced from the sibling `cityjson-fake`
-checkout and mirrored here only in generated docs.
+`cases/` contains the actual JSON files. `schemas/` explains what shape those
+files must have and what the controlled values mean.
 
 ## Value Glossary
 
-This is the canonical place that explains what the schema values mean. If a
-field is listed here, the wording below is the intended corpus vocabulary.
-Values not listed here are either free-form strings or case-specific prose, not
-cross-repo control switches.
+This is the canonical place that explains the shared vocabulary. If a field is
+listed here, tools should read it with the meaning given below.
 
 ### Case Schema
 
@@ -48,3 +45,13 @@ cross-repo control switches.
 | Field  | Values                 | Meaning                                                                                                                                                                                                                                |
 |--------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `kind` | `positive`, `negative` | `positive` means the fixture is expected to be accepted and satisfy the listed checks. `negative` means the fixture is expected to be rejected, so the invariants file must also name the input fixture and expected rejection result. |
+
+## How To Change It
+
+1. Edit the schema file in this directory.
+2. Update the glossary text if you changed a controlled value.
+3. Update the matching JSON files under [`cases/`](../cases/README.md).
+4. Run `just lint`.
+
+Keep schema changes small and explicit. Most downstream consumers depend on
+these fields staying stable.

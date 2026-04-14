@@ -1,19 +1,29 @@
 # Artifacts
 
-This directory is for derived benchmark outputs, release packages, and release
-metadata.
+This directory holds files produced from the source case tree.
 
-These files are outputs of the corpus pipeline, not the source of truth. The
-catalog, schemas, and pipelines define how they are reproduced.
+These files are useful, but they are not the source of truth. Rebuild them
+from `cases/`, `schemas/`, and the scripts when possible.
 
-Current generated outputs are written to `artifacts/generated/`, the published
-3DBAG acquired artifacts live under `artifacts/acquired/3dbag/v20250903/`
-(including the single-tile baseline and the merged `cluster_4x.city.json`
-stress workload, each with sibling `.cjarrow` live-stream and `.cjparquet`
-package files), the published Basisvoorziening 3D acquired artifacts live
-under `artifacts/acquired/basisvoorziening-3d/2022/`, and the workload
-benchmark index produced by `just generate-data` lives at
-`artifacts/benchmark-index.json`. That index exposes each workload's
-`canonical_artifact` and any sibling `artifacts` entries marked as
-`benchmark-only`. The shared correctness index consumed by downstream test
-suites lives at `artifacts/correctness-index.json`.
+## What It Contains
+
+- `artifacts/generated/`: synthetic files created by `just generate-data`.
+- `artifacts/acquired/`: published external files materialized by the
+  acquisition commands.
+- `artifacts/benchmark-index.json`: workload artifact index.
+- `artifacts/correctness-index.json`: correctness-only case index.
+
+## How To Read The Outputs
+
+Two ideas matter:
+
+- `canonical`: the main shared artifact for the case.
+- `benchmark-only`: a useful sibling format for performance work, but not the
+  main correctness reference for that case.
+
+Real-data workload cases may list both.
+
+## How To Change It
+
+Do not treat this directory as hand-edited source content. Change the owning
+case, schema, or script, then rebuild the artifacts.
