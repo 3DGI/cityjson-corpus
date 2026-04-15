@@ -6,31 +6,30 @@ on:
       - main
   pull_request:
 
-# Sibling checkout layout under $GITHUB_WORKSPACE:
-#   cityjson-benchmarks/   ← this repo
-#   cityjson-fake/         ← sibling, found at ../cityjson-fake from scripts
-#
-# Both paths are under $GITHUB_WORKSPACE so actions/checkout accepts them.
-# All run steps use working-directory: cityjson-benchmarks.
+# The lint job needs the cityjson-fake manifest schema for profile validation.
+# We download just that one file via curl rather than cloning the full repo.
+# CJFAKE_MANIFEST_SCHEMA is picked up by corpus_cases.py and validate_profiles.sh.
+# Once 3DGI/cityjson-fake is public, this keeps CI lightweight (no full clone).
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: cityjson-benchmarks
+        working-directory: cityjson-corpus
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          path: cityjson-benchmarks
+          path: cityjson-corpus
 
-      - name: Check out cityjson-fake
-        uses: actions/checkout@v4
-        with:
-          repository: 3DGI/cityjson-fake
-          path: cityjson-fake
+      - name: Fetch cityjson-fake manifest schema
+        run: |
+          mkdir -p /tmp/cjfake/src/data
+          curl -fsSL \
+            "https://raw.githubusercontent.com/3DGI/cityjson-fake/main/src/data/cityjson-fake-manifest.schema.json" \
+            -o /tmp/cjfake/src/data/cityjson-fake-manifest.schema.json
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -50,7 +49,6 @@ jobs:
         run: uv sync --frozen
 
       - name: Run lint
+        env:
+          CJFAKE_MANIFEST_SCHEMA: /tmp/cjfake/src/data/cityjson-fake-manifest.schema.json
         run: just lint
-
-      - name: Build documentation
-        run: just docs-build

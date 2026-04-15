@@ -1,4 +1,4 @@
-site_name: cityjson-benchmarks
+site_name: cityjson-corpus
 site_description: Shared benchmark corpus documentation for CityJSON tooling
 docs_dir: docs
 strict: true
