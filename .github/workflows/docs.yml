@@ -30,6 +30,9 @@ jobs:
       - name: Sync documentation environment
         run: uv sync --frozen
 
+      - name: Install just
+        uses: extractions/setup-just@v4
+
       - name: Build documentation
         run: just docs-build
 
