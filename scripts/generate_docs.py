@@ -308,6 +308,7 @@ def main() -> None:
             "[case.schema.json](case.schema.json)": "[case.schema.json](../reference/case-schema.md)",
             "[invariants.schema.json](invariants.schema.json)": "[invariants.schema.json](../reference/invariants-schema.md)",
             "[acquisition.schema.json](acquisition.schema.json)": "[acquisition.schema.json](../reference/acquisition-schema.md)",
+            "[cityjson-fake-manifest.schema.json](cityjson-fake-manifest.schema.json)": f"[cityjson-fake-manifest.schema.json](../{CJFAKE_SCHEMA_PAGE})",
             f"[cityjson-fake-manifest.schema.json]({CJFAKE_SCHEMA_LINK})": f"[cityjson-fake-manifest.schema.json](../{CJFAKE_SCHEMA_PAGE})",
             "[`cases/`](../cases/README.md)": "[`cases/`](../cases/index.md)",
         },
