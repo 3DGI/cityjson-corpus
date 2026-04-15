@@ -57,6 +57,10 @@ If you are reading the repository through the docs site, start with:
 - `just docs-build`: build the ProperDocs site.
 - `just docs-serve`: serve the ProperDocs site locally.
 
+`just lint` and `just docs-build` use the checked-in
+`schemas/cityjson-fake-manifest.schema.json`. Only `just generate-data`
+requires access to `cityjson-fake`.
+
 ## Licensing
 
 This repository now uses a dual-license model for repository-authored content:

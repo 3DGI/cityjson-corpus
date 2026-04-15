@@ -39,6 +39,9 @@ generated case pages do not remain in the site.
 - Check the outputs in `artifacts/`.
 - Run `just lint`.
 
+`just lint` and `just docs-build` do not require a sibling `cityjson-fake`
+checkout. Only `just generate-data` does.
+
 ## After A Docs Change
 
 - Edit `docs/` for hand-written pages.

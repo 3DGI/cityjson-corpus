@@ -4,7 +4,7 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 corpus_path="${repo_dir}/catalog/cases.json"
-schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/../cityjson-fake/src/data/cityjson-fake-manifest.schema.json}"
+schema_path="${CJFAKE_MANIFEST_SCHEMA:-${repo_dir}/schemas/cityjson-fake-manifest.schema.json}"
 schema_ref="${CJFAKE_MANIFEST_SCHEMA_REF:-https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json}"
 cityjson_fake_cargo="${CJFAKE_CARGO_MANIFEST:-${repo_dir}/../cityjson-fake/Cargo.toml}"
 output_dir="${CORPUS_GENERATED_DIR:-${repo_dir}/artifacts/generated}"

@@ -50,13 +50,7 @@ configure_mkdocs_gen_files()
 
 
 CASE_ROOT = ROOT / "cases"
-CJFAKE_SCHEMA_SOURCE = (
-    ROOT.parent
-    / "cityjson-fake"
-    / "src"
-    / "data"
-    / "cityjson-fake-manifest.schema.json"
-)
+CJFAKE_SCHEMA_SOURCE = ROOT / "schemas" / "cityjson-fake-manifest.schema.json"
 CJFAKE_SCHEMA_PAGE = "reference/cityjson-fake-manifest-schema.md"
 CJFAKE_SCHEMA_LINK = "https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json"
 

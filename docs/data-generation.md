@@ -33,6 +33,10 @@ You need:
 - a sibling checkout of `../cityjson-lib`, or
   `CORPUS_CITYJSON_LIB_CARGO_MANIFEST`
 
+`just lint` and `just docs-build` use the checked-in
+`schemas/cityjson-fake-manifest.schema.json`, so they do not require the
+`cityjson-fake` checkout.
+
 ## Typical Flow
 
 1. Acquire any published real-data cases you need:

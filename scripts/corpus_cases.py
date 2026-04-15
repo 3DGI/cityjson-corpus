@@ -15,19 +15,10 @@ CORRECTNESS_INDEX_PATH = ROOT / "artifacts" / "correctness-index.json"
 CASE_SCHEMA_PATH = ROOT / "schemas" / "case.schema.json"
 INVARIANTS_SCHEMA_PATH = ROOT / "schemas" / "invariants.schema.json"
 ACQUISITION_SCHEMA_PATH = ROOT / "schemas" / "acquisition.schema.json"
-# The canonical CJFake manifest schema lives in the sibling cityjson-fake checkout.
-# Override with CJFAKE_MANIFEST_SCHEMA env var when the sibling is not available
-# (matches the convention used in validate_profiles.sh and generate_data.sh).
 PROFILE_SCHEMA_PATH = Path(
     os.environ.get(
         "CJFAKE_MANIFEST_SCHEMA",
-        str(
-            ROOT.parent
-            / "cityjson-fake"
-            / "src"
-            / "data"
-            / "cityjson-fake-manifest.schema.json"
-        ),
+        str(ROOT / "schemas" / "cityjson-fake-manifest.schema.json"),
     )
 )
 CORRECTNESS_LAYERS = frozenset({"conformance", "invalid", "operation"})

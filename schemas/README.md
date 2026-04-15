@@ -9,7 +9,7 @@ The main schema files are:
 - [case.schema.json](case.schema.json)
 - [invariants.schema.json](invariants.schema.json)
 - [acquisition.schema.json](acquisition.schema.json)
-- [cityjson-fake-manifest.schema.json](https://github.com/3DGI/cityjson-fake/blob/main/src/data/cityjson-fake-manifest.schema.json)
+- [cityjson-fake-manifest.schema.json](cityjson-fake-manifest.schema.json)
 
 `cases/` contains the actual JSON files. `schemas/` explains what shape those
 files must have and what the controlled values mean.
@@ -55,3 +55,7 @@ listed here, tools should read it with the meaning given below.
 
 Keep schema changes small and explicit. Most downstream consumers depend on
 these fields staying stable.
+
+The checked-in `cityjson-fake-manifest.schema.json` is the repo-local copy used
+by `just lint` and `just docs-build`. Keep it aligned with the upstream
+`cityjson-fake` schema when the generator contract changes.

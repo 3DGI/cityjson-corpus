@@ -7,14 +7,12 @@ _default:
 fmt:
     uvx --from ruff ruff format .
 
-# Lint Python, validate the case tree and catalog sync, and check profile fixtures.
+# Lint Python, validate the case tree and catalog sync, and run cjval.
 lint:
     @echo "{{BOLD}}Linting Python files...{{NORMAL}}"
     @uvx --from ruff ruff check .
     @echo "{{BOLD}}Validating case tree...{{NORMAL}}"
     @uv run python ./scripts/validate_case_layout.py
-    @echo "{{BOLD}}Validating profiles...{{NORMAL}}"
-    @./scripts/validate_profiles.sh
     just cjval
 
 # Run cjval on all conformance cases.
