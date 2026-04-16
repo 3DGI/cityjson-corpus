@@ -28,6 +28,12 @@ sync-catalog:
 # Materialize synthetic workloads into artifacts/generated/ and write artifacts/benchmark-index.json.
 generate-data:
     ./scripts/generate_data.sh
+    just _cjval-generated
+
+[private]
+_cjval-generated:
+    @echo "{{BOLD}}Running cjval on generated workload cases...{{NORMAL}}"
+    @status=0; while IFS= read -r -d '' file; do basename="$(basename "$file")"; output="$(cjval -q "$file" 2>&1)"; printf "%s %s\n" "$output" "$basename"; case "$output" in *"❌ File is invalid"*) status=1 ;; esac; done < <(find artifacts/generated -type f -name '*.city.json' -print0); exit "$status"
 
 # Download the published 3DBAG slice (CityJSON, cityjson-arrow, cityjson-parquet) into artifacts/acquired/.
 acquire-3dbag:
