@@ -8,7 +8,7 @@
     "bbox_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/io_basisvoorziening_3d_cityjson/README.md",
+  "description": "Real-geometry Basisvoorziening 3D tile stored as a single monolithic CityJSON file. A larger terrain-inclusive alternative to the io_3dbag_cityjson baseline, from the 2022 PDOK collection.",
   "family": "io",
   "geometry_kind": "real-preserved",
   "id": "io_basisvoorziening_3d_cityjson",

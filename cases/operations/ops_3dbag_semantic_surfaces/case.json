@@ -8,7 +8,7 @@
     "boundary_to_semantics_mapping_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
+  "description": "Real-geometry 3DBAG case with roof, wall, and ground semantic surfaces. Targets surface traversal, boundary-to-semantics mapping, and semantic-aware roundtrips.",
   "family": "operation_kernel",
   "geometry_kind": "real-preserved",
   "id": "ops_3dbag_semantic_surfaces",

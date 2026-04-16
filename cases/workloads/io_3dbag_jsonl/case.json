@@ -8,7 +8,7 @@
     "stream_boundaries_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/io_3dbag_jsonl/README.md",
+  "description": "Real-geometry 3DBAG slice stored as JSONL. Targets stream-oriented parsing, record framing overhead, and streaming memory behavior as a counterpart to the monolithic io_3dbag_cityjson case.",
   "family": "io",
   "geometry_kind": "real-preserved",
   "id": "io_3dbag_jsonl",

@@ -9,7 +9,7 @@
     "transform_applied_correctly"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/stress_vertex_transform/README.md",
+  "description": "Deterministic synthetic case (seed 2002) with 32 Building/Bridge objects, MultiSurface geometry at LoD 2, and 256 vertices per geometry in the [0, 100000] coordinate range. No materials, textures, attributes, or semantics. Targets vertex import and coordinate transform paths.",
   "family": "stress",
   "geometry_kind": "dummy",
   "id": "stress_vertex_transform",

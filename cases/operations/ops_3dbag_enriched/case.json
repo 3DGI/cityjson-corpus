@@ -8,7 +8,7 @@
     "geometry_preserved"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/operations/ops_3dbag_enriched/README.md",
+  "description": "Real 3DBAG geometry enriched with synthetic attributes. Targets object-graph traversal, attribute lookup, and roundtrip stability on a mixed geometry-plus-metadata payload.",
   "family": "operation_kernel",
   "geometry_kind": "real-preserved",
   "id": "ops_3dbag_enriched",

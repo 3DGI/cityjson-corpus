@@ -8,7 +8,7 @@
     "layout_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/io_3dbag_feature_files/README.md",
+  "description": "Real-geometry 3DBAG slice stored as one file per feature. Targets filesystem access patterns including open/close overhead, metadata lookup, and random versus sequential access.",
   "family": "io",
   "geometry_kind": "real-preserved",
   "id": "io_3dbag_feature_files",

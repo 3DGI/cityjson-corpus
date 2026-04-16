@@ -8,7 +8,7 @@
     "bbox_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/io_3dbag_cityjson_cluster_4x/README.md",
+  "description": "Real-geometry 3DBAG workload built from four merged contiguous tiles. Extends the single-tile io_3dbag_cityjson baseline to a larger whole-document input for memory and throughput comparisons.",
   "family": "io",
   "geometry_kind": "real-preserved",
   "id": "io_3dbag_cityjson_cluster_4x",

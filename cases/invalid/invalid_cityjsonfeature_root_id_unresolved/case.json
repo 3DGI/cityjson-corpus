@@ -7,8 +7,7 @@
     "feature_root_id_unresolved"
   ],
   "cityjson_version": "2.0",
-  "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
-  "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
+  "description": "Hand-written invalid CityJSONFeature where the root id does not match any CityObject in the same feature. Must be rejected.",
   "family": "invalid",
   "geometry_kind": "dummy",
   "id": "invalid_cityjsonfeature_root_id_unresolved",

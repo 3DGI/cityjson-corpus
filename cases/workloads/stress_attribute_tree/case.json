@@ -9,7 +9,7 @@
     "allocation_shape_visible"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/stress_attribute_tree/README.md",
+  "description": "Deterministic synthetic case (seed 2003) with 16 Building objects, MultiSurface geometry at LoD 2, and deep nested attributes. No materials, textures, or semantics. Targets attribute-heavy payloads during parsing and serialization.",
   "family": "stress",
   "geometry_kind": "dummy",
   "id": "stress_attribute_tree",

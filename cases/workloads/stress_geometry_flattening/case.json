@@ -9,7 +9,7 @@
     "no_loss_on_flattening"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/stress_geometry_flattening/README.md",
+  "description": "Deterministic synthetic case (seed 2001) with 64 Building/Bridge objects covering all surface and solid geometry types, LoDs 2-3, and 16-32 vertices per geometry. No materials, textures, attributes, or semantics. Targets geometry normalization and flattening paths.",
   "family": "stress",
   "geometry_kind": "dummy",
   "id": "stress_geometry_flattening",

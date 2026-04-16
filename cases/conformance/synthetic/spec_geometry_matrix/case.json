@@ -9,7 +9,7 @@
     "boundary_normalization_stable"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
+  "description": "Deterministic synthetic case (seed 1001) with 8 Building/Bridge objects covering all seven geometry types, LoDs 0-3, and roof/ground/wall/closure semantics. No materials, textures, or attributes. Baseline for geometry dispatch and boundary handling.",
   "family": "spec_atom",
   "geometry_kind": "dummy",
   "id": "spec_geometry_matrix",

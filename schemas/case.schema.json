@@ -126,11 +126,6 @@
       },
       "description": "Human-readable correctness expectations associated with the case. The list is not a controlled vocabulary."
     },
-    "documentation": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Optional repo-relative documentation path."
-    },
     "description": {
       "type": "string",
       "minLength": 1,

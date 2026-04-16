@@ -8,7 +8,7 @@
     "hierarchy_traversal_complete"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/operations/ops_3dbag_base/README.md",
+  "description": "Medium-sized real-geometry 3DBAG case. Baseline for bounding-box computation, object filtering, hierarchy navigation, and geometry access.",
   "family": "operation_kernel",
   "geometry_kind": "real-preserved",
   "id": "ops_3dbag_base",

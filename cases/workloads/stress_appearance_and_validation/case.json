@@ -9,7 +9,7 @@
     "write_path_regressions_visible"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/stress_appearance_and_validation/README.md",
+  "description": "Deterministic synthetic case (seed 2007) with 32 Building/Bridge objects, MultiSurface geometry at LoDs 2-3, 4-6 materials and 3-4 textures across 4 themes, all appearance flags enabled. No attributes or templates. Targets write-path appearance validation.",
   "family": "stress",
   "geometry_kind": "dummy",
   "id": "stress_appearance_and_validation",

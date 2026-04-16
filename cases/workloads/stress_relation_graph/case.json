@@ -9,7 +9,7 @@
     "lookup_complete"
   ],
   "cityjson_version": "2.0",
-  "documentation": "cases/workloads/stress_relation_graph/README.md",
+  "description": "Deterministic synthetic case (seed 2004) with 64 Building/Bridge objects, MultiSurface geometry at LoD 2, and parent-child fanout of 2-4. No materials, textures, attributes, or semantics. Targets hierarchy traversal and relation-heavy object graphs.",
   "family": "stress",
   "geometry_kind": "dummy",
   "id": "stress_relation_graph",

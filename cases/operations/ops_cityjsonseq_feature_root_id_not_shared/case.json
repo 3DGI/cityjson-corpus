@@ -8,8 +8,7 @@
     "feature_boundaries_preserved"
   ],
   "cityjson_version": "2.0",
-  "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
-  "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
+  "description": "Hand-written CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by their root id. Verifies that the root id is preserved per feature and does not affect shared-root compatibility.",
   "family": "operation_kernel",
   "geometry_kind": "dummy",
   "id": "ops_cityjsonseq_feature_root_id_not_shared",
