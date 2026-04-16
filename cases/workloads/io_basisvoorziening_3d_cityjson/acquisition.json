@@ -43,13 +43,13 @@
   ],
   "owner": "cjindex",
   "preprocessing": [
-    "Run the shared Basisvoorziening 3D acquisition script in cityjson-benchmarks.",
+    "Run the shared Basisvoorziening 3D acquisition script in cityjson-corpus.",
     "Download the pinned 2022 volledig archive from PDOK.",
     "Extract the published CityJSON tile from the zip archive.",
     "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
     "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
   ],
-  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-benchmarks to materialize the raw tile and native cityjson-arrow/cityjson-parquet artifacts.",
+  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-corpus to materialize the raw tile and native cityjson-arrow/cityjson-parquet artifacts.",
   "selector": "Pinned 2022 volledig tile: 84000_450000.",
   "status": "published",
   "upstream_url": "https://download.pdok.nl/kadaster/basisvoorziening-3d/v1_0/2022/volledig/volledig_2022_84000_450000.zip",

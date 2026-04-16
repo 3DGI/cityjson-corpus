@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://cityjson-benchmarks.org/schemas/invariants.schema.json",
+  "$id": "https://cityjson-corpus.org/schemas/invariants.schema.json",
   "title": "Shared Corpus Case Invariants",
   "type": "object",
   "additionalProperties": false,

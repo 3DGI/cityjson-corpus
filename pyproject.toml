@@ -1,5 +1,5 @@
 [project]
-name = "cityjson-benchmarks"
+name = "cityjson-corpus"
 version = "1.0.0"
 description = "Shared benchmark corpus, profiles, and documentation for CityJSON tooling"
 requires-python = ">=3.11"

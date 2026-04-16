@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://cityjson-benchmarks.org/schemas/case.schema.json",
+  "$id": "https://cityjson-corpus.org/schemas/case.schema.json",
   "title": "Shared Corpus Case",
   "type": "object",
   "additionalProperties": false,

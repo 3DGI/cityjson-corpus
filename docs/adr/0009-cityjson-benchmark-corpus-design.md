@@ -132,7 +132,7 @@ Repository boundaries remain strict:
 
 - `cityjson-fake` is the first generator implementation. It owns manifest ingestion
   and corpus generation.
-- `cityjson-benchmarks` owns the canonical catalog, source manifests,
+- `cityjson-corpus` owns the canonical catalog, source manifests,
   correctness invariants, and released artifacts.
 - Benchmark consumers such as `cjindex`, `cityjson-json`, `cityjson-lib`,
   `cityjson-arrow`, and `cityjson-rs` consume published benchmark data. They do not
@@ -150,7 +150,7 @@ checked by the repository-side validation script before release.
 The corpus repository does not own downstream benchmark harnesses. It owns the
 shared data package those harnesses consume.
 
-- `cityjson-benchmarks` publishes a generated benchmark index and the
+- `cityjson-corpus` publishes a generated benchmark index and the
   materialized synthetic outputs from `just generate-data`.
 - `cityjson-json` and `cityjson-arrow` stop curating their own conformance subsets
   and instead point their correctness suites at the shared correctness index.

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://cityjson-benchmarks.org/schemas/acquisition.schema.json",
+  "$id": "https://cityjson-corpus.org/schemas/acquisition.schema.json",
   "title": "Shared Corpus Acquisition Contract",
   "type": "object",
   "additionalProperties": false,

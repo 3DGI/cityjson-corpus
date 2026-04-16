@@ -1,6 +1,6 @@
-# cityjson-benchmarks
+# cityjson-corpus
 
-`cityjson-benchmarks` is a shared corpus of test cases, benchmark inputs, and
+`cityjson-corpus` is a shared corpus of test cases, benchmark inputs, and
 supporting metadata.
 
 Start with the path that matches your goal.
