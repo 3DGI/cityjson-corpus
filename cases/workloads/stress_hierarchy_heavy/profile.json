@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for parent-child CityObject graph traversal and semantic surface resolution.",
+  "cases": [
+    {
+      "id": "stress_hierarchy_heavy",
+      "description": "1000 CityObjects across two hierarchy levels (Building parents + BuildingPart children, 2-4 children per parent). Minimal MultiPoint geometry with semantics on each object. No materials, textures, or attributes.",
+      "seed": 3002,
+      "allowed_types_cityobject": ["Building", "BuildingPart"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "cityobject_hierarchy": true,
+      "min_children": 2,
+      "max_children": 4,
+      "allowed_types_geometry": ["MultiPoint"],
+      "allowed_lods": ["2"],
+      "min_members_multipoint": 1,
+      "max_members_multipoint": 2,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": true
+    }
+  ]
+}

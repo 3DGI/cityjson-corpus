@@ -616,8 +616,7 @@
       ],
       "case": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/case.json",
       "cityjson_version": "2.0",
-      "description": "Hand-written invalid CityJSONFeature fixture whose root id does not resolve to any CityObject in the same feature.",
-      "documentation": "cases/invalid/invalid_cityjsonfeature_root_id_unresolved/README.md",
+      "description": "Hand-written invalid CityJSONFeature where the root id does not match any CityObject in the same feature. Must be rejected.",
       "family": "invalid",
       "geometry_kind": "dummy",
       "id": "invalid_cityjsonfeature_root_id_unresolved",
@@ -638,7 +637,7 @@
       ],
       "case": "cases/invalid/invalid_missing_type/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/invalid/invalid_missing_type/README.md",
+      "description": "Synthetic invalid CityJSON fixture that omits the required top-level `type` field. Valid JSON, but must be rejected at schema validation before any geometry or data access.",
       "family": "invalid",
       "geometry_kind": "dummy",
       "id": "invalid_missing_type",
@@ -659,7 +658,7 @@
       ],
       "case": "cases/invalid/invalid_out_of_range_vertex_index/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/invalid/invalid_out_of_range_vertex_index/README.md",
+      "description": "Synthetic invalid CityJSON fixture with a boundary that references a vertex index outside the available vertex array. Valid JSON, but must be rejected during geometry validation.",
       "family": "invalid",
       "geometry_kind": "dummy",
       "id": "invalid_out_of_range_vertex_index",
@@ -702,7 +701,7 @@
       ],
       "case": "cases/workloads/io_3dbag_cityjson/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/io_3dbag_cityjson/README.md",
+      "description": "Real-geometry 3DBAG slice stored as a single monolithic CityJSON file. Baseline for sequential I/O, parser throughput, and whole-document memory behavior.",
       "family": "io",
       "geometry_kind": "real-preserved",
       "id": "io_3dbag_cityjson",
@@ -724,7 +723,7 @@
       ],
       "case": "cases/workloads/io_3dbag_cityjson_cluster_4x/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/io_3dbag_cityjson_cluster_4x/README.md",
+      "description": "Real-geometry 3DBAG workload built from four merged contiguous tiles. Extends the single-tile io_3dbag_cityjson baseline to a larger whole-document input for memory and throughput comparisons.",
       "family": "io",
       "geometry_kind": "real-preserved",
       "id": "io_3dbag_cityjson_cluster_4x",
@@ -746,7 +745,7 @@
       ],
       "case": "cases/workloads/io_3dbag_feature_files/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/io_3dbag_feature_files/README.md",
+      "description": "Real-geometry 3DBAG slice stored as one file per feature. Targets filesystem access patterns including open/close overhead, metadata lookup, and random versus sequential access.",
       "family": "io",
       "geometry_kind": "real-preserved",
       "id": "io_3dbag_feature_files",
@@ -768,7 +767,7 @@
       ],
       "case": "cases/workloads/io_3dbag_jsonl/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/io_3dbag_jsonl/README.md",
+      "description": "Real-geometry 3DBAG slice stored as JSONL. Targets stream-oriented parsing, record framing overhead, and streaming memory behavior as a counterpart to the monolithic io_3dbag_cityjson case.",
       "family": "io",
       "geometry_kind": "real-preserved",
       "id": "io_3dbag_jsonl",
@@ -790,7 +789,7 @@
       ],
       "case": "cases/workloads/io_basisvoorziening_3d_cityjson/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/io_basisvoorziening_3d_cityjson/README.md",
+      "description": "Real-geometry Basisvoorziening 3D tile stored as a single monolithic CityJSON file. A larger terrain-inclusive alternative to the io_3dbag_cityjson baseline, from the 2022 PDOK collection.",
       "family": "io",
       "geometry_kind": "real-preserved",
       "id": "io_basisvoorziening_3d_cityjson",
@@ -854,7 +853,7 @@
       ],
       "case": "cases/operations/ops_3dbag_base/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/operations/ops_3dbag_base/README.md",
+      "description": "Medium-sized real-geometry 3DBAG case. Baseline for bounding-box computation, object filtering, hierarchy navigation, and geometry access.",
       "family": "operation_kernel",
       "geometry_kind": "real-preserved",
       "id": "ops_3dbag_base",
@@ -876,7 +875,7 @@
       ],
       "case": "cases/operations/ops_3dbag_enriched/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/operations/ops_3dbag_enriched/README.md",
+      "description": "Real 3DBAG geometry enriched with synthetic attributes. Targets object-graph traversal, attribute lookup, and roundtrip stability on a mixed geometry-plus-metadata payload.",
       "family": "operation_kernel",
       "geometry_kind": "real-preserved",
       "id": "ops_3dbag_enriched",
@@ -898,7 +897,7 @@
       ],
       "case": "cases/operations/ops_3dbag_semantic_surfaces/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/operations/ops_3dbag_semantic_surfaces/README.md",
+      "description": "Real-geometry 3DBAG case with roof, wall, and ground semantic surfaces. Targets surface traversal, boundary-to-semantics mapping, and semantic-aware roundtrips.",
       "family": "operation_kernel",
       "geometry_kind": "real-preserved",
       "id": "ops_3dbag_semantic_surfaces",
@@ -920,8 +919,7 @@
       ],
       "case": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/case.json",
       "cityjson_version": "2.0",
-      "description": "Hand-written strict CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by feature root id.",
-      "documentation": "cases/operations/ops_cityjsonseq_feature_root_id_not_shared/README.md",
+      "description": "Hand-written CityJSONSeq stream with a base CityJSON header and multiple CityJSONFeature items that differ only by their root id. Verifies that the root id is preserved per feature and does not affect shared-root compatibility.",
       "family": "operation_kernel",
       "geometry_kind": "dummy",
       "id": "ops_cityjsonseq_feature_root_id_not_shared",
@@ -1010,7 +1008,7 @@
       ],
       "case": "cases/conformance/synthetic/spec_geometry_matrix/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/conformance/synthetic/spec_geometry_matrix/README.md",
+      "description": "Deterministic synthetic case (seed 1001) with 8 Building/Bridge objects covering all seven geometry types, LoDs 0-3, and roof/ground/wall/closure semantics. No materials, textures, or attributes. Baseline for geometry dispatch and boundary handling.",
       "family": "spec_atom",
       "geometry_kind": "dummy",
       "id": "spec_geometry_matrix",
@@ -1024,22 +1022,22 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_appearance_and_validation.city.json",
-        "profile": "cases/workloads/stress_appearance_and_validation/profile.json"
+        "generated": "artifacts/generated/stress_attribute_heavy.city.json",
+        "profile": "cases/workloads/stress_attribute_heavy/profile.json"
       },
       "assertions": [
-        "appearance_validation_preserved",
-        "write_path_regressions_visible"
+        "attributes_preserved",
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_appearance_and_validation/case.json",
+      "case": "cases/workloads/stress_attribute_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_appearance_and_validation/README.md",
+      "description": "Deterministic synthetic case (seed 3001) with 1000 Building objects, 60 flat mixed-type attributes per object, and a single-surface MultiSurface geometry at LoD 2. No semantics, materials, or textures. Targets attribute map allocation, key string interning, and parse/serialize throughput. Hardware load: CPU (JSON key hashing, value type dispatch), RAM (60k attribute key-value pairs). Architecture bottleneck: hash map resize and key interning. Data model bottleneck: flat attribute record size at 60 keys per object.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_appearance_and_validation",
-      "invariants": "cases/workloads/stress_appearance_and_validation/invariants.json",
+      "id": "stress_attribute_heavy",
+      "invariants": "cases/workloads/stress_attribute_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_appearance_and_validation",
+      "path": "cases/workloads/stress_attribute_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -1047,22 +1045,22 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_attribute_tree.city.json",
-        "profile": "cases/workloads/stress_attribute_tree/profile.json"
+        "generated": "artifacts/generated/stress_boundary_heavy.city.json",
+        "profile": "cases/workloads/stress_boundary_heavy/profile.json"
       },
       "assertions": [
-        "nested_attributes_preserved",
-        "allocation_shape_visible"
+        "boundary_nesting_preserved",
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_attribute_tree/case.json",
+      "case": "cases/workloads/stress_boundary_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_attribute_tree/README.md",
+      "description": "Deterministic synthetic case (seed 3004) with 1000 Building objects each carrying one CompositeSolid geometry with 4-6 solid members and 4-6 shells per solid. No attributes, semantics, materials, or textures. Targets deep boundary recursion and stack/heap pressure. Hardware load: CPU (recursive traversal), stack depth pressure, heap for shell arrays. Architecture bottleneck: CompositeSolid -> Solid -> Shell -> Ring traversal. Data model bottleneck: nested boundary reference chains at each containment level.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_attribute_tree",
-      "invariants": "cases/workloads/stress_attribute_tree/invariants.json",
+      "id": "stress_boundary_heavy",
+      "invariants": "cases/workloads/stress_boundary_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_attribute_tree",
+      "path": "cases/workloads/stress_boundary_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -1070,22 +1068,22 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_composite_value.city.json",
-        "profile": "cases/workloads/stress_composite_value/profile.json"
+        "generated": "artifacts/generated/stress_geometry_heavy.city.json",
+        "profile": "cases/workloads/stress_geometry_heavy/profile.json"
       },
       "assertions": [
-        "composite_values_preserved",
-        "mixed_cost_paths_visible"
+        "all_geometries_preserved",
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_composite_value/case.json",
+      "case": "cases/workloads/stress_geometry_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_composite_value/README.md",
+      "description": "Deterministic synthetic case (seed 3003) with 1000 Building objects each carrying 4 MultiSurface geometries at LoDs 0-3 (4000 geometry records total). No attributes, semantics, materials, or textures. Targets multi-LoD geometry dispatch and geometry array allocation. Hardware load: CPU (geometry type dispatch per LoD), memory for 4x geometry arrays per object. Architecture bottleneck: LoD index maintenance and geometry iteration. Data model bottleneck: 4 geometry structs per CityObject.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_composite_value",
-      "invariants": "cases/workloads/stress_composite_value/invariants.json",
+      "id": "stress_geometry_heavy",
+      "invariants": "cases/workloads/stress_geometry_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_composite_value",
+      "path": "cases/workloads/stress_geometry_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -1093,22 +1091,22 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_deep_boundary.city.json",
-        "profile": "cases/workloads/stress_deep_boundary/profile.json"
+        "generated": "artifacts/generated/stress_hierarchy_heavy.city.json",
+        "profile": "cases/workloads/stress_hierarchy_heavy/profile.json"
       },
       "assertions": [
-        "deep_boundaries_preserved",
-        "stack_or_heap_pressure_visible"
+        "hierarchy_preserved",
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_deep_boundary/case.json",
+      "case": "cases/workloads/stress_hierarchy_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_deep_boundary/README.md",
+      "description": "Deterministic synthetic case (seed 3002) with 1000 CityObjects across two hierarchy levels (Building parents + BuildingPart children, 2-4 children per parent). Each object has minimal MultiPoint geometry with semantic surfaces. No attributes, materials, or textures. Targets parent-child graph traversal and semantic surface resolution. Hardware load: CPU (pointer chasing), cache misses from scattered object references. Architecture bottleneck: children/parents reference resolution. Data model bottleneck: two-level object graph with semantic mapping on minimal geometry.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_deep_boundary",
-      "invariants": "cases/workloads/stress_deep_boundary/invariants.json",
+      "id": "stress_hierarchy_heavy",
+      "invariants": "cases/workloads/stress_hierarchy_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_deep_boundary",
+      "path": "cases/workloads/stress_hierarchy_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -1116,22 +1114,23 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_geometry_flattening.city.json",
-        "profile": "cases/workloads/stress_geometry_flattening/profile.json"
+        "generated": "artifacts/generated/stress_resource_heavy.city.json",
+        "profile": "cases/workloads/stress_resource_heavy/profile.json"
       },
       "assertions": [
-        "geometry_normalization_stable",
-        "no_loss_on_flattening"
+        "appearance_preserved",
+        "semantics_preserved",
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_geometry_flattening/case.json",
+      "case": "cases/workloads/stress_resource_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_geometry_flattening/README.md",
+      "description": "Deterministic synthetic case (seed 3006) with 1000 Building objects each carrying one Solid geometry (2-4 shells) with semantics, 2-4 materials, and 2-4 textures simultaneously. No attributes. Targets combined appearance and semantic annotation parsing. Hardware load: CPU (multi-path parsing for semantics + materials + textures), RAM for appearance tables. Architecture bottleneck: combined appearance initialisation and material/texture theme co-resolution. Data model bottleneck: per-surface triple annotation (semantics + material index + texture coordinate) on Solid geometry.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_geometry_flattening",
-      "invariants": "cases/workloads/stress_geometry_flattening/invariants.json",
+      "id": "stress_resource_heavy",
+      "invariants": "cases/workloads/stress_resource_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_geometry_flattening",
+      "path": "cases/workloads/stress_resource_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2
@@ -1139,45 +1138,22 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_relation_graph.city.json",
-        "profile": "cases/workloads/stress_relation_graph/profile.json"
-      },
-      "assertions": [
-        "relationship_graph_preserved",
-        "lookup_complete"
-      ],
-      "case": "cases/workloads/stress_relation_graph/case.json",
-      "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_relation_graph/README.md",
-      "family": "stress",
-      "geometry_kind": "dummy",
-      "id": "stress_relation_graph",
-      "invariants": "cases/workloads/stress_relation_graph/invariants.json",
-      "layer": "workload",
-      "path": "cases/workloads/stress_relation_graph",
-      "representation": "cityjson",
-      "source_kind": "synthetic",
-      "version": 2
-    },
-    {
-      "artifact_mode": "generated",
-      "artifact_paths": {
-        "generated": "artifacts/generated/stress_vertex_transform.city.json",
-        "profile": "cases/workloads/stress_vertex_transform/profile.json"
+        "generated": "artifacts/generated/stress_vertex_heavy.city.json",
+        "profile": "cases/workloads/stress_vertex_heavy/profile.json"
       },
       "assertions": [
         "vertex_count_preserved",
-        "transform_applied_correctly"
+        "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_vertex_transform/case.json",
+      "case": "cases/workloads/stress_vertex_heavy/case.json",
       "cityjson_version": "2.0",
-      "documentation": "cases/workloads/stress_vertex_transform/README.md",
+      "description": "Deterministic synthetic case (seed 3005) with 1000 Building objects each with 33-34 triangulated surfaces (3 vertices, no inner rings), totalling ~100k vertices. MultiSurface geometry at LoD 2. No attributes, semantics, materials, or textures. Targets vertex array allocation and coordinate transform throughput. Hardware load: CPU (coordinate transform for ~100k vertices), memory bandwidth for vertex arrays. Architecture bottleneck: vertex array allocation and scale/offset application. Data model bottleneck: flat vertex array size and index array compactness.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_vertex_transform",
-      "invariants": "cases/workloads/stress_vertex_transform/invariants.json",
+      "id": "stress_vertex_heavy",
+      "invariants": "cases/workloads/stress_vertex_heavy/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_vertex_transform",
+      "path": "cases/workloads/stress_vertex_heavy",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2

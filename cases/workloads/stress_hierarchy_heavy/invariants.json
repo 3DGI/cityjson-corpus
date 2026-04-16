@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Parent-child relationships across both hierarchy levels are preserved after encode/decode.",
+      "id": "hierarchy_preserved"
+    },
+    {
+      "description": "The case exposes the intended hierarchy traversal shape (1000 objects across two levels with semantic surfaces).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_hierarchy_heavy",
+  "kind": "positive",
+  "version": 1
+}

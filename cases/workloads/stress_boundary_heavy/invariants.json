@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "CompositeSolid boundary nesting (solid members and shells) is preserved after encode/decode.",
+      "id": "boundary_nesting_preserved"
+    },
+    {
+      "description": "The case exposes the intended deep boundary shape (4-6 solid members each with 4-6 shells per 1000 objects).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_boundary_heavy",
+  "kind": "positive",
+  "version": 1
+}

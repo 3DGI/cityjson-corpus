@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "All 4 geometries per CityObject at distinct LoDs are preserved after encode/decode.",
+      "id": "all_geometries_preserved"
+    },
+    {
+      "description": "The case exposes the intended multi-geometry allocation shape (4000 geometry records across 1000 objects).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_geometry_heavy",
+  "kind": "positive",
+  "version": 1
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "Vertex count and coordinate values are preserved exactly after encode/decode (~100k vertices total).",
+      "id": "vertex_count_preserved"
+    },
+    {
+      "description": "The case exposes the intended vertex array size shape (33-34 triangulated surfaces per object across 1000 objects).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_vertex_heavy",
+  "kind": "positive",
+  "version": 1
+}

@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_boundary_heavy.city.json",
+    "profile": "cases/workloads/stress_boundary_heavy/profile.json"
+  },
+  "assertions": [
+    "boundary_nesting_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3004) with 1000 Building objects each carrying one CompositeSolid geometry with 4-6 solid members and 4-6 shells per solid. No attributes, semantics, materials, or textures. Targets deep boundary recursion and stack/heap pressure. Hardware load: CPU (recursive traversal), stack depth pressure, heap for shell arrays. Architecture bottleneck: CompositeSolid -> Solid -> Shell -> Ring traversal. Data model bottleneck: nested boundary reference chains at each containment level.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_boundary_heavy",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

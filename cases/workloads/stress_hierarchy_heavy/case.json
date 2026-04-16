@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_hierarchy_heavy.city.json",
+    "profile": "cases/workloads/stress_hierarchy_heavy/profile.json"
+  },
+  "assertions": [
+    "hierarchy_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3002) with 1000 CityObjects across two hierarchy levels (Building parents + BuildingPart children, 2-4 children per parent). Each object has minimal MultiPoint geometry with semantic surfaces. No attributes, materials, or textures. Targets parent-child graph traversal and semantic surface resolution. Hardware load: CPU (pointer chasing), cache misses from scattered object references. Architecture bottleneck: children/parents reference resolution. Data model bottleneck: two-level object graph with semantic mapping on minimal geometry.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_hierarchy_heavy",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for multi-LoD geometry dispatch and geometry array allocation.",
+  "cases": [
+    {
+      "id": "stress_geometry_heavy",
+      "description": "1000 Building objects each with 4 MultiSurface geometries at LoDs 0-3. No attributes, semantics, materials, or textures.",
+      "seed": 3003,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["0", "1", "2", "3"],
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 2,
+      "min_members_cityobject_geometries": 4,
+      "max_members_cityobject_geometries": 4,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

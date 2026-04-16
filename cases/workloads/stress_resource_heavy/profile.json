@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for combined semantics, material, and texture annotation on solid geometry.",
+  "cases": [
+    {
+      "id": "stress_resource_heavy",
+      "description": "1000 Building objects each with one Solid geometry (2-4 shells) carrying semantics, 2-4 materials, and 2-4 textures. No attributes.",
+      "seed": 3006,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "allowed_types_geometry": ["Solid"],
+      "allowed_lods": ["2"],
+      "min_members_solid": 2,
+      "max_members_solid": 4,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": true,
+      "min_materials": 2,
+      "max_materials": 4,
+      "nr_themes_materials": 1,
+      "textures_enabled": true,
+      "min_textures": 2,
+      "max_textures": 4,
+      "nr_themes_textures": 1,
+      "attributes_enabled": false,
+      "semantics_enabled": true
+    }
+  ]
+}

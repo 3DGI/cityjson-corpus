@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for deep boundary recursion and stack or heap pressure from nested solid geometry.",
+  "cases": [
+    {
+      "id": "stress_boundary_heavy",
+      "description": "1000 Building objects each with one CompositeSolid geometry (4-6 solid members, each with 4-6 shells). No attributes, semantics, materials, or textures.",
+      "seed": 3004,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "allowed_types_geometry": ["CompositeSolid"],
+      "allowed_lods": ["2"],
+      "min_members_compositesolid": 4,
+      "max_members_compositesolid": 6,
+      "min_members_solid": 4,
+      "max_members_solid": 6,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}

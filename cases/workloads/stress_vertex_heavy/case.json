@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_vertex_heavy.city.json",
+    "profile": "cases/workloads/stress_vertex_heavy/profile.json"
+  },
+  "assertions": [
+    "vertex_count_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3005) with 1000 Building objects each with 33-34 triangulated surfaces (3 vertices, no inner rings), totalling ~100k vertices. MultiSurface geometry at LoD 2. No attributes, semantics, materials, or textures. Targets vertex array allocation and coordinate transform throughput. Hardware load: CPU (coordinate transform for ~100k vertices), memory bandwidth for vertex arrays. Architecture bottleneck: vertex array allocation and scale/offset application. Data model bottleneck: flat vertex array size and index array compactness.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_vertex_heavy",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

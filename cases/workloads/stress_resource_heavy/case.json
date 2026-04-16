@@ -1,0 +1,21 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_resource_heavy.city.json",
+    "profile": "cases/workloads/stress_resource_heavy/profile.json"
+  },
+  "assertions": [
+    "appearance_preserved",
+    "semantics_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3006) with 1000 Building objects each carrying one Solid geometry (2-4 shells) with semantics, 2-4 materials, and 2-4 textures simultaneously. No attributes. Targets combined appearance and semantic annotation parsing. Hardware load: CPU (multi-path parsing for semantics + materials + textures), RAM for appearance tables. Architecture bottleneck: combined appearance initialisation and material/texture theme co-resolution. Data model bottleneck: per-surface triple annotation (semantics + material index + texture coordinate) on Solid geometry.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_resource_heavy",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

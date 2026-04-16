@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "description": "All 60 attributes per CityObject survive encode/decode without loss or type coercion.",
+      "id": "attributes_preserved"
+    },
+    {
+      "description": "The case exposes the intended attribute allocation shape (60k key-value pairs across 1000 objects).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_attribute_heavy",
+  "kind": "positive",
+  "version": 1
+}

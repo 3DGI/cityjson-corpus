@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_geometry_heavy.city.json",
+    "profile": "cases/workloads/stress_geometry_heavy/profile.json"
+  },
+  "assertions": [
+    "all_geometries_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3003) with 1000 Building objects each carrying 4 MultiSurface geometries at LoDs 0-3 (4000 geometry records total). No attributes, semantics, materials, or textures. Targets multi-LoD geometry dispatch and geometry array allocation. Hardware load: CPU (geometry type dispatch per LoD), memory for 4x geometry arrays per object. Architecture bottleneck: LoD index maintenance and geometry iteration. Data model bottleneck: 4 geometry structs per CityObject.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_geometry_heavy",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}

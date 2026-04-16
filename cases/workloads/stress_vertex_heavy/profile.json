@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for vertex array allocation and coordinate transform throughput.",
+  "cases": [
+    {
+      "id": "stress_vertex_heavy",
+      "description": "1000 Building objects each with ~100 vertices (33-34 triangulated surfaces, 3 vertices each). ~100k total vertices. No inner rings, no attributes, semantics, materials, or textures.",
+      "seed": 3005,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["2"],
+      "min_members_multisurface": 33,
+      "max_members_multisurface": 34,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "min_vertices": 3,
+      "max_vertices": 3,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": false,
+      "semantics_enabled": false
+    }
+  ]
+}
