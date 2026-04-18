@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "purpose": "Stress fixture for attribute map allocation and parse/serialize throughput.",
+  "purpose": "Stress fixture for attribute map allocation and parse/serialize throughput with homogenous value types.",
   "cases": [
     {
-      "id": "stress_attribute_heavy",
-      "description": "60 flat mixed-type attributes per Building across 1000 objects. Minimal single-surface geometry. No semantics, materials, or textures.",
-      "seed": 3001,
+      "id": "stress_attribute_heavy_homogenous",
+      "description": "60 flat homogenous-type attributes per Building across 1000 objects. Each attribute key has a fixed scalar type (bool, integer, unsigned, float, or string) consistent across all CityObjects; each value has a 1-in-7 chance of being null. Minimal single-surface geometry. No semantics, materials, or textures.",
+      "seed": 3007,
       "allowed_types_cityobject": ["Building"],
       "min_cityobjects": 1000,
       "max_cityobjects": 1000,
@@ -22,7 +22,8 @@
       "max_attributes": 60,
       "attributes_max_depth": 1,
       "attributes_random_keys": true,
-      "attributes_random_values": true,
+      "attributes_value_mode": "homogenous",
+      "attributes_allow_null": true,
       "semantics_enabled": false
     }
   ]

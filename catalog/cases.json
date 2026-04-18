@@ -1022,22 +1022,46 @@
     {
       "artifact_mode": "generated",
       "artifact_paths": {
-        "generated": "artifacts/generated/stress_attribute_heavy.city.json",
-        "profile": "cases/workloads/stress_attribute_heavy/profile.json"
+        "generated": "artifacts/generated/stress_attribute_heavy_heterogenous.city.json",
+        "profile": "cases/workloads/stress_attribute_heavy_heterogenous/profile.json"
       },
       "assertions": [
         "attributes_preserved",
         "bottleneck_shape_visible"
       ],
-      "case": "cases/workloads/stress_attribute_heavy/case.json",
+      "case": "cases/workloads/stress_attribute_heavy_heterogenous/case.json",
       "cityjson_version": "2.0",
-      "description": "Deterministic synthetic case (seed 3001) with 1000 Building objects, 60 flat mixed-type attributes per object, and a single-surface MultiSurface geometry at LoD 2. No semantics, materials, or textures. Targets attribute map allocation, key string interning, and parse/serialize throughput. Hardware load: CPU (JSON key hashing, value type dispatch), RAM (60k attribute key-value pairs). Architecture bottleneck: hash map resize and key interning. Data model bottleneck: flat attribute record size at 60 keys per object.",
+      "description": "Deterministic synthetic case (seed 3001) with 1000 Building objects, 60 flat heterogenous-type attributes per object, and a single-surface MultiSurface geometry at LoD 2. No semantics, materials, or textures. The same attribute key can have different value types across CityObjects; null is included in the random type pool. Targets attribute map allocation, key string interning, and parse/serialize throughput with type-dispatch pressure. Hardware load: CPU (JSON key hashing, value type dispatch), RAM (60k attribute key-value pairs). Architecture bottleneck: hash map resize, key interning, and per-value type dispatch. Data model bottleneck: flat attribute record size at 60 keys per object.",
       "family": "stress",
       "geometry_kind": "dummy",
-      "id": "stress_attribute_heavy",
-      "invariants": "cases/workloads/stress_attribute_heavy/invariants.json",
+      "id": "stress_attribute_heavy_heterogenous",
+      "invariants": "cases/workloads/stress_attribute_heavy_heterogenous/invariants.json",
       "layer": "workload",
-      "path": "cases/workloads/stress_attribute_heavy",
+      "path": "cases/workloads/stress_attribute_heavy_heterogenous",
+      "representation": "cityjson",
+      "source_kind": "synthetic",
+      "version": 2
+    },
+    {
+      "artifact_mode": "generated",
+      "artifact_paths": {
+        "generated": "artifacts/generated/stress_attribute_heavy_homogenous.city.json",
+        "profile": "cases/workloads/stress_attribute_heavy_homogenous/profile.json"
+      },
+      "assertions": [
+        "attributes_preserved",
+        "attribute_types_consistent_per_key",
+        "bottleneck_shape_visible"
+      ],
+      "case": "cases/workloads/stress_attribute_heavy_homogenous/case.json",
+      "cityjson_version": "2.0",
+      "description": "Deterministic synthetic case (seed 3007) with 1000 Building objects, 60 flat homogenous-type attributes per object, and a single-surface MultiSurface geometry at LoD 2. No semantics, materials, or textures. Each attribute key has a fixed scalar type (bool, integer, unsigned, float, or string) consistent across all CityObjects; each value has a 1-in-7 chance of being null. Targets attribute map allocation, key string interning, and parse/serialize throughput with schema-stable type pressure. Hardware load: CPU (JSON key hashing), RAM (60k attribute key-value pairs). Architecture bottleneck: hash map resize and key interning. Data model bottleneck: flat attribute record size at 60 keys per object with nullable scalars.",
+      "family": "stress",
+      "geometry_kind": "dummy",
+      "id": "stress_attribute_heavy_homogenous",
+      "invariants": "cases/workloads/stress_attribute_heavy_homogenous/invariants.json",
+      "layer": "workload",
+      "path": "cases/workloads/stress_attribute_heavy_homogenous",
       "representation": "cityjson",
       "source_kind": "synthetic",
       "version": 2

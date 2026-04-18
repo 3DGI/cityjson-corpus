@@ -132,7 +132,7 @@ while IFS=$'\t' read -r case_id profile_path; do
     exit 1
   fi
 
-  cargo run --quiet --manifest-path "${cityjson_fake_cargo}" -- \
+  cargo run --quiet --manifest-path "${cityjson_fake_cargo}" --features cli -- \
     --manifest "${case_profile_path}" \
     --schema "${schema_path}" \
     --output "${output_dir}/${case_id}.city.json"

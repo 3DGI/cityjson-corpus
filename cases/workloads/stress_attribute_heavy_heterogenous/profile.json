@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "purpose": "Stress fixture for attribute map allocation and parse/serialize throughput with heterogenous value types.",
+  "cases": [
+    {
+      "id": "stress_attribute_heavy_heterogenous",
+      "description": "60 flat heterogenous-type attributes per Building across 1000 objects. The same attribute key can have different value types across CityObjects; null is included in the random type pool. Minimal single-surface geometry. No semantics, materials, or textures.",
+      "seed": 3001,
+      "allowed_types_cityobject": ["Building"],
+      "min_cityobjects": 1000,
+      "max_cityobjects": 1000,
+      "allowed_types_geometry": ["MultiSurface"],
+      "allowed_lods": ["2"],
+      "min_members_multisurface": 1,
+      "max_members_multisurface": 1,
+      "min_members_cityobject_geometries": 1,
+      "max_members_cityobject_geometries": 1,
+      "materials_enabled": false,
+      "textures_enabled": false,
+      "attributes_enabled": true,
+      "min_attributes": 60,
+      "max_attributes": 60,
+      "attributes_max_depth": 1,
+      "attributes_random_keys": true,
+      "attributes_value_mode": "heterogenous",
+      "attributes_allow_null": true,
+      "semantics_enabled": false
+    }
+  ]
+}

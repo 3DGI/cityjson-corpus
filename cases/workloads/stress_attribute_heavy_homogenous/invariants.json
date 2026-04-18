@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "description": "All 60 attributes per CityObject survive encode/decode without loss. Null values and designated scalar types are preserved.",
+      "id": "attributes_preserved"
+    },
+    {
+      "description": "Each attribute key has a consistent scalar type across all CityObjects (homogenous mode invariant).",
+      "id": "attribute_types_consistent_per_key"
+    },
+    {
+      "description": "The case exposes the intended attribute allocation shape (60k key-value pairs across 1000 objects).",
+      "id": "bottleneck_shape_visible"
+    }
+  ],
+  "id": "stress_attribute_heavy_homogenous",
+  "kind": "positive",
+  "version": 1
+}

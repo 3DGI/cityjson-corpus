@@ -1,0 +1,20 @@
+{
+  "artifact_mode": "generated",
+  "artifact_paths": {
+    "generated": "artifacts/generated/stress_attribute_heavy_heterogenous.city.json",
+    "profile": "cases/workloads/stress_attribute_heavy_heterogenous/profile.json"
+  },
+  "assertions": [
+    "attributes_preserved",
+    "bottleneck_shape_visible"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Deterministic synthetic case (seed 3001) with 1000 Building objects, 60 flat heterogenous-type attributes per object, and a single-surface MultiSurface geometry at LoD 2. No semantics, materials, or textures. The same attribute key can have different value types across CityObjects; null is included in the random type pool. Targets attribute map allocation, key string interning, and parse/serialize throughput with type-dispatch pressure. Hardware load: CPU (JSON key hashing, value type dispatch), RAM (60k attribute key-value pairs). Architecture bottleneck: hash map resize, key interning, and per-value type dispatch. Data model bottleneck: flat attribute record size at 60 keys per object.",
+  "family": "stress",
+  "geometry_kind": "dummy",
+  "id": "stress_attribute_heavy_heterogenous",
+  "layer": "workload",
+  "representation": "cityjson",
+  "source_kind": "synthetic",
+  "version": 2
+}
