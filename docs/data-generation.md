@@ -19,7 +19,7 @@ Each case uses one of these modes:
   `artifacts/benchmark-index.json`.
 - `just acquire-3dbag`: materialize the pinned 3DBAG slice.
 - `just acquire-basisvoorziening-3d`: materialize the pinned Basisvoorziening
-  3D tile.
+  3D tile via the PDOK OGC API.
 
 ## Requirements
 

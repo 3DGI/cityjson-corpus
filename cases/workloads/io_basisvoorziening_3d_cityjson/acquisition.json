@@ -2,7 +2,7 @@
   "dataset": "Basisvoorziening 3D",
   "id": "io_basisvoorziening_3d_cityjson",
   "license": "Use the upstream PDOK / Kadaster 3D Basisvoorziening terms (CC BY 4.0).",
-  "notes": "Monolithic real-geometry Basisvoorziening 3D case stored as a whole CityJSON file. It complements the 3DBAG baseline with a larger terrain-inclusive Dutch tile acquired directly from the published 2022 PDOK collection.",
+  "notes": "Monolithic real-geometry Basisvoorziening 3D case stored as a whole CityJSON file. It complements the 3DBAG baseline with a larger terrain-inclusive Dutch tile acquired through the PDOK OGC API for the published 2022 collection.",
   "outputs": [
     {
       "derivation": "acquired",
@@ -44,15 +44,16 @@
   "owner": "cjindex",
   "preprocessing": [
     "Run the shared Basisvoorziening 3D acquisition script in cityjson-corpus.",
-    "Download the pinned 2022 volledig archive from PDOK.",
+    "Resolve the pinned 2022 volledig tile through the PDOK OGC API.",
+    "Download the archive referenced by the resolved OGC feature.",
     "Extract the published CityJSON tile from the zip archive.",
     "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
     "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
   ],
-  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-corpus to materialize the raw tile and native cityjson-arrow/cityjson-parquet artifacts.",
+  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-corpus to materialize the raw tile and native cityjson-arrow/cityjson-parquet artifacts via the PDOK OGC API.",
   "selector": "Pinned 2022 volledig tile: 84000_450000.",
   "status": "published",
-  "upstream_url": "https://download.pdok.nl/kadaster/basisvoorziening-3d/v1_0/2022/volledig/volledig_2022_84000_450000.zip",
+  "upstream_url": "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/basisbestand_gebouwen_terreinen/items?f=json&limit=1000",
   "upstream_version": "2022",
   "version": 2
 }

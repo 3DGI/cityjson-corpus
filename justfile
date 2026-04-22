@@ -39,9 +39,9 @@ _cjval-generated:
 acquire-3dbag:
     ./scripts/acquire_3dbag.sh
 
-# Download the published Basisvoorziening 3D tile (CityJSON, cityjson-arrow, cityjson-parquet) into artifacts/acquired/.
+# Download the published Basisvoorziening 3D tile into artifacts/acquired/.
 acquire-basisvoorziening-3d:
-    ./scripts/acquire_basisvoorziening_3d.sh
+    uv run python ./scripts/acquire_basisvoorziening_3d.py
 
 # Remove generated workload data, acquired artifacts, derived indexes, generated docs pages, and the built site.
 clean:
