@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import shutil
@@ -14,6 +13,8 @@ import zipfile
 from pathlib import Path
 from typing import Any
 from urllib.parse import urljoin
+
+from cityjson_artifacts import describe_artifact
 
 
 JsonObject = dict[str, object]
@@ -141,7 +142,9 @@ def next_page_url(document: JsonObject, current_url: str) -> str | None:
     return None
 
 
-def find_feature(items_url: str, tile_slug: str, dataset_year: int) -> tuple[JsonObject, str, int]:
+def find_feature(
+    items_url: str, tile_slug: str, dataset_year: int
+) -> tuple[JsonObject, str, int]:
     current_url = items_url
     page_number = 0
     while current_url:
@@ -149,7 +152,9 @@ def find_feature(items_url: str, tile_slug: str, dataset_year: int) -> tuple[Jso
         document = fetch_json(current_url)
         raw_features = document.get("features")
         if not isinstance(raw_features, list):
-            raise AcquisitionError(f"expected features array on page {page_number} from {current_url}")
+            raise AcquisitionError(
+                f"expected features array on page {page_number} from {current_url}"
+            )
 
         for feature in raw_features:
             if not isinstance(feature, dict):
@@ -160,10 +165,15 @@ def find_feature(items_url: str, tile_slug: str, dataset_year: int) -> tuple[Jso
 
             if str(raw_properties.get("bladnr")) != tile_slug:
                 continue
-            if get_int(raw_properties.get("jaargang_luchtfoto"), "jaargang_luchtfoto") != dataset_year:
+            if (
+                get_int(raw_properties.get("jaargang_luchtfoto"), "jaargang_luchtfoto")
+                != dataset_year
+            ):
                 continue
 
-            download_url = get_string(raw_properties.get("download_link"), "download_link")
+            download_url = get_string(
+                raw_properties.get("download_link"), "download_link"
+            )
             download_size_bytes = get_int(
                 raw_properties.get("download_size_bytes"), "download_size_bytes"
             )
@@ -182,19 +192,29 @@ def download_file(download_url: str, destination: Path) -> None:
         headers={"User-Agent": "cityjson-corpus/1.0"},
     )
     try:
-        with urllib.request.urlopen(request, timeout=120) as response, destination.open("wb") as handle:
+        with (
+            urllib.request.urlopen(request, timeout=120) as response,
+            destination.open("wb") as handle,
+        ):
             shutil.copyfileobj(response, handle)
     except urllib.error.HTTPError as exc:
-        raise AcquisitionError(f"failed to download {download_url}: HTTP {exc.code}") from exc
+        raise AcquisitionError(
+            f"failed to download {download_url}: HTTP {exc.code}"
+        ) from exc
     except urllib.error.URLError as exc:
-        raise AcquisitionError(f"failed to download {download_url}: {exc.reason}") from exc
+        raise AcquisitionError(
+            f"failed to download {download_url}: {exc.reason}"
+        ) from exc
 
 
 def extract_cityjson(archive_path: Path, cityjson_name: str, destination: Path) -> None:
     try:
         with zipfile.ZipFile(archive_path) as archive:
             try:
-                with archive.open(cityjson_name) as source, destination.open("wb") as handle:
+                with (
+                    archive.open(cityjson_name) as source,
+                    destination.open("wb") as handle,
+                ):
                     shutil.copyfileobj(source, handle)
             except KeyError as exc:
                 raise AcquisitionError(
@@ -204,34 +224,33 @@ def extract_cityjson(archive_path: Path, cityjson_name: str, destination: Path) 
         raise AcquisitionError(f"{archive_path} is not a valid zip archive") from exc
 
 
-def sha256sum(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
-
-
 def stat_size(path: Path) -> int:
     return path.stat().st_size
 
 
 def json_dump(path: Path, payload: JsonObject) -> None:
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
 
-def build_outputs_json(output_root: Path, dataset_year: int, cityjson_name: str) -> list[JsonObject]:
+def build_outputs_json(
+    output_root: Path, dataset_year: int, cityjson_name: str
+) -> list[JsonObject]:
     cityjson_path = output_root / cityjson_name
-    output_path = f"artifacts/acquired/basisvoorziening-3d/{dataset_year}/{cityjson_name}"
+    output_path = (
+        f"artifacts/acquired/basisvoorziening-3d/{dataset_year}/{cityjson_name}"
+    )
+    descriptor = describe_artifact(cityjson_path, "cityjson")
     return [
         {
+            **descriptor,
             "path": output_path,
             "representation": "cityjson",
             "producer": "upstream",
             "derivation": "acquired",
             "validation_role": "canonical",
-            "checksum": sha256sum(cityjson_path),
-            "byte_size": stat_size(cityjson_path),
+            "case_ids": ["io_basisvoorziening_3d_cityjson"],
             "published": True,
         }
     ]
@@ -264,7 +283,9 @@ def main() -> int:
 
     output_root.mkdir(parents=True, exist_ok=True)
 
-    _feature, download_url, download_size_bytes = find_feature(args.api_url, tile_slug, dataset_year)
+    _feature, download_url, download_size_bytes = find_feature(
+        args.api_url, tile_slug, dataset_year
+    )
 
     if not cityjson_path.exists():
         with tempfile.NamedTemporaryFile(
@@ -299,10 +320,10 @@ def main() -> int:
     json_dump(metadata_path, metadata)
 
     manifest = {
+        "version": 1,
         "dataset": "Basisvoorziening 3D",
         "upstream_version": str(dataset_year),
         "tile_slug": tile_slug,
-        "case_id": "io_basisvoorziening_3d_cityjson",
         "outputs": build_outputs_json(output_root, dataset_year, cityjson_name),
     }
     json_dump(manifest_path, manifest)

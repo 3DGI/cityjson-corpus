@@ -13,32 +13,6 @@
       "producer": "upstream",
       "representation": "cityjson",
       "validation_role": "canonical"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.city.json"
-      ],
-      "path": "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.cjarrow",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-arrow",
-      "validation_role": "benchmark-only"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.city.json"
-      ],
-      "path": "artifacts/acquired/basisvoorziening-3d/2022/3d_volledig_84000_450000.cjparquet",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-parquet",
-      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
@@ -46,11 +20,9 @@
     "Run the shared Basisvoorziening 3D acquisition script in cityjson-corpus.",
     "Resolve the pinned 2022 volledig tile through the PDOK OGC API.",
     "Download the archive referenced by the resolved OGC feature.",
-    "Extract the published CityJSON tile from the zip archive.",
-    "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
-    "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
+    "Extract the published CityJSON tile from the zip archive."
   ],
-  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-corpus to materialize the raw tile and native cityjson-arrow/cityjson-parquet artifacts via the PDOK OGC API.",
+  "reference": "Use `just acquire-basisvoorziening-3d` in cityjson-corpus to materialize the raw tile via the PDOK OGC API.",
   "selector": "Pinned 2022 volledig tile: 84000_450000.",
   "status": "published",
   "upstream_url": "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/basisbestand_gebouwen_terreinen/items?f=json&limit=1000",

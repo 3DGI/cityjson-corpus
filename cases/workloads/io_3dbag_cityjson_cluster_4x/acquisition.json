@@ -19,43 +19,15 @@
       "producer": "cjio",
       "representation": "cityjson",
       "validation_role": "benchmark-only"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json"
-      ],
-      "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjarrow",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-arrow",
-      "validation_role": "benchmark-only"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/3dbag/v20250903/cluster_4x.city.json"
-      ],
-      "path": "artifacts/acquired/3dbag/v20250903/cluster_4x.cjparquet",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-parquet",
-      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
   "preprocessing": [
     "Run the shared 3DBAG acquisition script in cityjson-corpus.",
     "Download the pinned 2x2 tile cluster around the base tile.",
-    "Merge the four real CityJSON tiles with cjio and publish the merged workload artifact.",
-    "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
-    "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
+    "Merge the four real CityJSON tiles with cjio and publish the merged workload artifact."
   ],
-  "reference": "Use `just acquire-3dbag` in cityjson-corpus to materialize the raw tiles, merged stress case, and native cityjson-arrow/cityjson-parquet artifacts.",
+  "reference": "Use `just acquire-3dbag` in cityjson-corpus to materialize the raw tiles and merged stress case.",
   "selector": "Pinned v20250903 tiles: 10-758-50, 10-756-48, 10-756-50, and 10-758-48.",
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",

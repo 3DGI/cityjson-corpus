@@ -7,7 +7,7 @@ For the full command flow, read `docs/data-generation.md`.
 
 - `just sync-catalog`: rebuild derived case indexes.
 - `just generate-data`: build generated workload artifacts.
-- `just acquire-3dbag`: materialize the pinned 3DBAG dataset slice.
+- `just acquire-3dbag`: materialize the pinned 3DBAG layouts and compact operation fixture.
 - `just acquire-basisvoorziening-3d`: materialize the pinned Basisvoorziening 3D
   dataset slice via the PDOK OGC API.
 

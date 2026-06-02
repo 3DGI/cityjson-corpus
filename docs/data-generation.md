@@ -28,10 +28,9 @@ You need:
 - `just`
 - `jq`
 - `cargo`
-- `curl`, `gunzip`, `unzip`, and `sha256sum`
-- a sibling checkout of `../cityjson-fake`, or `CJFAKE_CARGO_MANIFEST`
-- a sibling checkout of `../cityjson-lib`, or
-  `CORPUS_CITYJSON_LIB_CARGO_MANIFEST`
+- `curl`, `gunzip`, `python3`, and `uvx`
+- a sibling checkout containing `../cityjson-rs/crates/cityjson-fake`, or
+  `CJFAKE_CARGO_MANIFEST`
 
 `just lint` and `just docs-build` use the checked-in
 `schemas/cityjson-fake-manifest.schema.json`, so they do not require the
@@ -53,11 +52,23 @@ Generation is deterministic. Synthetic cases use fixed manifests and seeds.
   CityJSON file per case.
 - Published real-data cases point at the acquired artifacts under
   `artifacts/acquired/3dbag/v20250903/` and
-  `artifacts/acquired/basisvoorziening-3d/2022/`, including CityJSON,
-  cityjson-arrow, and cityjson-parquet forms for the published workloads, with explicit
-  provenance and validation-role metadata per artifact.
-- Cases without a published acquisition remain metadata-only until their
-  consumer-owned pipeline publishes concrete artifacts.
+  `artifacts/acquired/basisvoorziening-3d/2022/`. The 3DBAG command emits
+  CityJSON, JSONL, feature-files, and a compact operation subset.
+- Acquisition manifests record provenance, validation roles, checksums, byte
+  sizes, and machine-readable CityJSON summaries per artifact.
+
+## Generated Acquisition Manifests
+
+Each acquisition command writes an ignored `manifest.json` next to its outputs.
+These generated manifests use `version: 1` and record `case_ids`, provenance,
+checksum, byte size, and a `summary` for every output. Summaries include feature
+and CityObject counts, CityObject types, vertex count, geometry types, LoDs,
+semantic surface types, attribute keys, CRS, and geographical extent.
+
+File artifacts use their SHA-256 digest. Directory artifacts use a deterministic
+SHA-256 digest over sorted relative paths and file bytes; `byte_size` is the sum
+of contained file sizes. Run `just clean` when older ignored acquisitions should
+be removed after the output set changes.
 
 ## How This Fits The Repo
 

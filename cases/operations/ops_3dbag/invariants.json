@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "description": "Bounding-box results remain stable across traversal.",
+      "id": "bounding_box_stable"
+    },
+    {
+      "description": "Hierarchy traversal visits the full reachable object graph.",
+      "id": "hierarchy_traversal_complete"
+    },
+    {
+      "description": "Attribute payloads survive the operation kernel.",
+      "id": "attribute_payload_preserved"
+    },
+    {
+      "description": "Geometry stays intact while object-model operations are processed.",
+      "id": "geometry_preserved"
+    },
+    {
+      "description": "Semantic surfaces remain attached to their geometry.",
+      "id": "semantic_surfaces_preserved"
+    },
+    {
+      "description": "Boundary-to-semantics mapping remains stable.",
+      "id": "boundary_to_semantics_mapping_stable"
+    }
+  ],
+  "id": "ops_3dbag",
+  "kind": "positive",
+  "version": 1
+}

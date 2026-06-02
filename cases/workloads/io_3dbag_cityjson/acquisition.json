@@ -13,42 +13,14 @@
       "producer": "upstream",
       "representation": "cityjson",
       "validation_role": "canonical"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
-      ],
-      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjarrow",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-arrow",
-      "validation_role": "benchmark-only"
-    },
-    {
-      "derivation": "exported",
-      "byte_size": null,
-      "checksum": null,
-      "derived_from": [
-        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
-      ],
-      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.cjparquet",
-      "published": true,
-      "producer": "cityjson-lib",
-      "representation": "cityjson-parquet",
-      "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
   "preprocessing": [
     "Run the shared 3DBAG acquisition script in cityjson-corpus.",
-    "Reuse the published raw CityJSON file for JSON read and write benchmarking.",
-    "Export a sibling live cityjson-arrow stream file for Arrow-to-memory and memory-to-Arrow benchmarking.",
-    "Export a sibling cityjson-parquet package file for package-to-memory and memory-to-package benchmarking."
+    "Reuse the published raw CityJSON file for JSON read and write benchmarking."
   ],
-  "reference": "Use `just acquire-3dbag` in cityjson-corpus to materialize the raw slice and native cityjson-arrow/cityjson-parquet artifacts.",
+  "reference": "Use `just acquire-3dbag` in cityjson-corpus to materialize the raw CityJSON slice.",
   "selector": "Pinned 3DBAG release metadata is captured by the shared acquisition script.",
   "status": "published",
   "upstream_url": "https://data.3dbag.nl/v20250903/",

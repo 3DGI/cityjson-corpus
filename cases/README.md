@@ -41,7 +41,7 @@ The main subtrees are:
 
 - `conformance/v2_0/`: checked-in valid fixtures.
 - `conformance/synthetic/`: generated valid fixtures.
-- `operations/`: medium cases for common tasks on realistic data.
+- `operations/`: compact cases for common tasks on realistic data.
 - `workloads/`: larger performance cases, both synthetic and real data.
 - `invalid/`: deliberately broken fixtures.
 

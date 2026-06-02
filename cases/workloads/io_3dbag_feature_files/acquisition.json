@@ -9,25 +9,25 @@
       "byte_size": null,
       "checksum": null,
       "derived_from": [
-        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
+        "artifacts/acquired/3dbag/v20250903/10-758-50.city.jsonl"
       ],
-      "path": null,
-      "published": false,
-      "producer": "cjindex",
+      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.feature-files",
+      "published": true,
+      "producer": "cityjson-corpus",
       "representation": "feature-files",
       "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
   "preprocessing": [
-    "Select a reproducible 3DBAG slice through cjindex.",
-    "Materialize the layout required by this case.",
-    "Record checksums, byte sizes, and object counts in a future published release."
+    "Run the shared 3DBAG acquisition script in cityjson-corpus.",
+    "Export the published raw CityJSON tile as JSONL with cjio.",
+    "Split the validated JSONL stream into metadata.json and one feature file per CityJSONFeature."
   ],
-  "reference": "Reuse the cjindex 3DBAG preparation flow until this repository publishes pinned real-data artifacts.",
-  "selector": "Pinned tile selection and release metadata have not been published yet.",
-  "status": "planned",
-  "upstream_url": null,
-  "upstream_version": null,
+  "reference": "Use `just acquire-3dbag` in cityjson-corpus to split the pinned JSONL stream into one file per feature.",
+  "selector": "Pinned v20250903 tile: 10-758-50.",
+  "status": "published",
+  "upstream_url": "https://data.3dbag.nl/v20250903/",
+  "upstream_version": "2025.09.03",
   "version": 2
 }

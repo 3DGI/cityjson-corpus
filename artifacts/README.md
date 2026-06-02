@@ -23,6 +23,16 @@ Two ideas matter:
 
 Real-data workload cases may list both.
 
+## Generated Acquisition Manifests
+
+Real-data acquisition commands write ignored `manifest.json` files next to the
+materialized outputs. Each output records its owning `case_ids`, provenance,
+checksum, byte size, and a machine-readable CityJSON summary. Directory layouts
+use a deterministic SHA-256 digest over sorted relative paths and file bytes.
+
+Run `just clean` after removing or renaming acquired outputs so older ignored
+artifacts do not remain on disk.
+
 ## How To Change It
 
 Do not treat this directory as hand-edited source content. Change the owning

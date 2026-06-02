@@ -845,65 +845,25 @@
     {
       "artifact_mode": "acquired",
       "artifact_paths": {
-        "acquisition": "cases/operations/ops_3dbag_base/acquisition.json"
+        "acquisition": "cases/operations/ops_3dbag/acquisition.json"
       },
       "assertions": [
         "bounding_box_stable",
-        "hierarchy_traversal_complete"
-      ],
-      "case": "cases/operations/ops_3dbag_base/case.json",
-      "cityjson_version": "2.0",
-      "description": "Medium-sized real-geometry 3DBAG case. Baseline for bounding-box computation, object filtering, hierarchy navigation, and geometry access.",
-      "family": "operation_kernel",
-      "geometry_kind": "real-preserved",
-      "id": "ops_3dbag_base",
-      "invariants": "cases/operations/ops_3dbag_base/invariants.json",
-      "layer": "operation",
-      "path": "cases/operations/ops_3dbag_base",
-      "representation": "cityjson",
-      "source_kind": "real-geometry",
-      "version": 2
-    },
-    {
-      "artifact_mode": "acquired",
-      "artifact_paths": {
-        "acquisition": "cases/operations/ops_3dbag_enriched/acquisition.json"
-      },
-      "assertions": [
+        "hierarchy_traversal_complete",
         "attribute_payload_preserved",
-        "geometry_preserved"
-      ],
-      "case": "cases/operations/ops_3dbag_enriched/case.json",
-      "cityjson_version": "2.0",
-      "description": "Real 3DBAG geometry enriched with synthetic attributes. Targets object-graph traversal, attribute lookup, and roundtrip stability on a mixed geometry-plus-metadata payload.",
-      "family": "operation_kernel",
-      "geometry_kind": "real-preserved",
-      "id": "ops_3dbag_enriched",
-      "invariants": "cases/operations/ops_3dbag_enriched/invariants.json",
-      "layer": "operation",
-      "path": "cases/operations/ops_3dbag_enriched",
-      "representation": "cityjson",
-      "source_kind": "real-geometry-enriched",
-      "version": 2
-    },
-    {
-      "artifact_mode": "acquired",
-      "artifact_paths": {
-        "acquisition": "cases/operations/ops_3dbag_semantic_surfaces/acquisition.json"
-      },
-      "assertions": [
+        "geometry_preserved",
         "semantic_surfaces_preserved",
         "boundary_to_semantics_mapping_stable"
       ],
-      "case": "cases/operations/ops_3dbag_semantic_surfaces/case.json",
+      "case": "cases/operations/ops_3dbag/case.json",
       "cityjson_version": "2.0",
-      "description": "Real-geometry 3DBAG case with roof, wall, and ground semantic surfaces. Targets surface traversal, boundary-to-semantics mapping, and semantic-aware roundtrips.",
+      "description": "Compact real-geometry 3DBAG Building hierarchy with attributes, multiple LoDs, and semantic surfaces. Targets common object-model operations without requiring the full workload tile.",
       "family": "operation_kernel",
       "geometry_kind": "real-preserved",
-      "id": "ops_3dbag_semantic_surfaces",
-      "invariants": "cases/operations/ops_3dbag_semantic_surfaces/invariants.json",
+      "id": "ops_3dbag",
+      "invariants": "cases/operations/ops_3dbag/invariants.json",
       "layer": "operation",
-      "path": "cases/operations/ops_3dbag_semantic_surfaces",
+      "path": "cases/operations/ops_3dbag",
       "representation": "cityjson",
       "source_kind": "real-geometry",
       "version": 2

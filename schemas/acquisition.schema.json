@@ -111,7 +111,8 @@
             "acquired",
             "merged",
             "exported",
-            "materialized"
+            "materialized",
+            "subset"
           ]
         },
         "derived_from": {
@@ -162,7 +163,9 @@
           },
           "then": {
             "not": {
-              "required": ["derived_from"]
+              "required": [
+                "derived_from"
+              ]
             }
           }
         },
@@ -173,13 +176,16 @@
                 "enum": [
                   "merged",
                   "exported",
-                  "materialized"
+                  "materialized",
+                  "subset"
                 ]
               }
             }
           },
           "then": {
-            "required": ["derived_from"]
+            "required": [
+              "derived_from"
+            ]
           }
         }
       ]

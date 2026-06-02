@@ -1,0 +1,23 @@
+{
+  "artifact_mode": "acquired",
+  "artifact_paths": {
+    "acquisition": "cases/operations/ops_3dbag/acquisition.json"
+  },
+  "assertions": [
+    "bounding_box_stable",
+    "hierarchy_traversal_complete",
+    "attribute_payload_preserved",
+    "geometry_preserved",
+    "semantic_surfaces_preserved",
+    "boundary_to_semantics_mapping_stable"
+  ],
+  "cityjson_version": "2.0",
+  "description": "Compact real-geometry 3DBAG Building hierarchy with attributes, multiple LoDs, and semantic surfaces. Targets common object-model operations without requiring the full workload tile.",
+  "family": "operation_kernel",
+  "geometry_kind": "real-preserved",
+  "id": "ops_3dbag",
+  "layer": "operation",
+  "representation": "cityjson",
+  "source_kind": "real-geometry",
+  "version": 2
+}

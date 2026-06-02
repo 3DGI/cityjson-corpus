@@ -5,29 +5,28 @@
   "notes": "The same real-geometry 3DBAG slice packaged as JSONL. This is a stream-oriented layout case for record-by-record parsing, framing overhead, and streaming memory behavior.",
   "outputs": [
     {
-      "derivation": "materialized",
+      "derivation": "exported",
       "byte_size": null,
       "checksum": null,
       "derived_from": [
         "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
       ],
-      "path": null,
-      "published": false,
-      "producer": "cjindex",
+      "path": "artifacts/acquired/3dbag/v20250903/10-758-50.city.jsonl",
+      "published": true,
+      "producer": "cjio",
       "representation": "jsonl",
       "validation_role": "benchmark-only"
     }
   ],
   "owner": "cjindex",
   "preprocessing": [
-    "Select a reproducible 3DBAG slice through cjindex.",
-    "Materialize the layout required by this case.",
-    "Record checksums, byte sizes, and object counts in a future published release."
+    "Run the shared 3DBAG acquisition script in cityjson-corpus.",
+    "Export the published raw CityJSON tile as JSONL with cjio."
   ],
-  "reference": "Reuse the cjindex 3DBAG preparation flow until this repository publishes pinned real-data artifacts.",
-  "selector": "Pinned tile selection and release metadata have not been published yet.",
-  "status": "planned",
-  "upstream_url": null,
-  "upstream_version": null,
+  "reference": "Use `just acquire-3dbag` in cityjson-corpus to export the pinned tile as JSONL with cjio.",
+  "selector": "Pinned v20250903 tile: 10-758-50.",
+  "status": "published",
+  "upstream_url": "https://data.3dbag.nl/v20250903/",
+  "upstream_version": "2025.09.03",
   "version": 2
 }

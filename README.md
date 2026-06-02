@@ -50,7 +50,7 @@ If you are reading the repository through the docs site, start with:
   `artifacts/correctness-index.json`.
 - `just generate-data`: materialize generated workload data and refresh
   `artifacts/benchmark-index.json` (requires [cityjson-fake](https://github.com/3DGI/cityjson-fake)).
-- `just acquire-3dbag`: materialize the pinned 3DBAG workload artifacts.
+- `just acquire-3dbag`: materialize the pinned 3DBAG layouts and compact operation fixture.
 - `just acquire-basisvoorziening-3d`: materialize the pinned Basisvoorziening
   3D workload artifacts via the PDOK OGC API.
 - `just clean`: remove generated outputs and generated docs pages.

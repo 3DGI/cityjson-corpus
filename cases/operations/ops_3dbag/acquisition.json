@@ -1,0 +1,32 @@
+{
+  "dataset": "3DBAG",
+  "id": "ops_3dbag",
+  "license": "Use the upstream 3DBAG license terms until the corpus release metadata is published.",
+  "notes": "Compact real-geometry 3DBAG hierarchy for common object-model operations. The shared acquisition script deterministically subsets one Building and its BuildingPart from the published raw tile.",
+  "outputs": [
+    {
+      "derivation": "subset",
+      "byte_size": null,
+      "checksum": null,
+      "derived_from": [
+        "artifacts/acquired/3dbag/v20250903/10-758-50.city.json"
+      ],
+      "path": "artifacts/acquired/3dbag/v20250903/ops_3dbag.city.json",
+      "published": true,
+      "producer": "cjio",
+      "representation": "cityjson",
+      "validation_role": "canonical"
+    }
+  ],
+  "owner": "cjindex",
+  "preprocessing": [
+    "Run the shared 3DBAG acquisition script in cityjson-corpus.",
+    "Subset Building NL.IMBAG.Pand.0928100000037540 and its hierarchy from the published raw CityJSON tile with cjio."
+  ],
+  "reference": "Use `just acquire-3dbag` in cityjson-corpus to materialize the compact operation fixture.",
+  "selector": "Pinned 3DBAG Building hierarchy rooted at NL.IMBAG.Pand.0928100000037540.",
+  "status": "published",
+  "upstream_url": "https://data.3dbag.nl/v20250903/",
+  "upstream_version": "2025.09.03",
+  "version": 2
+}
